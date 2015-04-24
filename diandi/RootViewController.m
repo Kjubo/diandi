@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "AppDelegate.h"
 @interface RootViewController ()
+@property (nonatomic, readonly) AppDelegate *shareDelegate;
 @end
 
 @implementation RootViewController
@@ -23,6 +24,17 @@
     [super viewWillAppear:animated];
 }
 
+- (AppDelegate *)shareDelegate{
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
+- (NSManagedObjectContext *)managedObjectContext{
+    return [[self shareDelegate] managedObjectContext];
+}
+
+- (NSManagedObjectModel *)managedObjectModel{
+    return [[self shareDelegate] managedObjectModel];
+}
 
 - (void)didReceiveMemoryWarning
 {

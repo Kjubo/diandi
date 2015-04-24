@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TourMainViewController : UIViewController
+@interface TourMainViewController : RootViewController
 
 @end
