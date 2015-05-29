@@ -13,17 +13,18 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "Define.h"
 #import <MapKit/MapKit.h>
 #import <CoreData/CoreData.h>
 #import <QuartzCore/QuartzCore.h>
+
+#import "Define.h"
+#import "Masonry.h"
+#import "UIImageView+WebCache.h"
 #import "RootViewController.h"
 
 
 //十六进制颜色转换（0xFFFFFF）
-//十六进制颜色转换（0xFFFFFF）
 #define RGBCOLOR(hex)  [UIColor colorWithRed:((float)((hex & 0xFF0000) >> 16))/255.0 green:((float)((hex & 0xFF00) >> 8))/255.0 blue:((float)(hex & 0xFF))/255.0 alpha:1.0]
-
 
 
 #endif
