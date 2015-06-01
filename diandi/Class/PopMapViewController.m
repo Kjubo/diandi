@@ -12,6 +12,7 @@
 
 #define ARC4RANDOM_MAX 0x100000000
 #define FRAND(MIN, MAX) ((double)arc4random() / ARC4RANDOM_MAX) * (MAX - MIN)+ MIN
+#define kMaxAnnotationCount 50
 @interface PopMapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *arrMessage;
@@ -55,6 +56,11 @@
     ann.coordinate = CLLocationCoordinate2DMake(lat, lon);
     [self.arrAnnotation addObject:ann];
     [self.mapView addAnnotation:ann];
+    
+    if([self.arrAnnotation count] > kMaxAnnotationCount){
+        [self.mapView removeAnnotation:[self.arrAnnotation firstObject]];
+        [self.arrAnnotation removeObjectAtIndex:0];
+    }
     
 //    MKCircle *circle = [MKCircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(lat, lon) radius:100000];
 //    [self.mapView addOverlay:circle];
