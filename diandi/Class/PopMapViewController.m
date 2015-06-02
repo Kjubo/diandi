@@ -7,6 +7,7 @@
 //
 
 #import "PopMapViewController.h"
+#import "TourMainViewController.h"
 #import "DAnnotation.h"
 #import "PopAnnotationView.h"
 
@@ -14,7 +15,7 @@
 #define FRAND(MIN, MAX) ((double)arc4random() / ARC4RANDOM_MAX) * (MAX - MIN)+ MIN
 #define kMaxAnnotationCount 50
 @interface PopMapViewController () <MKMapViewDelegate>
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *arrMessage;
 @property (nonatomic, strong) NSMutableArray *arrAnnotation;
 @property (nonatomic, strong) NSTimer *timerForFetch;
@@ -25,6 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"行程" style:UIBarButtonItemStyleDone target:self action:@selector(navtoTourMainVc)];
+    self.mapView = [[MKMapView alloc] init];
+    self.mapView.delegate = self;
+    [self.view addSubview:self.mapView];
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsZero);
+    }];
+    
     self.arrAnnotation = [NSMutableArray array];
     self.arrMessage = [NSMutableArray array];
 }
@@ -33,6 +42,11 @@
     [super viewWillAppear:animated];
     [self clearTimer];
     self.timerForFetch = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(addRandomAnnototionView) userInfo:nil repeats:YES];
+}
+
+- (void)navtoTourMainVc{
+    TourMainViewController *tvc = [[TourMainViewController alloc] init];
+    [self.navigationController pushViewController:tvc animated:YES];
 }
 
 - (void)clearTimer{

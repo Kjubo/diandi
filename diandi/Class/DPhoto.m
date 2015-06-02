@@ -19,4 +19,16 @@
 @dynamic uuid;
 @dynamic sign;
 
++ (instancetype)newPhoto{
+    DPhoto *ph = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([DPhoto class]) inManagedObjectContext:[RootViewController managedObjectContext]];
+    return ph;
+}
+
+- (CLLocation *)location{
+    if(self.latitude && self.longitude){
+        return [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
+    }
+    return nil;
+}
+
 @end

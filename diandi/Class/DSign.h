@@ -14,6 +14,7 @@
 @interface DSign : NSManagedObject
 
 @property (nonatomic, retain) NSDate * createTime;
+@property (nonatomic, retain) NSString * conver;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * uuid;
@@ -26,5 +27,7 @@
 - (void)removePhotosObject:(DPhoto *)value;
 - (void)addPhotos:(NSSet *)values;
 - (void)removePhotos:(NSSet *)values;
+
++ (instancetype)newSign;
 
 @end

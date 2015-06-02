@@ -24,15 +24,15 @@
     [super viewWillAppear:animated];
 }
 
-- (AppDelegate *)shareDelegate{
++ (AppDelegate *)shareDelegate{
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
-- (NSManagedObjectContext *)managedObjectContext{
++ (NSManagedObjectContext *)managedObjectContext{
     return [[self shareDelegate] managedObjectContext];
 }
 
-- (NSManagedObjectModel *)managedObjectModel{
++ (NSManagedObjectModel *)managedObjectModel{
     return [[self shareDelegate] managedObjectModel];
 }
 

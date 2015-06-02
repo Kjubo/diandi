@@ -10,10 +10,17 @@
 #import "ELCImagePickerController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "NSDate+Addition.h"
 #import "DPhoto.h"
+#import "DSign.h"
 
-@interface TourMainViewController () <ELCImagePickerControllerDelegate>
+#define kMaxSignDistance 1000
+
+@interface TourMainViewController () <ELCImagePickerControllerDelegate, MKMapViewDelegate>
 @property (nonatomic, strong) ELCImagePickerController *imagePicker;
+@property (nonatomic, strong) MKMapView *mapView;
+
+@property (nonatomic, strong) NSMutableArray *signs;
 @end
 
 @implementation TourMainViewController
@@ -23,6 +30,13 @@
     // Do any additional setup after loading the view.
 //    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"照片+" style:UIBarButtonItemStyleDone target:self action:@selector(choosePhoto)];
+    
+    self.mapView = [[MKMapView alloc] init];
+    self.mapView.delegate = self;
+    [self.view addSubview:self.mapView];
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsZero);
+    }];
 }
 
 - (void)choosePhoto{
@@ -34,6 +48,7 @@
     if(!_imagePicker){
         _imagePicker = [[ELCImagePickerController alloc] initImagePicker];
         _imagePicker.imagePickerDelegate = self;
+        _imagePicker.maximumImagesCount = 1000;
         _imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
     }
     return _imagePicker;
@@ -42,6 +57,7 @@
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info{
     [self dismissViewControllerAnimated:YES completion:nil];
+    if([info count] <= 0) return;
     for (NSDictionary *dict in info) {
         if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypePhoto){
             if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
@@ -50,9 +66,11 @@
                 [alib assetForURL:imageURL resultBlock:^(ALAsset *asset) {
                     CLLocation *loc = [asset valueForProperty:ALAssetPropertyLocation];
                     NSDate *timestamp = [asset valueForProperty:ALAssetPropertyDate];
-                    DPhoto *ph = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([DPhoto class]) inManagedObjectContext:self.managedObjectContext];
-                    ph.latitude = @(loc.coordinate.latitude);
-                    ph.longitude = @(loc.coordinate.longitude);
+                    DPhoto *ph = [DPhoto newPhoto];
+                    if(loc){
+                        ph.latitude = @(loc.coordinate.latitude);
+                        ph.longitude = @(loc.coordinate.longitude);
+                    }
                     ph.createTime = timestamp;
                     ph.uri = imageURL.absoluteString;
                     ph.uuid = [[NSUUID UUID] UUIDString];
@@ -66,9 +84,43 @@
             NSLog(@"Uknown asset type");
         }
         NSError *error;
-        [self.managedObjectContext save:&error];
+//        [[[self class] managedObjectContext] save:&error];
         NSAssert(!error, @"%@", error);
     }
+    
+    
+    //fetch Photo OrderBy Photo TimeStamp
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([DPhoto class]) inManagedObjectContext:[[self class] managedObjectContext]];
+    [fetchRequest setEntity:entity];
+    // Specify criteria for filtering which objects to fetch
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"", ];
+//    [fetchRequest setPredicate:predicate];
+    // Specify how the fetched objects should be sorted
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createTime"
+                                                                   ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [[[self class] managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if ([fetchedObjects count] > 0) {
+        DPhoto *lastItem = nil;
+        DSign *newSign = nil;
+        for(DPhoto *item in fetchedObjects){
+            if(lastItem){
+                if([[lastItem location] distanceFromLocation:[item location]] > kMaxSignDistance){
+                    newSign = nil;
+                }
+            }
+            if(!newSign){
+                newSign = [DSign newSign];
+                [self.signs addObject:newSign];
+            }
+            [newSign addPhotosObject:item];
+            lastItem = item;
+        }
+    }
+    
 }
 
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker{

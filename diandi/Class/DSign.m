@@ -13,9 +13,16 @@
 @implementation DSign
 
 @dynamic createTime;
+@dynamic conver;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic uuid;
 @dynamic photos;
+
+
++ (instancetype)newSign{
+    DSign *sign = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([DSign class]) inManagedObjectContext:[RootViewController managedObjectContext]];
+    return sign;
+}
 
 @end

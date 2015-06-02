@@ -10,7 +10,7 @@
 
 @interface RootViewController : UIViewController
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
++ (NSManagedObjectContext *)managedObjectContext;
++ (NSManagedObjectModel *)managedObjectModel;
 
 @end

@@ -20,4 +20,6 @@
 @property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) DSign *sign;
 
++ (instancetype)newPhoto;
+- (CLLocation *)location;
 @end

@@ -9,14 +9,15 @@
         <relationship name="sign" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DSign" inverseName="photos" inverseEntity="DSign" syncable="YES"/>
     </entity>
     <entity name="DSign" representedClassName="DSign" syncable="YES">
+        <attribute name="conver" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DPhoto" inverseName="sign" inverseEntity="DPhoto" syncable="YES"/>
     </entity>
     <elements>
         <element name="DPhoto" positionX="-317" positionY="9" width="128" height="133"/>
-        <element name="DSign" positionX="-54" positionY="27" width="128" height="118"/>
+        <element name="DSign" positionX="-126" positionY="18" width="128" height="133"/>
     </elements>
 </model>

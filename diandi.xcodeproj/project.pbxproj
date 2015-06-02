@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1B010FA11ADF9B2600F37746 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B010FA01ADF9B2600F37746 /* main.m */; };
 		1B010FA41ADF9B2600F37746 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B010FA31ADF9B2600F37746 /* AppDelegate.m */; };
-		1B010FAD1ADF9B2600F37746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B010FAB1ADF9B2600F37746 /* Main.storyboard */; };
 		1B010FAF1ADF9B2600F37746 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B010FAE1ADF9B2600F37746 /* Images.xcassets */; };
 		1B010FB21ADF9B2600F37746 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B010FB01ADF9B2600F37746 /* LaunchScreen.xib */; };
 		1B010FBE1ADF9B2600F37746 /* diandiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B010FBD1ADF9B2600F37746 /* diandiTests.m */; };
@@ -64,6 +63,7 @@
 		1B1A37CC1B0AD0AC0075B9DE /* DAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */; };
 		1B39992A1B1C13D300FEA549 /* DPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999271B1C13D300FEA549 /* DPhoto.m */; };
 		1B39992B1B1C13D300FEA549 /* DSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999291B1C13D300FEA549 /* DSign.m */; };
+		1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B39992D1B1C687500FEA549 /* NSDate+Addition.m */; };
 		1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3418A1B1877EF00A784A9 /* diandi.xcdatamodeld */; };
 		1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */; };
 		1BF597F91B1729540037A507 /* PopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF597F81B1729540037A507 /* PopAnnotationView.m */; };
@@ -85,7 +85,6 @@
 		1B010FA01ADF9B2600F37746 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1B010FA21ADF9B2600F37746 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1B010FA31ADF9B2600F37746 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1B010FAC1ADF9B2600F37746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B010FAE1ADF9B2600F37746 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B010FB11ADF9B2600F37746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1B010FB71ADF9B2600F37746 /* diandiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = diandiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +190,8 @@
 		1B3999271B1C13D300FEA549 /* DPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPhoto.m; path = diandi/Class/DPhoto.m; sourceTree = SOURCE_ROOT; };
 		1B3999281B1C13D300FEA549 /* DSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSign.h; path = diandi/Class/DSign.h; sourceTree = SOURCE_ROOT; };
 		1B3999291B1C13D300FEA549 /* DSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSign.m; path = diandi/Class/DSign.m; sourceTree = SOURCE_ROOT; };
+		1B39992C1B1C687500FEA549 /* NSDate+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Addition.h"; sourceTree = "<group>"; };
+		1B39992D1B1C687500FEA549 /* NSDate+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Addition.m"; sourceTree = "<group>"; };
 		1BD3418B1B1877EF00A784A9 /* diandi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = diandi.xcdatamodel; sourceTree = "<group>"; };
 		1BF278A51AE8EE5600022ACF /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
@@ -253,7 +254,6 @@
 				1B010FC71ADF9B4400F37746 /* Class */,
 				1B010FAE1ADF9B2600F37746 /* Images.xcassets */,
 				1B010FB01ADF9B2600F37746 /* LaunchScreen.xib */,
-				1B010FAB1ADF9B2600F37746 /* Main.storyboard */,
 				1B010FC81ADF9B4400F37746 /* Model */,
 				1B010FC91ADF9B4400F37746 /* plusin */,
 				1B010FCA1ADF9BC000F37746 /* RootViewController.h */,
@@ -453,6 +453,8 @@
 		1BF278A41AE8EE4500022ACF /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1B39992C1B1C687500FEA549 /* NSDate+Addition.h */,
+				1B39992D1B1C687500FEA549 /* NSDate+Addition.m */,
 				1BF278A51AE8EE5600022ACF /* UIImage+Scale.h */,
 				1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */,
 			);
@@ -517,6 +519,7 @@
 				TargetAttributes = {
 					1B010F9A1ADF9B2600F37746 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = A72G28U543;
 					};
 					1B010FB61ADF9B2600F37746 = {
 						CreatedOnToolsVersion = 6.3;
@@ -551,7 +554,6 @@
 				1B010FF21ADF9DA800F37746 /* ELCAssetTablePicker.xib in Resources */,
 				1B010FF01ADF9DA800F37746 /* ELCAlbumPickerController.xib in Resources */,
 				1B010FF31ADF9DA800F37746 /* Overlay.png in Resources */,
-				1B010FAD1ADF9B2600F37746 /* Main.storyboard in Resources */,
 				1B010FB21ADF9B2600F37746 /* LaunchScreen.xib in Resources */,
 				1B010FF41ADF9DA800F37746 /* Overlay@2x.png in Resources */,
 				1B010FAF1ADF9B2600F37746 /* Images.xcassets in Resources */,
@@ -611,6 +613,7 @@
 				1B0E7AC11AE9F0AA00A4181D /* MKAnnotationView+WebCache.m in Sources */,
 				1B0E7ACF1AE9F0AA00A4181D /* UIImageView+WebCache.m in Sources */,
 				1B0E7AD01AE9F0AA00A4181D /* UIView+WebCacheOperation.m in Sources */,
+				1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */,
 				1B1A37C71B0AC55E0075B9DE /* NSArray+MASAdditions.m in Sources */,
 				1B0E7AC81AE9F0AA00A4181D /* SDWebImageManager.m in Sources */,
 				1B1A37C81B0AC55E0075B9DE /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -638,14 +641,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1B010FAB1ADF9B2600F37746 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B010FAC1ADF9B2600F37746 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1B010FB01ADF9B2600F37746 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -741,12 +736,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "diandi/diandi-Prefix.pch";
 				INFOPLIST_FILE = diandi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -754,12 +752,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "diandi/diandi-Prefix.pch";
 				INFOPLIST_FILE = diandi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
