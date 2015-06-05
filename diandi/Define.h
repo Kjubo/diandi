@@ -7,8 +7,8 @@
 //
 
 #define kAppDebug YES
-#define kAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
-
+#define kAppVersion     [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define kAppBundleId    [[NSBundle mainBundle] bundleIdentifier]
 #define kPlaceholderImageName @""
 
 typedef NS_ENUM(NSInteger, NSAlertViewTag) {		/* UIAlertView 的类型 */

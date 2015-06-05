@@ -25,4 +25,11 @@
     return sign;
 }
 
+- (CLLocation *)location{
+    if(self.latitude && self.longitude){
+        return [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
+    }
+    return nil;
+}
+
 @end

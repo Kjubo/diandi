@@ -11,6 +11,7 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "NSDate+Addition.h"
+#import "CLLocation+Addtion.h"
 #import "DPhoto.h"
 #import "DSign.h"
 
@@ -58,68 +59,76 @@
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info{
     [self dismissViewControllerAnimated:YES completion:nil];
     if([info count] <= 0) return;
+    
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    dispatch_queue_t queue = dispatch_queue_create([kAppBundleId UTF8String], DISPATCH_QUEUE_SERIAL);
+    
     for (NSDictionary *dict in info) {
         if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypePhoto){
             if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
-                NSURL *imageURL = [dict objectForKey:UIImagePickerControllerReferenceURL];
-                ALAssetsLibrary *alib = [[ALAssetsLibrary alloc] init];
-                [alib assetForURL:imageURL resultBlock:^(ALAsset *asset) {
-                    CLLocation *loc = [asset valueForProperty:ALAssetPropertyLocation];
-                    NSDate *timestamp = [asset valueForProperty:ALAssetPropertyDate];
-                    DPhoto *ph = [DPhoto newPhoto];
-                    if(loc){
-                        ph.latitude = @(loc.coordinate.latitude);
-                        ph.longitude = @(loc.coordinate.longitude);
-                    }
-                    ph.createTime = timestamp;
-                    ph.uri = imageURL.absoluteString;
-                    ph.uuid = [[NSUUID UUID] UUIDString];
-                } failureBlock:^(NSError *error) {
-                    
-                }];
+                dispatch_async(queue, ^{
+                    NSURL *imageURL = [dict objectForKey:UIImagePickerControllerReferenceURL];
+                    ALAssetsLibrary *alib = [[ALAssetsLibrary alloc] init];
+                    [alib assetForURL:imageURL resultBlock:^(ALAsset *asset) {
+                        CLLocation *loc = [asset valueForProperty:ALAssetPropertyLocation];
+                        NSDate *timestamp = [asset valueForProperty:ALAssetPropertyDate];
+                        DPhoto *ph = [DPhoto newPhoto];
+                        if(loc){
+                            ph.latitude = @(loc.coordinate.latitude);
+                            ph.longitude = @(loc.coordinate.longitude);
+                        }
+                        ph.createTime = timestamp;
+                        ph.uri = imageURL.absoluteString;
+                        ph.uuid = [[NSUUID UUID] UUIDString];
+                        dispatch_semaphore_signal(sema);
+                    } failureBlock:^(NSError *error) {
+                        dispatch_semaphore_signal(sema);
+                    }];
+                });
+                dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
             } else {
                 NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
             }
+            
         } else {
             NSLog(@"Uknown asset type");
         }
         NSError *error;
-//        [[[self class] managedObjectContext] save:&error];
+        [[[self class] managedObjectContext] save:&error];
         NSAssert(!error, @"%@", error);
     }
     
     
     //fetch Photo OrderBy Photo TimeStamp
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([DPhoto class]) inManagedObjectContext:[[self class] managedObjectContext]];
-    [fetchRequest setEntity:entity];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([DPhoto class]) inManagedObjectContext:[[self class] managedObjectContext]];
+//    [fetchRequest setEntity:entity];
     // Specify criteria for filtering which objects to fetch
 //    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"", ];
 //    [fetchRequest setPredicate:predicate];
     // Specify how the fetched objects should be sorted
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createTime"
-                                                                   ascending:YES];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-    
-    NSError *error = nil;
-    NSArray *fetchedObjects = [[[self class] managedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    if ([fetchedObjects count] > 0) {
-        DPhoto *lastItem = nil;
-        DSign *newSign = nil;
-        for(DPhoto *item in fetchedObjects){
-            if(lastItem){
-                if([[lastItem location] distanceFromLocation:[item location]] > kMaxSignDistance){
-                    newSign = nil;
-                }
-            }
-            if(!newSign){
-                newSign = [DSign newSign];
-                [self.signs addObject:newSign];
-            }
-            [newSign addPhotosObject:item];
-            lastItem = item;
-        }
-    }
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createTime"
+//                                                                   ascending:YES];
+//    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+//    
+//    NSError *error = nil;
+//    NSArray *fetchedObjects = [[[self class] managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+//    if ([fetchedObjects count] > 0) {
+//        DSign *currentSign = nil;
+//        for(DPhoto *item in fetchedObjects){
+//            if(currentSign){
+//                if([[currentSign location] distanceFromLocation:[item location]] <= kMaxSignDistance){
+//                    newSign = nil;
+//                }
+//            }
+//            if(!newSign){
+//                newSign = [DSign newSign];
+//                [self.signs addObject:newSign];
+//            }
+//            [newSign addPhotosObject:item];
+//            lastItem = item;
+//        }
+//    }
     
 }
 

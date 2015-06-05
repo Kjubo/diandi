@@ -29,5 +29,5 @@
 - (void)removePhotos:(NSSet *)values;
 
 + (instancetype)newSign;
-
+- (CLLocation *)location;
 @end

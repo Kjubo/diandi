@@ -64,6 +64,9 @@
 		1B39992A1B1C13D300FEA549 /* DPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999271B1C13D300FEA549 /* DPhoto.m */; };
 		1B39992B1B1C13D300FEA549 /* DSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999291B1C13D300FEA549 /* DSign.m */; };
 		1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B39992D1B1C687500FEA549 /* NSDate+Addition.m */; };
+		1B3999301B1D537100FEA549 /* SignFolderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39992F1B1D537100FEA549 /* SignFolderView.xib */; };
+		1B3999331B1D555600FEA549 /* SignFolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999321B1D555600FEA549 /* SignFolderView.m */; };
+		1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */; };
 		1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3418A1B1877EF00A784A9 /* diandi.xcdatamodeld */; };
 		1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */; };
 		1BF597F91B1729540037A507 /* PopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF597F81B1729540037A507 /* PopAnnotationView.m */; };
@@ -192,6 +195,11 @@
 		1B3999291B1C13D300FEA549 /* DSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSign.m; path = diandi/Class/DSign.m; sourceTree = SOURCE_ROOT; };
 		1B39992C1B1C687500FEA549 /* NSDate+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Addition.h"; sourceTree = "<group>"; };
 		1B39992D1B1C687500FEA549 /* NSDate+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Addition.m"; sourceTree = "<group>"; };
+		1B39992F1B1D537100FEA549 /* SignFolderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignFolderView.xib; sourceTree = "<group>"; };
+		1B3999311B1D555600FEA549 /* SignFolderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignFolderView.h; sourceTree = "<group>"; };
+		1B3999321B1D555600FEA549 /* SignFolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignFolderView.m; sourceTree = "<group>"; };
+		1B3999371B1D9D9700FEA549 /* CLLocation+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+Addtion.h"; sourceTree = "<group>"; };
+		1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Addtion.m"; sourceTree = "<group>"; };
 		1BD3418B1B1877EF00A784A9 /* diandi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = diandi.xcdatamodel; sourceTree = "<group>"; };
 		1BF278A51AE8EE5600022ACF /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
@@ -457,6 +465,8 @@
 				1B39992D1B1C687500FEA549 /* NSDate+Addition.m */,
 				1BF278A51AE8EE5600022ACF /* UIImage+Scale.h */,
 				1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */,
+				1B3999371B1D9D9700FEA549 /* CLLocation+Addtion.h */,
+				1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -466,6 +476,9 @@
 			children = (
 				1BF597F71B1729540037A507 /* PopAnnotationView.h */,
 				1BF597F81B1729540037A507 /* PopAnnotationView.m */,
+				1B3999311B1D555600FEA549 /* SignFolderView.h */,
+				1B3999321B1D555600FEA549 /* SignFolderView.m */,
+				1B39992F1B1D537100FEA549 /* SignFolderView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -554,6 +567,7 @@
 				1B010FF21ADF9DA800F37746 /* ELCAssetTablePicker.xib in Resources */,
 				1B010FF01ADF9DA800F37746 /* ELCAlbumPickerController.xib in Resources */,
 				1B010FF31ADF9DA800F37746 /* Overlay.png in Resources */,
+				1B3999301B1D537100FEA549 /* SignFolderView.xib in Resources */,
 				1B010FB21ADF9B2600F37746 /* LaunchScreen.xib in Resources */,
 				1B010FF41ADF9DA800F37746 /* Overlay@2x.png in Resources */,
 				1B010FAF1ADF9B2600F37746 /* Images.xcassets in Resources */,
@@ -604,9 +618,11 @@
 				1B1A37C51B0AC55E0075B9DE /* MASViewAttribute.m in Sources */,
 				1B1A37C21B0AC55E0075B9DE /* MASConstraint.m in Sources */,
 				1B0E7ACB1AE9F0AA00A4181D /* UIImage+GIF.m in Sources */,
+				1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */,
 				1B0E7ACC1AE9F0AA00A4181D /* UIImage+MultiFormat.m in Sources */,
 				1B1A37C61B0AC55E0075B9DE /* MASViewConstraint.m in Sources */,
 				1B010FCC1ADF9BC000F37746 /* RootViewController.m in Sources */,
+				1B3999331B1D555600FEA549 /* SignFolderView.m in Sources */,
 				1B0E7AC91AE9F0AA00A4181D /* SDWebImagePrefetcher.m in Sources */,
 				1B1A37CC1B0AD0AC0075B9DE /* DAnnotation.m in Sources */,
 				1B010FED1ADF9DA800F37746 /* ELCConsole.m in Sources */,
