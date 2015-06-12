@@ -13,7 +13,7 @@
 
 #define ARC4RANDOM_MAX 0x100000000
 #define FRAND(MIN, MAX) ((double)arc4random() / ARC4RANDOM_MAX) * (MAX - MIN)+ MIN
-#define kMaxAnnotationCount 50
+
 @interface PopMapViewController () <MKMapViewDelegate>
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *arrMessage;

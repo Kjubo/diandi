@@ -12,4 +12,5 @@
 #define kSignMargin 10
 
 @interface SignFolderView : UIView
+@property (nonatomic) BOOL opened;
 @end

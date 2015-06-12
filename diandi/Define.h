@@ -9,7 +9,8 @@
 #define kAppDebug YES
 #define kAppVersion     [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define kAppBundleId    [[NSBundle mainBundle] bundleIdentifier]
-#define kPlaceholderImageName @""
+#define kPlaceholderImageName @"location_blue"
+#define kMaxAnnotationCount 50
 
 typedef NS_ENUM(NSInteger, NSAlertViewTag) {		/* UIAlertView 的类型 */
     NSAlertViewDefault = 1234,  /* 默认 */
@@ -19,10 +20,8 @@ typedef NS_ENUM(NSInteger, NSAlertViewTag) {		/* UIAlertView 的类型 */
     NSAlertViewNeedLogin,       /* 需要登录 */
     NSAlertViewInput,
 };
-
-#define DF_WIDTH    [[UIScreen mainScreen] bounds].size.width
-#define DF_HEIGHT   [[UIScreen mainScreen] bounds].size.height
 //判断系统
 #define IOS8_OR_LATER ([[[UIDevice currentDevice] systemVersion] compare:@"8.0"] != NSOrderedAscending)
 #define IOS7_OR_LATER ([[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending)
+
 
