@@ -11,12 +11,13 @@
             <rect key="frame" x="0.0" y="-1" width="375" height="565"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orn-6c-Bak" userLabel="imageGroupView">
-                    <rect key="frame" x="0.0" y="138" width="375" height="338"/>
-                </scrollView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xy-wh-m1Y" userLabel="folderGroupView">
                     <rect key="frame" x="0.0" y="475" width="375" height="90"/>
                 </scrollView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mRo-p0-NFR" userLabel="imageGroupView">
+                    <rect key="frame" x="0.0" y="175" width="375" height="300"/>
+                    <collectionViewLayout key="collectionViewLayout" id="eav-O5-dfQ" customClass="FolderLayout"/>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -25,7 +26,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="folderGroupView" destination="4xy-wh-m1Y" id="Nvw-gU-UPT"/>
-                <outlet property="imageGroupView" destination="Orn-6c-Bak" id="8jv-Sv-tjV"/>
+                <outlet property="imageGroupView" destination="mRo-p0-NFR" id="e8z-uy-sRG"/>
             </connections>
             <point key="canvasLocation" x="286.5" y="320.5"/>
         </view>

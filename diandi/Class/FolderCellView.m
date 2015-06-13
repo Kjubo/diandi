@@ -11,6 +11,7 @@
 @interface FolderCellView ()
 @property (nonatomic, weak) UIView *parentView;
 @property (nonatomic, strong) UIImageView *iconView;
+@property (nonatomic, strong) UILabel *lbTitle;
 @end
 
 @implementation FolderCellView
@@ -22,11 +23,21 @@
         self.iconView = [[UIImageView alloc] initWithFrame:self.bounds];
         [self addSubview:self.iconView];
         
+        self.lbTitle = [[UILabel alloc] initWithFrame:self.bounds];
+        self.lbTitle.backgroundColor = [UIColor clearColor];
+        self.lbTitle.textColor = [UIColor whiteColor];
+        self.lbTitle.font = [UIFont systemFontOfSize:12];
+        [self addSubview:self.lbTitle];
     }
     return self;
 }
 
+- (void)setTitle:(NSString *)title{
+    self.lbTitle.text = [title copy];
+}
 
-
+- (NSString *)title{
+    return self.lbTitle.text;
+}
 
 @end

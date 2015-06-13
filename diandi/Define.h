@@ -12,6 +12,8 @@
 #define kPlaceholderImageName @"location_blue"
 #define kMaxAnnotationCount 50
 
+#define DF_WIDTH        [[UIScreen mainScreen] bounds].size.width
+
 typedef NS_ENUM(NSInteger, NSAlertViewTag) {		/* UIAlertView 的类型 */
     NSAlertViewDefault = 1234,  /* 默认 */
     NSAlertViewOK,              /* 成功，提示，确认 */

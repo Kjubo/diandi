@@ -10,4 +10,6 @@
 
 @interface FolderCellView : UIView
 
+@property (nonatomic, strong) NSString *title;
+
 @end

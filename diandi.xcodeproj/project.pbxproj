@@ -42,6 +42,7 @@
 		1B3999301B1D537100FEA549 /* SignFolderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39992F1B1D537100FEA549 /* SignFolderView.xib */; };
 		1B3999331B1D555600FEA549 /* SignFolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999321B1D555600FEA549 /* SignFolderView.m */; };
 		1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */; };
+		1B6520581B2BE1D100D55186 /* FolderLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6520571B2BE1D100D55186 /* FolderLayout.m */; };
 		1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3418A1B1877EF00A784A9 /* diandi.xcdatamodeld */; };
 		1BDC3E301B29707900EE98EB /* FolderCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E2F1B29707900EE98EB /* FolderCellView.m */; };
 		1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E321B2972D500EE98EB /* UIView+Layout.m */; };
@@ -122,6 +123,8 @@
 		1B3999321B1D555600FEA549 /* SignFolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignFolderView.m; sourceTree = "<group>"; };
 		1B3999371B1D9D9700FEA549 /* CLLocation+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+Addtion.h"; sourceTree = "<group>"; };
 		1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Addtion.m"; sourceTree = "<group>"; };
+		1B6520561B2BE1D100D55186 /* FolderLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderLayout.h; sourceTree = "<group>"; };
+		1B6520571B2BE1D100D55186 /* FolderLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderLayout.m; sourceTree = "<group>"; };
 		1BD3418B1B1877EF00A784A9 /* diandi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = diandi.xcdatamodel; sourceTree = "<group>"; };
 		1BDC3E2E1B29707900EE98EB /* FolderCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderCellView.h; sourceTree = "<group>"; };
 		1BDC3E2F1B29707900EE98EB /* FolderCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderCellView.m; sourceTree = "<group>"; };
@@ -336,13 +339,15 @@
 		1BF597FA1B181C230037A507 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1B6520561B2BE1D100D55186 /* FolderLayout.h */,
+				1B6520571B2BE1D100D55186 /* FolderLayout.m */,
+				1BDC3E2E1B29707900EE98EB /* FolderCellView.h */,
+				1BDC3E2F1B29707900EE98EB /* FolderCellView.m */,
 				1BF597F71B1729540037A507 /* PopAnnotationView.h */,
 				1BF597F81B1729540037A507 /* PopAnnotationView.m */,
 				1B3999311B1D555600FEA549 /* SignFolderView.h */,
 				1B3999321B1D555600FEA549 /* SignFolderView.m */,
 				1B39992F1B1D537100FEA549 /* SignFolderView.xib */,
-				1BDC3E2E1B29707900EE98EB /* FolderCellView.h */,
-				1BDC3E2F1B29707900EE98EB /* FolderCellView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				1B010FCC1ADF9BC000F37746 /* RootViewController.m in Sources */,
 				1B3999331B1D555600FEA549 /* SignFolderView.m in Sources */,
 				1B1A37CC1B0AD0AC0075B9DE /* DAnnotation.m in Sources */,
+				1B6520581B2BE1D100D55186 /* FolderLayout.m in Sources */,
 				1B010FED1ADF9DA800F37746 /* ELCConsole.m in Sources */,
 				1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */,
 				1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */,
