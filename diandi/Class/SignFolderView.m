@@ -8,18 +8,20 @@
 
 #import "SignFolderView.h"
 #import "FolderCellView.h"
+#import "FolderLayout.h"
 #define kRowCount       3
 #define kCellMargin     5
-#define kCellRangeSize  CGSizeMake(100, 100)
-#define kCellSize       CGSizeMake(90, 90)
 
 
 @interface SignFolderView ()<UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-@property (weak, nonatomic) IBOutlet UIScrollView *folderGroupView;
+@property (weak, nonatomic) IBOutlet UICollectionView *folderGroupView;
 @property (weak, nonatomic) IBOutlet UICollectionView *imageGroupView;
-
+@property (nonatomic, strong) FolderLayout *imagesLayout;
+@property (nonatomic, strong) UICollectionViewCell *selectedCell;
+@property (nonatomic, strong) UIImageView *movingCellImage;
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (nonatomic, strong) NSMutableArray *images;
-
+@property (nonatomic) BOOL isDragging;
 
 @end
 
@@ -29,23 +31,17 @@ static NSString *identifier = @"FolderCell";
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    
+    self.imagesLayout = [[FolderLayout alloc] init];
     [self.imageGroupView registerClass:[FolderCellView class] forCellWithReuseIdentifier:identifier];
+    [self.imageGroupView setCollectionViewLayout:self.imagesLayout];
+    [self.folderGroupView registerClass:[FolderCellView class] forCellWithReuseIdentifier:identifier];
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    panRecognizer.delegate = self;
+    [self.imageGroupView addGestureRecognizer:panRecognizer];
     self.images = [NSMutableArray array];
-    
-//    for(int k = 0; k < 10; k++){
-//        NSInteger i = k % kRowCount;
-//        NSInteger j = k / kRowCount;
-//        
-//        FolderCellView *cell = [[FolderCellView alloc] initWithFrame:CGRectMake(5 + i * kCellRangeSize.width,  5 + j * kCellRangeSize.height, kCellSize.width, kCellSize.height)];
-//        cell.tag = k;
-//        cell.title = [NSString stringWithFormat:@"%@", @(k)];
-//        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
-//        pan.delegate = self;
-//        [cell addGestureRecognizer:pan];
-//        [self.images addObject:cell];
-//        [self.imageGroupView addSubview:cell];
-//    }
+    for(int i = 0; i < 20 ; i++){
+        [self.images addObject:@(i + 100)];
+    }
 }
 
 - (void)setOpened:(BOOL)opened{
@@ -57,38 +53,88 @@ static NSString *identifier = @"FolderCell";
     self.opened = NO;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    if(!self.isDragging &&
+       otherGestureRecognizer == self.imageGroupView.panGestureRecognizer) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 
-
-- (void)panView:(UIPanGestureRecognizer *)sender{
-    UIView *view = sender.view;
-    CGPoint pt = [sender translationInView:self.imageGroupView];
-    CGPoint ptWillMoveTo = CGPointMake(view.centerX + pt.x, view.centerY + pt.y);
+- (void)handlePan:(UIPanGestureRecognizer *)panRecognizer{
+    CGPoint locationPoint = [panRecognizer locationInView:self.imageGroupView];
+    NSIndexPath *indexPath = [self.imageGroupView indexPathForItemAtPoint:locationPoint];
     
-    NSInteger row = ptWillMoveTo.y / kCellSize.height;
-    NSInteger col = ptWillMoveTo.x / kCellSize.width;
-    NSInteger toTag = row * kRowCount + col;
-    
-    view.center = ptWillMoveTo;
-    [sender setTranslation:CGPointZero inView:self.imageGroupView];
+    if (panRecognizer.state == UIGestureRecognizerStateBegan) {
+        if(indexPath){
+            self.isDragging = YES;
+        }else{
+            return;
+        }
+        self.selectedCell = [self.imageGroupView cellForItemAtIndexPath:indexPath];
+        UIGraphicsBeginImageContext(self.selectedCell.bounds.size);
+        [self.selectedCell.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *cellImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        self.movingCellImage = [[UIImageView alloc] initWithImage:cellImage];
+        [self.movingCellImage setCenter:locationPoint];
+        [self.movingCellImage setAlpha:0.75f];
+        [self.imageGroupView addSubview:self.movingCellImage];
+        
+        self.selectedCell.hidden = YES;
+        self.selectedIndexPath = [indexPath copy];
+        
+    } else if (panRecognizer.state == UIGestureRecognizerStateChanged) {
+        if(self.isDragging){
+            [self.movingCellImage setCenter:locationPoint];
+            
+            [self.imageGroupView performBatchUpdates:^{
+//                self.imagesLayout.placeIndex = indexPath.row;
+//                [self.imagesLayout invalidateLayout];
+                [self.imageGroupView setCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init] animated:YES];
+            } completion:nil];
+        }
+        
+    } else if (panRecognizer.state == UIGestureRecognizerStateEnded) {
+        if(self.isDragging){
+            self.selectedCell.hidden = NO;
+            [self.movingCellImage removeFromSuperview];
+            if(indexPath){
+                id item = self.images[self.selectedIndexPath.row];
+                if(item){
+                    [self.images removeObject:item];
+                    [self.images insertObject:item atIndex:indexPath.row];
+                }
+            }
+            self.imagesLayout.placeIndex = -1;
+            [self.imageGroupView reloadData];
+            self.isDragging = NO;
+        }
+        
+    }
 }
 
 #pragma mark - UICollectionView Delegate & DataSource
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FolderCellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
-    cell.title = [NSString stringWithFormat:@"%@", @(indexPath.row)];
+    if(collectionView == self.imageGroupView){
+        cell.backgroundColor = [UIColor redColor];
+        cell.title = [NSString stringWithFormat:@"%@", self.images[indexPath.row]];
+    }else{
+        cell.backgroundColor = [UIColor blueColor];
+        cell.title = [NSString stringWithFormat:@"%@", @(indexPath.row)];
+    }
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    if(collectionView == self.imageGroupView){
+        return [self.images count];
+    }else{
+        return 5;
+    }
 }
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(5, 5, 5, 5);
-}
-
-
-
 
 @end

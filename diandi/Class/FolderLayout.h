@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FolderLayout : UICollectionViewLayout
+@property (nonatomic, readonly) NSInteger cellCount;
+@property (nonatomic, readonly) CGSize cellSize;
+@property (nonatomic, readonly) CGFloat cellMargin;
 
+@property (nonatomic) NSInteger placeIndex;
 @end

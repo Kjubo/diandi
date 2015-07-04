@@ -26,7 +26,7 @@
         self.lbTitle = [[UILabel alloc] initWithFrame:self.bounds];
         self.lbTitle.backgroundColor = [UIColor clearColor];
         self.lbTitle.textColor = [UIColor whiteColor];
-        self.lbTitle.font = [UIFont systemFontOfSize:12];
+        self.lbTitle.font = [UIFont boldSystemFontOfSize:15];
         [self addSubview:self.lbTitle];
     }
     return self;

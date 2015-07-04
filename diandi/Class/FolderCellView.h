@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FolderCellView : UIView
+@interface FolderCellView : UICollectionViewCell
 
 @property (nonatomic, strong) NSString *title;
 
