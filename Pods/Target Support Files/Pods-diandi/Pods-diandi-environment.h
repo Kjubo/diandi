@@ -6,6 +6,12 @@
 // project.
 
 
+// HTKDragAndDropCollectionViewLayout
+#define COCOAPODS_POD_AVAILABLE_HTKDragAndDropCollectionViewLayout
+#define COCOAPODS_VERSION_MAJOR_HTKDragAndDropCollectionViewLayout 0
+#define COCOAPODS_VERSION_MINOR_HTKDragAndDropCollectionViewLayout 1
+#define COCOAPODS_VERSION_PATCH_HTKDragAndDropCollectionViewLayout 3
+
 // JSONModel
 #define COCOAPODS_POD_AVAILABLE_JSONModel
 #define COCOAPODS_VERSION_MAJOR_JSONModel 1

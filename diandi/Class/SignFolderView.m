@@ -90,11 +90,11 @@ static NSString *identifier = @"FolderCell";
         if(self.isDragging){
             [self.movingCellImage setCenter:locationPoint];
             
-            [self.imageGroupView performBatchUpdates:^{
+//            [self.imageGroupView performBatchUpdates:^{
 //                self.imagesLayout.placeIndex = indexPath.row;
 //                [self.imagesLayout invalidateLayout];
-                [self.imageGroupView setCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init] animated:YES];
-            } completion:nil];
+//                [self.imageGroupView setCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init] animated:YES];
+//            } completion:nil];
         }
         
     } else if (panRecognizer.state == UIGestureRecognizerStateEnded) {
