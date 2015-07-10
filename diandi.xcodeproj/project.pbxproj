@@ -36,16 +36,17 @@
 		1B01100A1ADFB3C000F37746 /* libc++abi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0110091ADFB3C000F37746 /* libc++abi.dylib */; };
 		1B1A37A81B0AC5130075B9DE /* PopMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A37A71B0AC5130075B9DE /* PopMapViewController.m */; };
 		1B1A37CC1B0AD0AC0075B9DE /* DAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */; };
-		1B39992A1B1C13D300FEA549 /* DPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999271B1C13D300FEA549 /* DPhoto.m */; };
-		1B39992B1B1C13D300FEA549 /* DSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999291B1C13D300FEA549 /* DSign.m */; };
 		1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B39992D1B1C687500FEA549 /* NSDate+Addition.m */; };
 		1B3999301B1D537100FEA549 /* SignFolderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39992F1B1D537100FEA549 /* SignFolderView.xib */; };
 		1B3999331B1D555600FEA549 /* SignFolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999321B1D555600FEA549 /* SignFolderView.m */; };
 		1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */; };
 		1B6520581B2BE1D100D55186 /* FolderLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6520571B2BE1D100D55186 /* FolderLayout.m */; };
+		1BAE68001B4FBB7D0058F2D1 /* DGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE67FD1B4FBB7D0058F2D1 /* DGroup.m */; };
+		1BAE68011B4FBB7D0058F2D1 /* DPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE67FF1B4FBB7D0058F2D1 /* DPhoto.m */; };
 		1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3418A1B1877EF00A784A9 /* diandi.xcdatamodeld */; };
 		1BDC3E301B29707900EE98EB /* FolderCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E2F1B29707900EE98EB /* FolderCellView.m */; };
 		1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E321B2972D500EE98EB /* UIView+Layout.m */; };
+		1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE309771B4FC4120008EF74 /* DBSCAN.m */; };
 		1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */; };
 		1BF597F91B1729540037A507 /* PopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF597F81B1729540037A507 /* PopAnnotationView.m */; };
 		206BFA9AF1DE3482DAFC2E95 /* libPods-diandi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D5CA9BE0B95C177B681D7B /* libPods-diandi.a */; };
@@ -112,10 +113,6 @@
 		1B1A37A71B0AC5130075B9DE /* PopMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopMapViewController.m; sourceTree = "<group>"; };
 		1B1A37CA1B0AD0AC0075B9DE /* DAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAnnotation.h; path = diandi/Class/DAnnotation.h; sourceTree = SOURCE_ROOT; };
 		1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAnnotation.m; path = diandi/Class/DAnnotation.m; sourceTree = SOURCE_ROOT; };
-		1B3999261B1C13D300FEA549 /* DPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DPhoto.h; path = diandi/Class/DPhoto.h; sourceTree = SOURCE_ROOT; };
-		1B3999271B1C13D300FEA549 /* DPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPhoto.m; path = diandi/Class/DPhoto.m; sourceTree = SOURCE_ROOT; };
-		1B3999281B1C13D300FEA549 /* DSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSign.h; path = diandi/Class/DSign.h; sourceTree = SOURCE_ROOT; };
-		1B3999291B1C13D300FEA549 /* DSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSign.m; path = diandi/Class/DSign.m; sourceTree = SOURCE_ROOT; };
 		1B39992C1B1C687500FEA549 /* NSDate+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Addition.h"; sourceTree = "<group>"; };
 		1B39992D1B1C687500FEA549 /* NSDate+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Addition.m"; sourceTree = "<group>"; };
 		1B39992F1B1D537100FEA549 /* SignFolderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignFolderView.xib; sourceTree = "<group>"; };
@@ -125,11 +122,17 @@
 		1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Addtion.m"; sourceTree = "<group>"; };
 		1B6520561B2BE1D100D55186 /* FolderLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderLayout.h; sourceTree = "<group>"; };
 		1B6520571B2BE1D100D55186 /* FolderLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderLayout.m; sourceTree = "<group>"; };
+		1BAE67FC1B4FBB7D0058F2D1 /* DGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DGroup.h; path = diandi/Class/DGroup.h; sourceTree = SOURCE_ROOT; };
+		1BAE67FD1B4FBB7D0058F2D1 /* DGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DGroup.m; path = diandi/Class/DGroup.m; sourceTree = SOURCE_ROOT; };
+		1BAE67FE1B4FBB7D0058F2D1 /* DPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DPhoto.h; path = diandi/Class/DPhoto.h; sourceTree = SOURCE_ROOT; };
+		1BAE67FF1B4FBB7D0058F2D1 /* DPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPhoto.m; path = diandi/Class/DPhoto.m; sourceTree = SOURCE_ROOT; };
 		1BD3418B1B1877EF00A784A9 /* diandi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = diandi.xcdatamodel; sourceTree = "<group>"; };
 		1BDC3E2E1B29707900EE98EB /* FolderCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderCellView.h; sourceTree = "<group>"; };
 		1BDC3E2F1B29707900EE98EB /* FolderCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderCellView.m; sourceTree = "<group>"; };
 		1BDC3E311B2972D500EE98EB /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		1BDC3E321B2972D500EE98EB /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		1BE309761B4FC4120008EF74 /* DBSCAN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSCAN.h; sourceTree = "<group>"; };
+		1BE309771B4FC4120008EF74 /* DBSCAN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBSCAN.m; sourceTree = "<group>"; };
 		1BF278A51AE8EE5600022ACF /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		1BF597F51B1709A50037A507 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -248,10 +251,10 @@
 		1B010FC81ADF9B4400F37746 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1B3999261B1C13D300FEA549 /* DPhoto.h */,
-				1B3999271B1C13D300FEA549 /* DPhoto.m */,
-				1B3999281B1C13D300FEA549 /* DSign.h */,
-				1B3999291B1C13D300FEA549 /* DSign.m */,
+				1BAE67FC1B4FBB7D0058F2D1 /* DGroup.h */,
+				1BAE67FD1B4FBB7D0058F2D1 /* DGroup.m */,
+				1BAE67FE1B4FBB7D0058F2D1 /* DPhoto.h */,
+				1BAE67FF1B4FBB7D0058F2D1 /* DPhoto.m */,
 				1B1A37CA1B0AD0AC0075B9DE /* DAnnotation.h */,
 				1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */,
 			);
@@ -261,6 +264,8 @@
 		1B010FC91ADF9B4400F37746 /* plusin */ = {
 			isa = PBXGroup;
 			children = (
+				1BE309761B4FC4120008EF74 /* DBSCAN.h */,
+				1BE309771B4FC4120008EF74 /* DBSCAN.m */,
 				1BF278A41AE8EE4500022ACF /* Category */,
 				1B010FD11ADF9DA800F37746 /* ELCImagePicker */,
 			);
@@ -339,10 +344,10 @@
 		1BF597FA1B181C230037A507 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1B6520561B2BE1D100D55186 /* FolderLayout.h */,
-				1B6520571B2BE1D100D55186 /* FolderLayout.m */,
 				1BDC3E2E1B29707900EE98EB /* FolderCellView.h */,
 				1BDC3E2F1B29707900EE98EB /* FolderCellView.m */,
+				1B6520561B2BE1D100D55186 /* FolderLayout.h */,
+				1B6520571B2BE1D100D55186 /* FolderLayout.m */,
 				1BF597F71B1729540037A507 /* PopAnnotationView.h */,
 				1BF597F81B1729540037A507 /* PopAnnotationView.m */,
 				1B3999311B1D555600FEA549 /* SignFolderView.h */,
@@ -505,12 +510,13 @@
 				1B010FEA1ADF9DA800F37746 /* ELCAsset.m in Sources */,
 				1B010FCF1ADF9C5100F37746 /* TourMainViewController.m in Sources */,
 				1BDC3E301B29707900EE98EB /* FolderCellView.m in Sources */,
+				1BAE68001B4FBB7D0058F2D1 /* DGroup.m in Sources */,
 				1B010FE91ADF9DA800F37746 /* ELCAlbumPickerController.m in Sources */,
-				1B39992A1B1C13D300FEA549 /* DPhoto.m in Sources */,
-				1B39992B1B1C13D300FEA549 /* DSign.m in Sources */,
+				1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */,
 				1B010FEF1ADF9DA800F37746 /* ELCOverlayImageView.m in Sources */,
 				1BF597F91B1729540037A507 /* PopAnnotationView.m in Sources */,
 				1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */,
+				1BAE68011B4FBB7D0058F2D1 /* DPhoto.m in Sources */,
 				1B010FEC1ADF9DA800F37746 /* ELCAssetTablePicker.m in Sources */,
 				1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */,
 				1B010FEE1ADF9DA800F37746 /* ELCImagePickerController.m in Sources */,

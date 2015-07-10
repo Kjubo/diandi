@@ -19,6 +19,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
         self.backgroundColor = [UIColor redColor];
+        self.layer.cornerRadius = 4.0;
         
         self.iconView = [[UIImageView alloc] initWithFrame:self.bounds];
         [self addSubview:self.iconView];
@@ -38,6 +39,14 @@
 
 - (NSString *)title{
     return self.lbTitle.text;
+}
+
+- (void)setImage:(UIImage *)image{
+    [self.iconView setImage:image];
+}
+
+- (UIImage *)image{
+    return self.iconView.image;
 }
 
 @end

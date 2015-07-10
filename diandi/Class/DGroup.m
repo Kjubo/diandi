@@ -1,22 +1,25 @@
 //
-//  DPhoto.m
+//  DGroup.m
 //  
 //
 //  Created by kjubo on 15/7/10.
 //
 //
 
+#import "DGroup.h"
 #import "DPhoto.h"
 
 
-@implementation DPhoto
+@implementation DGroup
 
+@dynamic title;
 @dynamic createTime;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic originalUri;
 @dynamic uuid;
-@dynamic sort;
-@dynamic thumbnailImage;
+@dynamic context;
+@dynamic type;
+@dynamic converImage;
+@dynamic photos;
 
 @end

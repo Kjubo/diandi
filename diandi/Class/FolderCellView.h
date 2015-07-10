@@ -11,5 +11,5 @@
 @interface FolderCellView : UICollectionViewCell
 
 @property (nonatomic, strong) NSString *title;
-
+@property (nonatomic, strong) UIImage *image;
 @end

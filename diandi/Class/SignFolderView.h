@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTKDragAndDropCollectionViewController.h"
 
 #define kSignFolderSize CGSizeMake(80, 80)
 #define kSignMargin 10
 
 @interface SignFolderView : UIView
 @property (nonatomic) BOOL opened;
+@property (nonatomic) NSMutableArray *data;
 @end

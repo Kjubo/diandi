@@ -44,6 +44,11 @@
     self.timerForFetch = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(addRandomAnnototionView) userInfo:nil repeats:YES];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self clearTimer];
+}
+
 - (void)navtoTourMainVc{
     TourMainViewController *tvc = [[TourMainViewController alloc] init];
     [self.navigationController pushViewController:tvc animated:YES];

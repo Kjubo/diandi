@@ -14,9 +14,9 @@
 #import "CLLocation+Addtion.h"
 #import "DAnnotation.h"
 #import "DPhoto.h"
-#import "DSign.h"
 #import "PopAnnotationView.h"
 #import "SignFolderView.h"
+#import "DBSCAN.h"
 
 #define kMaxSignDistance 1000
 
@@ -24,9 +24,10 @@
 @property (nonatomic, strong) ELCImagePickerController *imagePicker;
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) SignFolderView *signFolderView;
-@property (nonatomic, strong) NSMutableArray *signs;
-@property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) NSMutableArray *arrAnnotation;
+
+@property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation TourMainViewController
@@ -40,7 +41,7 @@
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsZero);
+        make.edges.equalTo(self.view);
     }];
     
     self.signFolderView = (SignFolderView *)[[NSBundle mainBundle] loadNibNamed:@"SignFolderView" owner:nil options:nil][0];
@@ -50,6 +51,7 @@
     }];
     
     self.photos = [NSMutableArray array];
+    self.dataSource = [NSMutableArray array];
 }
 
 - (void)choosePhoto{
@@ -84,13 +86,14 @@
                     [alib assetForURL:imageURL resultBlock:^(ALAsset *asset) {
                         CLLocation *loc = [asset valueForProperty:ALAssetPropertyLocation];
                         NSDate *timestamp = [asset valueForProperty:ALAssetPropertyDate];
-                        DPhoto *ph = [DPhoto newPhoto];
+                        DPhoto *ph = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([DPhoto class]) inManagedObjectContext:[RootViewController managedObjectContext]];
                         if(loc){
                             ph.latitude = @(loc.coordinate.latitude);
                             ph.longitude = @(loc.coordinate.longitude);
                         }
                         ph.createTime = timestamp;
-                        ph.uri = imageURL.absoluteString;
+                        ph.originalUri = imageURL.absoluteString;
+                        ph.thumbnailImage = UIImagePNGRepresentation([UIImage imageWithCGImage:asset.thumbnail]);
                         ph.uuid = [[NSUUID UUID] UUIDString];
                         [self.photos addObject:ph];
                         dispatch_semaphore_signal(sema);
@@ -111,42 +114,28 @@
 //        NSAssert(!error, @"%@", error);
     }
     
-    for(int i = 0; i < [self.photos count]; i++){
-        [self performSelector:@selector(addAnnototionView:) withObject:self.photos[i] afterDelay:i * 0.5];
-    }
-    
-    
-    //fetch Photo OrderBy Photo TimeStamp
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([DPhoto class]) inManagedObjectContext:[[self class] managedObjectContext]];
-//    [fetchRequest setEntity:entity];
-    // Specify criteria for filtering which objects to fetch
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"", ];
-//    [fetchRequest setPredicate:predicate];
-    // Specify how the fetched objects should be sorted
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createTime"
-//                                                                   ascending:YES];
-//    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-//    
-//    NSError *error = nil;
-//    NSArray *fetchedObjects = [[[self class] managedObjectContext] executeFetchRequest:fetchRequest error:&error];
-//    if ([fetchedObjects count] > 0) {
-//        DSign *currentSign = nil;
-//        for(DPhoto *item in fetchedObjects){
-//            if(currentSign){
-//                if([[currentSign location] distanceFromLocation:[item location]] <= kMaxSignDistance){
-//                    newSign = nil;
-//                }
-//            }
-//            if(!newSign){
-//                newSign = [DSign newSign];
-//                [self.signs addObject:newSign];
-//            }
-//            [newSign addPhotosObject:item];
-//            lastItem = item;
-//        }
-//    }
-    
+    DBSCAN *cluter = [[DBSCAN alloc] initWithRadius:100.0 minNumberOfPointsInCluster:3 andDistanceCalculator:^float(id obj1, id obj2) {
+        CLLocation *loc1 = nil;
+        CLLocation *loc2 = nil;
+        DPhoto *photo1 = (DPhoto *)obj1;
+        DPhoto *photo2 = (DPhoto *)obj2;
+        if(photo1.latitude && photo1.longitude){
+            loc1 = [[CLLocation alloc] initWithLatitude:[photo1.latitude doubleValue] longitude:[photo1.longitude doubleValue]];
+        }
+        if(photo2.latitude && photo2.longitude){
+            loc2 = [[CLLocation alloc] initWithLatitude:[photo2.latitude doubleValue] longitude:[photo2.longitude doubleValue]];
+        }
+        
+        if(!loc1 && !loc2){ //都没有经纬度
+           return 0;
+        }else if(!loc1 || !loc2){   //有一个没有经纬度
+            return CGFLOAT_MAX;
+        }else{  //返回距离
+            return [loc1 distanceFromLocation:loc2];
+        }
+    }];
+    self.dataSource = [NSMutableArray arrayWithArray:[cluter clustersFromPoints:self.photos]];
+    self.signFolderView.data = self.dataSource;
 }
 
 - (void)addAnnototionView:(DPhoto *)photo{
@@ -159,9 +148,6 @@
         [self.mapView removeAnnotation:[self.arrAnnotation firstObject]];
         [self.arrAnnotation removeObjectAtIndex:0];
     }
-    
-    //    MKCircle *circle = [MKCircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(lat, lon) radius:100000];
-    //    [self.mapView addOverlay:circle];
 }
 
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker{
@@ -182,9 +168,8 @@
         aView.annotation = annotation;
     }
     DAnnotation *ann = (DAnnotation *)annotation;
-    DPhoto *photo = self.photos[[self.arrAnnotation indexOfObject:ann]];
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:photo.uri]];
-    aView.image = [UIImage imageWithData:data];
+//    DPhoto *photo = self.photos[[self.arrAnnotation indexOfObject:ann]];
+//    aView.image = [UIImage imageWithData:photo.thumbnailImage];
     
     return aView;
 }
@@ -197,7 +182,7 @@
             scale.removedOnCompletion = YES;
             scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
             scale.repeatCount = 1;
-            scale.duration = 0.6;
+            scale.duration = 0.4;
             [scale setValues:@[@(0.8), @(1.2), @(1.0)]];
             [pv.layer addAnimation:scale forKey:@"myScale"];
         }

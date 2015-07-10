@@ -9,7 +9,8 @@
 #import "FolderLayout.h"
 
 #define kCellMargin 12.0
-#define kCellSize CGSizeMake(90, 90)
+#define kCellWidth (DF_WIDTH - 4 * kCellMargin)/3.0
+#define kCellSize CGSizeMake(kCellWidth, kCellWidth)
 
 @interface FolderLayout ()
 
@@ -45,7 +46,7 @@
 -(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSMutableArray* attributes = [NSMutableArray array];
-    for (NSInteger i=0 ; i < self.cellCount; i++) {
+    for (NSInteger i = 0 ; i < self.cellCount; i++) {
         //这里利用了-layoutAttributesForItemAtIndexPath:来获取attributes
         NSIndexPath* indexPath = [NSIndexPath indexPathForItem:i inSection:0];
         [attributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
