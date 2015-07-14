@@ -12,6 +12,4 @@
 @property (nonatomic, readonly) NSInteger cellCount;
 @property (nonatomic, readonly) CGSize cellSize;
 @property (nonatomic, readonly) CGFloat cellMargin;
-
-@property (nonatomic) NSInteger placeIndex;
 @end

@@ -94,7 +94,7 @@
         [self.photos addObject:ph];
     }
     
-    DBSCAN *cluter = [[DBSCAN alloc] initWithRadius:100.0 minNumberOfPointsInCluster:2 andDistanceCalculator:^float(id obj1, id obj2) {
+    DBSCAN *cluter = [[DBSCAN alloc] initWithRadius:100.0 minNumberOfPointsInCluster:1 andDistanceCalculator:^float(id obj1, id obj2) {
         CLLocation *loc1 = nil;
         CLLocation *loc2 = nil;
         DPhoto *photo1 = (DPhoto *)obj1;

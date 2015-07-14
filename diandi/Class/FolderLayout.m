@@ -24,17 +24,12 @@
     _cellCount = [self.collectionView numberOfItemsInSection:0];
     _cellSize = kCellSize;
     _cellMargin = kCellMargin;
-    _placeIndex = -1;
 }
 
 //通过所在的indexPath确定位置。
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)path
 {
     NSInteger row = path.row;
-    if(self.placeIndex >= 0
-       && path.row >= self.placeIndex){
-        row = row + 1;
-    }
     UICollectionViewLayoutAttributes* attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
     NSInteger x = row % 4;
     NSInteger y = row / 4;

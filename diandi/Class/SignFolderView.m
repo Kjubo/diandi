@@ -20,7 +20,8 @@
 @property (nonatomic, strong) UIImageView *movingCellImage;
 @property (nonatomic, strong) NSIndexPath *selectedImagePath;
 @property (nonatomic, strong) NSIndexPath *selectedFolderPath;
-@property (nonatomic, strong) NSMutableArray *images;
+@property (nonatomic, strong) NSIndexPath *hoverFolderPath;
+@property (nonatomic, weak) NSMutableArray *images;
 @property (nonatomic) BOOL isDragging;
 
 @end
@@ -40,16 +41,15 @@ static NSString *identifierFoot = @"identifierFoot";
     
     [self.imageGroupView registerClass:[FolderCellView class] forCellWithReuseIdentifier:identifierCell];
     [self.folderGroupView registerClass:[FolderCellView class] forCellWithReuseIdentifier:identifierCell];
+    self.bgView.hidden = YES;
     self.imageGroupView.hidden = YES;
 }
 
 - (void)setOpened:(BOOL)opened{
     if(_opened == opened) return;
     _opened = opened;
-}
-
-- (void)hideImagesView{
-    self.opened = NO;
+    self.imageGroupView.hidden = !_opened;
+    self.bgView.hidden = !_opened;
 }
 
 - (void)setData:(NSMutableArray *)data{
@@ -58,7 +58,7 @@ static NSString *identifierFoot = @"identifierFoot";
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)sender{
-    self.imageGroupView.hidden = YES;
+    self.opened = NO;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -97,11 +97,11 @@ static NSString *identifierFoot = @"identifierFoot";
     } else if (panRecognizer.state == UIGestureRecognizerStateChanged) {
         if(self.isDragging){
             [self.movingCellImage setCenter:movePoint];
-            self.selectedFolderPath = folderGroupIndexPath;
+            self.hoverFolderPath = folderGroupIndexPath;
         }
     } else if (panRecognizer.state == UIGestureRecognizerStateEnded) {
         if(self.isDragging){
-            self.selectedFolderPath = nil;
+            self.hoverFolderPath = nil;
             self.selectedCell.hidden = NO;
             [self.movingCellImage removeFromSuperview];
             if(imageGroupIndexPath){
@@ -110,8 +110,16 @@ static NSString *identifierFoot = @"identifierFoot";
                     [self.images removeObject:item];
                     [self.images insertObject:item atIndex:imageGroupIndexPath.row];
                 }
+            }else if(folderGroupIndexPath){
+                if(folderGroupIndexPath != self.hoverFolderPath){
+                    id item = self.images[self.selectedImagePath.row];
+                    if(item){
+                        [self.images removeObject:item];
+                        [self.data[folderGroupIndexPath.row] addObject:item];
+                        [self.folderGroupView reloadData];
+                    }
+                }
             }
-            self.imagesLayout.placeIndex = -1;
             [self.imageGroupView reloadData];
             self.isDragging = NO;
         }
@@ -119,18 +127,18 @@ static NSString *identifierFoot = @"identifierFoot";
     }
 }
 
-- (void)setSelectedFolderPath:(NSIndexPath *)selectedFolderPath{
-    if([_selectedFolderPath isEqual:selectedFolderPath]) return;
-    if(_selectedFolderPath){
-        UICollectionViewCell *cell = [self.folderGroupView cellForItemAtIndexPath:_selectedFolderPath];
+- (void)setHoverFolderPath:(NSIndexPath *)hoverFolderPath{
+    if([_hoverFolderPath isEqual:hoverFolderPath]) return;
+    if(_hoverFolderPath){
+        UICollectionViewCell *cell = [self.folderGroupView cellForItemAtIndexPath:_hoverFolderPath];
         [UIView animateWithDuration:0.3 animations:^{
             cell.transform = CGAffineTransformIdentity;
             cell.alpha = 1.0;
         }];
     }
-    _selectedFolderPath = selectedFolderPath;
-    if(_selectedFolderPath){
-        FolderCellView *cell = (FolderCellView *)[self.folderGroupView cellForItemAtIndexPath:_selectedFolderPath];
+    _hoverFolderPath = hoverFolderPath;
+    if(_hoverFolderPath){
+        FolderCellView *cell = (FolderCellView *)[self.folderGroupView cellForItemAtIndexPath:_hoverFolderPath];
         [UIView animateWithDuration:0.3 animations:^{
             cell.transform = CGAffineTransformMakeScale(1.1, 1.1);
             cell.alpha = 0.5;
@@ -166,9 +174,15 @@ static NSString *identifierFoot = @"identifierFoot";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if(collectionView == self.folderGroupView){
-        self.images = [NSMutableArray arrayWithArray:self.data[indexPath.row]];
-        [self.imageGroupView reloadData];
-        self.imageGroupView.hidden = NO;
+        if([self.selectedFolderPath isEqual:indexPath]){
+            self.selectedFolderPath = nil;
+            self.opened = NO;
+        }else{
+            self.selectedFolderPath = [indexPath copy];
+            self.images = self.data[indexPath.row];
+            [self.imageGroupView reloadData];
+            self.opened = YES;
+        }
     }
 }
 
