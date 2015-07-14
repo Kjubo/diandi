@@ -20,6 +20,7 @@
     if(self = [super initWithFrame:frame]){
         self.backgroundColor = [UIColor redColor];
         self.layer.cornerRadius = 4.0;
+        self.clipsToBounds = NO;
         
         self.iconView = [[UIImageView alloc] initWithFrame:self.bounds];
         [self addSubview:self.iconView];

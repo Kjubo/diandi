@@ -99,7 +99,6 @@ static NSString *identifierFoot = @"identifierFoot";
             [self.movingCellImage setCenter:movePoint];
             self.selectedFolderPath = folderGroupIndexPath;
         }
-        
     } else if (panRecognizer.state == UIGestureRecognizerStateEnded) {
         if(self.isDragging){
             self.selectedFolderPath = nil;
@@ -143,12 +142,10 @@ static NSString *identifierFoot = @"identifierFoot";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FolderCellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierCell forIndexPath:indexPath];
     if(collectionView == self.imageGroupView){
-        cell.backgroundColor = [UIColor redColor];
         DPhoto *item = self.images[indexPath.row];
         cell.title = [NSString stringWithFormat:@"%@", item.originalUri];
         cell.image = [UIImage imageWithData:item.thumbnailImage];
     }else{
-        cell.backgroundColor = [UIColor blueColor];
         if([self.data[indexPath.row] count] > 0){
             DPhoto *item = self.data[indexPath.row][0];
             cell.image = [UIImage imageWithData:item.thumbnailImage];

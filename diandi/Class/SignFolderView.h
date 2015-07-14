@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HTKDragAndDropCollectionViewController.h"
 
 #define kSignFolderSize CGSizeMake(80, 80)
 #define kSignMargin 10

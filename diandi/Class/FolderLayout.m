@@ -9,7 +9,7 @@
 #import "FolderLayout.h"
 
 #define kCellMargin 12.0
-#define kCellWidth (DF_WIDTH - 4 * kCellMargin)/3.0
+#define kCellWidth (DF_WIDTH - 4 * kCellMargin)/4.0
 #define kCellSize CGSizeMake(kCellWidth, kCellWidth)
 
 @interface FolderLayout ()
@@ -36,8 +36,8 @@
         row = row + 1;
     }
     UICollectionViewLayoutAttributes* attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
-    NSInteger x = row % 3;
-    NSInteger y = row / 3;
+    NSInteger x = row % 4;
+    NSInteger y = row / 4;
     attributes.frame = CGRectMake(_cellMargin + (_cellMargin + _cellSize.width)*x, _cellMargin + (_cellMargin + _cellSize.height)*y, _cellSize.width, _cellSize.height);
     return attributes;
 }
@@ -57,8 +57,8 @@
 - (CGSize)collectionViewContentSize
 {
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
-    NSInteger row = count / 3;
-    if(count % 3 > 0){
+    NSInteger row = count / 4;
+    if(count % 4 > 0){
         row += 1;
     }
     CGFloat height = (row + 1) * kCellMargin + row * kCellSize.height;

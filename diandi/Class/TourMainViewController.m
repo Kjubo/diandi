@@ -7,7 +7,7 @@
 //
 
 #import "TourMainViewController.h"
-#import "ELCImagePickerController.h"
+#import "CTAssetsPickerController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "NSDate+Addition.h"
@@ -20,8 +20,8 @@
 
 #define kMaxSignDistance 1000
 
-@interface TourMainViewController () <ELCImagePickerControllerDelegate, MKMapViewDelegate>
-@property (nonatomic, strong) ELCImagePickerController *imagePicker;
+@interface TourMainViewController () <CTAssetsPickerControllerDelegate, MKMapViewDelegate>
+@property (nonatomic, strong) CTAssetsPickerController *imagePicker;
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) SignFolderView *signFolderView;
 @property (nonatomic, strong) NSMutableArray *arrAnnotation;
@@ -59,62 +59,42 @@
 }
 
 #pragma mark - ELCImagePickerControllerDelegate
-- (ELCImagePickerController *)imagePicker{
+- (CTAssetsPickerController *)imagePicker{
     if(!_imagePicker){
-        _imagePicker = [[ELCImagePickerController alloc] initImagePicker];
-        _imagePicker.imagePickerDelegate = self;
-        _imagePicker.maximumImagesCount = 1000;
-        _imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+        _imagePicker = [[CTAssetsPickerController alloc] init];
+        _imagePicker.delegate = self;
+        _imagePicker.showsCancelButton = YES;
+        _imagePicker.showsNumberOfAssets = YES;
+        _imagePicker.assetsFilter = [ALAssetsFilter allPhotos];
+        _imagePicker.title = @"添加照片";
     }
     return _imagePicker;
 }
 
-
-- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info{
+- (void)assetsPickerControllerDidCancel:(CTAssetsPickerController *)picker{
     [self dismissViewControllerAnimated:YES completion:nil];
-    if([info count] <= 0) return;
-    
-    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-    dispatch_queue_t queue = dispatch_queue_create([kAppBundleId UTF8String], DISPATCH_QUEUE_SERIAL);
-    
-    for (NSDictionary *dict in info) {
-        if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypePhoto){
-            if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
-                dispatch_async(queue, ^{
-                    NSURL *imageURL = [dict objectForKey:UIImagePickerControllerReferenceURL];
-                    ALAssetsLibrary *alib = [[ALAssetsLibrary alloc] init];
-                    [alib assetForURL:imageURL resultBlock:^(ALAsset *asset) {
-                        CLLocation *loc = [asset valueForProperty:ALAssetPropertyLocation];
-                        NSDate *timestamp = [asset valueForProperty:ALAssetPropertyDate];
-                        DPhoto *ph = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([DPhoto class]) inManagedObjectContext:[RootViewController managedObjectContext]];
-                        if(loc){
-                            ph.latitude = @(loc.coordinate.latitude);
-                            ph.longitude = @(loc.coordinate.longitude);
-                        }
-                        ph.createTime = timestamp;
-                        ph.originalUri = imageURL.absoluteString;
-                        ph.thumbnailImage = UIImagePNGRepresentation([UIImage imageWithCGImage:asset.thumbnail]);
-                        ph.uuid = [[NSUUID UUID] UUIDString];
-                        [self.photos addObject:ph];
-                        dispatch_semaphore_signal(sema);
-                    } failureBlock:^(NSError *error) {
-                        dispatch_semaphore_signal(sema);
-                    }];
-                });
-                dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-            } else {
-                NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
-            }
-            
-        } else {
-            NSLog(@"Uknown asset type");
+}
+
+- (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if([assets count] <= 0) return;
+
+    for (ALAsset *asset in assets) {
+        CLLocation *loc = [asset valueForProperty:ALAssetPropertyLocation];
+        NSDate *timestamp = [asset valueForProperty:ALAssetPropertyDate];
+        DPhoto *ph = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([DPhoto class]) inManagedObjectContext:[RootViewController managedObjectContext]];
+        if(loc){
+            ph.latitude = @(loc.coordinate.latitude);
+            ph.longitude = @(loc.coordinate.longitude);
         }
-//        NSError *error;
-//        [[[self class] managedObjectContext] save:&error];
-//        NSAssert(!error, @"%@", error);
+        ph.createTime = timestamp;
+        ph.originalUri = asset.defaultRepresentation.url.absoluteString;
+        ph.thumbnailImage = UIImagePNGRepresentation([UIImage imageWithCGImage:asset.thumbnail]);
+        ph.uuid = [[NSUUID UUID] UUIDString];
+        [self.photos addObject:ph];
     }
     
-    DBSCAN *cluter = [[DBSCAN alloc] initWithRadius:100.0 minNumberOfPointsInCluster:3 andDistanceCalculator:^float(id obj1, id obj2) {
+    DBSCAN *cluter = [[DBSCAN alloc] initWithRadius:100.0 minNumberOfPointsInCluster:2 andDistanceCalculator:^float(id obj1, id obj2) {
         CLLocation *loc1 = nil;
         CLLocation *loc2 = nil;
         DPhoto *photo1 = (DPhoto *)obj1;
@@ -149,11 +129,6 @@
         [self.arrAnnotation removeObjectAtIndex:0];
     }
 }
-
-- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     static NSString *annIdentifier = @"PopAnnotationView";
