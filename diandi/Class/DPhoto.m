@@ -2,7 +2,7 @@
 //  DPhoto.m
 //  
 //
-//  Created by kjubo on 15/7/10.
+//  Created by kjubo on 15/7/18.
 //
 //
 
@@ -11,12 +11,13 @@
 
 @implementation DPhoto
 
-@dynamic createTime;
+@dynamic context;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic originalUri;
-@dynamic uuid;
 @dynamic sort;
 @dynamic thumbnailImage;
+@dynamic timestamp;
+@dynamic uuid;
 
 @end

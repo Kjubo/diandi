@@ -3,24 +3,26 @@
     <entity name="DGroup" representedClassName="DGroup" syncable="YES">
         <attribute name="context" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="converImage" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="timeEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeStart" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="DPhoto" representedClassName="DPhoto" syncable="YES">
-        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="context" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="originalUri" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sort" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="thumbnailImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DPhoto" positionX="-317" positionY="9" width="128" height="150"/>
-        <element name="DGroup" positionX="-126" positionY="18" width="128" height="165"/>
+        <element name="DGroup" positionX="-126" positionY="18" width="128" height="180"/>
+        <element name="DPhoto" positionX="-317" positionY="9" width="128" height="165"/>
     </elements>
 </model>

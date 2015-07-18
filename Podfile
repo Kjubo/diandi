@@ -6,4 +6,6 @@ target 'diandi' do
   pod 'Masonry', '~> 0.6.1'
   pod 'SDWebImage', '~>3.7'
   pod 'CTAssetsPickerController',  '~> 2.9.0'
+  pod 'DZNEmptyDataSet', '~> 1.6.1'
+  pod 'UIAlertView+Blocks', '~> 0.9'
 end

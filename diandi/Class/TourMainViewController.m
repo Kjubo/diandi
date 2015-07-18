@@ -87,7 +87,7 @@
             ph.latitude = @(loc.coordinate.latitude);
             ph.longitude = @(loc.coordinate.longitude);
         }
-        ph.createTime = timestamp;
+        ph.timestamp = timestamp;
         ph.originalUri = asset.defaultRepresentation.url.absoluteString;
         ph.thumbnailImage = UIImagePNGRepresentation([UIImage imageWithCGImage:asset.thumbnail]);
         ph.uuid = [[NSUUID UUID] UUIDString];

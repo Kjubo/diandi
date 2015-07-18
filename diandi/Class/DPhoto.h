@@ -2,7 +2,7 @@
 //  DPhoto.h
 //  
 //
-//  Created by kjubo on 15/7/10.
+//  Created by kjubo on 15/7/18.
 //
 //
 
@@ -12,12 +12,13 @@
 
 @interface DPhoto : NSManagedObject
 
-@property (nonatomic, retain) NSDate * createTime;
+@property (nonatomic, retain) NSString * context;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * originalUri;
-@property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSNumber * sort;
 @property (nonatomic, retain) NSData * thumbnailImage;
+@property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSString * uuid;
 
 @end

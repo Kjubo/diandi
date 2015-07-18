@@ -2,24 +2,23 @@
 //  DGroup.m
 //  
 //
-//  Created by kjubo on 15/7/10.
+//  Created by kjubo on 15/7/18.
 //
 //
 
 #import "DGroup.h"
-#import "DPhoto.h"
 
 
 @implementation DGroup
 
-@dynamic title;
-@dynamic createTime;
+@dynamic context;
+@dynamic converImage;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic uuid;
-@dynamic context;
+@dynamic timeEnd;
+@dynamic timeStart;
+@dynamic title;
 @dynamic type;
-@dynamic converImage;
-@dynamic photos;
+@dynamic uuid;
 
 @end
