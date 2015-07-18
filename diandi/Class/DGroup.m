@@ -7,6 +7,7 @@
 //
 
 #import "DGroup.h"
+#import "DPhoto.h"
 
 
 @implementation DGroup
@@ -20,5 +21,6 @@
 @dynamic title;
 @dynamic type;
 @dynamic uuid;
+@dynamic photos;
 
 @end

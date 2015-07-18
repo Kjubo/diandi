@@ -7,6 +7,7 @@
 //
 
 #import "DPhoto.h"
+#import "DGroup.h"
 
 
 @implementation DPhoto
@@ -14,10 +15,11 @@
 @dynamic context;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic originalUri;
+@dynamic uri;
 @dynamic sort;
-@dynamic thumbnailImage;
+@dynamic image;
 @dynamic timestamp;
 @dynamic uuid;
+@dynamic group;
 
 @end

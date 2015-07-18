@@ -12,6 +12,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "NSDate+Addition.h"
 #import "CLLocation+Addtion.h"
+#import "UIImage+Scale.h"
 #import "DAnnotation.h"
 #import "DPhoto.h"
 #import "PopAnnotationView.h"
@@ -88,8 +89,9 @@
             ph.longitude = @(loc.coordinate.longitude);
         }
         ph.timestamp = timestamp;
-        ph.originalUri = asset.defaultRepresentation.url.absoluteString;
-        ph.thumbnailImage = UIImagePNGRepresentation([UIImage imageWithCGImage:asset.thumbnail]);
+        ph.uri = asset.defaultRepresentation.url.absoluteString;
+        UIImage *fullImage = [[UIImage imageWithCGImage:asset.defaultRepresentation.fullResolutionImage] imageScalWithMaxSize:CGSizeMake(960, 1080)];
+        ph.image = UIImageJPEGRepresentation(fullImage, 0.7);
         ph.uuid = [[NSUUID UUID] UUIDString];
         [self.photos addObject:ph];
     }

@@ -151,12 +151,12 @@ static NSString *identifierFoot = @"identifierFoot";
     FolderCellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierCell forIndexPath:indexPath];
     if(collectionView == self.imageGroupView){
         DPhoto *item = self.images[indexPath.row];
-        cell.title = [NSString stringWithFormat:@"%@", item.originalUri];
-        cell.image = [UIImage imageWithData:item.thumbnailImage];
+        cell.title = [NSString stringWithFormat:@"%@", item.uri];
+        cell.image = [UIImage imageWithData:item.image];
     }else{
         if([self.data[indexPath.row] count] > 0){
             DPhoto *item = self.data[indexPath.row][0];
-            cell.image = [UIImage imageWithData:item.thumbnailImage];
+            cell.image = [UIImage imageWithData:item.image];
         }
         cell.title = [NSString stringWithFormat:@"共%@张", @([self.data[indexPath.row] count])];
     }
