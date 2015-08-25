@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UIImage+Scale.h"
-#import "DDSpotViewController.h"
+#import "DDTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,19 +18,36 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-//    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
-//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.1] size:CGSizeMake(45, 1)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-//    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UINavigationBar appearance] setTitleTextAttributes: @{NSForegroundColorAttributeName : GS_COLOR_WHITE,
+                                                            NSFontAttributeName : [UIFont gs_font:NSAppFontXL]}];
+    if (IOS7_OR_LATER) {
+        [[UINavigationBar appearance] setBarTintColor:GS_COLOR_MAIN];
+        [[UINavigationBar appearance] setTintColor:GS_COLOR_WHITE];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:GS_COLOR_MAIN size:CGSizeMake(1, 45)]
+                                          forBarPosition:UIBarPositionAny
+                                              barMetrics:UIBarMetricsDefault];
+    }else{
+        [[UINavigationBar appearance] setTintColor:GS_COLOR_MAIN];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:GS_COLOR_MAIN size:CGSizeMake(1, 45)]
+                                           forBarMetrics:UIBarMetricsDefault];
+        [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new]
+                                                forState:UIControlStateNormal
+                                              barMetrics:UIBarMetricsDefault];
+    }
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontXS],
+                                                        NSForegroundColorAttributeName : GS_COLOR_GRAY}
+                                             forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontS],
+                                                        NSForegroundColorAttributeName : GS_COLOR_MAIN}
+                                             forState:UIControlStateSelected];
     
     //初始化window
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    
-    DDSpotViewController *vc = [[DDSpotViewController alloc] init];
+    DDTabBarViewController *vc = [[DDTabBarViewController alloc] init];
     //配置页面到导航vc
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
-    self.nav = nc;
-    self.nav.navigationBarHidden = YES;
+    self.nav = [[UINavigationController alloc] initWithRootViewController:vc];
     //设置rootViewController
     self.window.rootViewController = self.nav;
     [self.window makeKeyAndVisible];

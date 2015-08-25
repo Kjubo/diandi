@@ -10,9 +10,9 @@
 #import "DDGradeView.h"
 #import "DDLinkageView.h"
 
-@interface DDPopAreaView ()<DDGradeViewDelegate, DDLinkageViewDelegate>
+@interface DDPopAreaView ()<DDGradeViewDelegate, DDLinkageViewDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) UIView *maskerView;
-@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIScrollView *contentView;
 @property (nonatomic, strong) DDGradeView *gradeView;
 @property (nonatomic, strong) DDLinkageView *linkageView;
 @end
@@ -33,8 +33,11 @@
             make.edges.equalTo(self);
         }];
         
-        self.contentView = [UIView new];
+        self.contentView = [UIScrollView new];
         self.contentView.backgroundColor = GS_COLOR_WHITE;
+        self.contentView.pagingEnabled = YES;
+        self.contentView.scrollEnabled = NO;
+        self.contentView.delegate = self;
         [self addSubview:self.contentView];
         [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self).insets(UIEdgeInsetsMake(0, 0, 200, 0));
@@ -44,7 +47,8 @@
         self.gradeView.delegate = self;
         [self.contentView addSubview:self.gradeView];
         [self.gradeView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView);
+            make.left.top.height.equalTo(self.contentView);
+            make.width.mas_equalTo(DF_WIDTH);
         }];
         
         self.linkageView = [DDLinkageView new];
@@ -52,11 +56,17 @@
         self.linkageView.hidden = YES;
         [self.contentView addSubview:self.linkageView];
         [self.linkageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView);
+            make.left.mas_equalTo(self.gradeView.mas_right);
+            make.top.height.equalTo(self.contentView);
+            make.width.mas_equalTo(DF_WIDTH);
         }];
     }
-    
     return self;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    self.contentView.contentSize = CGSizeMake(DF_WIDTH * 2.0, self.contentView.height);
 }
 
 - (void)handleTapMaskerView{
@@ -74,6 +84,8 @@
             [super setHidden:YES];
         }];
     }else{
+        [self.contentView setContentOffset:CGPointZero];
+        [self.contentView setScrollEnabled:NO];
         [self.superview bringSubviewToFront:self.contentView];
         [super setHidden:NO];
         self.maskerView.hidden = NO;
@@ -85,17 +97,23 @@
     }
 }
 
+#pragma mark - UIScrollView Delegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if(scrollView.contentOffset.x < DF_WIDTH){
+        scrollView.scrollEnabled = NO;
+    }else{
+        scrollView.scrollEnabled = YES;
+    }
+}
+
 #pragma mark - DDGradeViewDelegate
 - (void)ddGradeView:(DDGradeView *)gradeView didTagSelected:(NSInteger)index{
     self.hidden = YES;
 }
 
 - (void)ddGradeView:(DDGradeView *)gradeView didTableSelected:(NSInteger)index{
-    [UIView transitionWithView:self.contentView duration:0.3 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
-        self.gradeView.hidden = YES;
-        self.linkageView.hidden = NO;
-    } completion:^(BOOL finished) {
-    }];
+    [self.contentView setContentOffset:CGPointMake(DF_WIDTH, 0) animated:YES];
+    self.contentView.scrollEnabled = YES;
 }
 
 #pragma mark - DDLinkageViewDelegate

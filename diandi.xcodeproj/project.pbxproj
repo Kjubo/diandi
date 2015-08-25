@@ -38,6 +38,8 @@
 		1BADA3C11B8B1E980071240C /* DDLinkageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3C01B8B1E980071240C /* DDLinkageView.m */; };
 		1BADA3C41B8B1F5D0071240C /* DDLinkageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3C31B8B1F5D0071240C /* DDLinkageCell.m */; };
 		1BADA3C71B8B211B0071240C /* DDPopAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3C61B8B211B0071240C /* DDPopAreaView.m */; };
+		1BADA3CA1B8C0F000071240C /* DDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3C91B8C0F000071240C /* DDTabBarViewController.m */; };
+		1BADA3CD1B8C0F7C0071240C /* UITabBarItem+Universal.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3CC1B8C0F7C0071240C /* UITabBarItem+Universal.m */; };
 		1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3418A1B1877EF00A784A9 /* diandi.xcdatamodeld */; };
 		1BDC3E301B29707900EE98EB /* FolderCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E2F1B29707900EE98EB /* FolderCellView.m */; };
 		1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E321B2972D500EE98EB /* UIView+Layout.m */; };
@@ -113,6 +115,10 @@
 		1BADA3C31B8B1F5D0071240C /* DDLinkageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLinkageCell.m; sourceTree = "<group>"; };
 		1BADA3C51B8B211B0071240C /* DDPopAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPopAreaView.h; sourceTree = "<group>"; };
 		1BADA3C61B8B211B0071240C /* DDPopAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopAreaView.m; sourceTree = "<group>"; };
+		1BADA3C81B8C0F000071240C /* DDTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTabBarViewController.h; sourceTree = "<group>"; };
+		1BADA3C91B8C0F000071240C /* DDTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTabBarViewController.m; sourceTree = "<group>"; };
+		1BADA3CB1B8C0F7C0071240C /* UITabBarItem+Universal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+Universal.h"; sourceTree = "<group>"; };
+		1BADA3CC1B8C0F7C0071240C /* UITabBarItem+Universal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+Universal.m"; sourceTree = "<group>"; };
 		1BD3418B1B1877EF00A784A9 /* diandi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = diandi.xcdatamodel; sourceTree = "<group>"; };
 		1BDC3E2E1B29707900EE98EB /* FolderCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderCellView.h; sourceTree = "<group>"; };
 		1BDC3E2F1B29707900EE98EB /* FolderCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderCellView.m; sourceTree = "<group>"; };
@@ -233,6 +239,8 @@
 				1B1A37A71B0AC5130075B9DE /* PopMapViewController.m */,
 				1BADA3BC1B8B13460071240C /* DDSpotViewController.h */,
 				1BADA3BD1B8B13460071240C /* DDSpotViewController.m */,
+				1BADA3C81B8C0F000071240C /* DDTabBarViewController.h */,
+				1BADA3C91B8C0F000071240C /* DDTabBarViewController.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -280,6 +288,8 @@
 		1BF278A41AE8EE4500022ACF /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1BADA3CB1B8C0F7C0071240C /* UITabBarItem+Universal.h */,
+				1BADA3CC1B8C0F7C0071240C /* UITabBarItem+Universal.m */,
 				1B3999371B1D9D9700FEA549 /* CLLocation+Addtion.h */,
 				1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */,
 				1B39992C1B1C687500FEA549 /* NSDate+Addition.h */,
@@ -471,6 +481,7 @@
 				1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */,
 				1BF597F91B1729540037A507 /* PopAnnotationView.m in Sources */,
 				1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */,
+				1BADA3CA1B8C0F000071240C /* DDTabBarViewController.m in Sources */,
 				1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */,
 				1B1A37A81B0AC5130075B9DE /* PopMapViewController.m in Sources */,
 				1BADA3B21B8B09820071240C /* DDGradeView.m in Sources */,
@@ -490,6 +501,7 @@
 				1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */,
 				1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */,
 				1B010FA11ADF9B2600F37746 /* main.m in Sources */,
+				1BADA3CD1B8C0F7C0071240C /* UITabBarItem+Universal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

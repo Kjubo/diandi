@@ -53,7 +53,7 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
         }];
         
         UIView *line = [UIView new];
-        line.backçgroundColor = GS_COLOR_LIGHT;
+        line.backgroundColor = GS_COLOR_LIGHT;
         [self addSubview:line];
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.tbList).offset(10);
@@ -73,7 +73,7 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     cell.textLabel.font = [UIFont gs_font:NSAppFontM];
     cell.textLabel.textColor = GS_COLOR_BLACK;
     cell.textLabel.text = kContinents[indexPath.row];
