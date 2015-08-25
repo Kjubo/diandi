@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_CTAssetsPickerController 9
 #define COCOAPODS_VERSION_PATCH_CTAssetsPickerController 5
 
+// DZNEmptyDataSet
+#define COCOAPODS_POD_AVAILABLE_DZNEmptyDataSet
+#define COCOAPODS_VERSION_MAJOR_DZNEmptyDataSet 1
+#define COCOAPODS_VERSION_MINOR_DZNEmptyDataSet 6
+#define COCOAPODS_VERSION_PATCH_DZNEmptyDataSet 1
+
 // JSONModel
 #define COCOAPODS_POD_AVAILABLE_JSONModel
 #define COCOAPODS_VERSION_MAJOR_JSONModel 1
@@ -35,4 +41,10 @@
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
 #define COCOAPODS_VERSION_PATCH_SDWebImage_Core 3
+
+// UIAlertView+Blocks
+#define COCOAPODS_POD_AVAILABLE_UIAlertView_Blocks
+#define COCOAPODS_VERSION_MAJOR_UIAlertView_Blocks 0
+#define COCOAPODS_VERSION_MINOR_UIAlertView_Blocks 9
+#define COCOAPODS_VERSION_PATCH_UIAlertView_Blocks 0
 

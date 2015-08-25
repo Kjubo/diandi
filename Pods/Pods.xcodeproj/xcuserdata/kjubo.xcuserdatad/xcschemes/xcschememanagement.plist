@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-diandi-DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-diandi-JSONModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-diandi-UIAlertView+Blocks.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-diandi.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06FD52EC6B785342C8478B2F</key>
+		<key>1BC9BD406C4928E52A8CD652</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>55AB6CBF2AB3648EB535E018</key>
+		<key>227817FD842C162AD95D2F5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BF93222CC8C77139F44D44D</key>
+		<key>69387D086F12DC849280A17A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>81D08E6412F29DCF4794DCF8</key>
+		<key>6E4A36E1C84D986DD6173B67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C7FD920411F7807814E3AB16</key>
+		<key>832C32A2985374A7A13FFCBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E472F55DAA9BEA5AA459BAFA</key>
+		<key>8F3E1295E3910D537F8E887B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BED005B43794551FFD8AB97D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C98E762FFE9C19A345A4F3E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -48,6 +48,7 @@
     DDTabBarViewController *vc = [[DDTabBarViewController alloc] init];
     //配置页面到导航vc
     self.nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.nav setNavigationBarHidden:YES];
     //设置rootViewController
     self.window.rootViewController = self.nav;
     [self.window makeKeyAndVisible];

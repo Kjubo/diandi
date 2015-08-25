@@ -8,7 +8,7 @@
 
 #import "DDLinkageView.h"
 #import "DDLinkageCell.h"
-
+#import ""
 @interface DDLinkageView ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) NSInteger selectedStage1Index;
 
@@ -43,10 +43,10 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         }];
         
         self.tbStage2nd = [UITableView new];
-        self.tbStage2nd.backgroundColor = GS_COLOR_WHITE;
         self.tbStage2nd.delegate = self;
         self.tbStage2nd.dataSource = self;
-        self.tbStage2nd.separatorColor = GS_COLOR_LIGHT;
+        self.tbStage2nd.backgroundColor = GS_COLOR_LIGHT;
+        self.tbStage2nd.separatorColor = GS_COLOR_WHITE;
         self.tbStage2nd.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.tbStage2nd.rowHeight = 50.0;
         [self.tbStage2nd registerClass:[DDLinkageCell class] forCellReuseIdentifier:kTableCellIdentifier];

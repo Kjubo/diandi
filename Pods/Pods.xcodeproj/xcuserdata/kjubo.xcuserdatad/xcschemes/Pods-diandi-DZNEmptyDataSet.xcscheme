@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E4A36E1C84D986DD6173B67"
-               BuildableName = "libPods-diandi-SDWebImage.a"
-               BlueprintName = "Pods-diandi-SDWebImage"
+               BlueprintIdentifier = "1BC9BD406C4928E52A8CD652"
+               BuildableName = "libPods-diandi-DZNEmptyDataSet.a"
+               BlueprintName = "Pods-diandi-DZNEmptyDataSet"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

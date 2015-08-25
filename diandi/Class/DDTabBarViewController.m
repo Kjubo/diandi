@@ -33,6 +33,7 @@
         self.ncNote = [[UINavigationController alloc] initWithRootViewController:[UIViewController new]];
         self.ncNote.tabBarItem = [UITabBarItem itemWithTitle:@"游记" image:[UIImage imageNamed:@"icon_tab2"] selectedImage:[UIImage imageNamed:@"icon_tab2_hl"]];
         
+        [self setViewControllers:@[self.ncMain, self.ncSpot, self.ncNote]];
     }
     return self;
 }

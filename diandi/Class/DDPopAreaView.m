@@ -53,7 +53,6 @@
         
         self.linkageView = [DDLinkageView new];
         self.linkageView.delegate = self;
-        self.linkageView.hidden = YES;
         [self.contentView addSubview:self.linkageView];
         [self.linkageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.gradeView.mas_right);
