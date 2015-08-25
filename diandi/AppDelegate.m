@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UIImage+Scale.h"
-#import "PopMapViewController.h"
+#import "DDSpotViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,10 +26,11 @@
     //初始化window
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     
-    PopMapViewController *vc = [[PopMapViewController alloc] init];
+    DDSpotViewController *vc = [[DDSpotViewController alloc] init];
     //配置页面到导航vc
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
     self.nav = nc;
+    self.nav.navigationBarHidden = YES;
     //设置rootViewController
     self.window.rootViewController = self.nav;
     [self.window makeKeyAndVisible];

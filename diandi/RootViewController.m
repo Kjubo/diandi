@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.view.backgroundColor = GS_COLOR_WHITE;
 }
 
 - (void)viewWillAppear:(BOOL)animated

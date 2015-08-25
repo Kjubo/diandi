@@ -22,8 +22,34 @@ typedef NS_ENUM(NSInteger, NSAlertViewTag) {		/* UIAlertView 的类型 */
     NSAlertViewNeedLogin,       /* 需要登录 */
     NSAlertViewInput,
 };
+
+/**
+ *  各种便捷方法和判断
+ */
+//屏幕逻辑大小
+#define DF_WIDTH    [[UIScreen mainScreen] bounds].size.width
+#define DF_HEIGHT   [[UIScreen mainScreen] bounds].size.height
 //判断系统
 #define IOS8_OR_LATER ([[[UIDevice currentDevice] systemVersion] compare:@"8.0"] != NSOrderedAscending)
 #define IOS7_OR_LATER ([[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending)
+#define DEVICE_IPHONE6  DF_WIDTH == 375.0
+#define DEVICE_IPHONE6P DF_WIDTH >= 414.0
+//int to string
+#define Int2String(iValue) [NSString stringWithFormat:@"%@", @(iValue)]
+
+//十六进制颜色转换（0xFFFFFF）
+#define HEXRGBCOLOR(hex)  [UIColor colorWithRed:((float)((hex & 0xFF0000) >> 16))/255.0 green:((float)((hex & 0xFF00) >> 8))/255.0 blue:((float)(hex & 0xFF))/255.0 alpha:1.0]
+//默认颜色
+#define GS_COLOR_MAIN           HEXRGBCOLOR(0x1eb39d)
+#define GS_COLOR_RED            HEXRGBCOLOR(0xff5400)
+#define GS_COLOR_BACKGROUND     HEXRGBCOLOR(0xf0f0f0)
+#define GS_COLOR_ORANGE         [UIColor orangeColor]
+#define GS_COLOR_GREEN          HEXRGBCOLOR(0x7aab67)
+#define GS_COLOR_WHITE          HEXRGBCOLOR(0xFFFFFF)
+#define GS_COLOR_LIGHT          HEXRGBCOLOR(0xE6E6E6)   //10%
+#define GS_COLOR_LIGHTGRAY      HEXRGBCOLOR(0xCCCCCC)   //10%
+#define GS_COLOR_GRAY           HEXRGBCOLOR(0x999999)   //50%
+#define GS_COLOR_DARKGRAY       HEXRGBCOLOR(0x666666)   //75%
+#define GS_COLOR_BLACK          HEXRGBCOLOR(0x333333)
 
 

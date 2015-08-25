@@ -29,7 +29,6 @@
 @implementation SignFolderView
 
 static NSString *identifierCell = @"FolderCell";
-static NSString *identifierFoot = @"identifierFoot";
 - (void)awakeFromNib{
     [super awakeFromNib];
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];

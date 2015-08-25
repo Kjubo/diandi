@@ -31,6 +31,13 @@
 		1B3999331B1D555600FEA549 /* SignFolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999321B1D555600FEA549 /* SignFolderView.m */; };
 		1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */; };
 		1B6520581B2BE1D100D55186 /* FolderLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6520571B2BE1D100D55186 /* FolderLayout.m */; };
+		1BADA3B21B8B09820071240C /* DDGradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3B11B8B09820071240C /* DDGradeView.m */; };
+		1BADA3B51B8B0DE20071240C /* UIFont+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3B41B8B0DE20071240C /* UIFont+Addtion.m */; };
+		1BADA3B81B8B0EB30071240C /* DDTagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3B71B8B0EB30071240C /* DDTagCollectionViewCell.m */; };
+		1BADA3BE1B8B13460071240C /* DDSpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3BD1B8B13460071240C /* DDSpotViewController.m */; };
+		1BADA3C11B8B1E980071240C /* DDLinkageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3C01B8B1E980071240C /* DDLinkageView.m */; };
+		1BADA3C41B8B1F5D0071240C /* DDLinkageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3C31B8B1F5D0071240C /* DDLinkageCell.m */; };
+		1BADA3C71B8B211B0071240C /* DDPopAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3C61B8B211B0071240C /* DDPopAreaView.m */; };
 		1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3418A1B1877EF00A784A9 /* diandi.xcdatamodeld */; };
 		1BDC3E301B29707900EE98EB /* FolderCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E2F1B29707900EE98EB /* FolderCellView.m */; };
 		1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E321B2972D500EE98EB /* UIView+Layout.m */; };
@@ -92,6 +99,20 @@
 		1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Addtion.m"; sourceTree = "<group>"; };
 		1B6520561B2BE1D100D55186 /* FolderLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderLayout.h; sourceTree = "<group>"; };
 		1B6520571B2BE1D100D55186 /* FolderLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderLayout.m; sourceTree = "<group>"; };
+		1BADA3B01B8B09820071240C /* DDGradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDGradeView.h; sourceTree = "<group>"; };
+		1BADA3B11B8B09820071240C /* DDGradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDGradeView.m; sourceTree = "<group>"; };
+		1BADA3B31B8B0DE20071240C /* UIFont+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Addtion.h"; sourceTree = "<group>"; };
+		1BADA3B41B8B0DE20071240C /* UIFont+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Addtion.m"; sourceTree = "<group>"; };
+		1BADA3B61B8B0EB30071240C /* DDTagCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTagCollectionViewCell.h; sourceTree = "<group>"; };
+		1BADA3B71B8B0EB30071240C /* DDTagCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTagCollectionViewCell.m; sourceTree = "<group>"; };
+		1BADA3BC1B8B13460071240C /* DDSpotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotViewController.h; sourceTree = "<group>"; };
+		1BADA3BD1B8B13460071240C /* DDSpotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotViewController.m; sourceTree = "<group>"; };
+		1BADA3BF1B8B1E980071240C /* DDLinkageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLinkageView.h; sourceTree = "<group>"; };
+		1BADA3C01B8B1E980071240C /* DDLinkageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLinkageView.m; sourceTree = "<group>"; };
+		1BADA3C21B8B1F5D0071240C /* DDLinkageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLinkageCell.h; sourceTree = "<group>"; };
+		1BADA3C31B8B1F5D0071240C /* DDLinkageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLinkageCell.m; sourceTree = "<group>"; };
+		1BADA3C51B8B211B0071240C /* DDPopAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPopAreaView.h; sourceTree = "<group>"; };
+		1BADA3C61B8B211B0071240C /* DDPopAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopAreaView.m; sourceTree = "<group>"; };
 		1BD3418B1B1877EF00A784A9 /* diandi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = diandi.xcdatamodel; sourceTree = "<group>"; };
 		1BDC3E2E1B29707900EE98EB /* FolderCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderCellView.h; sourceTree = "<group>"; };
 		1BDC3E2F1B29707900EE98EB /* FolderCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderCellView.m; sourceTree = "<group>"; };
@@ -210,6 +231,8 @@
 				1B010FCE1ADF9C5100F37746 /* TourMainViewController.m */,
 				1B1A37A61B0AC5130075B9DE /* PopMapViewController.h */,
 				1B1A37A71B0AC5130075B9DE /* PopMapViewController.m */,
+				1BADA3BC1B8B13460071240C /* DDSpotViewController.h */,
+				1BADA3BD1B8B13460071240C /* DDSpotViewController.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -261,6 +284,8 @@
 				1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */,
 				1B39992C1B1C687500FEA549 /* NSDate+Addition.h */,
 				1B39992D1B1C687500FEA549 /* NSDate+Addition.m */,
+				1BADA3B31B8B0DE20071240C /* UIFont+Addtion.h */,
+				1BADA3B41B8B0DE20071240C /* UIFont+Addtion.m */,
 				1BF278A51AE8EE5600022ACF /* UIImage+Scale.h */,
 				1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */,
 				1BDC3E311B2972D500EE98EB /* UIView+Layout.h */,
@@ -272,6 +297,16 @@
 		1BF597FA1B181C230037A507 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1BADA3B01B8B09820071240C /* DDGradeView.h */,
+				1BADA3B11B8B09820071240C /* DDGradeView.m */,
+				1BADA3C21B8B1F5D0071240C /* DDLinkageCell.h */,
+				1BADA3C31B8B1F5D0071240C /* DDLinkageCell.m */,
+				1BADA3BF1B8B1E980071240C /* DDLinkageView.h */,
+				1BADA3C01B8B1E980071240C /* DDLinkageView.m */,
+				1BADA3C51B8B211B0071240C /* DDPopAreaView.h */,
+				1BADA3C61B8B211B0071240C /* DDPopAreaView.m */,
+				1BADA3B61B8B0EB30071240C /* DDTagCollectionViewCell.h */,
+				1BADA3B71B8B0EB30071240C /* DDTagCollectionViewCell.m */,
 				1BDC3E2E1B29707900EE98EB /* FolderCellView.h */,
 				1BDC3E2F1B29707900EE98EB /* FolderCellView.m */,
 				1B6520561B2BE1D100D55186 /* FolderLayout.h */,
@@ -345,7 +380,7 @@
 				TargetAttributes = {
 					1B010F9A1ADF9B2600F37746 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = A72G28U543;
+						DevelopmentTeam = CL3S2N6PSJ;
 					};
 					1B010FB61ADF9B2600F37746 = {
 						CreatedOnToolsVersion = 6.3;
@@ -432,17 +467,24 @@
 			files = (
 				1B010FCF1ADF9C5100F37746 /* TourMainViewController.m in Sources */,
 				1BDC3E301B29707900EE98EB /* FolderCellView.m in Sources */,
+				1BADA3B81B8B0EB30071240C /* DDTagCollectionViewCell.m in Sources */,
 				1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */,
 				1BF597F91B1729540037A507 /* PopAnnotationView.m in Sources */,
 				1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */,
 				1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */,
 				1B1A37A81B0AC5130075B9DE /* PopMapViewController.m in Sources */,
+				1BADA3B21B8B09820071240C /* DDGradeView.m in Sources */,
 				1B1545631B5A3FCD007B41D5 /* DPhoto.m in Sources */,
 				1B010FA41ADF9B2600F37746 /* AppDelegate.m in Sources */,
+				1BADA3BE1B8B13460071240C /* DDSpotViewController.m in Sources */,
 				1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */,
+				1BADA3C41B8B1F5D0071240C /* DDLinkageCell.m in Sources */,
 				1B1545641B5A3FCD007B41D5 /* DGroup.m in Sources */,
 				1B010FCC1ADF9BC000F37746 /* RootViewController.m in Sources */,
+				1BADA3C11B8B1E980071240C /* DDLinkageView.m in Sources */,
 				1B3999331B1D555600FEA549 /* SignFolderView.m in Sources */,
+				1BADA3B51B8B0DE20071240C /* UIFont+Addtion.m in Sources */,
+				1BADA3C71B8B211B0071240C /* DDPopAreaView.m in Sources */,
 				1B1A37CC1B0AD0AC0075B9DE /* DAnnotation.m in Sources */,
 				1B6520581B2BE1D100D55186 /* FolderLayout.m in Sources */,
 				1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */,
