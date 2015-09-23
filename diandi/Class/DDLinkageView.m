@@ -8,8 +8,8 @@
 
 #import "DDLinkageView.h"
 #import "DDLinkageCell.h"
-#import ""
-@interface DDLinkageView ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface DDLinkageView ()<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource>
 @property (nonatomic) NSInteger selectedStage1Index;
 
 /**
@@ -29,9 +29,9 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
 - (instancetype)init{
     if(self = [super init]){
         self.tbStage1st = [UITableView new];
-        self.tbStage1st.backgroundColor = GS_COLOR_WHITE;
         self.tbStage1st.delegate = self;
         self.tbStage1st.dataSource = self;
+        self.tbStage1st.backgroundColor = GS_COLOR_WHITE;
         self.tbStage1st.separatorColor = GS_COLOR_LIGHT;
         self.tbStage1st.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.tbStage1st.rowHeight = 50.0;
@@ -45,7 +45,8 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         self.tbStage2nd = [UITableView new];
         self.tbStage2nd.delegate = self;
         self.tbStage2nd.dataSource = self;
-        self.tbStage2nd.backgroundColor = GS_COLOR_LIGHT;
+        self.tbStage2nd.emptyDataSetSource = self;
+        self.tbStage2nd.backgroundColor = GS_COLOR_WHITE;
         self.tbStage2nd.separatorColor = GS_COLOR_WHITE;
         self.tbStage2nd.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.tbStage2nd.rowHeight = 50.0;
@@ -55,23 +56,34 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
             make.right.top.bottom.equalTo(self);
             make.width.equalTo(self).dividedBy(2.0);
         }];
+        
+        _selectedStage1Index = -1;
     }
     return self;
 }
 
 #pragma mark - 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(tableView == self.tbStage2nd
+       && self.selectedStage1Index < 0){
+        return 0;
+    }
     return 100;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DDLinkageCell *cell = (DDLinkageCell *)[tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if(tableView == self.tbStage1st){
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        if(indexPath.row == self.selectedStage1Index){
+            cell.backgroundColor = GS_COLOR_LIGHT;
+        }else{
+            cell.backgroundColor = GS_COLOR_WHITE;
+        }
     }else{
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = GS_COLOR_LIGHT;
     }
     cell.textLabel.font = [UIFont gs_font:NSAppFontM];
     cell.textLabel.textColor = GS_COLOR_BLACK;
@@ -82,13 +94,25 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == self.tbStage1st){
         self.selectedStage1Index = indexPath.row;
+        [self.tbStage1st reloadData];
         [self.tbStage2nd reloadData];
     }else{
         NSIndexPath *selectedPath = [NSIndexPath indexPathForRow:indexPath.row inSection:self.selectedStage1Index];
+        self.selectedStage1Index = -1;
         if([self.delegate respondsToSelector:@selector(ddLinkageView:didSelected:)]){
             [self.delegate ddLinkageView:self didSelected:selectedPath];
         }
     }
 }
+
+#pragma mark - DZNEmptyDataSetDataSouce
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
+    if(scrollView == self.tbStage2nd){
+        NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"请选择国家~" attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM], NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}];
+        return str;
+    }
+    return nil;
+}
+
 
 @end

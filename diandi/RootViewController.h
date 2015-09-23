@@ -10,6 +10,10 @@
 
 @interface RootViewController : UIViewController
 
+- (void)loadingShow;
+- (void)loadingShow:(NSString *)message;
+- (void)loadingHidden;
+
 + (NSManagedObjectContext *)managedObjectContext;
 + (NSManagedObjectModel *)managedObjectModel;
 
