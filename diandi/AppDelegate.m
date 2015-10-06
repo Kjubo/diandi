@@ -36,11 +36,11 @@
                                               barMetrics:UIBarMetricsDefault];
     }
     
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontXS],
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont gs_boldfont:NSAppFontXS],
                                                         NSForegroundColorAttributeName : GS_COLOR_GRAY}
                                              forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontS],
-                                                        NSForegroundColorAttributeName : GS_COLOR_MAIN}
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont gs_boldfont:NSAppFontXS],
+                                                        NSForegroundColorAttributeName : HEXRGBCOLOR(0x00A6FF)}
                                              forState:UIControlStateSelected];
     
     //初始化window

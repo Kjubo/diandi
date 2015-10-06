@@ -45,11 +45,12 @@ typedef NS_ENUM(NSInteger, NSAlertViewTag) {		/* UIAlertView 的类型 */
 #define GS_COLOR_BACKGROUND     HEXRGBCOLOR(0xf0f0f0)
 #define GS_COLOR_ORANGE         [UIColor orangeColor]
 #define GS_COLOR_GREEN          HEXRGBCOLOR(0x7aab67)
+#define GS_COLOR_BLUE           HEXRGBCOLOR(0x0077D5)
 #define GS_COLOR_WHITE          HEXRGBCOLOR(0xFFFFFF)
 #define GS_COLOR_LIGHT          HEXRGBCOLOR(0xE6E6E6)   //10%
 #define GS_COLOR_LIGHTGRAY      HEXRGBCOLOR(0xCCCCCC)   //10%
 #define GS_COLOR_GRAY           HEXRGBCOLOR(0x999999)   //50%
 #define GS_COLOR_DARKGRAY       HEXRGBCOLOR(0x666666)   //75%
-#define GS_COLOR_BLACK          HEXRGBCOLOR(0x333333)
+#define GS_COLOR_BLACK          HEXRGBCOLOR(0x000000)
 
 

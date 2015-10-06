@@ -23,10 +23,11 @@
     if (self = [super init]) {
         // Initialization code
         self.clipsToBounds = YES;
+        [super setHidden:YES];
         //透明遮罩层
         self.maskerView = [UIView new];
         self.maskerView.backgroundColor = GS_COLOR_BLACK;
-        self.maskerView.alpha = 0.5;
+        self.maskerView.alpha = 0.4;
         UITapGestureRecognizer *tapMaskerView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapMaskerView)];
         [self.maskerView addGestureRecognizer:tapMaskerView];
         [self addSubview:self.maskerView];
@@ -35,7 +36,7 @@
         }];
         
         self.contentView = [UIScrollView new];
-        self.contentView.backgroundColor = GS_COLOR_WHITE;
+        self.contentView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
         self.contentView.pagingEnabled = YES;
         self.contentView.scrollEnabled = NO;
         self.contentView.delegate = self;
@@ -86,6 +87,7 @@
         [self.contentView setScrollEnabled:NO];
         [self.superview bringSubviewToFront:self];
         [super setHidden:NO];
+        
         [UIView animateWithDuration:0.2 animations:^{
             self.contentView.top = 0;
         } completion:nil];
@@ -96,6 +98,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if(scrollView.contentOffset.x < DF_WIDTH){
         scrollView.scrollEnabled = NO;
+        self.linkageView.selectedStage1Index = -1;
     }else{
         scrollView.scrollEnabled = YES;
     }

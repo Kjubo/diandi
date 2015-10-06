@@ -28,7 +28,7 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
         fl.minimumInteritemSpacing = 5.0;
         fl.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
         self.tagCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:fl];
-        self.tagCollectionView.backgroundColor = GS_COLOR_WHITE;
+        self.tagCollectionView.backgroundColor = [UIColor clearColor];
         self.tagCollectionView.delegate = self;
         self.tagCollectionView.dataSource = self;
         [self.tagCollectionView registerClass:[DDTagCollectionViewCell class] forCellWithReuseIdentifier:kTagCellIdentifier];
@@ -39,11 +39,11 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
         }];
         
         self.tbList = [UITableView new];
-        self.tbList.backgroundColor = GS_COLOR_WHITE;
+        self.tbList.backgroundColor = [UIColor clearColor];
+        self.tbList.separatorColor = [UIColor clearColor];
+        self.tbList.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tbList.delegate = self;
         self.tbList.dataSource = self;
-        self.tbList.separatorColor = GS_COLOR_LIGHT;
-        self.tbList.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.tbList.rowHeight = 50.0;
         [self.tbList registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableCellIdentifier];
         [self addSubview:self.tbList];
@@ -72,10 +72,11 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    cell.textLabel.font = [UIFont gs_font:NSAppFontM];
-    cell.textLabel.textColor = GS_COLOR_BLACK;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.font = [UIFont gs_font:NSAppFontL];
+    cell.textLabel.textColor = GS_COLOR_WHITE;
     cell.textLabel.text = kContinents[indexPath.row];
     return cell;
 }

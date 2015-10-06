@@ -10,8 +10,6 @@
 #import "DDLinkageCell.h"
 
 @interface DDLinkageView ()<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource>
-@property (nonatomic) NSInteger selectedStage1Index;
-
 /**
  *  一级菜单
  */
@@ -31,9 +29,9 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         self.tbStage1st = [UITableView new];
         self.tbStage1st.delegate = self;
         self.tbStage1st.dataSource = self;
-        self.tbStage1st.backgroundColor = GS_COLOR_WHITE;
-        self.tbStage1st.separatorColor = GS_COLOR_LIGHT;
-        self.tbStage1st.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.tbStage1st.backgroundColor = [UIColor clearColor];
+        self.tbStage1st.separatorColor = [UIColor clearColor];
+        self.tbStage1st.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tbStage1st.rowHeight = 50.0;
         [self.tbStage1st registerClass:[DDLinkageCell class] forCellReuseIdentifier:kTableCellIdentifier];
         [self addSubview:self.tbStage1st];
@@ -46,9 +44,9 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         self.tbStage2nd.delegate = self;
         self.tbStage2nd.dataSource = self;
         self.tbStage2nd.emptyDataSetSource = self;
-        self.tbStage2nd.backgroundColor = GS_COLOR_WHITE;
-        self.tbStage2nd.separatorColor = GS_COLOR_WHITE;
-        self.tbStage2nd.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.tbStage2nd.backgroundColor = [UIColor clearColor];
+        self.tbStage2nd.separatorColor = [UIColor clearColor];
+        self.tbStage2nd.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tbStage2nd.rowHeight = 50.0;
         [self.tbStage2nd registerClass:[DDLinkageCell class] forCellReuseIdentifier:kTableCellIdentifier];
         [self addSubview:self.tbStage2nd];
@@ -60,6 +58,12 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         _selectedStage1Index = -1;
     }
     return self;
+}
+
+- (void)setSelectedStage1Index:(NSInteger)selectedStage1Index{
+    _selectedStage1Index = selectedStage1Index;
+    [self.tbStage1st reloadData];
+    [self.tbStage2nd reloadData];
 }
 
 #pragma mark - 
@@ -77,16 +81,18 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
     if(tableView == self.tbStage1st){
         cell.accessoryType = UITableViewCellAccessoryNone;
         if(indexPath.row == self.selectedStage1Index){
-            cell.backgroundColor = GS_COLOR_LIGHT;
+            cell.backgroundColor = GS_COLOR_BLACK;
+            cell.textLabel.textColor = GS_COLOR_BLUE;
         }else{
-            cell.backgroundColor = GS_COLOR_WHITE;
+            cell.backgroundColor = [UIColor clearColor];
+            cell.textLabel.textColor = GS_COLOR_WHITE;
         }
     }else{
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.backgroundColor = GS_COLOR_LIGHT;
+        cell.backgroundColor = GS_COLOR_BLACK;
+        cell.textLabel.textColor = GS_COLOR_WHITE;
     }
     cell.textLabel.font = [UIFont gs_font:NSAppFontM];
-    cell.textLabel.textColor = GS_COLOR_BLACK;
     cell.textLabel.text = @"城市名称";
     return cell;
 }
@@ -94,8 +100,6 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == self.tbStage1st){
         self.selectedStage1Index = indexPath.row;
-        [self.tbStage1st reloadData];
-        [self.tbStage2nd reloadData];
     }else{
         NSIndexPath *selectedPath = [NSIndexPath indexPathForRow:indexPath.row inSection:self.selectedStage1Index];
         self.selectedStage1Index = -1;

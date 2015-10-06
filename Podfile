@@ -8,4 +8,5 @@ target 'diandi' do
   pod 'CTAssetsPickerController',  '~> 2.9.0'
   pod 'DZNEmptyDataSet', '~> 1.6.1'
   pod 'UIAlertView+Blocks', '~> 0.9'
+  pod 'FXBlurView', '~> 1.6.3'
 end

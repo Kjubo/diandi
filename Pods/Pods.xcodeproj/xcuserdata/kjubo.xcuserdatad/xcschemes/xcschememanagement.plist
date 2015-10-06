@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-diandi-FXBlurView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-diandi-JSONModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1BC9BD406C4928E52A8CD652</key>
+		<key>2361886B6164611BBB52779B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>227817FD842C162AD95D2F5B</key>
+		<key>282FF3D12E6988CBF31F393B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69387D086F12DC849280A17A</key>
+		<key>8B066042A72C30326029E1C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E4A36E1C84D986DD6173B67</key>
+		<key>977A4F66AFF6A9FAE967F5B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>832C32A2985374A7A13FFCBC</key>
+		<key>B27C106527EF16A4D8156730</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F3E1295E3910D537F8E887B</key>
+		<key>B892D6556480A33E3311B977</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BED005B43794551FFD8AB97D</key>
+		<key>C50C107DBB54606FD4AB07D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C98E762FFE9C19A345A4F3E3</key>
+		<key>D4D8579017C049C9051691DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E46E812DF372D9B820A278E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

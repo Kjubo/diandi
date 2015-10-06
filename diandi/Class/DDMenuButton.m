@@ -16,16 +16,15 @@
 
 - (instancetype)init{
     if(self = [super init]){
-        self.ivIcon = [UIImageView new];
-        self.ivIcon.backgroundColor = GS_COLOR_RED;
+        self.ivIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_arrow_down"]];
         self.titleLabel.font = [UIFont gs_font:NSAppFontL];
         [self setTitleColor:GS_COLOR_WHITE forState:UIControlStateNormal];
-        [self setTitleColor:GS_COLOR_LIGHT forState:UIControlStateHighlighted];
+        [self setTitleColor:GS_COLOR_BLUE forState:UIControlStateSelected];
         [self addSubview:self.ivIcon];
         [self.ivIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(12, 12));
+            make.size.mas_equalTo(CGSizeMake(16, 9));
             make.centerY.equalTo(self);
-            make.left.mas_equalTo(self.titleLabel.mas_right).offset(2);
+            make.left.mas_equalTo(self.titleLabel.mas_right).offset(3);
         }];
     }
     return self;

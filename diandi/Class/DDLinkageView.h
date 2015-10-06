@@ -18,5 +18,6 @@
 @interface DDLinkageView : UIView
 
 @property (nonatomic, assign) id<DDLinkageViewDelegate> delegate;
+@property (nonatomic) NSInteger selectedStage1Index;
 
 @end
