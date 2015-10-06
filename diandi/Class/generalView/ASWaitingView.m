@@ -32,7 +32,7 @@
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             NSMutableArray *images = [NSMutableArray array];
-            for(int i = 0;  i <= 21; i++){
+            for(int i = 0;  i <= 10; i++){
                 [images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"ic_group_%@", @(i)]]];
             }
             animationImages = [NSArray arrayWithArray:images];
@@ -62,7 +62,7 @@
         self.loadview.layer.cornerRadius = 8;
         [self addSubview:self.loadview];
 
-        self.ivActivety = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 35, 40)];
+        self.ivActivety = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 34, 41)];
         
         self.ivActivety.animationImages = animationImages;
         self.ivActivety.animationDuration = 0.8;

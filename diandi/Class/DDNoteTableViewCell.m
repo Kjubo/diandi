@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UILabel *lbDate;
 @property (nonatomic, strong) UILabel *lbPersonCount;
 @property (nonatomic, strong) UILabel *lbCost;
+@property (nonatomic, strong) UILabel *lbKeepCount;
 
 @end
 
@@ -117,14 +118,36 @@
             make.centerY.equalTo(self.ivFaceView);
         }];
         
-        UIButton *btnKeep = [UIButton new];
-        btnKeep.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
-        btnKeep.layer.cornerRadius = 4.0;
-        btnKeep.layer.borderWidth = 1.0;
-        btnKeep.layer.borderColor = GS_COLOR_WHITE.CGColor;
-        [self.contentView addSubview:btnKeep];
+        UIView *keepView = [UIButton new];
+        keepView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
+        keepView.layer.cornerRadius = 4.0;
+        keepView.layer.borderWidth = 1.0;
+        keepView.layer.borderColor = GS_COLOR_WHITE.CGColor;
+        [self.contentView addSubview:keepView];
+        [keepView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.lbName);
+            make.top.equalTo(self.contentView).offset(20);
+        }];
         
+        UIImageView *iv_star = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_star_hl"]];
+        [keepView addSubview:iv_star];
+        [iv_star mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(14, 14));
+            make.left.equalTo(keepView).offset(5);
+            make.top.equalTo(keepView).offset(5);
+            make.bottom.equalTo(keepView).offset(-5);
+        }];
         
+        self.lbKeepCount = [UILabel new];
+        self.lbKeepCount.backgroundColor = [UIColor clearColor];
+        self.lbKeepCount.textColor = GS_COLOR_WHITE;
+        self.lbKeepCount.font = [UIFont gs_font:NSAppFontS];
+        [keepView addSubview:self.lbKeepCount];
+        [self.lbKeepCount mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.equalTo(keepView);
+            make.left.equalTo(iv_star.mas_right).offset(5);
+            make.right.equalTo(keepView).offset(-5);
+        }];
     }
     return self;
 }
@@ -135,7 +158,7 @@
     self.lbDate.text = [data.dateSpan copy];
     self.lbPersonCount.text = [data.personCount copy];
     self.lbCost.text = [data.cost copy];
-    
+    self.lbKeepCount.text = Int2String(data.keepCount);
     [self.ivFaceView sd_setImageWithURL:[NSURL URLWithString:data.userFaceUri] placeholderImage:nil];
     [self.ivBackgroudImageView sd_setImageWithURL:[NSURL URLWithString:data.converImageUri] placeholderImage:nil];
 }

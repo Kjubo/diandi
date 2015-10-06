@@ -10,18 +10,14 @@
 #import "DDPopAreaView.h"
 #import "DDPopContainerView.h"
 #import "DDGradeView.h"
-#import "DDMenuButton.h"
+#import "DDTopMenuView.h"
 #import "DDNoteTableViewCell.h"
 #import "DDSpotModel.h"
 
-@interface DDNoteViewController ()<UITableViewDelegate , UITableViewDataSource>
+@interface DDNoteViewController ()<UITableViewDelegate , UITableViewDataSource, DDTopMenuViewDelegate>
 @property (nonatomic, strong) DDPopAreaView *popAreaView;
 @property (nonatomic, strong) DDPopContainerView *popContainerView; //容器
-@property (nonatomic, strong) DDMenuButton *btnArea;        //区域
-@property (nonatomic, strong) DDMenuButton *btnType;        //分类
-@property (nonatomic, strong) DDMenuButton *btnSort;        //排序
-@property (nonatomic, strong) DDMenuButton *btnSelected;    //选中的
-
+@property (nonatomic, strong) DDTopMenuView *topView;          //搜索
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UITableView *tbList;
 
@@ -35,41 +31,13 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     // Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:YES];
     
-    UIView *topView = [UIView new];
-    topView.backgroundColor = GS_COLOR_MAIN;
-    [self.view addSubview:topView];
-    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.topView = [DDTopMenuView new];
+    self.topView.backgroundColor = GS_COLOR_MAIN;
+    self.topView.delegate = self;
+    [self.view addSubview:self.topView];
+    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
         make.height.mas_equalTo(@64);
-    }];
-    
-    self.btnArea = [DDMenuButton new];
-    self.btnArea.title = @"区域";
-    [self.btnArea addTarget:self action:@selector(btnClick_menu:) forControlEvents:UIControlEventTouchUpInside];
-    [topView addSubview:self.btnArea];
-    [self.btnArea mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(DF_WIDTH/3.0, 44.0));
-        make.left.bottom.equalTo(topView);
-    }];
-    
-    self.btnType = [DDMenuButton new];
-    self.btnType.title = @"分类";
-    [self.btnType addTarget:self action:@selector(btnClick_menu:) forControlEvents:UIControlEventTouchUpInside];
-    [topView addSubview:self.btnType];
-    [self.btnType mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(DF_WIDTH/3.0, 44.0));
-        make.bottom.equalTo(topView);
-        make.left.equalTo(self.btnArea.mas_right);
-    }];
-    
-    self.btnSort = [DDMenuButton new];
-    self.btnSort.title = @"排序";
-    [self.btnSort addTarget:self action:@selector(btnClick_menu:) forControlEvents:UIControlEventTouchUpInside];
-    [topView addSubview:self.btnSort];
-    [self.btnSort mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(DF_WIDTH/3.0, 44.0));
-        make.bottom.equalTo(topView);
-        make.left.equalTo(self.btnType.mas_right);
     }];
     
     self.containerView = [UIView new];
@@ -77,7 +45,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.view addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.bottom.equalTo(self.view);
-        make.top.equalTo(topView.mas_bottom);
+        make.top.equalTo(self.topView.mas_bottom);
     }];
     
     self.tbList = [UITableView new];
@@ -106,25 +74,24 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     }];
 }
 
-- (void)btnClick_menu:(DDMenuButton *)sender{
-    if(![self.popContainerView isHidden]){
-        self.popContainerView.hidden = YES;
-    }
-    if(![self.popAreaView isHidden]){
-        self.popAreaView.hidden = YES;
-    }
-    
-    if(sender == self.btnSelected){
-        self.btnSelected = nil;
-        return;
-    }
-    
-    if(sender == self.btnArea){
-        self.popAreaView.hidden = NO;
+#pragma mark - DDTopMenuView Delegate
+- (void)ddTopMenuViewDidSelected:(NSInteger)tag{
+    if(tag == 0){
+        self.popAreaView.hidden = !self.popAreaView.hidden;
+        if(![self.popAreaView isHidden]){
+            self.popContainerView.hidden = YES;
+        }
     }else{
-        self.popContainerView.hidden = NO;
+        self.popContainerView.hidden = !self.popContainerView.hidden;
+        if(![self.popContainerView isHidden]){
+            self.popAreaView.hidden = YES;
+        }
     }
-    self.btnSelected = sender;
+}
+
+- (void)ddTopMenuViewDidSearch{
+    self.popAreaView.hidden = YES;
+    self.popContainerView.hidden = YES;
 }
 
 #pragma mark - UITableViewDelegate & DataSource

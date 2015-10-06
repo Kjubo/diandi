@@ -22,9 +22,9 @@
         [self setTitleColor:GS_COLOR_BLUE forState:UIControlStateSelected];
         [self addSubview:self.ivIcon];
         [self.ivIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(16, 9));
+            make.size.mas_equalTo(CGSizeMake(12, 7));
             make.centerY.equalTo(self);
-            make.left.mas_equalTo(self.titleLabel.mas_right).offset(3);
+            make.left.mas_equalTo(self.titleLabel.mas_right).offset(4);
         }];
     }
     return self;
