@@ -21,6 +21,8 @@
 		1B0110031ADFA86C00F37746 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0110021ADFA86C00F37746 /* MobileCoreServices.framework */; };
 		1B0110051ADFA92C00F37746 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0110041ADFA92C00F37746 /* AssetsLibrary.framework */; };
 		1B01100A1ADFB3C000F37746 /* libc++abi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0110091ADFB3C000F37746 /* libc++abi.dylib */; };
+		1B06BE081BB63674009B587B /* DDSpotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B06BE071BB63674009B587B /* DDSpotTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		1B06BE0B1BB63C19009B587B /* DDSpotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B06BE0A1BB63C19009B587B /* DDSpotModel.m */; settings = {ASSET_TAGS = (); }; };
 		1B1545631B5A3FCD007B41D5 /* DPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1545601B5A3FCD007B41D5 /* DPhoto.m */; };
 		1B1545641B5A3FCD007B41D5 /* DGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1545621B5A3FCD007B41D5 /* DGroup.m */; };
 		1B1A37A81B0AC5130075B9DE /* PopMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A37A71B0AC5130075B9DE /* PopMapViewController.m */; };
@@ -83,6 +85,10 @@
 		1B0110021ADFA86C00F37746 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1B0110041ADFA92C00F37746 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		1B0110091ADFB3C000F37746 /* libc++abi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++abi.dylib"; path = "usr/lib/libc++abi.dylib"; sourceTree = SDKROOT; };
+		1B06BE061BB63674009B587B /* DDSpotTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotTableViewCell.h; sourceTree = "<group>"; };
+		1B06BE071BB63674009B587B /* DDSpotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotTableViewCell.m; sourceTree = "<group>"; };
+		1B06BE091BB63C19009B587B /* DDSpotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSpotModel.h; path = diandi/Class/DDSpotModel.h; sourceTree = SOURCE_ROOT; };
+		1B06BE0A1BB63C19009B587B /* DDSpotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDSpotModel.m; path = diandi/Class/DDSpotModel.m; sourceTree = SOURCE_ROOT; };
 		1B15455F1B5A3FCD007B41D5 /* DPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DPhoto.h; path = diandi/Class/DPhoto.h; sourceTree = SOURCE_ROOT; };
 		1B1545601B5A3FCD007B41D5 /* DPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPhoto.m; path = diandi/Class/DPhoto.m; sourceTree = SOURCE_ROOT; };
 		1B1545611B5A3FCD007B41D5 /* DGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DGroup.h; path = diandi/Class/DGroup.h; sourceTree = SOURCE_ROOT; };
@@ -269,6 +275,8 @@
 				1B1545621B5A3FCD007B41D5 /* DGroup.m */,
 				1B1A37CA1B0AD0AC0075B9DE /* DAnnotation.h */,
 				1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */,
+				1B06BE091BB63C19009B587B /* DDSpotModel.h */,
+				1B06BE0A1BB63C19009B587B /* DDSpotModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,6 +387,8 @@
 				1B3999311B1D555600FEA549 /* SignFolderView.h */,
 				1B3999321B1D555600FEA549 /* SignFolderView.m */,
 				1B39992F1B1D537100FEA549 /* SignFolderView.xib */,
+				1B06BE061BB63674009B587B /* DDSpotTableViewCell.h */,
+				1B06BE071BB63674009B587B /* DDSpotTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -420,7 +430,7 @@
 		1B010F931ADF9B2600F37746 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = kjubo;
 				TargetAttributes = {
 					1B010F9A1ADF9B2600F37746 = {
@@ -512,6 +522,8 @@
 				1BADA3CA1B8C0F000071240C /* DDTabBarViewController.m in Sources */,
 				1BD3418C1B1877EF00A784A9 /* diandi.xcdatamodeld in Sources */,
 				1B58DB0C1BB2478B00F8FDE7 /* MJRefreshBaseView.m in Sources */,
+				1B06BE081BB63674009B587B /* DDSpotTableViewCell.m in Sources */,
+				1B06BE0B1BB63C19009B587B /* DDSpotModel.m in Sources */,
 				1B1A37A81B0AC5130075B9DE /* PopMapViewController.m in Sources */,
 				1B58DB121BB2478B00F8FDE7 /* UIView+MJExtension.m in Sources */,
 				1BADA3B21B8B09820071240C /* DDGradeView.m in Sources */,
@@ -574,6 +586,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -645,6 +658,7 @@
 				INFOPLIST_FILE = diandi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kjubo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -662,6 +676,7 @@
 				INFOPLIST_FILE = diandi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kjubo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

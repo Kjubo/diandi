@@ -10,14 +10,20 @@
 #import "DDPopAreaView.h"
 #import "DDGradeView.h"
 #import "DDMenuButton.h"
+#import "DDSpotTableViewCell.h"
 
-@interface DDSpotViewController ()
+#import "DDSpotModel.h"
+
+@interface DDSpotViewController ()<UITableViewDelegate , UITableViewDataSource>
 @property (nonatomic, strong) DDPopAreaView *popAreaView;
 @property (nonatomic, strong) DDMenuButton *btnArea;        //区域
 @property (nonatomic, strong) DDMenuButton *btnType;        //分类
 @property (nonatomic, strong) DDMenuButton *btnSort;        //排序
+@property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) UITableView *tbList;
 @end
 
+static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 @implementation DDSpotViewController
 
 - (void)viewDidLoad {
@@ -60,15 +66,30 @@
         make.left.equalTo(self.btnType.mas_right);
     }];
     
-    
-    self.popAreaView = [DDPopAreaView new];
-    self.popAreaView.hidden = YES;
-    [self.view addSubview:self.popAreaView];
-    [self.popAreaView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+    self.containerView = [UIView new];
+    self.containerView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.containerView];
+    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.width.bottom.equalTo(self.view);
+        make.top.equalTo(topView.mas_bottom);
     }];
     
-    [self loadingShow];
+    self.tbList = [UITableView new];
+    self.tbList.delegate = self;
+    self.tbList.dataSource = self;
+    self.tbList.separatorColor = [UIColor clearColor];
+    self.tbList.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tbList registerClass:[DDSpotTableViewCell class] forCellReuseIdentifier:kCellReuseIdentifier];
+    [self.containerView addSubview:self.tbList];
+    [self.tbList mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.containerView);
+    }];
+    
+    self.popAreaView = [DDPopAreaView new];
+    [self.containerView addSubview:self.popAreaView];
+    [self.popAreaView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.containerView);
+    }];
 }
 
 - (void)btnClick_menu:(DDMenuButton *)sender{
@@ -76,5 +97,31 @@
         self.popAreaView.hidden = NO;
     }
 }
+
+#pragma mark - UITableViewDelegate & DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 9.0/15.0 * DF_WIDTH + 10.0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DDSpotTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
+    DDSpotModel *testModel = [DDSpotModel new];
+    testModel.userFaceUri = @"http://fd.topitme.com/d/8b/d4/1187454768482d48bdl.jpg";
+    testModel.converImageUri = @"http://www.xutour.com/picture/editor/2007617112212287.jpg";
+    testModel.keepCount = 1243;
+    testModel.userName = @"Elina";
+    testModel.dateSpan = @"2015.02.20-2015.02.23";
+    testModel.personCount = @"2人";
+    testModel.cost = @"￥10000.00";
+    testModel.title = @"日本大阪京都休闲3日游,日本大阪京都休闲3日游日本大阪,京都休闲3日游日本大阪京都休闲3日游";
+    [cell setDateModel:testModel];
+    return cell;
+}
+
+
 
 @end

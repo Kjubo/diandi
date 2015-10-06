@@ -28,6 +28,16 @@
 {
     self = [super initWithFrame:vc.view.frame];
     if (self) {
+        static NSArray *animationImages = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            NSMutableArray *images = [NSMutableArray array];
+            for(int i = 0;  i <= 21; i++){
+                [images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"ic_group_%@", @(i)]]];
+            }
+            animationImages = [NSArray arrayWithArray:images];
+        });
+        
         // Initialization code
         self.maxLoadingViewWidth = self.width * 0.5;
         
@@ -53,11 +63,8 @@
         [self addSubview:self.loadview];
 
         self.ivActivety = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 35, 40)];
-        NSMutableArray *images = [NSMutableArray array];
-        for(int i = 0;  i <= 21; i++){
-            [images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"ic_group_%@", @(i)]]];
-        }
-        self.ivActivety.animationImages = images;
+        
+        self.ivActivety.animationImages = animationImages;
         self.ivActivety.animationDuration = 0.8;
         self.ivActivety.animationRepeatCount = 0;
         [self.loadview addSubview:self.ivActivety];
@@ -78,7 +85,7 @@
     }
     
     self.title.text = tips;
-    self.title.size = [self.title.text sizeWithFont:self.title.font constrainedToSize:CGSizeMake(self.maxLoadingViewWidth, CGFLOAT_MAX) lineBreakMode:NSLineBreakByCharWrapping];
+    self.title.size = [self.title.text boundingRectWithSize:CGSizeMake(self.maxLoadingViewWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.title.font} context:nil].size;
     self.loadview.size = CGSizeMake(self.title.width + 120, self.title.height + 60);
     self.loadview.center = CGPointMake(self.width * 0.5, self.height * 0.4);
     

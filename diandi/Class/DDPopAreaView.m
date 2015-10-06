@@ -22,6 +22,7 @@
 -(instancetype)init{
     if (self = [super init]) {
         // Initialization code
+        self.clipsToBounds = YES;
         //透明遮罩层
         self.maskerView = [UIView new];
         self.maskerView.backgroundColor = GS_COLOR_BLACK;
@@ -75,22 +76,17 @@
 - (void)setHidden:(BOOL)hidden{
     if(self.hidden == hidden) return;
     if(hidden){
-        self.maskerView.alpha = 0.5;
         [UIView animateWithDuration:0.2 animations:^{
             self.contentView.top = -self.contentView.height;
-            self.maskerView.alpha = 0;
         }completion:^(BOOL finished) {
             [super setHidden:YES];
         }];
     }else{
         [self.contentView setContentOffset:CGPointZero];
         [self.contentView setScrollEnabled:NO];
-        [self.superview bringSubviewToFront:self.contentView];
+        [self.superview bringSubviewToFront:self];
         [super setHidden:NO];
-        self.maskerView.hidden = NO;
-        self.maskerView.alpha = 0.0;
         [UIView animateWithDuration:0.2 animations:^{
-            self.maskerView.alpha = 0.5;
             self.contentView.top = 0;
         } completion:nil];
     }
