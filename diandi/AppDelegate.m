@@ -43,6 +43,11 @@
                                                         NSForegroundColorAttributeName : HEXRGBCOLOR(0x00A6FF)}
                                              forState:UIControlStateSelected];
     
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : GS_COLOR_WHITE,
+                              NSFontAttributeName : [UIFont gs_font:NSAppFontL]}
+     forState:UIControlStateNormal];
+    
     //初始化window
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     DDTabBarViewController *vc = [[DDTabBarViewController alloc] init];

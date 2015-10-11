@@ -1,6 +1,11 @@
 PODS:
   - CTAssetsPickerController (2.9.5)
   - DZNEmptyDataSet (1.6.1)
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
   - FXBlurView (1.6.3)
   - JSONModel (1.1.0)
   - Masonry (0.6.2)
@@ -12,6 +17,7 @@ PODS:
 DEPENDENCIES:
   - CTAssetsPickerController (~> 2.9.0)
   - DZNEmptyDataSet (~> 1.6.1)
+  - FMDB (~> 2.5)
   - FXBlurView (~> 1.6.3)
   - JSONModel (~> 1.1.0)
   - Masonry (~> 0.6.1)
@@ -21,6 +27,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   CTAssetsPickerController: b413fece2194ae3dbf22fbc544cf6f2a6d516a4d
   DZNEmptyDataSet: 3d31c27758230f03c71199f8c522bcfa99fba16c
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   FXBlurView: c6d23f3d35af2c6282296a2930f61c6e2c788d01
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be

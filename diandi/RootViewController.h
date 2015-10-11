@@ -14,6 +14,9 @@
 - (void)loadingShow:(NSString *)message;
 - (void)loadingHidden;
 
++ (void)showAlert:(NSString *)message;
+
+
 + (NSManagedObjectContext *)managedObjectContext;
 + (NSManagedObjectModel *)managedObjectModel;
 

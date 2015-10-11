@@ -10,14 +10,14 @@
 
 @interface DDSpotModel : JSONModel
 
-@property (nonatomic, strong) NSString *uuid;
-@property (nonatomic, strong) NSString *converImageUri;
-@property (nonatomic, strong) NSString *userName;
-@property (nonatomic, strong) NSString *userFaceUri;
+@property (nonatomic) NSInteger travelNoteId;
+@property (nonatomic, strong) NSString *previewImage;
+@property (nonatomic, strong) NSString *avaterName;
+@property (nonatomic, strong) NSString *avaterImage;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *dateSpan;
-@property (nonatomic, strong) NSString *personCount;
+@property (nonatomic, strong) NSString *date;
+@property (nonatomic, strong) NSString *suitperson;
 @property (nonatomic, strong) NSString *cost;
-@property (nonatomic) NSInteger keepCount;
+@property (nonatomic) NSInteger favor;
 
 @end

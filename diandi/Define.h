@@ -7,6 +7,13 @@
 //
 
 #define kAppDebug YES
+
+#ifdef kAppDebug
+#define kAppHost @"http://120.25.225.177:9003/ddy"
+#else
+#define kAppHost @"http://120.25.225.177:9003/ddy"
+#endif
+
 #define kAppVersion     [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define kAppBundleId    [[NSBundle mainBundle] bundleIdentifier]
 #define kPlaceholderImageName @"location_blue"

@@ -24,6 +24,8 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         self.ivBackgroudImageView = [UIImageView new];
         self.ivBackgroudImageView.backgroundColor = GS_COLOR_LIGHTGRAY;
         [self.contentView addSubview:self.ivBackgroudImageView];
@@ -153,14 +155,14 @@
 }
 
 - (void)setDateModel:(DDSpotModel *)data{
-    self.lbName.text = [data.userName copy];
+    self.lbName.text = [data.avaterName copy];
     self.lbTitle.text = [data.title copy];
-    self.lbDate.text = [data.dateSpan copy];
-    self.lbPersonCount.text = [data.personCount copy];
+    self.lbDate.text = [data.date copy];
+    self.lbPersonCount.text = [data.suitperson copy];
     self.lbCost.text = [data.cost copy];
-    self.lbKeepCount.text = Int2String(data.keepCount);
-    [self.ivFaceView sd_setImageWithURL:[NSURL URLWithString:data.userFaceUri] placeholderImage:nil];
-    [self.ivBackgroudImageView sd_setImageWithURL:[NSURL URLWithString:data.converImageUri] placeholderImage:nil];
+    self.lbKeepCount.text = Int2String(data.favor);
+    [self.ivFaceView sd_setImageWithURL:[NSURL URLWithString:data.avaterImage] placeholderImage:nil];
+    [self.ivBackgroudImageView sd_setImageWithURL:[NSURL URLWithString:data.previewImage] placeholderImage:nil];
 }
 
 @end
