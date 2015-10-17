@@ -15,8 +15,7 @@
 #import "DDSpotModel.h"
 #import "MJRefresh.h"
 
-@interface DDNoteViewController ()<UITableViewDelegate , UITableViewDataSource, DDTopMenuViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
-@property (nonatomic, strong) UISearchDisplayController *searchResultController;
+@interface DDNoteViewController ()<UITableViewDelegate , UITableViewDataSource, DDTopMenuViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) DDPopAreaView *popAreaView;
 @property (nonatomic, strong) DDPopContainerView *popContainerView; //容器
 @property (nonatomic, strong) UIView *topView;
@@ -64,10 +63,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.menuView);
     }];
-    
-    self.searchResultController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-    self.searchResultController.delegate = self;
-    self.searchResultController.searchResultsDataSource = self;
     
     self.containerView = [UIView new];
     self.containerView.backgroundColor = [UIColor clearColor];
@@ -176,6 +171,8 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     if(_isSearching){
         self.popAreaView.hidden = YES;
         self.popContainerView.hidden = YES;
+        
+        
     }
     [UIView transitionWithView:self.topView duration:0.3 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionTransitionFlipFromBottom animations:^{
         self.menuView.hidden = _isSearching;

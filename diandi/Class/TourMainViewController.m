@@ -15,8 +15,6 @@
 #import "UIImage+Scale.h"
 #import "DAnnotation.h"
 #import "DPhoto.h"
-#import "PopAnnotationView.h"
-#import "SignFolderView.h"
 #import "DBSCAN.h"
 
 #define kMaxSignDistance 1000
@@ -24,7 +22,6 @@
 @interface TourMainViewController () <CTAssetsPickerControllerDelegate, MKMapViewDelegate>
 @property (nonatomic, strong) CTAssetsPickerController *imagePicker;
 @property (nonatomic, strong) MKMapView *mapView;
-@property (nonatomic, strong) SignFolderView *signFolderView;
 @property (nonatomic, strong) NSMutableArray *arrAnnotation;
 
 @property (nonatomic, strong) NSMutableArray *photos;
@@ -42,12 +39,6 @@
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    
-    self.signFolderView = (SignFolderView *)[[NSBundle mainBundle] loadNibNamed:@"SignFolderView" owner:nil options:nil][0];
-    [self.view addSubview:self.signFolderView];
-    [self.signFolderView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
     
@@ -117,7 +108,6 @@
         }
     }];
     self.dataSource = [NSMutableArray arrayWithArray:[cluter clustersFromPoints:self.photos]];
-    self.signFolderView.data = self.dataSource;
 }
 
 - (void)addAnnototionView:(DPhoto *)photo{
@@ -132,38 +122,38 @@
     }
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
-    static NSString *annIdentifier = @"PopAnnotationView";
-    PopAnnotationView *aView = (PopAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:annIdentifier];
-    if(!aView){
-        aView = [[PopAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annIdentifier];
-        aView.borderColor = [UIColor greenColor];
-        aView.canShowCallout = NO;
-        aView.frame = CGRectMake(0, 0, 80, 105);
-        aView.centerOffset = CGPointMake(0, -aView.frame.size.width * 0.5);
-    }else{
-        aView.annotation = annotation;
-    }
-    DAnnotation *ann = (DAnnotation *)annotation;
+//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+//    static NSString *annIdentifier = @"PopAnnotationView";
+//    PopAnnotationView *aView = (PopAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:annIdentifier];
+//    if(!aView){
+//        aView = [[PopAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annIdentifier];
+//        aView.borderColor = [UIColor greenColor];
+//        aView.canShowCallout = NO;
+//        aView.frame = CGRectMake(0, 0, 80, 105);
+//        aView.centerOffset = CGPointMake(0, -aView.frame.size.width * 0.5);
+//    }else{
+//        aView.annotation = annotation;
+//    }
+//    DAnnotation *ann = (DAnnotation *)annotation;
 //    DPhoto *photo = self.photos[[self.arrAnnotation indexOfObject:ann]];
 //    aView.image = [UIImage imageWithData:photo.thumbnailImage];
-    
-    return aView;
-}
+//    
+//    return aView;
+//}
 
-- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views{
-    for(id item in views){
-        if([item isKindOfClass:[PopAnnotationView class]]){
-            PopAnnotationView *pv = (PopAnnotationView *)item;
-            CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
-            scale.removedOnCompletion = YES;
-            scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-            scale.repeatCount = 1;
-            scale.duration = 0.4;
-            [scale setValues:@[@(0.8), @(1.2), @(1.0)]];
-            [pv.layer addAnimation:scale forKey:@"myScale"];
-        }
-    }
-}
+//- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views{
+//    for(id item in views){
+//        if([item isKindOfClass:[PopAnnotationView class]]){
+//            PopAnnotationView *pv = (PopAnnotationView *)item;
+//            CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+//            scale.removedOnCompletion = YES;
+//            scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+//            scale.repeatCount = 1;
+//            scale.duration = 0.4;
+//            [scale setValues:@[@(0.8), @(1.2), @(1.0)]];
+//            [pv.layer addAnimation:scale forKey:@"myScale"];
+//        }
+//    }
+//}
 
 @end

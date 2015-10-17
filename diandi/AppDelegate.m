@@ -21,21 +21,12 @@
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setTitleTextAttributes: @{NSForegroundColorAttributeName : GS_COLOR_WHITE,
                                                             NSFontAttributeName : [UIFont gs_font:NSAppFontXL]}];
-    if (IOS7_OR_LATER) {
-        [[UINavigationBar appearance] setBarTintColor:GS_COLOR_MAIN];
-        [[UINavigationBar appearance] setTintColor:GS_COLOR_WHITE];
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:GS_COLOR_MAIN size:CGSizeMake(1, 45)]
-                                          forBarPosition:UIBarPositionAny
-                                              barMetrics:UIBarMetricsDefault];
-    }else{
-        [[UINavigationBar appearance] setTintColor:GS_COLOR_MAIN];
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:GS_COLOR_MAIN size:CGSizeMake(1, 45)]
-                                           forBarMetrics:UIBarMetricsDefault];
-        [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new]
-                                                forState:UIControlStateNormal
-                                              barMetrics:UIBarMetricsDefault];
-    }
-    
+    [[UINavigationBar appearance] setBarTintColor:GS_COLOR_MAIN];
+    [[UINavigationBar appearance] setTintColor:GS_COLOR_WHITE];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:GS_COLOR_MAIN size:CGSizeMake(1, 45)]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];
+
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont gs_boldfont:NSAppFontXS],
                                                         NSForegroundColorAttributeName : GS_COLOR_GRAY}
                                              forState:UIControlStateNormal];
@@ -43,10 +34,7 @@
                                                         NSForegroundColorAttributeName : HEXRGBCOLOR(0x00A6FF)}
                                              forState:UIControlStateSelected];
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
-     setTitleTextAttributes:@{NSForegroundColorAttributeName : GS_COLOR_WHITE,
-                              NSFontAttributeName : [UIFont gs_font:NSAppFontL]}
-     forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName : GS_COLOR_WHITE, NSFontAttributeName : [UIFont gs_font:NSAppFontL]} forState:UIControlStateNormal];
     
     //初始化window
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];

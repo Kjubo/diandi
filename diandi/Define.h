@@ -37,10 +37,8 @@ typedef NS_ENUM(NSInteger, NSAlertViewTag) {		/* UIAlertView 的类型 */
 #define DF_WIDTH    [[UIScreen mainScreen] bounds].size.width
 #define DF_HEIGHT   [[UIScreen mainScreen] bounds].size.height
 //判断系统
-#define IOS8_OR_LATER ([[[UIDevice currentDevice] systemVersion] compare:@"8.0"] != NSOrderedAscending)
-#define IOS7_OR_LATER ([[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending)
-#define DEVICE_IPHONE6  DF_WIDTH == 375.0
-#define DEVICE_IPHONE6P DF_WIDTH >= 414.0
+#define DEVICE_IPHONE6  (DF_WIDTH == 375.0)
+#define DEVICE_IPHONE6P (DF_WIDTH >= 414.0)
 //int to string
 #define Int2String(iValue) [NSString stringWithFormat:@"%@", @(iValue)]
 

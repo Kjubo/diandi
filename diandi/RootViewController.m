@@ -26,10 +26,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (IOS7_OR_LATER) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.navigationController.navigationBar.translucent = NO;
-    }
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.navigationController.navigationBar.translucent = NO;
 #ifdef TEST_SERVER
     [MobClick beginLogPageView:NSStringFromClass([self class])];
 #endif
