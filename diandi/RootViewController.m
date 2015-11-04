@@ -8,10 +8,10 @@
 
 #import "RootViewController.h"
 #import "ASWaitingView.h"
-#import "AppDelegate.h"
+#import "MobClick.h"
+
 @interface RootViewController ()
 @property (nonatomic, strong) ASWaitingView *waitingView;
-@property (nonatomic, readonly) AppDelegate *shareDelegate;
 @end
 
 @implementation RootViewController
@@ -28,14 +28,14 @@
     [super viewWillAppear:animated];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationController.navigationBar.translucent = NO;
-#ifdef TEST_SERVER
+#ifndef TEST_SERVER
     [MobClick beginLogPageView:NSStringFromClass([self class])];
 #endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-#ifdef TEST_SERVER
+#ifndef TEST_SERVER
     [MobClick endLogPageView:NSStringFromClass([self class])];
 #endif
 }
@@ -60,19 +60,8 @@
 }
 
 + (void)showAlert:(NSString *)message{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alertView show];
-}
-+ (AppDelegate *)shareDelegate{
-    return (AppDelegate *)[UIApplication sharedApplication].delegate;
-}
-
-+ (NSManagedObjectContext *)managedObjectContext{
-    return [[self shareDelegate] managedObjectContext];
-}
-
-+ (NSManagedObjectModel *)managedObjectModel{
-    return [[self shareDelegate] managedObjectModel];
 }
 
 - (void)didReceiveMemoryWarning

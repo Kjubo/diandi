@@ -16,10 +16,24 @@
 
 #define kAppVersion     [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define kAppBundleId    [[NSBundle mainBundle] bundleIdentifier]
-#define kPlaceholderImageName @"location_blue"
-#define kMaxAnnotationCount 50
-
 #define DF_WIDTH        [[UIScreen mainScreen] bounds].size.width
+
+/**
+ *  各种plugin的key
+ */
+#define GMAP_KEY                    @"" //百度地图key
+#define UMENG_KEY                   @"" //友盟
+
+#ifdef TEST_SERVER
+#define GETUI_APPID                 @"veQnx4M7cW73f7Q82hVjH2"
+#define GETUI_Key                   @"1Sn0vi6XgW5CWfhd3NR2tA"
+#define GETUI_Secret                @"16vcAPeC6l8bVfyzEZZn44"
+#else
+#define GETUI_APPID                 @"DQour59LLM7IGfxJ1xXMz5"
+#define GETUI_Key                   @"CR8KIxu9dE8IOkVDmDtf14"
+#define GETUI_Secret                @"sa3qnhjP0w7BdRMf6V4lH7"
+#endif
+
 
 typedef NS_ENUM(NSInteger, NSAlertViewTag) {		/* UIAlertView 的类型 */
     NSAlertViewDefault = 1234,  /* 默认 */

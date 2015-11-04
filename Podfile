@@ -1,5 +1,5 @@
 platform :ios, '7.0'
-#use_frameworks!
+use_frameworks!
 
 target 'diandi' do
   pod 'JSONModel', '~> 1.1.0'
