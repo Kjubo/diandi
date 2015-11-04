@@ -1,5 +1,5 @@
 platform :ios, '7.0'
-use_frameworks!
+#use_frameworks!
 
 target 'diandi' do
   pod 'JSONModel', '~> 1.1.0'
@@ -8,6 +8,5 @@ target 'diandi' do
   pod 'CTAssetsPickerController',  '~> 2.9.0'
   pod 'DZNEmptyDataSet', '~> 1.6.1'
   pod 'UIAlertView+Blocks', '~> 0.9'
-  pod 'FXBlurView', '~> 1.6.3'
   pod 'FMDB', '~> 2.5'
 end

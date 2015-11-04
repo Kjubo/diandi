@@ -71,7 +71,7 @@
 		1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E321B2972D500EE98EB /* UIView+Layout.m */; };
 		1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE309771B4FC4120008EF74 /* DBSCAN.m */; };
 		1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */; };
-		206BFA9AF1DE3482DAFC2E95 /* libPods-diandi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D5CA9BE0B95C177B681D7B /* libPods-diandi.a */; };
+		F8AA14F9DC9FC35F97094910 /* libPods-diandi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74C1D0035DADF754EEDD1A /* libPods-diandi.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,7 +195,7 @@
 		1BF278A51AE8EE5600022ACF /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		1BF597F51B1709A50037A507 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		C0D5CA9BE0B95C177B681D7B /* libPods-diandi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-diandi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C74C1D0035DADF754EEDD1A /* libPods-diandi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-diandi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84A626A42C6A40DB687C670 /* Pods-diandi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diandi.release.xcconfig"; path = "Pods/Target Support Files/Pods-diandi/Pods-diandi.release.xcconfig"; sourceTree = "<group>"; };
 		F3B51D707D8013AB76238B33 /* Pods-diandi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diandi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-diandi/Pods-diandi.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,7 +222,7 @@
 				1B010FFD1ADF9F3F00F37746 /* ImageIO.framework in Frameworks */,
 				1B010FFB1ADF9F3600F37746 /* MapKit.framework in Frameworks */,
 				1B010FF91ADF9F3200F37746 /* UIKit.framework in Frameworks */,
-				206BFA9AF1DE3482DAFC2E95 /* libPods-diandi.a in Frameworks */,
+				F8AA14F9DC9FC35F97094910 /* libPods-diandi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +355,7 @@
 				1B010FFC1ADF9F3F00F37746 /* ImageIO.framework */,
 				1B010FFA1ADF9F3600F37746 /* MapKit.framework */,
 				1B010FF81ADF9F3200F37746 /* UIKit.framework */,
-				C0D5CA9BE0B95C177B681D7B /* libPods-diandi.a */,
+				7C74C1D0035DADF754EEDD1A /* libPods-diandi.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -741,6 +741,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "diandi/diandi-Prefix.pch";
 				INFOPLIST_FILE = diandi/Info.plist;
@@ -763,6 +764,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "diandi/diandi-Prefix.pch";
 				INFOPLIST_FILE = diandi/Info.plist;
