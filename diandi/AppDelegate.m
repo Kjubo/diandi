@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "DDTabBarViewController.h"
 #import "MobClick.h"
+#import "DDCacheHelper.h"
+
 @interface AppDelegate ()
 
 @end
@@ -64,10 +66,18 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[DDCacheHelper shared] save];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [HttpUtil load:@"api/mddlist.php" params:nil completion:^(BOOL succ, NSString *message, id json) {
+        if(succ){
+            NSError *error;
+            DDMddListModel *ret = [[DDMddListModel alloc] initWithDictionary:json error:&error];
+            NSAssert(!error, @"%@", error);
+            [DDCacheHelper shared].mddList = ret;
+        }
+    }];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

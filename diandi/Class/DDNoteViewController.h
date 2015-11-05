@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DDNoteViewController : RootViewController
+typedef NS_ENUM(NSInteger, DDNoteViewType) {
+    DDNoteView_Note = 1,
+    DDNOteView_Spot = 2,
+};
 
+@interface DDNoteViewController : RootViewController
+@property (nonatomic) DDNoteViewType type;
 @end
