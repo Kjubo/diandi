@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) DDMddListModel *mddList;
 
-- (void)save;
 + (instancetype)shared;
 
 @end

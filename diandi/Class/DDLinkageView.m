@@ -8,6 +8,7 @@
 
 #import "DDLinkageView.h"
 #import "DDLinkageCell.h"
+#import "DDCacheHelper.h"
 
 @interface DDLinkageView ()<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource>
 /**
@@ -56,8 +57,15 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         }];
         
         _selectedStage1Index = -1;
+        
     }
     return self;
+}
+
+- (void)setData:(DDArea *)data{
+    _data = data;
+    [self.tbStage1st reloadData];
+    [self.tbStage2nd reloadData];
 }
 
 - (void)setSelectedStage1Index:(NSInteger)selectedStage1Index{
@@ -68,16 +76,23 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
 
 #pragma mark - 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(tableView == self.tbStage2nd
-       && self.selectedStage1Index < 0){
-        return 0;
+    if(tableView == self.tbStage2nd){
+        if(self.selectedStage1Index < 0){
+            return 0;
+        }else{
+            DDArea *parent = self.data.list[self.selectedStage1Index];
+            return [parent.list count];
+        }
+    }else if(tableView == self.tbStage1st){
+        return [self.data.list count];
     }
-    return 100;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DDLinkageCell *cell = (DDLinkageCell *)[tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    DDArea *item = nil;
     if(tableView == self.tbStage1st){
         cell.accessoryType = UITableViewCellAccessoryNone;
         if(indexPath.row == self.selectedStage1Index){
@@ -87,13 +102,16 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
             cell.backgroundColor = [UIColor clearColor];
             cell.textLabel.textColor = GS_COLOR_WHITE;
         }
+        item = self.data.list[indexPath.row];
     }else{
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor = GS_COLOR_BLACK;
         cell.textLabel.textColor = GS_COLOR_WHITE;
+        DDArea *parent = self.data.list[self.selectedStage1Index];
+        item = parent.list[indexPath.row];
     }
     cell.textLabel.font = [UIFont gs_font:NSAppFontM];
-    cell.textLabel.text = @"城市名称";
+    cell.textLabel.text = item.name;
     return cell;
 }
 

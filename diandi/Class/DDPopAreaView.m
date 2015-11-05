@@ -109,7 +109,8 @@
     self.hidden = YES;
 }
 
-- (void)ddGradeView:(DDGradeView *)gradeView didTableSelected:(NSInteger)index{
+- (void)ddGradeView:(DDGradeView *)gradeView didTableSelected:(NSInteger)index withData:(DDArea *)data{
+    self.linkageView.data = data;
     [self.contentView setContentOffset:CGPointMake(DF_WIDTH, 0) animated:YES];
     self.contentView.scrollEnabled = YES;
 }

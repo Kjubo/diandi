@@ -19,6 +19,12 @@
 #define DF_WIDTH        [[UIScreen mainScreen] bounds].size.width
 
 /**
+ *  NSNotificationKey
+ *
+ */
+#define kNotificationName_MddList_Update             @"kNotificationName_MddList_Update"                //国家数据更新
+
+/**
  *  各种plugin的key
  */
 #define GMAP_KEY                    @"" //百度地图key

@@ -8,14 +8,15 @@
 
 #import "DDGradeView.h"
 #import "DDTagCollectionViewCell.h"
-
-#define kContinents @[@"亚洲", @"欧洲", @"非洲", @"北美洲", @"南美洲", @"大洋洲"]
+#import "DDCacheHelper.h"
 
 @interface DDGradeView ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UICollectionView *tagCollectionView;
 @property (nonatomic, strong) UITableView *tbList;
+@property (nonatomic, copy) DDMddListModel *mddList;
 @end
 
+#define kPopTagColor    @[HEXRGBCOLOR(0xC2185B), HEXRGBCOLOR(0x4CAF50), HEXRGBCOLOR(0xE91E63), HEXRGBCOLOR(0x2196F3), HEXRGBCOLOR(0x4CAF50), HEXRGBCOLOR(0x009688), HEXRGBCOLOR(0x7B1FA2)]
 static NSString *kTableCellIdentifier   = @"kTableCellIdentifier";
 static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
 @implementation DDGradeView
@@ -61,13 +62,26 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
             make.left.equalTo(self.tbList);
             make.width.mas_equalTo(@1);
         }];
+        
+        [self reloadData];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kNotificationName_MddList_Update object:nil];
     }
     return self;
 }
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)reloadData{
+    self.mddList = [DDCacheHelper shared].mddList;
+    [self.tbList reloadData];
+    [self.tagCollectionView reloadData];
+}
+
 #pragma mark - UITableView Delegate & Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [kContinents count];
+    return [self.mddList.mddlist count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -77,31 +91,34 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.font = [UIFont gs_font:NSAppFontL];
     cell.textLabel.textColor = GS_COLOR_WHITE;
-    cell.textLabel.text = kContinents[indexPath.row];
+    DDArea *item = self.mddList.mddlist[indexPath.row];
+    cell.textLabel.text = [item.name copy];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if([self.delegate respondsToSelector:@selector(ddGradeView:didTableSelected:)]){
-        [self.delegate ddGradeView:self didTableSelected:indexPath.row];
+    if([self.delegate respondsToSelector:@selector(ddGradeView:didTableSelected:withData:)]){
+        DDArea *data = self.mddList.mddlist[indexPath.row];
+        [self.delegate ddGradeView:self didTableSelected:indexPath.row withData:data];
     }
 }
 
 #pragma mark - UICollectionView Delgate & Method
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 100;
+    return [self.mddList.hotplace count];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *name = kPopTags[indexPath.row%[kPopTags count]];
+    DDArea *item = self.mddList.hotplace[indexPath.row];
+    NSString *name = [item.name copy];
     CGSize size = [name boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM]} context:nil].size;
     return CGSizeMake(size.width + 16, 36);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DDTagCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTagCellIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = GS_COLOR_RED;
-    cell.text = kPopTags[indexPath.row%[kPopTags count]];
+    DDArea *item = self.mddList.hotplace[indexPath.row];
+    cell.text = [item.name copy];
     cell.backgroundColor = kPopTagColor[indexPath.row % [kPopTagColor count]];
     return cell;
 }

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDArea.h"
 
 @class DDLinkageView;
 @protocol DDLinkageViewDelegate <NSObject>
@@ -19,5 +20,5 @@
 
 @property (nonatomic, assign) id<DDLinkageViewDelegate> delegate;
 @property (nonatomic) NSInteger selectedStage1Index;
-
+@property (nonatomic, assign) DDArea *data;
 @end

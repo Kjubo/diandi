@@ -11,9 +11,12 @@
 #import "DDPopContainerView.h"
 #import "DDGradeView.h"
 #import "DDTopMenuView.h"
+#import "DDCacheHelper.h"
 #import "DDNoteTableViewCell.h"
 #import "DDSpotModel.h"
+
 #import "MJRefresh.h"
+#import "DDCacheHelper.h"
 
 @interface DDNoteViewController ()<UITableViewDelegate , UITableViewDataSource, DDTopMenuViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) DDPopAreaView *popAreaView;
@@ -31,6 +34,13 @@
 
 static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 @implementation DDNoteViewController
+
+- (instancetype)initWithNoteViewType:(DDNoteViewType)type{
+    if(self = [super init]){
+        _type = type;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -100,6 +110,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     
     self.pageIndex = 0;
     self.data = [NSMutableArray array];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -114,7 +125,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 - (void)loadMore{
-    [HttpUtil load:@"poisearch.php" params:@{@"country" : @"中国",
+    [HttpUtil load:@"ddy/poisearch.php" params:@{@"country" : @"中国",
                                              @"city" : @"上海",
                                              @"area" : @"亚洲",
                                              @"offset" : @(self.pageIndex),

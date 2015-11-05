@@ -14,5 +14,6 @@ typedef NS_ENUM(NSInteger, DDNoteViewType) {
 };
 
 @interface DDNoteViewController : RootViewController
-@property (nonatomic) DDNoteViewType type;
+@property (nonatomic, readonly) DDNoteViewType type;
+- (instancetype)initWithNoteViewType:(DDNoteViewType)type;
 @end

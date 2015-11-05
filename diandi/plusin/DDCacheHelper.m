@@ -12,6 +12,7 @@
 static NSString *kCacheDirForData   = @"kCacheDataDir";
 static NSString *kCacheKeyForMdd    = @"kCacheKeyForMdd";
 @implementation DDCacheHelper
+@synthesize mddList = _mddList;
 
 + (instancetype)shared{
     static DDCacheHelper *instance = nil;
@@ -22,14 +23,6 @@ static NSString *kCacheKeyForMdd    = @"kCacheKeyForMdd";
     return instance;
 }
 
-- (void)save{
-    if(self.mddList){
-        [[ASCache shared] storeValue:[self.mddList toJSONString] dir:kCacheDirForData key:kCacheKeyForMdd];
-    }else{
-        [[ASCache shared] removeDir:kCacheDirForData key:kCacheKeyForMdd];
-    }
-}
-
 - (DDMddListModel *)mddList{
     if(!_mddList){
         ASCacheObject *co = [[ASCache shared] readDicFiledsWithDir:kCacheDirForData key:kCacheKeyForMdd];
@@ -38,6 +31,16 @@ static NSString *kCacheKeyForMdd    = @"kCacheKeyForMdd";
         }
     }
     return _mddList;
+}
+
+- (void)setMddList:(DDMddListModel *)mddList{
+    _mddList = mddList;
+    if(_mddList){
+        [[ASCache shared] storeValue:[_mddList toJSONString] dir:kCacheDirForData key:kCacheKeyForMdd];
+    }else{
+        [[ASCache shared] removeDir:kCacheDirForData key:kCacheKeyForMdd];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationName_MddList_Update object:nil];
 }
 
 @end
