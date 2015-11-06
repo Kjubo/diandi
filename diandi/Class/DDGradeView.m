@@ -97,9 +97,9 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if([self.delegate respondsToSelector:@selector(ddGradeView:didTableSelected:withData:)]){
+    if([self.delegate respondsToSelector:@selector(ddGradeView:didTableSelected:)]){
         DDArea *data = self.mddList.mddlist[indexPath.row];
-        [self.delegate ddGradeView:self didTableSelected:indexPath.row withData:data];
+        [self.delegate ddGradeView:self didTableSelected:data];
     }
 }
 
@@ -125,7 +125,8 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if([self.delegate respondsToSelector:@selector(ddGradeView:didTagSelected:)]){
-        [self.delegate ddGradeView:self didTagSelected:indexPath.row];
+        DDArea *item = self.mddList.hotplace[indexPath.row];
+        [self.delegate ddGradeView:self didTagSelected:item];
     }
 }
 

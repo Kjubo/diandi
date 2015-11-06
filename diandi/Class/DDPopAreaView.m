@@ -105,11 +105,14 @@
 }
 
 #pragma mark - DDGradeViewDelegate
-- (void)ddGradeView:(DDGradeView *)gradeView didTagSelected:(NSInteger)index{
+- (void)ddGradeView:(DDGradeView *)gradeView didTableSelected:(DDArea *)data{
+    if([self.delegate respondsToSelector:@selector(ddPopAreaViewDidSelected:)]){
+        [self.delegate ddPopAreaViewDidSelected:data];
+    }
     self.hidden = YES;
 }
 
-- (void)ddGradeView:(DDGradeView *)gradeView didTableSelected:(NSInteger)index withData:(DDArea *)data{
+- (void)ddGradeView:(DDGradeView *)gradeView didSelectedData:(DDArea *)data{
     self.linkageView.data = data;
     [self.contentView setContentOffset:CGPointMake(DF_WIDTH, 0) animated:YES];
     self.contentView.scrollEnabled = YES;
@@ -117,6 +120,11 @@
 
 #pragma mark - DDLinkageViewDelegate
 - (void)ddLinkageView:(DDLinkageView *)linkageView didSelected:(NSIndexPath *)indexPath{
+    DDArea *parent = self.linkageView.data.list[indexPath.section];
+    DDArea *data = parent.list[indexPath.row];
+    if([self.delegate respondsToSelector:@selector(ddPopAreaViewDidSelected:)]){
+        [self.delegate ddPopAreaViewDidSelected:data];
+    }
     self.hidden = YES;
 }
 

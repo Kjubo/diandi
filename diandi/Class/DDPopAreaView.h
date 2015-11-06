@@ -7,5 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDArea.h"
+@protocol DDPopAreaViewDelegate <NSObject>
+@optional
+- (void)ddPopAreaViewDidSelected:(DDArea *)data;
+@end
+
 @interface DDPopAreaView : UIView
+@property (nonatomic, assign) id<DDPopAreaViewDelegate> delegate;
 @end

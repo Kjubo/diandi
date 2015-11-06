@@ -13,8 +13,8 @@
 @class DDGradeView;
 @protocol DDGradeViewDelegate <NSObject>
 @optional
-- (void)ddGradeView:(DDGradeView *)gradeView didTagSelected:(NSInteger)index;
-- (void)ddGradeView:(DDGradeView *)gradeView didTableSelected:(NSInteger)index withData:(DDArea *)data;
+- (void)ddGradeView:(DDGradeView *)gradeView didTagSelected:(DDArea *)data;
+- (void)ddGradeView:(DDGradeView *)gradeView didTableSelected:(DDArea *)data;
 @end
 
 @interface DDGradeView : UIView

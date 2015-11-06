@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DDSpotModel.h"
+#import "DDNoteModel.h"
 
 @interface DDNoteTableViewCell : UITableViewCell
 
-- (void)setDateModel:(DDSpotModel *)data;
+- (void)setDataModel:(DDNoteModel *)data;
 @end

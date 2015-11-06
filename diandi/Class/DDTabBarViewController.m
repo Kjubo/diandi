@@ -30,7 +30,7 @@
         self.ncSpot = [[UINavigationController alloc] initWithRootViewController:[UIViewController new]];
         self.ncSpot.tabBarItem =[UITabBarItem itemWithTitle:@"目的地" image:[UIImage imageNamed:@"ic_tab1"] selectedImage:[UIImage imageNamed:@"ic_tab1_hl"]];
         
-        DDNoteViewController *noteViewController = [[DDNoteViewController alloc] init];
+        DDNoteViewController *noteViewController = [[DDNoteViewController alloc] initWithNoteViewType:DDNoteView_Spot];
         self.ncNote = [[UINavigationController alloc] initWithRootViewController:noteViewController];
         self.ncNote.tabBarItem = [UITabBarItem itemWithTitle:@"游记" image:[UIImage imageNamed:@"ic_tab0"] selectedImage:[UIImage imageNamed:@"ic_tab0_hl"]];
         

@@ -154,7 +154,7 @@
     return self;
 }
 
-- (void)setDateModel:(DDSpotModel *)data{
+- (void)setDataModel:(DDNoteModel *)data{
     self.lbName.text = [data.avaterName copy];
     self.lbTitle.text = [data.title copy];
     self.lbDate.text = [data.date copy];

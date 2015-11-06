@@ -13,12 +13,14 @@
 #import "DDTopMenuView.h"
 #import "DDCacheHelper.h"
 #import "DDNoteTableViewCell.h"
+#import "DDSpotTableViewCell.h"
+#import "DDNoteModel.h"
 #import "DDSpotModel.h"
 
 #import "MJRefresh.h"
 #import "DDCacheHelper.h"
 
-@interface DDNoteViewController ()<UITableViewDelegate , UITableViewDataSource, DDTopMenuViewDelegate, UISearchBarDelegate>
+@interface DDNoteViewController ()<UITableViewDelegate , UITableViewDataSource, DDTopMenuViewDelegate, UISearchBarDelegate, DDPopAreaViewDelegate>
 @property (nonatomic, strong) DDPopAreaView *popAreaView;
 @property (nonatomic, strong) DDPopContainerView *popContainerView; //容器
 @property (nonatomic, strong) UIView *topView;
@@ -29,6 +31,7 @@
 
 @property (nonatomic) BOOL isSearching;
 @property (nonatomic) NSInteger pageIndex;
+@property (nonatomic, strong) NSString *areaUuid;
 @property (nonatomic, strong) NSMutableArray *data;
 @end
 
@@ -87,14 +90,14 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     self.tbList.dataSource = self;
     self.tbList.separatorColor = [UIColor clearColor];
     self.tbList.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tbList registerClass:[DDNoteTableViewCell class] forCellReuseIdentifier:kCellReuseIdentifier];
+    [self.tbList addHeaderWithTarget:self action:@selector(refreshData)];
     [self.containerView addSubview:self.tbList];
     [self.tbList mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.containerView);
     }];
-    [self.tbList addHeaderWithTarget:self action:@selector(refreshData)];
     
     self.popAreaView = [DDPopAreaView new];
+    self.popAreaView.delegate = self;
     [self.containerView addSubview:self.popAreaView];
     [self.popAreaView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.containerView);
@@ -107,6 +110,12 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.popContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.containerView);
     }];
+    
+    if(_type == DDNoteView_Note){
+        [self.tbList registerClass:[DDNoteTableViewCell class] forCellReuseIdentifier:kCellReuseIdentifier];
+    }else if(_type == DDNoteView_Spot){
+        [self.tbList registerClass:[DDSpotTableViewCell class] forCellReuseIdentifier:kCellReuseIdentifier];
+    }
     
     self.pageIndex = 0;
     self.data = [NSMutableArray array];
@@ -125,17 +134,27 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 - (void)loadMore{
-    [HttpUtil load:@"ddy/poisearch.php" params:@{@"country" : @"中国",
-                                             @"city" : @"上海",
-                                             @"area" : @"亚洲",
-                                             @"offset" : @(self.pageIndex),
-                                             @"pagenum" : @(10)}
+    NSString *uri = @"ddy/poisearch.php";
+    if(_type == DDNoteView_Spot){
+        uri = @"ddy/mddlistsearch.php";
+    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"offset" : @(self.pageIndex),
+                                                                                  @"pagenum" : @(10)}];
+    if(self.areaUuid){
+        [params setObject:self.areaUuid forKey:@"uuid"];
+    }
+    [HttpUtil load:uri params:params
         completion:^(BOOL succ, NSString *message, id json) {
             if(succ){
                 [self.tbList footerEndRefreshing];
                 [self.tbList headerEndRefreshing];
                 NSError *error;
-                NSArray *items = [DDSpotModel arrayOfModelsFromDictionaries:json[@"list"] error:&error];
+                NSArray *items;
+                if(_type == DDNoteView_Note){
+                    items = [DDNoteModel arrayOfModelsFromDictionaries:json[@"list"] error:&error];
+                }else{
+                    items = [DDSpotModel arrayOfModelsFromDictionaries:json[@"list"] error:&error];
+                }
                 NSAssert(!error, @"%@", error);
                 if([items count] > 0){
                     if(self.pageIndex == 0){
@@ -155,6 +174,14 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
             }
             [self loadingHidden];
         }];
+}
+
+#pragma mark - DDPopAreaViewDelegate
+- (void)ddPopAreaViewDidSelected:(DDArea *)data{
+    self.areaUuid = [data.uuid copy];
+    self.pageIndex = 0;
+    [self loadingShow];
+    [self loadMore];
 }
 
 #pragma mark - DDTopMenuView Delegate
@@ -222,10 +249,17 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == self.tbList){
-        DDNoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
-        DDSpotModel *item = self.data[indexPath.row];
-        [cell setDateModel:item];
-        return cell;
+        if(_type == DDNoteView_Note){
+            DDNoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
+            DDNoteModel *item = self.data[indexPath.row];
+            [cell setDataModel:item];
+            return cell;
+        }else{
+            DDSpotTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
+            DDSpotModel *item = self.data[indexPath.row];
+            [cell setDataModel:item];
+            return cell;
+        }
     }else{
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier];
         if(!cell){

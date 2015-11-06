@@ -10,7 +10,7 @@
 
 typedef NS_ENUM(NSInteger, DDNoteViewType) {
     DDNoteView_Note = 1,
-    DDNOteView_Spot = 2,
+    DDNoteView_Spot = 2,
 };
 
 @interface DDNoteViewController : RootViewController
