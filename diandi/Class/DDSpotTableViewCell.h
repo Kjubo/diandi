@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "DDSpotModel.h"
 @interface DDSpotTableViewCell : UITableViewCell
-
-
 - (void)setDataModel:(DDSpotModel *)data;
 @end

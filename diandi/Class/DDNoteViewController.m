@@ -51,7 +51,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.navigationController setNavigationBarHidden:YES];
     
     self.topView = [UIView new];
-    self.topView.backgroundColor = GS_COLOR_BLACK;
+    self.topView.backgroundColor = GS_COLOR_MAIN;
     [self.view addSubview:self.topView];
     [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
@@ -70,8 +70,8 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     self.searchBar.delegate = self;
     self.searchBar.showsCancelButton = YES;
     self.searchBar.placeholder = @"请输入搜索关键字~";
-    self.searchBar.barTintColor = GS_COLOR_BLACK;
-    self.searchBar.backgroundColor = [UIColor clearColor];
+    self.searchBar.barTintColor = GS_COLOR_MAIN;
+    self.searchBar.backgroundImage = [UIImage new];
     [self.topView addSubview:self.searchBar];
     [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.menuView);
@@ -136,7 +136,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 - (void)loadMore{
     NSString *uri = @"ddy/poisearch.php";
     if(_type == DDNoteView_Spot){
-        uri = @"ddy/mddlistsearch.php";
+        uri = @"api/mddlistsearch.php";
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"offset" : @(self.pageIndex),
                                                                                   @"pagenum" : @(10)}];
@@ -241,7 +241,11 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == self.tbList){
-        return 9.0/15.0 * DF_WIDTH + 10.0;
+        if(_type == DDNoteView_Spot){
+            return 100;
+        }else{
+            return 9.0/15.0 * DF_WIDTH + 10.0;
+        }
     }else{
         return 44;
     }

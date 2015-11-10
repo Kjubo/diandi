@@ -65,7 +65,7 @@ typedef NS_ENUM(NSInteger, NSAlertViewTag) {		/* UIAlertView 的类型 */
 //十六进制颜色转换（0xFFFFFF）
 #define HEXRGBCOLOR(hex)  [UIColor colorWithRed:((float)((hex & 0xFF0000) >> 16))/255.0 green:((float)((hex & 0xFF00) >> 8))/255.0 blue:((float)(hex & 0xFF))/255.0 alpha:1.0]
 //默认颜色
-#define GS_COLOR_MAIN           HEXRGBCOLOR(0x222222)
+#define GS_COLOR_MAIN           HEXRGBCOLOR(0x00A6FF)
 #define GS_COLOR_RED            HEXRGBCOLOR(0xff5400)
 #define GS_COLOR_BACKGROUND     HEXRGBCOLOR(0xf0f0f0)
 #define GS_COLOR_ORANGE         [UIColor orangeColor]

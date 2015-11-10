@@ -311,14 +311,14 @@
 		1B010FC71ADF9B4400F37746 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				1B58DAF21BB2477B00F8FDE7 /* generalView */,
-				1BF597FA1B181C230037A507 /* View */,
 				1BADA3BC1B8B13460071240C /* DDNoteViewController.h */,
 				1BADA3BD1B8B13460071240C /* DDNoteViewController.m */,
-				1BADA3C81B8C0F000071240C /* DDTabBarViewController.h */,
-				1BADA3C91B8C0F000071240C /* DDTabBarViewController.m */,
 				1B84A0761BEC7660009F04EF /* DDSpotDetailViewController.h */,
 				1B84A0771BEC7660009F04EF /* DDSpotDetailViewController.m */,
+				1BADA3C81B8C0F000071240C /* DDTabBarViewController.h */,
+				1BADA3C91B8C0F000071240C /* DDTabBarViewController.m */,
+				1B58DAF21BB2477B00F8FDE7 /* generalView */,
+				1BF597FA1B181C230037A507 /* View */,
 			);
 			path = Class;
 			sourceTree = "<group>";
