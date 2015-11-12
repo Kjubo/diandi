@@ -7,7 +7,8 @@
 //
 
 #import "RootViewController.h"
-
+#import "DDSpotModel.h"
 @interface DDSpotDetailViewController : RootViewController
-
+@property (nonatomic, strong) NSString *uuid;
+@property (nonatomic, assign) DDSpotModel *spotModel;
 @end

@@ -26,7 +26,6 @@
         self.ncMain = [[UINavigationController alloc] initWithRootViewController:mainVc];
         self.ncMain.tabBarItem =[UITabBarItem itemWithTitle:@"我" image:[UIImage imageNamed:@"ic_tab2"] selectedImage:[UIImage imageNamed:@"ic_tab2_hl"]];
         
-        
         self.ncSpot = [[UINavigationController alloc] initWithRootViewController:[UIViewController new]];
         self.ncSpot.tabBarItem =[UITabBarItem itemWithTitle:@"目的地" image:[UIImage imageNamed:@"ic_tab1"] selectedImage:[UIImage imageNamed:@"ic_tab1_hl"]];
         

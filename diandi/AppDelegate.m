@@ -43,6 +43,7 @@
     
     //初始化window
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    self.window.backgroundColor = GS_COLOR_WHITE;
     DDTabBarViewController *vc = [[DDTabBarViewController alloc] init];
     //配置页面到导航vc
     self.nav = [[UINavigationController alloc] initWithRootViewController:vc];

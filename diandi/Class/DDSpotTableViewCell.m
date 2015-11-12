@@ -7,12 +7,14 @@
 //
 
 #import "DDSpotTableViewCell.h"
-
+#import "DDRankView.h"
 @interface DDSpotTableViewCell ()
 @property (nonatomic, strong) UIImageView *ivSpotImage;
 @property (nonatomic, strong) UILabel *lbName;
 @property (nonatomic, strong) UILabel *lbSubTitle;
 @property (nonatomic, strong) UILabel *lbKeepCount;
+@property (nonatomic, strong) DDRankView *rankView;
+@property (nonatomic, strong) UILabel *lbShareInfo;
 @end
 
 @implementation DDSpotTableViewCell
@@ -66,7 +68,14 @@
         [self.lbName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.ivSpotImage.mas_right).offset(8);
             make.right.lessThanOrEqualTo(keepView.mas_left).offset(-10);
-            make.top.equalTo(self.ivSpotImage).offset(2);
+            make.top.equalTo(self.ivSpotImage).offset(4);
+        }];
+        
+        self.rankView = [DDRankView new];
+        [self.contentView addSubview:self.rankView];
+        [self.rankView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.lbName);
+            make.top.equalTo(self.lbName.mas_bottom).offset(8);
         }];
         
         self.lbSubTitle = [UILabel new];
@@ -76,7 +85,18 @@
         [self.contentView addSubview:self.lbSubTitle];
         [self.lbSubTitle mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.lbName);
-            make.top.equalTo(self.lbName.mas_bottom).offset(2);
+            make.bottom.equalTo(self.ivSpotImage.mas_bottom).offset(-4);
+        }];
+        
+        self.lbShareInfo = [UILabel new];
+        self.lbShareInfo.backgroundColor = [UIColor clearColor];
+        self.lbShareInfo.lineBreakMode = NSLineBreakByTruncatingTail;
+        self.lbShareInfo.textColor = GS_COLOR_GRAY;
+        self.lbShareInfo.font = [UIFont gs_font:NSAppFontXS];
+        [self.contentView addSubview:self.lbShareInfo];
+        [self.lbShareInfo mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.rankView);
+            make.right.equalTo(keepView);
         }];
         
         UIView *line = [UIView new];
@@ -95,5 +115,7 @@
     self.lbName.text = [data.title copy];
     self.lbSubTitle.text = [data.subtitle copy];
     self.lbKeepCount.text = Int2String(data.favor);
+    self.rankView.rank = 3.8;
+    self.lbShareInfo.text = @"234条分享";
 }
 @end

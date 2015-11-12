@@ -16,6 +16,7 @@
 #import "DDSpotTableViewCell.h"
 #import "DDNoteModel.h"
 #import "DDSpotModel.h"
+#import "DDSpotDetailViewController.h"
 
 #import "MJRefresh.h"
 #import "DDCacheHelper.h"
@@ -48,7 +49,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.navigationController setNavigationBarHidden:YES];
     
     self.topView = [UIView new];
     self.topView.backgroundColor = GS_COLOR_MAIN;
@@ -124,8 +124,14 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
     [self loadingShow];
     [self loadMore];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)refreshData{
@@ -278,6 +284,25 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(tableView == self.tbList){
+        if(_type == DDNoteView_Note){
+
+        }else{
+            DDSpotModel *item = self.data[indexPath.row];
+            DDSpotDetailViewController *vc = [DDSpotDetailViewController new];
+            vc.title = [item.title copy];
+            vc.uuid = [item.uuid copy];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+}
+
+#pragma mark - UITabBar
+- (BOOL)hidesBottomBarWhenPushed
+{
+    return (self.navigationController.topViewController != self);
+}
 
 
 @end

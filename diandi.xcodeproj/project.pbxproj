@@ -41,6 +41,7 @@
 		1B3A65B21BE9B66800BB0429 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3A65B11BE9B66800BB0429 /* QuartzCore.framework */; };
 		1B3A65B41BE9B68400BB0429 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3A65B31BE9B68400BB0429 /* libc++.tbd */; };
 		1B3A65B61BE9B6CE00BB0429 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3A65B51BE9B6CE00BB0429 /* libz.tbd */; };
+		1B523AE81BF2E3D5005F29F2 /* DDRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B523AE71BF2E3D5005F29F2 /* DDRankView.m */; };
 		1B58DB091BB2478B00F8FDE7 /* ASPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DAF41BB2478B00F8FDE7 /* ASPageView.m */; };
 		1B58DB0A1BB2478B00F8FDE7 /* ASPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DAF61BB2478B00F8FDE7 /* ASPickerView.m */; };
 		1B58DB0B1BB2478B00F8FDE7 /* ASWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DAF81BB2478B00F8FDE7 /* ASWaitingView.m */; };
@@ -138,6 +139,8 @@
 		1B3A65B11BE9B66800BB0429 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1B3A65B31BE9B68400BB0429 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		1B3A65B51BE9B6CE00BB0429 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		1B523AE61BF2E3D5005F29F2 /* DDRankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRankView.h; sourceTree = "<group>"; };
+		1B523AE71BF2E3D5005F29F2 /* DDRankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRankView.m; sourceTree = "<group>"; };
 		1B58DAF31BB2478B00F8FDE7 /* ASPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPageView.h; sourceTree = "<group>"; };
 		1B58DAF41BB2478B00F8FDE7 /* ASPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPageView.m; sourceTree = "<group>"; };
 		1B58DAF51BB2478B00F8FDE7 /* ASPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPickerView.h; sourceTree = "<group>"; };
@@ -492,6 +495,8 @@
 				1B84A06F1BEC3AB4009F04EF /* Cell */,
 				1BADA3B01B8B09820071240C /* DDGradeView.h */,
 				1BADA3B11B8B09820071240C /* DDGradeView.m */,
+				1B523AE61BF2E3D5005F29F2 /* DDRankView.h */,
+				1B523AE71BF2E3D5005F29F2 /* DDRankView.m */,
 				1BADA3BF1B8B1E980071240C /* DDLinkageView.h */,
 				1BADA3C01B8B1E980071240C /* DDLinkageView.m */,
 				1B3714DA1B8C46F200A49CC3 /* DDMenuButton.h */,
@@ -651,6 +656,7 @@
 				1B58DB111BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m in Sources */,
 				1B010FA41ADF9B2600F37746 /* AppDelegate.m in Sources */,
 				1BADA3BE1B8B13460071240C /* DDNoteViewController.m in Sources */,
+				1B523AE81BF2E3D5005F29F2 /* DDRankView.m in Sources */,
 				1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */,
 				1B3714DC1B8C46F200A49CC3 /* DDMenuButton.m in Sources */,
 				1BADA3C41B8B1F5D0071240C /* DDLinkageCell.m in Sources */,
