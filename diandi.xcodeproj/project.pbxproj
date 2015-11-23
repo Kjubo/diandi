@@ -57,6 +57,7 @@
 		1B84A0781BEC7660009F04EF /* DDSpotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B84A0771BEC7660009F04EF /* DDSpotDetailViewController.m */; };
 		1B9F758C1BEB29FD00640547 /* DDMddListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F758B1BEB29FD00640547 /* DDMddListModel.m */; };
 		1B9F758F1BEB2C1300640547 /* DDCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F758E1BEB2C1300640547 /* DDCacheHelper.m */; };
+		1BA085E71BFC296B00426BBD /* DDDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA085E61BFC296B00426BBD /* DDDetailHeaderView.m */; };
 		1BADA3B21B8B09820071240C /* DDGradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3B11B8B09820071240C /* DDGradeView.m */; };
 		1BADA3B51B8B0DE20071240C /* UIFont+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3B41B8B0DE20071240C /* UIFont+Addtion.m */; };
 		1BADA3B81B8B0EB30071240C /* DDTagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3B71B8B0EB30071240C /* DDTagCollectionViewCell.m */; };
@@ -67,6 +68,9 @@
 		1BADA3CA1B8C0F000071240C /* DDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3C91B8C0F000071240C /* DDTabBarViewController.m */; };
 		1BADA3CD1B8C0F7C0071240C /* UITabBarItem+Universal.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3CC1B8C0F7C0071240C /* UITabBarItem+Universal.m */; };
 		1BB2EBC91BD241CB005A453F /* DDSearchHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB2EBC81BD241CB005A453F /* DDSearchHeaderCollectionReusableView.m */; };
+		1BBC3D811BFF254500BCCCAB /* NSArray+JSONModelAddtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBC3D801BFF254500BCCCAB /* NSArray+JSONModelAddtion.m */; };
+		1BBFFDC91BFEF3EE005833EE /* DDShareInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBFFDC81BFEF3EE005833EE /* DDShareInfoModel.m */; };
+		1BBFFDCC1BFEF76F005833EE /* DDCustomShareInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBFFDCB1BFEF76F005833EE /* DDCustomShareInfoModel.m */; };
 		1BC461E01BCA38FE003550FC /* HttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC461DF1BCA38FE003550FC /* HttpUtil.m */; };
 		1BC461E31BCA3923003550FC /* Cipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC461E21BCA3923003550FC /* Cipher.m */; };
 		1BC461E61BCA3942003550FC /* UIDevice+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC461E51BCA3942003550FC /* UIDevice+Addition.m */; };
@@ -77,6 +81,8 @@
 		1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E321B2972D500EE98EB /* UIView+Layout.m */; };
 		1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE309771B4FC4120008EF74 /* DBSCAN.m */; };
 		1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */; };
+		1BF6B0A21BFC5F1700DA5878 /* DDSpotShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF6B0A11BFC5F1700DA5878 /* DDSpotShareTableViewCell.m */; };
+		1BF6B0A51BFC60E000DA5878 /* DDShareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF6B0A41BFC60E000DA5878 /* DDShareHeaderView.m */; };
 		F8AA14F9DC9FC35F97094910 /* libPods-diandi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74C1D0035DADF754EEDD1A /* libPods-diandi.a */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +178,8 @@
 		1B9F758B1BEB29FD00640547 /* DDMddListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDMddListModel.m; path = diandi/Class/DDMddListModel.m; sourceTree = SOURCE_ROOT; };
 		1B9F758D1BEB2C1300640547 /* DDCacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCacheHelper.h; sourceTree = "<group>"; };
 		1B9F758E1BEB2C1300640547 /* DDCacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCacheHelper.m; sourceTree = "<group>"; };
+		1BA085E51BFC296B00426BBD /* DDDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDetailHeaderView.h; sourceTree = "<group>"; };
+		1BA085E61BFC296B00426BBD /* DDDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDetailHeaderView.m; sourceTree = "<group>"; };
 		1BADA3B01B8B09820071240C /* DDGradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDGradeView.h; sourceTree = "<group>"; };
 		1BADA3B11B8B09820071240C /* DDGradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDGradeView.m; sourceTree = "<group>"; };
 		1BADA3B31B8B0DE20071240C /* UIFont+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Addtion.h"; sourceTree = "<group>"; };
@@ -192,6 +200,12 @@
 		1BADA3CC1B8C0F7C0071240C /* UITabBarItem+Universal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+Universal.m"; sourceTree = "<group>"; };
 		1BB2EBC71BD241CB005A453F /* DDSearchHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSearchHeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		1BB2EBC81BD241CB005A453F /* DDSearchHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSearchHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		1BBC3D7F1BFF254500BCCCAB /* NSArray+JSONModelAddtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModelAddtion.h"; sourceTree = "<group>"; };
+		1BBC3D801BFF254500BCCCAB /* NSArray+JSONModelAddtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModelAddtion.m"; sourceTree = "<group>"; };
+		1BBFFDC71BFEF3EE005833EE /* DDShareInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDShareInfoModel.h; path = diandi/Class/DDShareInfoModel.h; sourceTree = SOURCE_ROOT; };
+		1BBFFDC81BFEF3EE005833EE /* DDShareInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDShareInfoModel.m; path = diandi/Class/DDShareInfoModel.m; sourceTree = SOURCE_ROOT; };
+		1BBFFDCA1BFEF76F005833EE /* DDCustomShareInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDCustomShareInfoModel.h; path = diandi/Class/DDCustomShareInfoModel.h; sourceTree = SOURCE_ROOT; };
+		1BBFFDCB1BFEF76F005833EE /* DDCustomShareInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDCustomShareInfoModel.m; path = diandi/Class/DDCustomShareInfoModel.m; sourceTree = SOURCE_ROOT; };
 		1BC461DE1BCA38FE003550FC /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
 		1BC461DF1BCA38FE003550FC /* HttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtil.m; sourceTree = "<group>"; };
 		1BC461E11BCA3923003550FC /* Cipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cipher.h; sourceTree = "<group>"; };
@@ -213,6 +227,10 @@
 		1BF278A51AE8EE5600022ACF /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		1BF597F51B1709A50037A507 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		1BF6B0A01BFC5F1700DA5878 /* DDSpotShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotShareTableViewCell.h; sourceTree = "<group>"; };
+		1BF6B0A11BFC5F1700DA5878 /* DDSpotShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotShareTableViewCell.m; sourceTree = "<group>"; };
+		1BF6B0A31BFC60E000DA5878 /* DDShareHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDShareHeaderView.h; sourceTree = "<group>"; };
+		1BF6B0A41BFC60E000DA5878 /* DDShareHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDShareHeaderView.m; sourceTree = "<group>"; };
 		7C74C1D0035DADF754EEDD1A /* libPods-diandi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-diandi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84A626A42C6A40DB687C670 /* Pods-diandi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diandi.release.xcconfig"; path = "Pods/Target Support Files/Pods-diandi/Pods-diandi.release.xcconfig"; sourceTree = "<group>"; };
 		F3B51D707D8013AB76238B33 /* Pods-diandi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diandi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-diandi/Pods-diandi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -333,10 +351,14 @@
 				1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */,
 				1B060DCC1BE76DAF00D098B2 /* DDArea.h */,
 				1B060DCD1BE76DAF00D098B2 /* DDArea.m */,
+				1BBFFDCA1BFEF76F005833EE /* DDCustomShareInfoModel.h */,
+				1BBFFDCB1BFEF76F005833EE /* DDCustomShareInfoModel.m */,
 				1B9F758A1BEB29FD00640547 /* DDMddListModel.h */,
 				1B9F758B1BEB29FD00640547 /* DDMddListModel.m */,
 				1B84A0731BEC448A009F04EF /* DDNoteModel.h */,
 				1B84A0741BEC448A009F04EF /* DDNoteModel.m */,
+				1BBFFDC71BFEF3EE005833EE /* DDShareInfoModel.h */,
+				1BBFFDC81BFEF3EE005833EE /* DDShareInfoModel.m */,
 				1B06BE091BB63C19009B587B /* DDSpotModel.h */,
 				1B06BE0A1BB63C19009B587B /* DDSpotModel.m */,
 				1B1545611B5A3FCD007B41D5 /* DGroup.h */,
@@ -458,6 +480,8 @@
 				1BADA3C31B8B1F5D0071240C /* DDLinkageCell.m */,
 				1B06BE061BB63674009B587B /* DDNoteTableViewCell.h */,
 				1B06BE071BB63674009B587B /* DDNoteTableViewCell.m */,
+				1BF6B0A01BFC5F1700DA5878 /* DDSpotShareTableViewCell.h */,
+				1BF6B0A11BFC5F1700DA5878 /* DDSpotShareTableViewCell.m */,
 				1B84A0701BEC3B28009F04EF /* DDSpotTableViewCell.h */,
 				1B84A0711BEC3B28009F04EF /* DDSpotTableViewCell.m */,
 				1BADA3B61B8B0EB30071240C /* DDTagCollectionViewCell.h */,
@@ -471,6 +495,8 @@
 			children = (
 				1B3999371B1D9D9700FEA549 /* CLLocation+Addtion.h */,
 				1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */,
+				1BBC3D7F1BFF254500BCCCAB /* NSArray+JSONModelAddtion.h */,
+				1BBC3D801BFF254500BCCCAB /* NSArray+JSONModelAddtion.m */,
 				1B39992C1B1C687500FEA549 /* NSDate+Addition.h */,
 				1B39992D1B1C687500FEA549 /* NSDate+Addition.m */,
 				1BC461E71BCA3A49003550FC /* NSString+Addition.h */,
@@ -493,10 +519,10 @@
 			isa = PBXGroup;
 			children = (
 				1B84A06F1BEC3AB4009F04EF /* Cell */,
+				1BA085E51BFC296B00426BBD /* DDDetailHeaderView.h */,
+				1BA085E61BFC296B00426BBD /* DDDetailHeaderView.m */,
 				1BADA3B01B8B09820071240C /* DDGradeView.h */,
 				1BADA3B11B8B09820071240C /* DDGradeView.m */,
-				1B523AE61BF2E3D5005F29F2 /* DDRankView.h */,
-				1B523AE71BF2E3D5005F29F2 /* DDRankView.m */,
 				1BADA3BF1B8B1E980071240C /* DDLinkageView.h */,
 				1BADA3C01B8B1E980071240C /* DDLinkageView.m */,
 				1B3714DA1B8C46F200A49CC3 /* DDMenuButton.h */,
@@ -505,10 +531,14 @@
 				1BADA3C61B8B211B0071240C /* DDPopAreaView.m */,
 				1B1C2D811BC3A662001496BC /* DDPopContainerView.h */,
 				1B1C2D821BC3A662001496BC /* DDPopContainerView.m */,
+				1B523AE61BF2E3D5005F29F2 /* DDRankView.h */,
+				1B523AE71BF2E3D5005F29F2 /* DDRankView.m */,
 				1B2CB7891BD237CB005074EB /* DDSearchEmptyView.h */,
 				1B2CB78A1BD237CB005074EB /* DDSearchEmptyView.m */,
 				1BB2EBC71BD241CB005A453F /* DDSearchHeaderCollectionReusableView.h */,
 				1BB2EBC81BD241CB005A453F /* DDSearchHeaderCollectionReusableView.m */,
+				1BF6B0A31BFC60E000DA5878 /* DDShareHeaderView.h */,
+				1BF6B0A41BFC60E000DA5878 /* DDShareHeaderView.m */,
 				1B1C2D841BC3BE4A001496BC /* DDTopMenuView.h */,
 				1B1C2D851BC3BE4A001496BC /* DDTopMenuView.m */,
 			);
@@ -641,8 +671,10 @@
 				1B58DB0E1BB2478B00F8FDE7 /* MJRefreshFooterView.m in Sources */,
 				1B58DB0D1BB2478B00F8FDE7 /* MJRefreshConst.m in Sources */,
 				1BADA3CA1B8C0F000071240C /* DDTabBarViewController.m in Sources */,
+				1BBC3D811BFF254500BCCCAB /* NSArray+JSONModelAddtion.m in Sources */,
 				1B58DB0C1BB2478B00F8FDE7 /* MJRefreshBaseView.m in Sources */,
 				1B06BE081BB63674009B587B /* DDNoteTableViewCell.m in Sources */,
+				1BA085E71BFC296B00426BBD /* DDDetailHeaderView.m in Sources */,
 				1BC461E61BCA3942003550FC /* UIDevice+Addition.m in Sources */,
 				1B1C2D861BC3BE4A001496BC /* DDTopMenuView.m in Sources */,
 				1B06BE0B1BB63C19009B587B /* DDSpotModel.m in Sources */,
@@ -659,6 +691,7 @@
 				1B523AE81BF2E3D5005F29F2 /* DDRankView.m in Sources */,
 				1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */,
 				1B3714DC1B8C46F200A49CC3 /* DDMenuButton.m in Sources */,
+				1BF6B0A21BFC5F1700DA5878 /* DDSpotShareTableViewCell.m in Sources */,
 				1BADA3C41B8B1F5D0071240C /* DDLinkageCell.m in Sources */,
 				1B1545641B5A3FCD007B41D5 /* DGroup.m in Sources */,
 				1B010FCC1ADF9BC000F37746 /* RootViewController.m in Sources */,
@@ -674,11 +707,14 @@
 				1B58DB0A1BB2478B00F8FDE7 /* ASPickerView.m in Sources */,
 				1B9F758F1BEB2C1300640547 /* DDCacheHelper.m in Sources */,
 				1B2CB78B1BD237CB005074EB /* DDSearchEmptyView.m in Sources */,
+				1BF6B0A51BFC60E000DA5878 /* DDShareHeaderView.m in Sources */,
 				1BC461EF1BCA3B0D003550FC /* SSKeychain.m in Sources */,
 				1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */,
 				1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */,
+				1BBFFDC91BFEF3EE005833EE /* DDShareInfoModel.m in Sources */,
 				1B010FA11ADF9B2600F37746 /* main.m in Sources */,
 				1BADA3CD1B8C0F7C0071240C /* UITabBarItem+Universal.m in Sources */,
+				1BBFFDCC1BFEF76F005833EE /* DDCustomShareInfoModel.m in Sources */,
 				1BC461E91BCA3A49003550FC /* NSString+Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

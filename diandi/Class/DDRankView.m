@@ -14,11 +14,13 @@ static CGFloat kViewHeight = 16.0;
 - (instancetype)init{
     if(self = [super init]){
         self.clipsToBounds = YES;
+        self.backgroundColor = [UIColor clearColor];
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(@(kViewHeight));
         }];
         for(int i = 0; i < 5; i++){
             UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_rank"]];
+            iv.backgroundColor = [UIColor clearColor];
             [self addSubview:iv];
             [iv mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.width.height.equalTo(self.mas_height);

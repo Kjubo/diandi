@@ -90,7 +90,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     self.tbList.dataSource = self;
     self.tbList.separatorColor = [UIColor clearColor];
     self.tbList.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tbList addHeaderWithTarget:self action:@selector(refreshData)];
+    [self.tbList addFooterWithTarget:self action:@selector(loadMore)];
     [self.containerView addSubview:self.tbList];
     [self.tbList mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.containerView);
@@ -119,24 +119,19 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     
     self.pageIndex = 0;
     self.data = [NSMutableArray array];
-
+    
+    [self loadingShow];
+    [self loadMore];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-    [self loadingShow];
-    [self loadMore];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
-}
-
-- (void)refreshData{
-    self.pageIndex = 0;
-    [self loadMore];
 }
 
 - (void)loadMore{
@@ -153,7 +148,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
         completion:^(BOOL succ, NSString *message, id json) {
             if(succ){
                 [self.tbList footerEndRefreshing];
-                [self.tbList headerEndRefreshing];
                 NSError *error;
                 NSArray *items;
                 if(_type == DDNoteView_Note){
@@ -215,8 +209,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     if(_isSearching){
         self.popAreaView.hidden = YES;
         self.popContainerView.hidden = YES;
-        
-        
     }
     [UIView transitionWithView:self.topView duration:0.3 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionTransitionFlipFromBottom animations:^{
         self.menuView.hidden = _isSearching;
@@ -248,7 +240,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == self.tbList){
         if(_type == DDNoteView_Spot){
-            return 100;
+            return 112;
         }else{
             return 9.0/15.0 * DF_WIDTH + 10.0;
         }
@@ -293,6 +285,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
             DDSpotDetailViewController *vc = [DDSpotDetailViewController new];
             vc.title = [item.title copy];
             vc.uuid = [item.uuid copy];
+            vc.spotModel = item;
             [self.navigationController pushViewController:vc animated:YES];
         }
     }

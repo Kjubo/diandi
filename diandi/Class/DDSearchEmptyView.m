@@ -9,7 +9,10 @@
 #import "DDSearchEmptyView.h"
 #import "DDTagCollectionViewCell.h"
 #import "DDSearchHeaderCollectionReusableView.h"
+#import "DDCacheHelper.h"
+
 @interface DDSearchEmptyView ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@property (nonatomic, strong) UIView *maskerView;
 @property (nonatomic, strong) UICollectionView *contentView;
 @end
 
@@ -20,7 +23,19 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
 - (instancetype)init{
     if(self = [super init]){
         // Initialization code
-        self.backgroundColor = GS_COLOR_BACKGROUND;
+        self.clipsToBounds = YES;
+        [super setHidden:YES];
+        
+        //透明遮罩层
+        self.maskerView = [UIView new];
+        self.maskerView.backgroundColor = GS_COLOR_BLACK;
+        self.maskerView.alpha = 0.4;
+        UITapGestureRecognizer *tapMaskerView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapMaskerView)];
+        [self.maskerView addGestureRecognizer:tapMaskerView];
+        [self addSubview:self.maskerView];
+        [self.maskerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self);
+        }];
         
         UICollectionViewFlowLayout *fl = [[UICollectionViewFlowLayout alloc] init];
         fl.minimumLineSpacing = 5.0;
@@ -40,16 +55,43 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
     return self;
 }
 
+- (void)handleTapMaskerView{
+    self.hidden = YES;
+}
+
+- (void)setHidden:(BOOL)hidden{
+    if(self.hidden == hidden) return;
+    if(hidden){
+        [UIView animateWithDuration:0.2 animations:^{
+            self.contentView.top = -self.contentView.height;
+        }completion:^(BOOL finished) {
+            [super setHidden:YES];
+        }];
+    }else{
+        [self.contentView setContentOffset:CGPointZero];
+        [self.contentView setScrollEnabled:NO];
+        [self.superview bringSubviewToFront:self];
+        [super setHidden:NO];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.contentView.top = 0;
+        } completion:nil];
+    }
+}
+
 #pragma mark - UICollectionView Delegate & Datasource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 2;
+    if([[DDCacheHelper shared].searchHistoryList count] > 0){
+        return 2;
+    }
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if(section == 0){
-        return 6;
+        return [[DDCacheHelper shared].mddList.hotplace count];
     }else{
-        return 4;
+        return [[DDCacheHelper shared].searchHistoryList count];
     }
 }
 
@@ -63,9 +105,12 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DDTagCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTagCellIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = GS_COLOR_RED;
-    cell.text = @"关键词";
-//    cell.backgroundColor = kPopTagColor[indexPath.row % [kPopTagColor count]];
+    cell.backgroundColor = GS_COLOR_BLACK;
+    if(indexPath.section == 0){
+        cell.text = [[DDCacheHelper shared].mddList.hotplace[indexPath.row] copy];
+    }else{
+        cell.text = [[DDCacheHelper shared].searchHistoryList[indexPath.row] copy];
+    }
     return cell;
 }
 
@@ -84,9 +129,10 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    if([self.delegate respondsToSelector:@selector(ddGradeView:didTagSelected:)]){
-//        [self.delegate ddGradeView:self didTagSelected:indexPath.row];
-//    }
+    DDTagCollectionViewCell *cell = (DDTagCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if(cell && [self.delegate respondsToSelector:@selector(ddSearchEmptyViewDidSelect:)]){
+        [self.delegate ddSearchEmptyViewDidSelect:cell.text];
+    }
 }
 
 @end

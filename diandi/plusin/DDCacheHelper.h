@@ -11,6 +11,9 @@
 @interface DDCacheHelper : NSObject
 
 @property (nonatomic, strong) DDMddListModel *mddList;
+@property (nonatomic, readonly) NSArray *searchHistoryList;
+- (void)addSearchHistory:(NSString *)searchKey;
+
 
 + (instancetype)shared;
 

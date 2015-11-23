@@ -28,7 +28,7 @@
         [self.contentView addSubview:self.ivSpotImage];
         [self.ivSpotImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(100, 80));
-            make.left.equalTo(self.contentView).offset(12);
+            make.left.equalTo(self.contentView).offset(15);
             make.centerY.equalTo(self.contentView);
         }];
         
@@ -49,14 +49,15 @@
         }];
         
         self.lbKeepCount = [UILabel new];
+        self.lbKeepCount.textAlignment = NSTextAlignmentRight;
         self.lbKeepCount.backgroundColor = [UIColor clearColor];
-        self.lbKeepCount.textColor = GS_COLOR_LIGHTGRAY;
+        self.lbKeepCount.textColor = GS_COLOR_GRAY;
         self.lbKeepCount.font = [UIFont gs_font:NSAppFontS];
         [keepView addSubview:self.lbKeepCount];
         [self.lbKeepCount mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.equalTo(keepView);
             make.left.equalTo(iv_star.mas_right).offset(5);
-            make.right.equalTo(keepView).offset(-5);
+            make.right.equalTo(keepView);
         }];
         
         self.lbName = [UILabel new];
@@ -66,7 +67,7 @@
         self.lbName.font = [UIFont gs_font:NSAppFontM];
         [self.contentView addSubview:self.lbName];
         [self.lbName mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.ivSpotImage.mas_right).offset(8);
+            make.left.equalTo(self.ivSpotImage.mas_right).offset(12);
             make.right.lessThanOrEqualTo(keepView.mas_left).offset(-10);
             make.top.equalTo(self.ivSpotImage).offset(4);
         }];
@@ -115,7 +116,7 @@
     self.lbName.text = [data.title copy];
     self.lbSubTitle.text = [data.subtitle copy];
     self.lbKeepCount.text = Int2String(data.favor);
-    self.rankView.rank = 3.8;
+    self.rankView.rank = 1.8;
     self.lbShareInfo.text = @"234条分享";
 }
 @end

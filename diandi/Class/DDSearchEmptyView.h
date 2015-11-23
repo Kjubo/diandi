@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DDSearchEmptyViewDelegate <NSObject>
+
+@optional
+- (void)ddSearchEmptyViewDidSelect:(NSString *)searchKey;
+
+@end
+
 @interface DDSearchEmptyView : UIView
+
+@property (nonatomic, assign) id<DDSearchEmptyViewDelegate> delegate;
 
 @end
