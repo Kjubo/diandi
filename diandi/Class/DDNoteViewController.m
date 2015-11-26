@@ -11,7 +11,8 @@
 #import "DDPopContainerView.h"
 #import "DDGradeView.h"
 #import "DDTopMenuView.h"
-#import "DDCacheHelper.h"
+#import "DDSearchEmptyView.h"
+
 #import "DDNoteTableViewCell.h"
 #import "DDSpotTableViewCell.h"
 #import "DDNoteModel.h"
@@ -21,12 +22,13 @@
 #import "MJRefresh.h"
 #import "DDCacheHelper.h"
 
-@interface DDNoteViewController ()<UITableViewDelegate , UITableViewDataSource, DDTopMenuViewDelegate, UISearchBarDelegate, DDPopAreaViewDelegate>
-@property (nonatomic, strong) DDPopAreaView *popAreaView;
-@property (nonatomic, strong) DDPopContainerView *popContainerView; //容器
+@interface DDNoteViewController ()<UITableViewDelegate , UITableViewDataSource, DDTopMenuViewDelegate, UISearchBarDelegate, DDPopAreaViewDelegate, DDSearchEmptyViewDelegate>
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UISearchBar *searchBar;               //搜索框
-@property (nonatomic, strong) DDTopMenuView *menuView;               //分类搜索
+@property (nonatomic, strong) DDTopMenuView *menuView;              //分类搜索
+@property (nonatomic, strong) DDPopAreaView *popAreaView;
+@property (nonatomic, strong) DDPopContainerView *popContainerView; //容器
+@property (nonatomic, strong) DDSearchEmptyView *searchEmptyView;   //搜索关键字为空
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UITableView *tbList;
 
@@ -64,7 +66,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.menuView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.topView).insets(UIEdgeInsetsMake(20, 0, 0, 0));
     }];
-    
+
     self.searchBar = [UISearchBar new];
     self.searchBar.hidden = YES;
     self.searchBar.delegate = self;
@@ -108,6 +110,13 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     self.popContainerView.tableViewDataSource = self;
     [self.containerView addSubview:self.popContainerView];
     [self.popContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.containerView);
+    }];
+    
+    self.searchEmptyView = [DDSearchEmptyView new];
+    self.searchEmptyView.delegate = self;
+    [self.containerView addSubview:self.searchEmptyView];
+    [self.searchEmptyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.containerView);
     }];
     
@@ -206,9 +215,12 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 - (void)setIsSearching:(BOOL)isSearching{
     if(_isSearching == isSearching) return;
     _isSearching = isSearching;
+    self.popAreaView.hidden = YES;
+    self.popContainerView.hidden = YES;
     if(_isSearching){
-        self.popAreaView.hidden = YES;
-        self.popContainerView.hidden = YES;
+        self.searchEmptyView.hidden = NO;
+    }else{
+        self.searchEmptyView.hidden = YES;
     }
     [UIView transitionWithView:self.topView duration:0.3 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionTransitionFlipFromBottom animations:^{
         self.menuView.hidden = _isSearching;
@@ -223,6 +235,14 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 #pragma mark - UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if([searchBar.text length] == 0){
+        self.searchEmptyView.hidden = NO;
+    }else{
+        self.searchEmptyView.hidden = YES;
+    }
+}
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     self.searchBar.text = nil;
     self.isSearching = NO;
@@ -285,7 +305,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
             DDSpotDetailViewController *vc = [DDSpotDetailViewController new];
             vc.title = [item.title copy];
             vc.uuid = [item.uuid copy];
-            vc.spotModel = item;
             [self.navigationController pushViewController:vc animated:YES];
         }
     }

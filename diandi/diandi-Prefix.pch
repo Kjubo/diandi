@@ -26,7 +26,6 @@
 #import "RootViewController.h"
 #import "UIFont+Addtion.h"
 #import "UIImage+Scale.h"
-#import "UIScrollView+EmptyDataSet.h"
 #import "HttpUtil.h"
 
 //十六进制颜色转换（0xFFFFFF）

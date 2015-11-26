@@ -1,18 +1,24 @@
 //
-//  DDSpotModel.h
+//  DDSpotDetailModel.h
 //  diandi
 //
-//  Created by kjubo on 15/9/26.
+//  Created by kjubo on 15/11/24.
 //  Copyright © 2015年 kjubo. All rights reserved.
 //
 
 #import "JSONModel.h"
 
-@interface DDSpotModel : JSONModel
+@interface DDSpotDetailModel : JSONModel
 @property (nonatomic, strong) NSString<Optional> *uuid;
 @property (nonatomic, strong) NSString<Optional> *img;
+@property (nonatomic) CGFloat lat;
+@property (nonatomic) CGFloat lng;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString<Optional> *subtitle;
+@property (nonatomic, strong) NSString<Optional> *desc;
+@property (nonatomic, strong) NSString<Optional> *address;
+@property (nonatomic, strong) NSString<Optional> *open;
+@property (nonatomic, strong) NSString<Optional> *tel;
 @property (nonatomic) NSInteger favor;
 @property (nonatomic) NSInteger hot;
 @end

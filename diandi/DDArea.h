@@ -12,7 +12,7 @@
 @end
 
 @interface DDArea : JSONModel
-@property (nonatomic, strong) NSString<Optional> *uuid;
+@property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray<DDArea, Optional> *list;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DDSpotModel.h"
+#import "DDSpotDetailModel.h"
 
 @protocol DDDetailHeaderViewDelegate <NSObject>
 
@@ -21,6 +21,6 @@
 @property (nonatomic, assign) id<DDDetailHeaderViewDelegate> delegate;
 
 @property (nonatomic) BOOL isFavorite;
-- (void)setSpotModel:(DDSpotModel *)model;
+- (void)setSpotModel:(DDSpotDetailModel *)model;
 
 @end

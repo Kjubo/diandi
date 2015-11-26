@@ -14,6 +14,7 @@
 @interface DDSearchEmptyView ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UIView *maskerView;
 @property (nonatomic, strong) UICollectionView *contentView;
+@property (nonatomic, strong) UICollectionViewFlowLayout *fl;
 @end
 
 static NSString *kHeaderReuseIdentifier = @"kHeaderReuseIdentifier";
@@ -37,11 +38,11 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
             make.edges.equalTo(self);
         }];
         
-        UICollectionViewFlowLayout *fl = [[UICollectionViewFlowLayout alloc] init];
-        fl.minimumLineSpacing = 5.0;
-        fl.minimumInteritemSpacing = 5.0;
-        fl.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-        self.contentView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:fl];
+        self.fl = [[UICollectionViewFlowLayout alloc] init];
+        self.fl.minimumLineSpacing = 5.0;
+        self.fl.minimumInteritemSpacing = 5.0;
+        self.fl.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        self.contentView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.fl];
         self.contentView.backgroundColor = [UIColor clearColor];
         self.contentView.delegate = self;
         self.contentView.dataSource = self;
@@ -54,6 +55,7 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
     }
     return self;
 }
+
 
 - (void)handleTapMaskerView{
     self.hidden = YES;
@@ -89,15 +91,20 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if(section == 0){
-        return [[DDCacheHelper shared].mddList.hotplace count];
+        if([DDCacheHelper shared].mddList){
+            return [[DDCacheHelper shared].mddList.hotplace count];
+        }else{
+            return 0;
+        }
     }else{
         return [[DDCacheHelper shared].searchHistoryList count];
     }
+    return 10;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
-        return CGSizeMake(DF_WIDTH, 36);
+        return CGSizeMake(DF_WIDTH - 20.0, 36);
     }else{
         return CGSizeMake((DF_WIDTH - 40)/3.0, 36);
     }
@@ -106,11 +113,14 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DDTagCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTagCellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = GS_COLOR_BLACK;
-    if(indexPath.section == 0){
-        cell.text = [[DDCacheHelper shared].mddList.hotplace[indexPath.row] copy];
-    }else{
-        cell.text = [[DDCacheHelper shared].searchHistoryList[indexPath.row] copy];
-    }
+    cell.text = @"1234";
+//    if(indexPath.section == 0){
+//        if([DDCacheHelper shared].mddList){
+//            cell.text = [[DDCacheHelper shared].mddList.hotplace[indexPath.row] copy];
+//        }
+//    }else{
+//        cell.text = [[DDCacheHelper shared].searchHistoryList[indexPath.row] copy];
+//    }
     return cell;
 }
 

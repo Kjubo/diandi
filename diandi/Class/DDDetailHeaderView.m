@@ -13,11 +13,11 @@
 @property (nonatomic, strong) UIImageView *ivSpotImage;
 @property (nonatomic, strong) UILabel *lbName;
 @property (nonatomic, strong) UILabel *lbSubTitle;
+@property (nonatomic, strong) UIImageView *ivKeep;
 @property (nonatomic, strong) UIButton *btnKeep;
 @property (nonatomic, strong) DDRankView *rankView;
 @property (nonatomic, strong) UILabel *lbShareInfo;
 @property (nonatomic, strong) UITableView *tbSpotInfo;
-
 @property (nonatomic, strong) NSArray *tbSources;
 @end
 
@@ -56,14 +56,22 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
         }];
         
         self.btnKeep = [UIButton new];
+        self.btnKeep.titleLabel.font = [UIFont gs_font:NSAppFontS];
         [self.btnKeep addTarget:self action:@selector(btnClick_keepSpot) forControlEvents:UIControlEventTouchUpInside];
-        [self.btnKeep setImage:[UIImage imageNamed:@"ic_star"] forState:UIControlStateNormal];
         [self.btnKeep setTitle:@"收藏" forState:UIControlStateNormal];
         [self addSubview:self.btnKeep];
         [self.btnKeep mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(60, 30));
-            make.right.equalTo(self).offset(-20);
+            make.right.equalTo(self).offset(-10);
             make.centerY.equalTo(self.lbName);
+        }];
+        
+        self.ivKeep = [UIImageView new];
+        [self.btnKeep addSubview:self.ivKeep];
+        [self.ivKeep mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(12, 12));
+            make.right.equalTo(self.btnKeep.titleLabel.mas_left).offset(-2);
+            make.centerY.equalTo(self.btnKeep);
         }];
         
         self.rankView = [DDRankView new];
@@ -95,7 +103,7 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
         }];
         
         self.tbSpotInfo = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        self.tbSpotInfo.backgroundColor = GS_COLOR_WHITE;
+        self.tbSpotInfo.backgroundColor = GS_COLOR_BACKGROUND;
         self.tbSpotInfo.scrollEnabled = NO;
         self.tbSpotInfo.delegate = self;
         self.tbSpotInfo.dataSource = self;
@@ -114,6 +122,8 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
             make.top.equalTo(lbInfoHeader.mas_bottom).offset(10);
             make.height.mas_equalTo(44 * 5 + 10.0);
         }];
+        
+        self.isFavorite = NO;
     }
     return self;
 }
@@ -121,22 +131,23 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
 - (void)setIsFavorite:(BOOL)isFavorite{
     _isFavorite = isFavorite;
     if(_isFavorite){
-        [self.btnKeep setImage:[UIImage imageNamed:@"ic_star_hl"] forState:UIControlStateNormal];
+        self.ivKeep.image = [UIImage imageNamed:@"ic_star_hl"];
         [self.btnKeep setTitleColor:GS_COLOR_ORANGE forState:UIControlStateNormal];
     }else{
-        [self.btnKeep setImage:[UIImage imageNamed:@"ic_star"] forState:UIControlStateNormal];
+        self.ivKeep.image = [UIImage imageNamed:@"ic_star"];
         [self.btnKeep setTitleColor:GS_COLOR_GRAY forState:UIControlStateNormal];
     }
 }
 
-- (void)setSpotModel:(DDSpotModel *)model{
+- (void)setSpotModel:(DDSpotDetailModel *)model{
     if(model){
         [self.ivSpotImage sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:nil];
         self.lbName.text = [model.title copy];
         self.lbSubTitle.textColor = [model.subtitle copy];
         self.rankView.rank = 3.8;
         self.lbShareInfo.text = [NSString stringWithFormat:@"%@个分享信息", @(234)];
-        self.tbSources = @[@[@"亚洲 东京 西门汀45目", @"+03 072 45782332", @"上午9点-晚上10点"], @[@"景点信息", @"景点信息景点信息景点信息景点信息景点信息景点信息景点信息景点信息景点信息景点信息景点信息"]];
+        self.tbSources = @[@[model.address, model.tel, model.open], @[@"景点信息", model.desc]];
+        [self.tbSpotInfo reloadData];
     }
 }
 
@@ -165,6 +176,10 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
     return CGFLOAT_MIN;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return CGFLOAT_MIN;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(section == 0){
         return 3;
@@ -175,8 +190,9 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSpotInfoCellIdentifier forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if(indexPath.section == 0){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSpotInfoCellIdentifier forIndexPath:indexPath];
         cell.imageView.image = [UIImage imageNamed:kSpotInfoIconNames[indexPath.row]];
         cell.textLabel.text = self.tbSources[indexPath.section][indexPath.row];
         cell.textLabel.font = [UIFont gs_font:NSAppFontM];
@@ -188,7 +204,6 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
         }
         return cell;
     }else if(indexPath.section == 1){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSpotInfoCellIdentifier forIndexPath:indexPath];
         cell.imageView.image = nil;
         cell.textLabel.text = self.tbSources[indexPath.section][indexPath.row];
         cell.textLabel.textColor = GS_COLOR_BLACK;

@@ -55,6 +55,7 @@
 		1B84A0721BEC3B28009F04EF /* DDSpotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B84A0711BEC3B28009F04EF /* DDSpotTableViewCell.m */; };
 		1B84A0751BEC448A009F04EF /* DDNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B84A0741BEC448A009F04EF /* DDNoteModel.m */; };
 		1B84A0781BEC7660009F04EF /* DDSpotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B84A0771BEC7660009F04EF /* DDSpotDetailViewController.m */; };
+		1B9F5D181C03FD3B006C5636 /* DDSpotDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F5D171C03FD3B006C5636 /* DDSpotDetailModel.m */; };
 		1B9F758C1BEB29FD00640547 /* DDMddListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F758B1BEB29FD00640547 /* DDMddListModel.m */; };
 		1B9F758F1BEB2C1300640547 /* DDCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F758E1BEB2C1300640547 /* DDCacheHelper.m */; };
 		1BA085E71BFC296B00426BBD /* DDDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA085E61BFC296B00426BBD /* DDDetailHeaderView.m */; };
@@ -174,6 +175,8 @@
 		1B84A0741BEC448A009F04EF /* DDNoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDNoteModel.m; path = diandi/Class/DDNoteModel.m; sourceTree = SOURCE_ROOT; };
 		1B84A0761BEC7660009F04EF /* DDSpotDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotDetailViewController.h; sourceTree = "<group>"; };
 		1B84A0771BEC7660009F04EF /* DDSpotDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotDetailViewController.m; sourceTree = "<group>"; };
+		1B9F5D161C03FD3B006C5636 /* DDSpotDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSpotDetailModel.h; path = diandi/plusin/Category/DDSpotDetailModel.h; sourceTree = SOURCE_ROOT; };
+		1B9F5D171C03FD3B006C5636 /* DDSpotDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDSpotDetailModel.m; path = diandi/plusin/Category/DDSpotDetailModel.m; sourceTree = SOURCE_ROOT; };
 		1B9F758A1BEB29FD00640547 /* DDMddListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDMddListModel.h; path = diandi/Class/DDMddListModel.h; sourceTree = SOURCE_ROOT; };
 		1B9F758B1BEB29FD00640547 /* DDMddListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDMddListModel.m; path = diandi/Class/DDMddListModel.m; sourceTree = SOURCE_ROOT; };
 		1B9F758D1BEB2C1300640547 /* DDCacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCacheHelper.h; sourceTree = "<group>"; };
@@ -359,6 +362,8 @@
 				1B84A0741BEC448A009F04EF /* DDNoteModel.m */,
 				1BBFFDC71BFEF3EE005833EE /* DDShareInfoModel.h */,
 				1BBFFDC81BFEF3EE005833EE /* DDShareInfoModel.m */,
+				1B9F5D161C03FD3B006C5636 /* DDSpotDetailModel.h */,
+				1B9F5D171C03FD3B006C5636 /* DDSpotDetailModel.m */,
 				1B06BE091BB63C19009B587B /* DDSpotModel.h */,
 				1B06BE0A1BB63C19009B587B /* DDSpotModel.m */,
 				1B1545611B5A3FCD007B41D5 /* DGroup.h */,
@@ -707,6 +712,7 @@
 				1B58DB0A1BB2478B00F8FDE7 /* ASPickerView.m in Sources */,
 				1B9F758F1BEB2C1300640547 /* DDCacheHelper.m in Sources */,
 				1B2CB78B1BD237CB005074EB /* DDSearchEmptyView.m in Sources */,
+				1B9F5D181C03FD3B006C5636 /* DDSpotDetailModel.m in Sources */,
 				1BF6B0A51BFC60E000DA5878 /* DDShareHeaderView.m in Sources */,
 				1BC461EF1BCA3B0D003550FC /* SSKeychain.m in Sources */,
 				1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */,

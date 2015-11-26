@@ -9,6 +9,7 @@
 #import "DDLinkageView.h"
 #import "DDLinkageCell.h"
 #import "DDCacheHelper.h"
+#import "UIScrollView+EmptyDataSet.h"
 
 @interface DDLinkageView ()<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource>
 /**

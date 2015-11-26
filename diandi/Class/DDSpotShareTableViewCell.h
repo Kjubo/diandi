@@ -18,7 +18,7 @@
 
 @interface DDSpotShareTableViewCell : UITableViewCell
 @property (nonatomic, assign) id<DDSpotShareTableViewCellDelegate> delegate;
-@property (nonatomic, weak) DDShareInfoModel *model;
+@property (nonatomic, strong) DDShareInfoModel *model;
 @property (nonatomic) BOOL goodCount;
 @property (nonatomic) BOOL badCount;
 @property (nonatomic) BOOL favorCount;

@@ -11,12 +11,14 @@
 #import "DDShareHeaderView.h"
 #import "DDSpotShareTableViewCell.h"
 #import "DDCustomShareInfoModel.h"
+#import "DDSpotDetailModel.h"
 
 @interface DDSpotDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) DDDetailHeaderView *headerView;
 @property (nonatomic, strong) UITableView *tbList;
 @property (nonatomic, strong) DDShareHeaderView *shareHeaderView;
 @property (nonatomic, strong) NSMutableArray *shareList;
+@property (nonatomic, strong) DDSpotDetailModel *spotModel;
 @end
 
 static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
@@ -24,7 +26,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 - (void)viewDidLoad{
     self.headerView = [DDDetailHeaderView new];
-    [self.headerView setSpotModel:self.spotModel];
     self.headerView.height = (DF_WIDTH * (180.0/375.0)) + 460.0;
     
     self.shareHeaderView = [DDShareHeaderView new];
@@ -41,12 +42,27 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.tbList mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    
-    [self.shareHeaderView setShareCount:2234];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if(!self.spotModel){
+        [self loadingShow];
+        [HttpUtil load:@"api/mdddetail.php"
+                params:@{@"uuid" : self.uuid}
+            completion:^(BOOL succ, NSString *message, id json) {
+                [self loadingHidden];
+                if(succ){
+                    NSError *error;
+                    self.spotModel = [[DDSpotDetailModel alloc] initWithDictionary:json error:&error];
+                    NSAssert(!error, @"%@", error);
+                    [self.headerView setSpotModel:self.spotModel];
+                    [self.shareHeaderView setShareCount:2234];
+                }else{
+                    [RootViewController showAlert:message];
+                }
+            }];
+    }
 }
 
 - (void)btnClick_keepSpot{
