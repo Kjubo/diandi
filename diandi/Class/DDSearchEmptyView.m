@@ -92,7 +92,7 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if(section == 0){
         if([DDCacheHelper shared].mddList){
-            return [[DDCacheHelper shared].mddList.hotplace count];
+            return [[DDCacheHelper shared].mddList.hotsearch count];
         }else{
             return 0;
         }
@@ -113,14 +113,16 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DDTagCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTagCellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = GS_COLOR_BLACK;
-    cell.text = @"1234";
-//    if(indexPath.section == 0){
-//        if([DDCacheHelper shared].mddList){
-//            cell.text = [[DDCacheHelper shared].mddList.hotplace[indexPath.row] copy];
-//        }
-//    }else{
-//        cell.text = [[DDCacheHelper shared].searchHistoryList[indexPath.row] copy];
-//    }
+    if(indexPath.section == 0){
+        if([DDCacheHelper shared].mddList
+           && [[DDCacheHelper shared].mddList.hotsearch count] > 0){
+            cell.text = [[DDCacheHelper shared].mddList.hotsearch[indexPath.row] copy];
+        }
+    }else{
+        if([[DDCacheHelper shared].searchHistoryList count] > 0){
+            cell.text = [[DDCacheHelper shared].searchHistoryList[indexPath.row] copy];
+        }
+    }
     return cell;
 }
 

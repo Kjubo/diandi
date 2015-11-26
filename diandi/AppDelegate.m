@@ -75,7 +75,9 @@
             NSError *error;
             DDMddListModel *ret = [[DDMddListModel alloc] initWithDictionary:json error:&error];
             NSAssert(!error, @"%@", error);
-            [DDCacheHelper shared].mddList = ret;
+            if(ret){
+                [[DDCacheHelper shared] setMddList:ret];
+            }
         }
     }];
 }

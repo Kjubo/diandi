@@ -21,6 +21,6 @@
 @property (nonatomic, assign) id<DDDetailHeaderViewDelegate> delegate;
 
 @property (nonatomic) BOOL isFavorite;
-- (void)setSpotModel:(DDSpotDetailModel *)model;
+@property (nonatomic, weak) DDSpotDetailModel *model;
 
 @end

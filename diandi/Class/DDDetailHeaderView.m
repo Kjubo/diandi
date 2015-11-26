@@ -57,11 +57,12 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
         
         self.btnKeep = [UIButton new];
         self.btnKeep.titleLabel.font = [UIFont gs_font:NSAppFontS];
+        self.btnKeep.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [self.btnKeep addTarget:self action:@selector(btnClick_keepSpot) forControlEvents:UIControlEventTouchUpInside];
         [self.btnKeep setTitle:@"收藏" forState:UIControlStateNormal];
         [self addSubview:self.btnKeep];
         [self.btnKeep mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(60, 30));
+            make.size.mas_equalTo(CGSizeMake(50, 44));
             make.right.equalTo(self).offset(-10);
             make.centerY.equalTo(self.lbName);
         }];
@@ -83,11 +84,11 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
         
         self.lbShareInfo = [UILabel new];
         self.lbShareInfo.backgroundColor = [UIColor clearColor];
-        self.lbShareInfo.textColor = GS_COLOR_LIGHTGRAY;
+        self.lbShareInfo.textColor = GS_COLOR_GRAY;
         self.lbShareInfo.font = [UIFont gs_font:NSAppFontXS];
         [self addSubview:self.lbShareInfo];
         [self.lbShareInfo mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.rankView.mas_right).offset(10);
+            make.right.equalTo(self.btnKeep);
             make.centerY.equalTo(self.rankView);
         }];
         
@@ -139,13 +140,14 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
     }
 }
 
-- (void)setSpotModel:(DDSpotDetailModel *)model{
+- (void)setModel:(DDSpotDetailModel *)model{
     if(model){
+        _model = model;
         [self.ivSpotImage sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:nil];
         self.lbName.text = [model.title copy];
         self.lbSubTitle.textColor = [model.subtitle copy];
         self.rankView.rank = 3.8;
-        self.lbShareInfo.text = [NSString stringWithFormat:@"%@个分享信息", @(234)];
+        self.lbShareInfo.text = [NSString stringWithFormat:@"%@个分享信息", @(model.favor)];
         self.tbSources = @[@[model.address, model.tel, model.open], @[@"景点信息", model.desc]];
         [self.tbSpotInfo reloadData];
     }
@@ -164,7 +166,7 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 1 && indexPath.row == 1){
-        return 60;
+        return [self.model.desc boundingRectWithSize:CGSizeMake(DF_WIDTH - 10, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontS]} context:nil].size.height;
     }
     return 44;
 }
@@ -192,6 +194,7 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSpotInfoCellIdentifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.numberOfLines = 1;
     if(indexPath.section == 0){
         cell.imageView.image = [UIImage imageNamed:kSpotInfoIconNames[indexPath.row]];
         cell.textLabel.text = self.tbSources[indexPath.section][indexPath.row];
@@ -209,11 +212,12 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
         cell.textLabel.textColor = GS_COLOR_BLACK;
         if(indexPath.row == 0){
             cell.textLabel.font = [UIFont gs_font:NSAppFontL];
-            cell.textLabel.numberOfLines = 1;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }else{
             cell.textLabel.font = [UIFont gs_font:NSAppFontS];
-            cell.textLabel.numberOfLines = 2;
+            cell.textLabel.numberOfLines = 0;
+            cell.textLabel.preferredMaxLayoutWidth = DF_WIDTH - 10;
+            cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
         return cell;

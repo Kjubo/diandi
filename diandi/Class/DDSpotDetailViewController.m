@@ -42,27 +42,26 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.tbList mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+    [self loadingShow];
+    [self loadSpotData];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    if(!self.spotModel){
-        [self loadingShow];
-        [HttpUtil load:@"api/mdddetail.php"
-                params:@{@"uuid" : self.uuid}
-            completion:^(BOOL succ, NSString *message, id json) {
-                [self loadingHidden];
-                if(succ){
-                    NSError *error;
-                    self.spotModel = [[DDSpotDetailModel alloc] initWithDictionary:json error:&error];
-                    NSAssert(!error, @"%@", error);
-                    [self.headerView setSpotModel:self.spotModel];
-                    [self.shareHeaderView setShareCount:2234];
-                }else{
-                    [RootViewController showAlert:message];
-                }
-            }];
-    }
+- (void)loadSpotData{
+    [HttpUtil load:@"api/mdddetail.php"
+            params:@{@"uuid" : self.uuid}
+        completion:^(BOOL succ, NSString *message, id json) {
+            [self loadingHidden];
+            if(succ){
+                NSError *error;
+                self.spotModel = [[DDSpotDetailModel alloc] initWithDictionary:json error:&error];
+                NSAssert(!error, @"%@", error);
+                [self.headerView setModel:self.spotModel];
+                [self.shareHeaderView setShareCount:2234];
+            }else{
+                [RootViewController showAlert:message];
+            }
+        }];
 }
 
 - (void)btnClick_keepSpot{

@@ -9,9 +9,9 @@
 #import "DDLinkageView.h"
 #import "DDLinkageCell.h"
 #import "DDCacheHelper.h"
-#import "UIScrollView+EmptyDataSet.h"
+//#import "UIScrollView+EmptyDataSet.h"
 
-@interface DDLinkageView ()<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource>
+@interface DDLinkageView ()<UITableViewDelegate, UITableViewDataSource>
 /**
  *  一级菜单
  */
@@ -45,7 +45,8 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         self.tbStage2nd = [UITableView new];
         self.tbStage2nd.delegate = self;
         self.tbStage2nd.dataSource = self;
-        self.tbStage2nd.emptyDataSetSource = self;
+//        self.tbStage1st.emptyDataSetDelegate = self;
+//        self.tbStage2nd.emptyDataSetSource = self;
         self.tbStage2nd.backgroundColor = [UIColor clearColor];
         self.tbStage2nd.separatorColor = [UIColor clearColor];
         self.tbStage2nd.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -129,13 +130,13 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
 }
 
 #pragma mark - DZNEmptyDataSetDataSouce
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
-    if(scrollView == self.tbStage2nd){
-        NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"请选择国家~" attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM], NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}];
-        return str;
-    }
-    return nil;
-}
+//- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
+//    if(scrollView == self.tbStage2nd){
+//        NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"请选择国家~" attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM], NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}];
+//        return str;
+//    }
+//    return nil;
+//}
 
 
 @end
