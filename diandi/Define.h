@@ -27,7 +27,7 @@
 /**
  *  各种plugin的key
  */
-#define GMAP_KEY                    @"" //百度地图key
+#define GMAP_KEY                    @"AIzaSyDuWpQO60zNiabS1qVmxYR9IbniSxe3t8U" //谷歌地图key
 #define UMENG_KEY                   @"" //友盟
 
 #ifdef TEST_SERVER

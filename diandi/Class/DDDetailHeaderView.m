@@ -166,7 +166,7 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 1 && indexPath.row == 1){
-        return [self.model.desc boundingRectWithSize:CGSizeMake(DF_WIDTH - 10, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontS]} context:nil].size.height;
+        return 100;
     }
     return 44;
 }
@@ -215,14 +215,32 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }else{
             cell.textLabel.font = [UIFont gs_font:NSAppFontS];
-            cell.textLabel.numberOfLines = 0;
+            cell.textLabel.numberOfLines = 2;
             cell.textLabel.preferredMaxLayoutWidth = DF_WIDTH - 10;
-            cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            cell.textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
         return cell;
     }
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section == 0){
+        if(indexPath.row == 0){         //地图
+            if([self.delegate respondsToSelector:@selector(ddDetailHeaderViewDidOpenMap)]){
+                [self.delegate ddDetailHeaderViewDidOpenMap];
+            }
+        }else if(indexPath.row == 1){   //电话
+            if([self.delegate respondsToSelector:@selector(ddDetailHeaderViewDidCall)]){
+                [self.delegate ddDetailHeaderViewDidCall];
+            }
+        }
+    }else if(indexPath.section == 1){
+        if([self.delegate respondsToSelector:@selector(ddDetailHeaderViewDidOpenDesc)]){
+            [self.delegate ddDetailHeaderViewDidOpenDesc];
+        }
+    }
 }
 
 @end

@@ -64,6 +64,18 @@
     [alertView show];
 }
 
++ (void)callPhone:(NSString *)phoneNumber{
+    if([phoneNumber length] == 0){
+        [self showAlert:@"电话号码为空"];
+        return;
+    }
+    NSString *uri = [NSString stringWithFormat:@"tel:%@", [phoneNumber trim]];
+    BOOL ret = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:uri]];
+    if(!ret){
+        [self showAlert:@"拨打电话失败"];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

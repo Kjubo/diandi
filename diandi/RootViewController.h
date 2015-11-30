@@ -14,5 +14,6 @@
 - (void)loadingShow:(NSString *)message;
 - (void)loadingHidden;
 
++ (void)callPhone:(NSString *)phoneNumber;
 + (void)showAlert:(NSString *)message;
 @end

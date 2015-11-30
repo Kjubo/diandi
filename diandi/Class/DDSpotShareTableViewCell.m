@@ -18,12 +18,19 @@
 @end
 
 #define kPreferredMaxLayoutWidth (DF_WIDTH - 30.0)
-#define kShareTypeIconNames @[@"photo", @"car", @"suitcase", @"next", @"talk"]
 @implementation DDSpotShareTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        UIView *line = [UIView new];
+        line.backgroundColor = GS_COLOR_LIGHTGRAY;
+        [self.contentView addSubview:line];
+        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self.contentView);
+            make.height.mas_equalTo(@1);
+        }];
         
         self.ivType = [UIImageView new];
         self.ivType.backgroundColor = [UIColor clearColor];
@@ -31,27 +38,6 @@
         [self.ivType mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(30, 30));
             make.left.top.equalTo(self.contentView).offset(15);
-        }];
-        
-        self.ivFaceView = [UIImageView new];
-        self.ivFaceView.clipsToBounds = YES;
-        self.ivFaceView.layer.cornerRadius = 10.0;
-        [self.contentView addSubview:self.ivFaceView];
-        [self.ivFaceView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.contentView).priority(250);
-            make.size.mas_equalTo(CGSizeMake(20, 20));
-            make.top.equalTo(self.ivType);
-        }];
-    
-        self.lbPoster = [UILabel new];
-        self.lbPoster.backgroundColor = [UIColor clearColor];
-        self.lbPoster.textColor = GS_COLOR_WHITE;
-        self.lbPoster.font = [UIFont gs_font:NSAppFontS];
-        [self.contentView addSubview:self.lbPoster];
-        [self.lbPoster mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.contentView).priority(500);
-            make.centerY.equalTo(self.ivFaceView);
-            make.left.equalTo(self.ivFaceView.mas_right).offset(4);
         }];
         
         self.lbDetail = [UILabel new];
@@ -63,17 +49,39 @@
         self.lbDetail.preferredMaxLayoutWidth = kPreferredMaxLayoutWidth;
         [self.contentView addSubview:self.lbDetail];
         [self.lbDetail mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.ivFaceView.mas_bottom).offset(6);
+            make.top.equalTo(self.ivType);
             make.left.equalTo(self.ivType.mas_right).offset(6);
-            make.right.equalTo(self.lbPoster);
+            make.right.equalTo(self.contentView).offset(-10);
         }];
         
+        self.ivFaceView = [UIImageView new];
+        self.ivFaceView.clipsToBounds = YES;
+        self.ivFaceView.layer.cornerRadius = 10.0;
+        [self.contentView addSubview:self.ivFaceView];
+        [self.ivFaceView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.lbDetail).priority(250);
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+            make.top.equalTo(self.lbDetail.mas_bottom).offset(4);
+        }];
         
+        self.lbPoster = [UILabel new];
+        self.lbPoster.backgroundColor = [UIColor clearColor];
+        self.lbPoster.textColor = GS_COLOR_GRAY;
+        self.lbPoster.font = [UIFont gs_font:NSAppFontXS];
+        [self.contentView addSubview:self.lbPoster];
+        [self.lbPoster mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.lbDetail).priority(500);
+            make.centerY.equalTo(self.ivFaceView);
+            make.left.equalTo(self.ivFaceView.mas_right).offset(4);
+        }];
+        
+        self.buttons = [NSMutableArray array];
         CGFloat buttonWidth = DF_WIDTH/3.0;
         for(int i = 0; i < 3; i++){
             UIButton *btn = [UIButton new];
             btn.tag = i;
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
             btn.titleLabel.font = [UIFont gs_font:NSAppFontM];
             [self.contentView addSubview:btn];
             [btn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -81,6 +89,7 @@
                 make.left.mas_equalTo(@(buttonWidth * i));
                 make.bottom.equalTo(self.contentView).offset(-6);
             }];
+            [self.buttons addObject:btn];
             
             if(i <= 1){
                 UIView *line = [UIView new];
@@ -98,15 +107,18 @@
     return self;
 }
 
-- (void)setModel:(DDShareInfoModel *)model{
+- (void)setModel:(DDCustomShareInfoModel *)model{
     _model = model;
     self.goodCount = model.goodCount;
     self.badCount = model.badCount;
     self.favorCount = model.favorCount;
     self.ivType.image = [UIImage imageNamed:[NSString stringWithFormat:@"ic_share_%@", kShareTypeIconNames[_model.shareType]]];
     [self.ivFaceView sd_setImageWithURL:[NSURL URLWithString:_model.avaterImage] placeholderImage:nil];
-    self.lbPoster.text = [NSString stringWithFormat:@"%@  %@", _model.avaterName, _model.postDate];
+    self.lbPoster.text = [NSString stringWithFormat:@"%@  %@", _model.userName, _model.postDate];
     self.lbDetail.text = [_model.content copy];
+    self.worth = _model.worth;
+    self.goodCount = _model.goodCount;
+    self.badCount = _model.badCount;
 }
 
 - (void)setGoodCount:(BOOL)goodCount{
@@ -174,7 +186,7 @@
 }
 
 + (CGFloat)heightForDetail:(NSString *)detail{
-    return [detail boundingRectWithSize:CGSizeMake(kPreferredMaxLayoutWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM]} context:nil].size.height;
+    return 100 + [detail boundingRectWithSize:CGSizeMake(kPreferredMaxLayoutWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM]} context:nil].size.height;
 }
 
 @end

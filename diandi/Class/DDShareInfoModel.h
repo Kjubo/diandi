@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, DDShareInfoType){
 
 @property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, strong) NSString *userId;
-@property (nonatomic, strong) NSString *avaterName;
+@property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *avaterImage;
 @property (nonatomic, strong) NSString *postDate;
 @property (nonatomic) DDShareInfoType shareType;

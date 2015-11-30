@@ -12,8 +12,10 @@
 @protocol DDDetailHeaderViewDelegate <NSObject>
 
 @optional
-- (void)ddDetailHeaderViewDidSelectedFavorite;
-
+- (void)ddDetailHeaderViewDidSelectedFavorite;  //收藏
+- (void)ddDetailHeaderViewDidOpenMap;           //地图
+- (void)ddDetailHeaderViewDidCall;              //打电话
+- (void)ddDetailHeaderViewDidOpenDesc;          //打开介绍详情
 @end
 
 @interface DDDetailHeaderView : UIView
@@ -22,5 +24,4 @@
 
 @property (nonatomic) BOOL isFavorite;
 @property (nonatomic, weak) DDSpotDetailModel *model;
-
 @end

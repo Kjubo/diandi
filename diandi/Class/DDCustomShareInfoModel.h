@@ -15,8 +15,7 @@ typedef NS_ENUM(NSInteger, DDSpotShareWorth){
     DDSpotShareWorthBad  = 2,
 };
 
-@interface DDCustomShareInfoModel : JSONModel
-@property (nonatomic, strong) DDShareInfoModel *shareInfo;
+@interface DDCustomShareInfoModel : DDShareInfoModel
 @property (nonatomic) DDSpotShareWorth worth;
-@property (nonatomic) BOOL hasFavor;
+@property (nonatomic) BOOL favored;
 @end
