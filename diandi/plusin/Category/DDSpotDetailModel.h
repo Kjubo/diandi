@@ -21,4 +21,5 @@
 @property (nonatomic, strong) NSString<Optional> *tel;
 @property (nonatomic) NSInteger favor;
 @property (nonatomic) NSInteger hot;
+@property (nonatomic) BOOL favored;
 @end

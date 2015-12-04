@@ -10,8 +10,11 @@
 #import "AppDelegate.h"
 NSString *const kAppAgent = @"app-agent";
 NSString *const kAppVerify = @"Restecname";
-NSString *const kAppToken= @"token";
+NSString *const kAppToken= @"ytoken";
 NSString *const kAppDeviceSize = @"app-device-size";
+
+
+static NSString *kUSER_UUID = @"123456789";
 @implementation HttpUtil
 
 + (void)load:(NSString *)url params:(NSDictionary *)params completion:(HttpUtilBlock)completeBlock{
@@ -68,7 +71,7 @@ orBodyString:(NSString *)body
     headers[kAppAgent] = [self appAgentStr];
 //    headers[kAppVerify] = [self restEcName];
     headers[kAppDeviceSize] = [NSString stringWithFormat:@"%.0f_%.0f", DF_WIDTH, DF_HEIGHT];
-//    headers[kAppToken] = [self appTokenStr];
+    headers[kAppToken] = kUSER_UUID;
     
     //token
     //[req addRequestHeader:kHttpTokenForHeader value:Global.instance.userInfo.token];

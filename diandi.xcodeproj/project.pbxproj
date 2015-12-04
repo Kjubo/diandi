@@ -28,6 +28,8 @@
 		1B090D241C0C037C002301BA /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B090D231C0C037C002301BA /* Accelerate.framework */; };
 		1B090D271C0C0491002301BA /* DDSpotDescViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B090D261C0C0491002301BA /* DDSpotDescViewController.m */; };
 		1B090D2A1C0C06BA002301BA /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B090D291C0C06BA002301BA /* GoogleMaps.bundle */; };
+		1B0D550E1C116C4000850F46 /* DDSpotUserShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D550D1C116C4000850F46 /* DDSpotUserShareViewController.m */; };
+		1B0D55111C117ADE00850F46 /* DDUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D55101C117ADE00850F46 /* DDUserCenterViewController.m */; };
 		1B1545631B5A3FCD007B41D5 /* DPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1545601B5A3FCD007B41D5 /* DPhoto.m */; };
 		1B1545641B5A3FCD007B41D5 /* DGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1545621B5A3FCD007B41D5 /* DGroup.m */; };
 		1B1A37CC1B0AD0AC0075B9DE /* DAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */; };
@@ -130,7 +132,11 @@
 		1B090D231C0C037C002301BA /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		1B090D251C0C0491002301BA /* DDSpotDescViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotDescViewController.h; sourceTree = "<group>"; };
 		1B090D261C0C0491002301BA /* DDSpotDescViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotDescViewController.m; sourceTree = "<group>"; };
-		1B090D291C0C06BA002301BA /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = diandi/plusin/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		1B090D291C0C06BA002301BA /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = plusin/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		1B0D550C1C116C4000850F46 /* DDSpotUserShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotUserShareViewController.h; sourceTree = "<group>"; };
+		1B0D550D1C116C4000850F46 /* DDSpotUserShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotUserShareViewController.m; sourceTree = "<group>"; };
+		1B0D550F1C117ADE00850F46 /* DDUserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserCenterViewController.h; sourceTree = "<group>"; };
+		1B0D55101C117ADE00850F46 /* DDUserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserCenterViewController.m; sourceTree = "<group>"; };
 		1B15455F1B5A3FCD007B41D5 /* DPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DPhoto.h; path = diandi/Class/DPhoto.h; sourceTree = SOURCE_ROOT; };
 		1B1545601B5A3FCD007B41D5 /* DPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPhoto.m; path = diandi/Class/DPhoto.m; sourceTree = SOURCE_ROOT; };
 		1B1545611B5A3FCD007B41D5 /* DGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DGroup.h; path = diandi/Class/DGroup.h; sourceTree = SOURCE_ROOT; };
@@ -294,7 +300,6 @@
 		1B010F921ADF9B2600F37746 = {
 			isa = PBXGroup;
 			children = (
-				1B090D291C0C06BA002301BA /* GoogleMaps.bundle */,
 				1B010F9D1ADF9B2600F37746 /* diandi */,
 				1B010FBA1ADF9B2600F37746 /* diandiTests */,
 				1B010FF71ADF9F1C00F37746 /* Frameworks */,
@@ -332,6 +337,7 @@
 		1B010F9E1ADF9B2600F37746 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1B090D291C0C06BA002301BA /* GoogleMaps.bundle */,
 				1B010F9F1ADF9B2600F37746 /* Info.plist */,
 				1B010FA01ADF9B2600F37746 /* main.m */,
 				1B010FF61ADF9EB000F37746 /* diandi-Prefix.pch */,
@@ -361,16 +367,20 @@
 			children = (
 				1BADA3BC1B8B13460071240C /* DDNoteViewController.h */,
 				1BADA3BD1B8B13460071240C /* DDNoteViewController.m */,
+				1B090D251C0C0491002301BA /* DDSpotDescViewController.h */,
+				1B090D261C0C0491002301BA /* DDSpotDescViewController.m */,
 				1B84A0761BEC7660009F04EF /* DDSpotDetailViewController.h */,
 				1B84A0771BEC7660009F04EF /* DDSpotDetailViewController.m */,
 				1BB97BF61C0BED6900E02CE8 /* DDSpotMapViewController.h */,
 				1BB97BF71C0BED6900E02CE8 /* DDSpotMapViewController.m */,
+				1B0D550C1C116C4000850F46 /* DDSpotUserShareViewController.h */,
+				1B0D550D1C116C4000850F46 /* DDSpotUserShareViewController.m */,
 				1BADA3C81B8C0F000071240C /* DDTabBarViewController.h */,
 				1BADA3C91B8C0F000071240C /* DDTabBarViewController.m */,
+				1B0D550F1C117ADE00850F46 /* DDUserCenterViewController.h */,
+				1B0D55101C117ADE00850F46 /* DDUserCenterViewController.m */,
 				1B58DAF21BB2477B00F8FDE7 /* generalView */,
 				1BF597FA1B181C230037A507 /* View */,
-				1B090D251C0C0491002301BA /* DDSpotDescViewController.h */,
-				1B090D261C0C0491002301BA /* DDSpotDescViewController.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -702,6 +712,7 @@
 				1B58DB101BB2478B00F8FDE7 /* UIScrollView+MJExtension.m in Sources */,
 				1B58DB091BB2478B00F8FDE7 /* ASPageView.m in Sources */,
 				1BADA3B81B8B0EB30071240C /* DDTagCollectionViewCell.m in Sources */,
+				1B0D550E1C116C4000850F46 /* DDSpotUserShareViewController.m in Sources */,
 				1B58DB0B1BB2478B00F8FDE7 /* ASWaitingView.m in Sources */,
 				1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */,
 				1BC461E01BCA38FE003550FC /* HttpUtil.m in Sources */,
@@ -753,6 +764,7 @@
 				1BC461EF1BCA3B0D003550FC /* SSKeychain.m in Sources */,
 				1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */,
 				1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */,
+				1B0D55111C117ADE00850F46 /* DDUserCenterViewController.m in Sources */,
 				1BBFFDC91BFEF3EE005833EE /* DDShareInfoModel.m in Sources */,
 				1B010FA11ADF9B2600F37746 /* main.m in Sources */,
 				1BADA3CD1B8C0F7C0071240C /* UITabBarItem+Universal.m in Sources */,

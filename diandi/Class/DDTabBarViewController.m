@@ -8,6 +8,7 @@
 
 #import "DDTabBarViewController.h"
 #import "DDNoteViewController.h"
+#import "DDUserCenterViewController.h"
 #import "UITabBarItem+Universal.h"
 
 @interface DDTabBarViewController ()<UITabBarControllerDelegate>
@@ -22,8 +23,7 @@
     if(self = [super init]){
         self.delegate = self;
         
-        UIViewController *mainVc = [[UIViewController alloc] init];
-        self.ncMain = [[UINavigationController alloc] initWithRootViewController:mainVc];
+        self.ncMain = [[UINavigationController alloc] initWithRootViewController:[DDUserCenterViewController new]];
         self.ncMain.tabBarItem =[UITabBarItem itemWithTitle:@"我" image:[UIImage imageNamed:@"ic_tab2"] selectedImage:[UIImage imageNamed:@"ic_tab2_hl"]];
         
         self.ncSpot = [[UINavigationController alloc] initWithRootViewController:[UIViewController new]];
@@ -33,7 +33,7 @@
         self.ncNote = [[UINavigationController alloc] initWithRootViewController:noteViewController];
         self.ncNote.tabBarItem = [UITabBarItem itemWithTitle:@"游记" image:[UIImage imageNamed:@"ic_tab0"] selectedImage:[UIImage imageNamed:@"ic_tab0_hl"]];
         
-        [self setViewControllers:@[self.ncNote, self.ncSpot]];
+        [self setViewControllers:@[self.ncNote, self.ncMain]];
     }
     return self;
 }

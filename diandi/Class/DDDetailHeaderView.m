@@ -121,7 +121,7 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
         [self.tbSpotInfo mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.width.equalTo(self);
             make.top.equalTo(lbInfoHeader.mas_bottom).offset(10);
-            make.height.mas_equalTo(44 * 5 + 10.0);
+            make.height.mas_equalTo(44 * 5 + 24.0);
         }];
         
         self.isFavorite = NO;
@@ -148,7 +148,7 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
         self.lbSubTitle.textColor = [model.subtitle copy];
         self.rankView.rank = 3.8;
         self.lbShareInfo.text = [NSString stringWithFormat:@"%@个分享信息", @(model.favor)];
-        self.tbSources = @[@[model.address, model.tel, model.open], @[@"景点信息", model.desc]];
+        self.tbSources = @[@[model.address, model.tel, model.open], @[@"景点信息", [model.desc trim]]];
         [self.tbSpotInfo reloadData];
     }
 }
@@ -166,7 +166,7 @@ static NSString *kSpotInfoCellIdentifier = @"kSpotInfoCellIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 1 && indexPath.row == 1){
-        return 100;
+        return 60;
     }
     return 44;
 }

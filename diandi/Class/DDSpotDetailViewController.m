@@ -15,6 +15,8 @@
 #import "MJRefresh.h"
 #import "DDSpotMapViewController.h"
 #import "DDSpotDescViewController.h"
+
+
 @interface DDSpotDetailViewController ()<UITableViewDelegate, UITableViewDataSource, DDDetailHeaderViewDelegate, DDSpotShareTableViewCellDelegate>
 @property (nonatomic, strong) DDDetailHeaderView *headerView;
 @property (nonatomic, strong) UITableView *tbList;
@@ -28,12 +30,15 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 @implementation DDSpotDetailViewController
 
 - (void)viewDidLoad{
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+评论" style:UIBarButtonItemStylePlain target:self action:@selector(navToAddShare)];
+    
     self.headerView = [DDDetailHeaderView new];
     self.headerView.delegate = self;
     self.headerView.height = 540;
     
     self.shareHeaderView = [DDShareHeaderView new];
     self.shareHeaderView.backgroundColor = GS_COLOR_BACKGROUND;
+    [self.shareHeaderView setShareCount:0];
     
     self.tbList = [UITableView new];
     self.tbList.backgroundColor = GS_COLOR_BACKGROUND;
@@ -57,6 +62,12 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     self.shareList = [NSMutableArray array];
 }
 
+- (void)navToAddShare{
+    if(!self.spotModel){
+        return;
+    }
+}
+
 - (void)loadSpotData{
     [HttpUtil load:@"api/mdddetail.php"
             params:@{@"uuid" : self.uuid}
@@ -67,7 +78,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
                 self.spotModel = [[DDSpotDetailModel alloc] initWithDictionary:json error:&error];
                 NSAssert(!error, @"%@", error);
                 [self.headerView setModel:self.spotModel];
-                [self.shareHeaderView setShareCount:2234];
             }else{
                 [RootViewController showAlert:message];
             }
@@ -76,9 +86,9 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 - (void)loadMoreShareInfo{
     [HttpUtil load:@"api/pllist.php"
-            params:@{@"uuid" : @"2fc14e31-123e-461c-9a02-0744182dc274", // self.uuid,
-                     @"offset" : @(self.pageno)}
+            params:@{@"offset" : @(self.pageno)}
         completion:^(BOOL succ, NSString *message, id json) {
+            [self.tbList footerEndRefreshing];
             if(succ){
                 NSError *error;
                 NSArray *lst = [DDCustomShareInfoModel arrayOfModelsFromDictionaries:json[@"list"] error:&error];
@@ -89,12 +99,27 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
                     [self.tbList reloadData];
                 }
                 self.tbList.footerHidden = [json[@"islate"] boolValue];
+                [self.shareHeaderView setShareCount:[json[@"total"] intValue]];
             }
         }];
 }
 
 - (void)btnClick_keepSpot{
-    
+    [HttpUtil load:@"apiupdate/updatepoifavor.php"
+            params:@{}
+        completion:^(BOOL succ, NSString *message, id json) {
+            if(succ){
+                NSError *error;
+                DDSpotDetailModel *detail = [[DDSpotDetailModel alloc] initWithDictionary:json error:&error];
+                NSAssert(!error, @"%@", error);
+                self.spotModel.favor = detail.favor;
+                self.spotModel.hot = detail.hot;
+                self.spotModel.favored = detail.favored;
+                [self.headerView setModel:self.spotModel];
+            }else{
+                [RootViewController showAlert:message];
+            }
+        }];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -123,7 +148,46 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     return 120;
 }
 
+#pragma mark - DDSpotShareTableViewCell Delegate
+- (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteWorth:(DDSpotShareWorth)worth{
+    [HttpUtil load:@"apiupdate/updateplworth.php"
+            params:@{@"pl_uuid" : model.uuid,
+                     @"type" : @(worth)}
+        completion:^(BOOL succ, NSString *message, id json) {
+            if(succ){
+                NSError *error;
+                DDCustomShareInfoModel *item = [[DDCustomShareInfoModel alloc] initWithDictionary:json error:&error];
+                NSInteger index = [self.shareList indexOfObject:model];
+                [self.shareList replaceObjectAtIndex:index withObject:item];
+                [self.tbList reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            }else{
+                [RootViewController showAlert:message];
+            }
+        }];
+}
+
+- (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteFavor:(BOOL)favor{
+    [HttpUtil load:@"apiupdate/updateplfavor.php"
+            params:@{@"pl_uuid" : model.uuid,
+                     @"type" : favor ? @(1) : @(0)}
+        completion:^(BOOL succ, NSString *message, id json) {
+            if(succ){
+                NSError *error;
+                DDCustomShareInfoModel *item = [[DDCustomShareInfoModel alloc] initWithDictionary:json error:&error];
+                NSInteger index = [self.shareList indexOfObject:model];
+                [self.shareList replaceObjectAtIndex:index withObject:item];
+                [self.tbList reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            }else{
+                [RootViewController showAlert:message];
+            }
+        }];
+}
+
 #pragma mark - DDSpotDetailHeaderView Delegate
+- (void)ddDetailHeaderViewDidSelectedFavorite{
+    
+}
+
 - (void)ddDetailHeaderViewDidOpenMap{
     DDSpotMapViewController *vc = [[DDSpotMapViewController alloc] init];
     vc.model = self.spotModel;
@@ -136,6 +200,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 - (void)ddDetailHeaderViewDidOpenDesc{
     DDSpotDescViewController *vc = [[DDSpotDescViewController alloc] init];
+    vc.title = [self.spotModel.title copy];
     vc.desc = self.spotModel.desc;
     [self.navigationController pushViewController:vc animated:YES];
 }

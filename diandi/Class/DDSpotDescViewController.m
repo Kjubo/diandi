@@ -32,12 +32,9 @@
     }];
 }
 
-- (void)setDesc:(NSString *)desc{
-    self.lbDesc.text = [desc copy];
-}
-
-- (NSString *)desc{
-    return self.lbDesc.text;
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.lbDesc.text = [self.desc copy];
 }
 
 @end

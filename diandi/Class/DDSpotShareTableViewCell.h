@@ -14,8 +14,8 @@
 @protocol DDSpotShareTableViewCellDelegate <NSObject>
 
 @optional
-- (void)ddSpotShareCellFor:(DDShareInfoModel *)model selecteWorth:(DDSpotShareWorth)worth;
-- (void)ddSpotShareCellFor:(DDShareInfoModel *)model selecteFavor:(BOOL)favor;
+- (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteWorth:(DDSpotShareWorth)worth;
+- (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteFavor:(BOOL)favor;
 @end
 
 @interface DDSpotShareTableViewCell : UITableViewCell

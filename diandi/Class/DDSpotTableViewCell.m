@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UILabel *lbKeepCount;
 @property (nonatomic, strong) DDRankView *rankView;
 @property (nonatomic, strong) UILabel *lbShareInfo;
+@property (nonatomic, strong) UILabel *lbPoiType;
 @end
 
 @implementation DDSpotTableViewCell
@@ -100,6 +101,18 @@
             make.right.equalTo(keepView);
         }];
         
+        self.lbPoiType = [UILabel new];
+        self.lbPoiType.clipsToBounds = YES;
+        self.lbPoiType.layer.cornerRadius = 4.0;
+        self.lbPoiType.backgroundColor = HEXRGBCOLOR(0xAEE3FF);
+        self.lbPoiType.textColor = GS_COLOR_DARKGRAY;
+        self.lbPoiType.font = [UIFont gs_font:NSAppFontS];
+        [self.contentView addSubview:self.lbPoiType];
+        [self.lbPoiType mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(keepView);
+            make.centerY.equalTo(self.lbSubTitle);
+        }];
+        
         UIView *line = [UIView new];
         line.backgroundColor = GS_COLOR_LIGHT;
         [self.contentView addSubview:line];
@@ -116,7 +129,8 @@
     self.lbName.text = [data.title copy];
     self.lbSubTitle.text = [data.subtitle copy];
     self.lbKeepCount.text = Int2String(data.favor);
-    self.rankView.rank = 1.8;
-    self.lbShareInfo.text = @"234条分享";
+    self.rankView.rank = data.hot;
+    self.lbShareInfo.text = [NSString stringWithFormat:@"%@条分享", @(data.plnum)];
+    self.lbPoiType.text = [data.poiType copy];
 }
 @end
