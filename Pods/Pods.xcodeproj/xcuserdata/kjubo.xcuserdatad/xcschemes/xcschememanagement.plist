@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-diandi-AHKActionSheet.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-diandi-CTAssetsPickerController-CTAssetsPickerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>44DC545F11D2FA6B3DD364B0</key>
+		<key>0989A9627CF6DF0F0439C619</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5E6B1EE56A8330551BA09444</key>
+		<key>1362DF33848FB069C6213165</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>860AB50F5E90EDFFAD416792</key>
+		<key>3506D9768433B7453452456E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88C85BF05359349AD8685B1F</key>
+		<key>4430E80080F0BAD9D38F3BF9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A149B8DDFDFD8B8A2384A12</key>
+		<key>46BBDD0BF609F29F7F41F5CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A45EC14291CF7EBE9E5F84A6</key>
+		<key>6010C2B3E4C9FA7A738FBA6F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEF188DFBE391EFB48955F21</key>
+		<key>864F5BEF54D37E738902709E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B2F90C87F003DF982529CCC6</key>
+		<key>A08B8A8DB62CCBE873A14A68</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA99929EAFA0EC55D4C23CF0</key>
+		<key>A332DDC46FF0469DB0F9B838</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B45A86C5F5DC23A87A89DDDF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

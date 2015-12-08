@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5E6B1EE56A8330551BA09444"
+               BlueprintIdentifier = "B45A86C5F5DC23A87A89DDDF"
                BuildableName = "libPods-diandi-UIAlertView+Blocks.a"
                BlueprintName = "Pods-diandi-UIAlertView+Blocks"
                ReferencedContainer = "container:Pods.xcodeproj">

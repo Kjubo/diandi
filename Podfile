@@ -9,4 +9,5 @@ target 'diandi' do
   pod 'DZNEmptyDataSet', '~> 1.6.1'
   pod 'UIAlertView+Blocks', '~> 0.9'
   pod 'FMDB', '~> 2.5'
+  pod 'AHKActionSheet', '~> 0.5.3'
 end

@@ -8,6 +8,8 @@
 
 #import "DDSpotUserShareViewController.h"
 #import "DDUserShareTableViewCell.h"
+#import "AHKActionSheet.h"
+
 @interface DDSpotUserShareViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UILabel *lbSpotName;
 @property (nonatomic, strong) UIView *headerView;
@@ -18,6 +20,7 @@
 @property (nonatomic, strong) UIButton *btnShareType;
 @property (nonatomic, strong) UITextView *tvShareContent;
 @property (nonatomic, strong) UITableView *tbShareInfo;
+@property (nonatomic, strong) AHKActionSheet *actShareType;
 
 @property (nonatomic) BOOL isEditing;
 @end
@@ -42,7 +45,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.view addSubview:icon];
     [icon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(20, 14));
-        make.top.equalTo(self.view).offset(12);
+        make.top.equalTo(self.view).offset(14);
         make.left.equalTo(self.view).offset(15);
     }];
     
@@ -77,8 +80,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     
     self.tbShareInfo = [UITableView new];
     self.tbShareInfo.backgroundColor = GS_COLOR_WHITE;
-    self.tbShareInfo.layer.borderColor = GS_COLOR_RED.CGColor;
-    self.tbShareInfo.layer.borderWidth = 1;
     self.tbShareInfo.delegate = self;
     self.tbShareInfo.dataSource = self;
     self.tbShareInfo.separatorColor = [UIColor clearColor];
@@ -86,10 +87,20 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.tbShareInfo registerClass:[DDUserShareTableViewCell class] forCellReuseIdentifier:kCellReuseIdentifier];
     [self.view addSubview:self.tbShareInfo];
     [self.tbShareInfo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.editView.mas_bottom).priority(250);
-        make.top.equalTo(self.headerView.mas_bottom).priority(500);
+        make.top.equalTo(self.headerView.mas_bottom);
         make.left.right.bottom.equalTo(self.view);
     }];
+    
+    self.actShareType = [AHKActionSheet new];
+    [self.actShareType setTitle:@"分享类型"];
+    for(int i = 0; i < [kShareTypeTitles count]; i++){
+        [self.actShareType addButtonWithTitle:kShareTypeTitles[i] image:[UIImage imageNamed:[NSString stringWithFormat:@"ic_share_%@", kShareTypeIconNames[i]]] type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
+            
+        }];
+    }
+    [self.actShareType addButtonWithTitle:@"取消" type:AHKActionSheetButtonTypeDestructive handler:^(AHKActionSheet *actionSheet) {
+    }];
+    
     
     _isEditing = NO;
 }
@@ -102,14 +113,27 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 - (void)setIsEditing:(BOOL)isEditing{
     if(_isEditing == isEditing) return;
     _isEditing = isEditing;
-    
     self.btnAdd.hidden = _isEditing;
     self.btnCancel.hidden = !_isEditing;
     self.btnSubmit.hidden = !_isEditing;
     self.editView.hidden = !_isEditing;
+    if(_isEditing){
+        [self.tbShareInfo mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.editView.mas_bottom);
+            make.left.right.bottom.equalTo(self.view);
+        }];
+    }else{
+        [self.tbShareInfo mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.headerView.mas_bottom);
+            make.left.right.bottom.equalTo(self.view);
+        }];
+    }
+
     [UIView animateWithDuration:0.3 animations:^{
-        [self.view setNeedsLayout];
         [self.view layoutIfNeeded];
+        [self.view setNeedsLayout];
+    } completion:^(BOOL finished) {
+        
     }];
 }
 
@@ -145,7 +169,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 - (void)btnClick_changeShareType{
-    
+    [self.actShareType show];
 }
 
 #pragma mark - view init
@@ -240,7 +264,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.btnSubmit mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(buttonSize);
         make.centerY.equalTo(headerView);
-        make.right.equalTo(headerView).offset(-100);
+        make.right.equalTo(headerView).offset(-60);
     }];
     return headerView;
 }

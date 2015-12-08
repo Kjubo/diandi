@@ -6,6 +6,12 @@
 // project.
 
 
+// AHKActionSheet
+#define COCOAPODS_POD_AVAILABLE_AHKActionSheet
+#define COCOAPODS_VERSION_MAJOR_AHKActionSheet 0
+#define COCOAPODS_VERSION_MINOR_AHKActionSheet 5
+#define COCOAPODS_VERSION_PATCH_AHKActionSheet 3
+
 // CTAssetsPickerController
 #define COCOAPODS_POD_AVAILABLE_CTAssetsPickerController
 #define COCOAPODS_VERSION_MAJOR_CTAssetsPickerController 2
