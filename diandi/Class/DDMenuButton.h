@@ -11,5 +11,7 @@
 @interface DDMenuButton : UIButton
 
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic) BOOL opened;
+
 
 @end

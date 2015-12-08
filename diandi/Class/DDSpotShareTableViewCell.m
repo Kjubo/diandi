@@ -117,8 +117,7 @@
     self.lbPoster.text = [NSString stringWithFormat:@"%@  %@", _model.userName, _model.postDate];
     self.lbDetail.text = [_model.content copy];
     self.worth = _model.worth;
-    self.goodCount = _model.goodCount;
-    self.badCount = _model.badCount;
+    self.hasFavor = _model.favored;
 }
 
 - (void)setGoodCount:(BOOL)goodCount{

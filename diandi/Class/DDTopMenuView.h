@@ -12,6 +12,7 @@
 
 @optional
 - (void)ddTopMenuViewDidSelected:(NSInteger)tag;
+- (void)ddTopMenuViewDidCancelSelected;
 - (void)ddTopMenuViewDidSearch;
 
 @end

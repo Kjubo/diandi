@@ -14,6 +14,8 @@
 @property (nonatomic, strong) DDMenuButton *btnArea;        //区域
 @property (nonatomic, strong) DDMenuButton *btnType;        //分类
 @property (nonatomic, strong) DDMenuButton *btnSort;        //排序
+
+@property (nonatomic, weak) DDMenuButton *btnSelected;    //当前选中
 @end
 
 @implementation DDTopMenuView
@@ -87,8 +89,22 @@
 }
 
 - (void)btnClick_menu:(DDMenuButton *)sender{
-    if([self.delegate respondsToSelector:@selector(ddTopMenuViewDidSelected:)]){
-        [self.delegate ddTopMenuViewDidSelected:sender.tag];
+    if(sender == self.btnSelected){
+        self.btnSelected.opened = NO;
+        self.btnSelected = nil;
+        if([self.delegate respondsToSelector:@selector(ddTopMenuViewDidCancelSelected)]){
+            [self.delegate ddTopMenuViewDidCancelSelected];
+        }
+        return;
+    }else{
+        if(self.btnSelected){
+            self.btnSelected.opened = NO;
+        }
+        self.btnSelected = sender;
+        sender.opened = YES;
+        if([self.delegate respondsToSelector:@selector(ddTopMenuViewDidSelected:)]){
+            [self.delegate ddTopMenuViewDidSelected:sender.tag];
+        }
     }
 }
 

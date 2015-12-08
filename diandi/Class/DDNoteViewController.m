@@ -208,6 +208,11 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     }
 }
 
+- (void)ddTopMenuViewDidCancelSelected{
+    self.popContainerView.hidden = YES;
+    self.popAreaView.hidden = YES;
+}
+
 - (void)ddTopMenuViewDidSearch{
     self.isSearching = !self.isSearching;
 }

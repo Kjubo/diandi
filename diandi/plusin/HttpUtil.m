@@ -21,8 +21,8 @@ static NSString *kUSER_UUID = @"123456789";
     [self http:url method:emHttpGet params:params orBodyString:nil timeOut:0 completion:completeBlock];
 }
 
-+ (void)post:(NSString *)url params:(NSDictionary *)params body:(NSString *)body completion:(HttpUtilBlock)completeBlock{
-    [self post:url params:params bodyData:[body dataUsingEncoding:NSUTF8StringEncoding] completion:completeBlock];
++ (void)post:(NSString *)url params:(NSDictionary *)params completion:(HttpUtilBlock)completeBlock{
+    [self post:url params:params bodyData:nil completion:completeBlock];
 }
 
 + (void)post:(NSString *)url params:(NSDictionary *)params bodyData:(NSData *)body completion:(HttpUtilBlock)completeBlock{
@@ -38,8 +38,10 @@ static NSString *kUSER_UUID = @"123456789";
     }
     if([paramsString length] > 0){
         url = [NSString stringWithFormat:@"%@?%@", url, paramsString];
+        [self http:url method:emHttpPost params:nil orBodyData:body timeOut:0 completion:completeBlock];
+    }else{
+        [self http:url method:emHttpPost params:params orBodyData:body timeOut:0 completion:completeBlock];
     }
-    [self http:url method:emHttpPost params:nil orBodyData:body timeOut:0 completion:completeBlock];
 }
 
 + (void)http:(NSString *)url
@@ -77,7 +79,6 @@ orBodyString:(NSString *)body
     //[req addRequestHeader:kHttpTokenForHeader value:Global.instance.userInfo.token];
     //设置data
     if (method == emHttpPost) {
-        [JSONHTTPClient setRequestContentType:@"application/json; charset=utf-8"];
         if(params && [params count] > 0){
             [JSONHTTPClient JSONFromURLWithString:completeUrl method:@"POST" params:params orBodyString:nil headers:headers completion:^(id json, JSONModelError *err) {
                 [self completionBlock:json error:err completion:completeBlock];

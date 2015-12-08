@@ -26,6 +26,8 @@
             make.centerY.equalTo(self);
             make.left.mas_equalTo(self.titleLabel.mas_right).offset(4);
         }];
+        
+        _opened = NO;
     }
     return self;
 }
@@ -36,6 +38,18 @@
 
 - (NSString *)title{
     return self.titleLabel.text;
+}
+
+- (void)setOpened:(BOOL)opened{
+    if(_opened == opened) return;
+    _opened = opened;
+    [UIView animateWithDuration:0.2 animations:^{
+        if(_opened){
+            self.ivIcon.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI);
+        }else{
+            self.ivIcon.transform = CGAffineTransformIdentity;
+        }
+    }];
 }
 
 @end

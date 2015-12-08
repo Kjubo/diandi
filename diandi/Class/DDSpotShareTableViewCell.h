@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DDCustomShareInfoModel.h"
 
-#define kShareTypeIconNames @[@"photo", @"car", @"suitcase", @"next", @"talk"]
-#define kShareTypeTitles    @[@"不能错过", @"交通工具", @"随行装备", @"去下一站", @"随便聊聊"]
 @protocol DDSpotShareTableViewCellDelegate <NSObject>
 
 @optional

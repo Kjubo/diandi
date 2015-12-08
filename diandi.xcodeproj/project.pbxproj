@@ -30,6 +30,7 @@
 		1B090D2A1C0C06BA002301BA /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B090D291C0C06BA002301BA /* GoogleMaps.bundle */; };
 		1B0D550E1C116C4000850F46 /* DDSpotUserShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D550D1C116C4000850F46 /* DDSpotUserShareViewController.m */; };
 		1B0D55111C117ADE00850F46 /* DDUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D55101C117ADE00850F46 /* DDUserCenterViewController.m */; };
+		1B0D55141C11A13700850F46 /* DDSpotSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D55131C11A13700850F46 /* DDSpotSummaryView.m */; };
 		1B1545631B5A3FCD007B41D5 /* DPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1545601B5A3FCD007B41D5 /* DPhoto.m */; };
 		1B1545641B5A3FCD007B41D5 /* DGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1545621B5A3FCD007B41D5 /* DGroup.m */; };
 		1B1A37CC1B0AD0AC0075B9DE /* DAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */; };
@@ -90,6 +91,7 @@
 		1BC461EF1BCA3B0D003550FC /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC461EE1BCA3B0D003550FC /* SSKeychain.m */; };
 		1BC461F21BCA3B26003550FC /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC461F11BCA3B26003550FC /* SSKeychainQuery.m */; };
 		1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E321B2972D500EE98EB /* UIView+Layout.m */; };
+		1BE247FE1C159AC700B46764 /* DDUserShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE247FD1C159AC700B46764 /* DDUserShareTableViewCell.m */; };
 		1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE309771B4FC4120008EF74 /* DBSCAN.m */; };
 		1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */; };
 		1BF6B0A21BFC5F1700DA5878 /* DDSpotShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF6B0A11BFC5F1700DA5878 /* DDSpotShareTableViewCell.m */; };
@@ -137,6 +139,8 @@
 		1B0D550D1C116C4000850F46 /* DDSpotUserShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotUserShareViewController.m; sourceTree = "<group>"; };
 		1B0D550F1C117ADE00850F46 /* DDUserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserCenterViewController.h; sourceTree = "<group>"; };
 		1B0D55101C117ADE00850F46 /* DDUserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserCenterViewController.m; sourceTree = "<group>"; };
+		1B0D55121C11A13700850F46 /* DDSpotSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotSummaryView.h; sourceTree = "<group>"; };
+		1B0D55131C11A13700850F46 /* DDSpotSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotSummaryView.m; sourceTree = "<group>"; };
 		1B15455F1B5A3FCD007B41D5 /* DPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DPhoto.h; path = diandi/Class/DPhoto.h; sourceTree = SOURCE_ROOT; };
 		1B1545601B5A3FCD007B41D5 /* DPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPhoto.m; path = diandi/Class/DPhoto.m; sourceTree = SOURCE_ROOT; };
 		1B1545611B5A3FCD007B41D5 /* DGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DGroup.h; path = diandi/Class/DGroup.h; sourceTree = SOURCE_ROOT; };
@@ -249,6 +253,8 @@
 		1BC461F11BCA3B26003550FC /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		1BDC3E311B2972D500EE98EB /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		1BDC3E321B2972D500EE98EB /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		1BE247FC1C159AC700B46764 /* DDUserShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserShareTableViewCell.h; sourceTree = "<group>"; };
+		1BE247FD1C159AC700B46764 /* DDUserShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserShareTableViewCell.m; sourceTree = "<group>"; };
 		1BE309761B4FC4120008EF74 /* DBSCAN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSCAN.h; sourceTree = "<group>"; };
 		1BE309771B4FC4120008EF74 /* DBSCAN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBSCAN.m; sourceTree = "<group>"; };
 		1BF278A51AE8EE5600022ACF /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
@@ -530,10 +536,14 @@
 				1B06BE071BB63674009B587B /* DDNoteTableViewCell.m */,
 				1BF6B0A01BFC5F1700DA5878 /* DDSpotShareTableViewCell.h */,
 				1BF6B0A11BFC5F1700DA5878 /* DDSpotShareTableViewCell.m */,
+				1B0D55121C11A13700850F46 /* DDSpotSummaryView.h */,
+				1B0D55131C11A13700850F46 /* DDSpotSummaryView.m */,
 				1B84A0701BEC3B28009F04EF /* DDSpotTableViewCell.h */,
 				1B84A0711BEC3B28009F04EF /* DDSpotTableViewCell.m */,
 				1BADA3B61B8B0EB30071240C /* DDTagCollectionViewCell.h */,
 				1BADA3B71B8B0EB30071240C /* DDTagCollectionViewCell.m */,
+				1BE247FC1C159AC700B46764 /* DDUserShareTableViewCell.h */,
+				1BE247FD1C159AC700B46764 /* DDUserShareTableViewCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -726,10 +736,12 @@
 				1B06BE081BB63674009B587B /* DDNoteTableViewCell.m in Sources */,
 				1BA085E71BFC296B00426BBD /* DDDetailHeaderView.m in Sources */,
 				1BC461E61BCA3942003550FC /* UIDevice+Addition.m in Sources */,
+				1BE247FE1C159AC700B46764 /* DDUserShareTableViewCell.m in Sources */,
 				1B1C2D861BC3BE4A001496BC /* DDTopMenuView.m in Sources */,
 				1B06BE0B1BB63C19009B587B /* DDSpotModel.m in Sources */,
 				1B58DB121BB2478B00F8FDE7 /* UIView+MJExtension.m in Sources */,
 				1B84A0721BEC3B28009F04EF /* DDSpotTableViewCell.m in Sources */,
+				1B0D55141C11A13700850F46 /* DDSpotSummaryView.m in Sources */,
 				1B9F758C1BEB29FD00640547 /* DDMddListModel.m in Sources */,
 				1BADA3B21B8B09820071240C /* DDGradeView.m in Sources */,
 				1B1545631B5A3FCD007B41D5 /* DPhoto.m in Sources */,
@@ -876,6 +888,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/diandi/plusin",
@@ -903,6 +916,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/diandi/plusin",

@@ -15,7 +15,7 @@
 #import "MJRefresh.h"
 #import "DDSpotMapViewController.h"
 #import "DDSpotDescViewController.h"
-
+#import "DDSpotUserShareViewController.h"
 
 @interface DDSpotDetailViewController ()<UITableViewDelegate, UITableViewDataSource, DDDetailHeaderViewDelegate, DDSpotShareTableViewCellDelegate>
 @property (nonatomic, strong) DDDetailHeaderView *headerView;
@@ -66,6 +66,9 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     if(!self.spotModel){
         return;
     }
+    DDSpotUserShareViewController *vc = [[DDSpotUserShareViewController alloc] init];
+    vc.spotModel = self.spotModel;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)loadSpotData{
@@ -86,7 +89,8 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 - (void)loadMoreShareInfo{
     [HttpUtil load:@"api/pllist.php"
-            params:@{@"offset" : @(self.pageno)}
+            params:@{@"uuid" : self.uuid,
+                     @"offset" : @(self.pageno)}
         completion:^(BOOL succ, NSString *message, id json) {
             [self.tbList footerEndRefreshing];
             if(succ){
@@ -150,7 +154,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 #pragma mark - DDSpotShareTableViewCell Delegate
 - (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteWorth:(DDSpotShareWorth)worth{
-    [HttpUtil load:@"apiupdate/updateplworth.php"
+    [HttpUtil post:@"apiupdate/updateplworth.php"
             params:@{@"pl_uuid" : model.uuid,
                      @"type" : @(worth)}
         completion:^(BOOL succ, NSString *message, id json) {
@@ -167,7 +171,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 - (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteFavor:(BOOL)favor{
-    [HttpUtil load:@"apiupdate/updateplfavor.php"
+    [HttpUtil post:@"apiupdate/updateplfavor.php"
             params:@{@"pl_uuid" : model.uuid,
                      @"type" : favor ? @(1) : @(0)}
         completion:^(BOOL succ, NSString *message, id json) {

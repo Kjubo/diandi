@@ -129,8 +129,8 @@
     }];
     
     self.tbShareInfo = [UITableView new];
-    self.tbShareInfo.delegate = self;
-    self.tbShareInfo.dataSource = self;
+//    self.tbShareInfo.delegate = self;
+//    self.tbShareInfo.dataSource = self;
     self.tbShareInfo.separatorColor = [UIColor clearColor];
     self.tbShareInfo.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.contentView addSubview:self.tbShareInfo];
@@ -141,8 +141,8 @@
     }];
     
     self.tbFavor = [UITableView new];
-    self.tbFavor.delegate = self;
-    self.tbFavor.dataSource = self;
+//    self.tbFavor.delegate = self;
+//    self.tbFavor.dataSource = self;
     self.tbFavor.separatorColor = [UIColor clearColor];
     self.tbFavor.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.contentView addSubview:self.tbFavor];
@@ -153,8 +153,8 @@
     }];
     
     self.tbHistory = [UITableView new];
-    self.tbHistory.delegate = self;
-    self.tbHistory.dataSource = self;
+//    self.tbHistory.delegate = self;
+//    self.tbHistory.dataSource = self;
     self.tbHistory.separatorColor = [UIColor clearColor];
     self.tbHistory.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.contentView addSubview:self.tbHistory];
@@ -200,7 +200,28 @@
 }
 
 #pragma mark - UITableViewDelegate & Method
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(tableView == self.tbShareInfo){
+        return 10;
+    }else if(tableView == self.tbFavor){
+        return 10;
+    }else if(tableView == self.tbHistory){
+        return 10;
+    }
+    return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return nil;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
+}
 
 #pragma mark - UIButton Click
 - (void)btnClick_setting{

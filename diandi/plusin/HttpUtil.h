@@ -24,7 +24,7 @@ typedef void (^HttpUtilBlock)(BOOL succ, NSString *message, id json);
 + (NSString *)restEcName;
 + (NSString*)urlEncode:(id<NSObject>)value;
 + (void)load:(NSString *)url params:(NSDictionary *)params completion:(HttpUtilBlock)completeBlock;
-+ (void)post:(NSString *)url params:(NSDictionary *)params body:(NSString *)body completion:(HttpUtilBlock)completeBlock;
++ (void)post:(NSString *)url params:(NSDictionary *)params completion:(HttpUtilBlock)completeBlock;
 + (void)post:(NSString *)url params:(NSDictionary *)params bodyData:(NSData *)body completion:(HttpUtilBlock)completeBlock;
 @end
 
