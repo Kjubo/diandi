@@ -99,7 +99,7 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         cell.accessoryType = UITableViewCellAccessoryNone;
         if(indexPath.row == self.selectedStage1Index){
             cell.backgroundColor = GS_COLOR_BLACK;
-            cell.textLabel.textColor = GS_COLOR_BLUE;
+            cell.textLabel.textColor = GS_COLOR_MAIN;
         }else{
             cell.backgroundColor = [UIColor clearColor];
             cell.textLabel.textColor = GS_COLOR_WHITE;

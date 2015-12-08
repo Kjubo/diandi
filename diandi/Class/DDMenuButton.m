@@ -19,7 +19,7 @@
         self.ivIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_arrow_down"]];
         self.titleLabel.font = [UIFont gs_font:NSAppFontL];
         [self setTitleColor:GS_COLOR_WHITE forState:UIControlStateNormal];
-        [self setTitleColor:GS_COLOR_BLUE forState:UIControlStateSelected];
+        [self setTitleColor:GS_COLOR_MAIN forState:UIControlStateSelected];
         [self addSubview:self.ivIcon];
         [self.ivIcon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(12, 7));

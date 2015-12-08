@@ -8,6 +8,7 @@
 
 #import "JSONModel.h"
 typedef NS_ENUM(NSInteger, DDShareInfoType){
+    DDShareInfoNone = 0,
     DDShareInfoTypePhoto = 1,
     DDShareInfoTypeTraffic,
     DDShareInfoTypeSuitCase,

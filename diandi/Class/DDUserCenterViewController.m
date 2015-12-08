@@ -111,7 +111,7 @@
     }
     
     self.highlightLine = [UIView new];
-    self.highlightLine.backgroundColor = GS_COLOR_BLUE;
+    self.highlightLine.backgroundColor = GS_COLOR_MAIN;
     [self.view addSubview:self.highlightLine];
     [self.highlightLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kButtonWidth, 3.0));
@@ -185,7 +185,7 @@
     }
     if(typeIndex >= 0 && typeIndex < [kButtonTitles count]){
         UIButton *btnCurrent = self.buttons[typeIndex];
-        [btnCurrent setTitleColor:GS_COLOR_BLUE forState:UIControlStateNormal];
+        [btnCurrent setTitleColor:GS_COLOR_MAIN forState:UIControlStateNormal];
     }
     [self.highlightLine mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(kButtonWidth * typeIndex);

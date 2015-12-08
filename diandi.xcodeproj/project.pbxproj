@@ -90,6 +90,7 @@
 		1BC461EC1BCA3A75003550FC /* ASCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC461EB1BCA3A75003550FC /* ASCache.m */; };
 		1BC461EF1BCA3B0D003550FC /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC461EE1BCA3B0D003550FC /* SSKeychain.m */; };
 		1BC461F21BCA3B26003550FC /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC461F11BCA3B26003550FC /* SSKeychainQuery.m */; };
+		1BC58C1A1C16E12700DA3507 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC58C191C16E12700DA3507 /* UITextView+Placeholder.m */; };
 		1BDC3E331B2972D500EE98EB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC3E321B2972D500EE98EB /* UIView+Layout.m */; };
 		1BE247FE1C159AC700B46764 /* DDUserShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE247FD1C159AC700B46764 /* DDUserShareTableViewCell.m */; };
 		1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE309771B4FC4120008EF74 /* DBSCAN.m */; };
@@ -251,6 +252,8 @@
 		1BC461EE1BCA3B0D003550FC /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		1BC461F01BCA3B26003550FC /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
 		1BC461F11BCA3B26003550FC /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		1BC58C181C16E12600DA3507 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		1BC58C191C16E12700DA3507 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		1BDC3E311B2972D500EE98EB /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		1BDC3E321B2972D500EE98EB /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		1BE247FC1C159AC700B46764 /* DDUserShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserShareTableViewCell.h; sourceTree = "<group>"; };
@@ -567,6 +570,8 @@
 				1BF278A61AE8EE5600022ACF /* UIImage+Scale.m */,
 				1BADA3CB1B8C0F7C0071240C /* UITabBarItem+Universal.h */,
 				1BADA3CC1B8C0F7C0071240C /* UITabBarItem+Universal.m */,
+				1BC58C181C16E12600DA3507 /* UITextView+Placeholder.h */,
+				1BC58C191C16E12700DA3507 /* UITextView+Placeholder.m */,
 				1BDC3E311B2972D500EE98EB /* UIView+Layout.h */,
 				1BDC3E321B2972D500EE98EB /* UIView+Layout.m */,
 			);
@@ -771,6 +776,7 @@
 				1B58DB0A1BB2478B00F8FDE7 /* ASPickerView.m in Sources */,
 				1B9F758F1BEB2C1300640547 /* DDCacheHelper.m in Sources */,
 				1B2CB78B1BD237CB005074EB /* DDSearchEmptyView.m in Sources */,
+				1BC58C1A1C16E12700DA3507 /* UITextView+Placeholder.m in Sources */,
 				1B9F5D181C03FD3B006C5636 /* DDSpotDetailModel.m in Sources */,
 				1BF6B0A51BFC60E000DA5878 /* DDShareHeaderView.m in Sources */,
 				1BC461EF1BCA3B0D003550FC /* SSKeychain.m in Sources */,
