@@ -1,0 +1,1 @@
+PODS_DIANDI_AHKACTIONSHEET_OTHER_LDFLAGS = -framework "QuartzCore"
