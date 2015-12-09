@@ -118,6 +118,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     
     _isEditing = NO;
     self.dataList = [NSMutableArray array];
+    [self loadMore];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -183,7 +184,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     if(self.pageIndex == 0){
         [self loadingShow];
     }
-    [HttpUtil load:uri params:@{@"pl_uuid" : self.spotModel.uuid,
+    [HttpUtil load:uri params:@{@"poi_uuid" : self.spotModel.uuid,
                                 @"pagenum" : @(self.pageIndex)}
         completion:^(BOOL succ, NSString *message, id json) {
             [self.tbShareInfo footerEndRefreshing];
@@ -197,6 +198,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
                     [self.dataList addObjectsFromArray:lst];
                     self.pageIndex = [self.dataList count];
                     self.tbShareInfo.footerHidden = [json[@"islast"] boolValue];
+                    [self.tbShareInfo reloadData];
                 }
             }
             [self loadingHidden];
@@ -205,16 +207,19 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 #pragma mark - UITableViewDelegate & DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return [self.dataList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DDUserShareTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
+    DDShareInfoModel *item = self.dataList[indexPath.row];
+    [cell setDataModel:item];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    DDShareInfoModel *item = self.dataList[indexPath.row];
+    return [DDUserShareTableViewCell heightForDetail:item.content];
 }
 
 #pragma mark - UIButton Click
@@ -227,7 +232,24 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 - (void)btnClick_submit{
+    if([self.tvShareContent.text length] <= 0){
+        [RootViewController showAlert:@"填写评论内容"];
+        return;
+    }
     
+    if(self.shareType == DDShareInfoNone){
+        [RootViewController showAlert:@"请选择评论类型"];
+        return;
+    }
+    [self loadingShow];
+    NSString *content = [self.tvShareContent.text copy];
+    [HttpUtil post:@"apiupdate/newuserpl.php"
+            params:@{@"poi_uuid" : self.spotModel.uuid,
+                     @"type" : @(self.shareType),
+                     @"content" : content}
+        completion:^(BOOL succ, NSString *message, id json) {
+            
+        }];
 }
 
 - (void)btnClick_changeShareType{

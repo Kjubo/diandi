@@ -174,6 +174,9 @@
     if(sender.tag >=0 && sender.tag <= 1){
         if([self.delegate respondsToSelector:@selector(ddSpotShareCellFor:selecteWorth:)]){
             DDSpotShareWorth worth = sender.tag == 0 ? DDSpotShareWorthGood : DDSpotShareWorthBad;
+            if(worth == self.model.worth){
+                worth = DDSpotShareWorthNone;
+            }
             [self.delegate ddSpotShareCellFor:self.model selecteWorth:worth];
         }
     }else if(sender.tag == 2){
