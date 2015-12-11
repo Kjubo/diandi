@@ -12,16 +12,16 @@
 @protocol DDSpotShareTableViewCellDelegate <NSObject>
 
 @optional
-- (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteWorth:(DDSpotShareWorth)worth;
-- (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteFavor:(BOOL)favor;
+- (void)ddSpotShareCellFor:(id<DDShareInfoModel>)model selecteWorth:(DDSpotShareWorth)worth;
+- (void)ddSpotShareCellFor:(id<DDShareInfoModel>)model selecteFavor:(BOOL)favor;
 @end
 
 @interface DDSpotShareTableViewCell : UITableViewCell
 @property (nonatomic, assign) id<DDSpotShareTableViewCellDelegate> delegate;
-@property (nonatomic, strong) DDCustomShareInfoModel *model;
-@property (nonatomic) BOOL goodCount;
-@property (nonatomic) BOOL badCount;
-@property (nonatomic) BOOL favorCount;
+@property (nonatomic, strong) id<DDShareInfoModel> model;
+@property (nonatomic) NSInteger goodCount;
+@property (nonatomic) NSInteger badCount;
+@property (nonatomic) NSInteger favorCount;
 
 @property (nonatomic) DDSpotShareWorth worth;
 @property (nonatomic) BOOL hasFavor;

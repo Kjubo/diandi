@@ -19,7 +19,20 @@ typedef NS_ENUM(NSInteger, DDShareInfoType){
 #define kShareTypeIconNames @[@"photo", @"car", @"suitcase", @"next", @"talk"]
 #define kShareTypeTitles    @[@"不能错过", @"交通工具", @"随行装备", @"去下一站", @"随便聊聊"]
 
-@interface DDShareInfoModel : JSONModel
+@protocol DDShareInfoModel <NSObject>
+@property (nonatomic, strong) NSString *uuid;
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *avaterImage;
+@property (nonatomic, strong) NSString *postDate;
+@property (nonatomic) DDShareInfoType shareType;
+@property (nonatomic) NSInteger goodCount;
+@property (nonatomic) NSInteger badCount;
+@property (nonatomic) NSInteger favorCount;
+@property (nonatomic, strong) NSString *content;
+@end
+
+@interface DDShareInfoModel : JSONModel<DDShareInfoModel>
 
 @property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, strong) NSString *userId;

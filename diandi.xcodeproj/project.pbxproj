@@ -62,6 +62,8 @@
 		1B58DB101BB2478B00F8FDE7 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DB041BB2478B00F8FDE7 /* UIScrollView+MJExtension.m */; };
 		1B58DB111BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DB061BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m */; };
 		1B58DB121BB2478B00F8FDE7 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DB081BB2478B00F8FDE7 /* UIView+MJExtension.m */; };
+		1B7D9EFE1C191866002BDB69 /* DDUserSpotShareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D9EFD1C191866002BDB69 /* DDUserSpotShareHeaderView.m */; };
+		1B7D9F011C191CDC002BDB69 /* DDSpotWithShareListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D9F001C191CDC002BDB69 /* DDSpotWithShareListModel.m */; };
 		1B84A0721BEC3B28009F04EF /* DDSpotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B84A0711BEC3B28009F04EF /* DDSpotTableViewCell.m */; };
 		1B84A0751BEC448A009F04EF /* DDNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B84A0741BEC448A009F04EF /* DDNoteModel.m */; };
 		1B84A0781BEC7660009F04EF /* DDSpotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B84A0771BEC7660009F04EF /* DDSpotDetailViewController.m */; };
@@ -196,6 +198,10 @@
 		1B58DB061BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		1B58DB071BB2478B00F8FDE7 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		1B58DB081BB2478B00F8FDE7 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		1B7D9EFC1C191866002BDB69 /* DDUserSpotShareHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserSpotShareHeaderView.h; sourceTree = "<group>"; };
+		1B7D9EFD1C191866002BDB69 /* DDUserSpotShareHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserSpotShareHeaderView.m; sourceTree = "<group>"; };
+		1B7D9EFF1C191CDC002BDB69 /* DDSpotWithShareListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSpotWithShareListModel.h; path = diandi/Class/DDSpotWithShareListModel.h; sourceTree = SOURCE_ROOT; };
+		1B7D9F001C191CDC002BDB69 /* DDSpotWithShareListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDSpotWithShareListModel.m; path = diandi/Class/DDSpotWithShareListModel.m; sourceTree = SOURCE_ROOT; };
 		1B84A0701BEC3B28009F04EF /* DDSpotTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotTableViewCell.h; sourceTree = "<group>"; };
 		1B84A0711BEC3B28009F04EF /* DDSpotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotTableViewCell.m; sourceTree = "<group>"; };
 		1B84A0731BEC448A009F04EF /* DDNoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDNoteModel.h; path = diandi/Class/DDNoteModel.h; sourceTree = SOURCE_ROOT; };
@@ -413,6 +419,8 @@
 				1B9F5D171C03FD3B006C5636 /* DDSpotDetailModel.m */,
 				1B06BE091BB63C19009B587B /* DDSpotModel.h */,
 				1B06BE0A1BB63C19009B587B /* DDSpotModel.m */,
+				1B7D9EFF1C191CDC002BDB69 /* DDSpotWithShareListModel.h */,
+				1B7D9F001C191CDC002BDB69 /* DDSpotWithShareListModel.m */,
 				1B1545611B5A3FCD007B41D5 /* DGroup.h */,
 				1B1545621B5A3FCD007B41D5 /* DGroup.m */,
 				1B15455F1B5A3FCD007B41D5 /* DPhoto.h */,
@@ -604,6 +612,8 @@
 				1BF6B0A41BFC60E000DA5878 /* DDShareHeaderView.m */,
 				1B1C2D841BC3BE4A001496BC /* DDTopMenuView.h */,
 				1B1C2D851BC3BE4A001496BC /* DDTopMenuView.m */,
+				1B7D9EFC1C191866002BDB69 /* DDUserSpotShareHeaderView.h */,
+				1B7D9EFD1C191866002BDB69 /* DDUserSpotShareHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -727,6 +737,7 @@
 				1B58DB101BB2478B00F8FDE7 /* UIScrollView+MJExtension.m in Sources */,
 				1B58DB091BB2478B00F8FDE7 /* ASPageView.m in Sources */,
 				1BADA3B81B8B0EB30071240C /* DDTagCollectionViewCell.m in Sources */,
+				1B7D9EFE1C191866002BDB69 /* DDUserSpotShareHeaderView.m in Sources */,
 				1B0D550E1C116C4000850F46 /* DDSpotUserShareViewController.m in Sources */,
 				1B58DB0B1BB2478B00F8FDE7 /* ASWaitingView.m in Sources */,
 				1BE309781B4FC4120008EF74 /* DBSCAN.m in Sources */,
@@ -754,6 +765,7 @@
 				1B58DB0F1BB2478B00F8FDE7 /* MJRefreshHeaderView.m in Sources */,
 				1B58DB111BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m in Sources */,
 				1B010FA41ADF9B2600F37746 /* AppDelegate.m in Sources */,
+				1B7D9F011C191CDC002BDB69 /* DDSpotWithShareListModel.m in Sources */,
 				1BADA3BE1B8B13460071240C /* DDNoteViewController.m in Sources */,
 				1B523AE81BF2E3D5005F29F2 /* DDRankView.m in Sources */,
 				1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */,

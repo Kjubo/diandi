@@ -116,11 +116,9 @@
     [self.ivFaceView sd_setImageWithURL:[NSURL URLWithString:_model.avaterImage] placeholderImage:nil];
     self.lbPoster.text = [NSString stringWithFormat:@"%@  %@", _model.userName, _model.postDate];
     self.lbDetail.text = [_model.content copy];
-    self.worth = _model.worth;
-    self.hasFavor = _model.favored;
 }
 
-- (void)setGoodCount:(BOOL)goodCount{
+- (void)setGoodCount:(NSInteger)goodCount{
     _goodCount = goodCount;
     UIButton *btn = self.buttons[0];
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"有用" attributes:@{NSForegroundColorAttributeName : GS_COLOR_BLACK}];
@@ -128,7 +126,7 @@
     [btn setAttributedTitle:str forState:UIControlStateNormal];
 }
 
-- (void)setBadCount:(BOOL)badCount{
+- (void)setBadCount:(NSInteger)badCount{
     _badCount = badCount;
     UIButton *btn = self.buttons[1];
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"没用" attributes:@{NSForegroundColorAttributeName : GS_COLOR_BLACK}];
@@ -136,7 +134,7 @@
     [btn setAttributedTitle:str forState:UIControlStateNormal];
 }
 
-- (void)setFavorCount:(BOOL)favorCount{
+- (void)setFavorCount:(NSInteger)favorCount{
     _favorCount = favorCount;
     UIButton *btn = self.buttons[2];
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"收藏" attributes:@{NSForegroundColorAttributeName : GS_COLOR_BLACK}];
@@ -174,7 +172,7 @@
     if(sender.tag >=0 && sender.tag <= 1){
         if([self.delegate respondsToSelector:@selector(ddSpotShareCellFor:selecteWorth:)]){
             DDSpotShareWorth worth = sender.tag == 0 ? DDSpotShareWorthGood : DDSpotShareWorthBad;
-            if(worth == self.model.worth){
+            if(worth == self.worth){
                 worth = DDSpotShareWorthNone;
             }
             [self.delegate ddSpotShareCellFor:self.model selecteWorth:worth];

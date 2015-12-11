@@ -136,11 +136,13 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     cell.delegate = self;
     DDCustomShareInfoModel *model = self.shareList[indexPath.row];
     [cell setModel:model];
+    cell.worth = model.worth;
+    cell.hasFavor = model.favored;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DDCustomShareInfoModel *item = self.shareList[indexPath.row];
+    id<DDShareInfoModel> item = self.shareList[indexPath.row];
     return [DDSpotShareTableViewCell heightForDetail:item.content];
 }
 
@@ -153,7 +155,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 #pragma mark - DDSpotShareTableViewCell Delegate
-- (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteWorth:(DDSpotShareWorth)worth{
+- (void)ddSpotShareCellFor:(DDShareInfoModel *)model selecteWorth:(DDSpotShareWorth)worth{
     [HttpUtil post:@"apiupdate/updateplworth.php"
             params:@{@"pl_uuid" : model.uuid,
                      @"type" : @(worth)}
@@ -170,7 +172,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
         }];
 }
 
-- (void)ddSpotShareCellFor:(DDCustomShareInfoModel *)model selecteFavor:(BOOL)favor{
+- (void)ddSpotShareCellFor:(DDShareInfoModel *)model selecteFavor:(BOOL)favor{
     [HttpUtil post:@"apiupdate/updateplfavor.php"
             params:@{@"pl_uuid" : model.uuid,
                      @"type" : favor ? @(1) : @(0)}
