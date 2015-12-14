@@ -18,7 +18,6 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.textLabel.font = [UIFont gs_font:NSAppFontL];
         self.backgroundColor = [UIColor clearColor];
-        self.textLabel.textColor = GS_COLOR_BLACK;
     }
     return self;
 }

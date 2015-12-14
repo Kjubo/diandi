@@ -31,10 +31,11 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         self.tbStage1st = [UITableView new];
         self.tbStage1st.delegate = self;
         self.tbStage1st.dataSource = self;
-        self.tbStage1st.backgroundColor = [UIColor clearColor];
+        self.tbStage1st.backgroundColor = GS_COLOR_WHITE;
         self.tbStage1st.separatorColor = [UIColor clearColor];
         self.tbStage1st.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tbStage1st.rowHeight = 50.0;
+        self.tbStage1st.tableFooterView = [UIView new];
         [self.tbStage1st registerClass:[DDLinkageCell class] forCellReuseIdentifier:kTableCellIdentifier];
         [self addSubview:self.tbStage1st];
         [self.tbStage1st mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -47,10 +48,11 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
         self.tbStage2nd.dataSource = self;
 //        self.tbStage1st.emptyDataSetDelegate = self;
 //        self.tbStage2nd.emptyDataSetSource = self;
-        self.tbStage2nd.backgroundColor = [UIColor clearColor];
+        self.tbStage2nd.backgroundColor = GS_COLOR_WHITE;
         self.tbStage2nd.separatorColor = [UIColor clearColor];
         self.tbStage2nd.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tbStage2nd.rowHeight = 50.0;
+        self.tbStage2nd.tableFooterView = [UIView new];
         [self.tbStage2nd registerClass:[DDLinkageCell class] forCellReuseIdentifier:kTableCellIdentifier];
         [self addSubview:self.tbStage2nd];
         [self.tbStage2nd mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -93,26 +95,15 @@ static NSString *kTableCellIdentifier = @"kTableCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DDLinkageCell *cell = (DDLinkageCell *)[tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     DDArea *item = nil;
     if(tableView == self.tbStage1st){
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        if(indexPath.row == self.selectedStage1Index){
-            cell.backgroundColor = GS_COLOR_BLACK;
-            cell.textLabel.textColor = GS_COLOR_MAIN;
-        }else{
-            cell.backgroundColor = [UIColor clearColor];
-            cell.textLabel.textColor = GS_COLOR_WHITE;
-        }
         item = self.data.list[indexPath.row];
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }else{
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.backgroundColor = GS_COLOR_BLACK;
-        cell.textLabel.textColor = GS_COLOR_WHITE;
         DDArea *parent = self.data.list[self.selectedStage1Index];
         item = parent.list[indexPath.row];
     }
-    cell.textLabel.font = [UIFont gs_font:NSAppFontM];
     cell.textLabel.text = item.name;
     return cell;
 }
