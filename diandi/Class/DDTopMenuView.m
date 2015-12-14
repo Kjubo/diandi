@@ -88,6 +88,19 @@
     return self;
 }
 
+- (void)setSelectedMenuTitle:(NSString *)title{
+    if(self.btnSelected){
+        self.btnSelected.title = [title copy];
+    }
+}
+
+- (void)cleanSelected{
+    if(self.btnSelected){
+        self.btnSelected.opened = NO;
+        self.btnSelected = nil;
+    }
+}
+
 - (void)btnClick_menu:(DDMenuButton *)sender{
     if(sender == self.btnSelected){
         self.btnSelected.opened = NO;

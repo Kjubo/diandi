@@ -18,6 +18,7 @@
     if(self = [super init]){
         self.ivIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_arrow_down"]];
         self.titleLabel.font = [UIFont gs_font:NSAppFontL];
+        self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [self setTitleColor:GS_COLOR_WHITE forState:UIControlStateNormal];
         [self setTitleColor:GS_COLOR_MAIN forState:UIControlStateSelected];
         [self addSubview:self.ivIcon];

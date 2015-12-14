@@ -36,7 +36,7 @@
         }];
         
         self.contentView = [UIScrollView new];
-        self.contentView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
+        self.contentView.backgroundColor = GS_COLOR_WHITE;
         self.contentView.pagingEnabled = YES;
         self.contentView.scrollEnabled = NO;
         self.contentView.delegate = self;
@@ -83,8 +83,8 @@
             [super setHidden:YES];
         }];
     }else{
-        [self.contentView setContentOffset:CGPointZero];
-        [self.contentView setScrollEnabled:NO];
+//        [self.contentView setContentOffset:CGPointZero];
+//        [self.contentView setScrollEnabled:NO];
         [self.superview bringSubviewToFront:self];
         [super setHidden:NO];
         
@@ -95,8 +95,9 @@
 }
 
 #pragma mark - UIScrollView Delegate
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if(scrollView.contentOffset.x < DF_WIDTH){
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if(scrollView != self.contentView) return;
+    if(scrollView.contentOffset.x <= 0){
         scrollView.scrollEnabled = NO;
         self.linkageView.selectedStage1Index = -1;
     }else{

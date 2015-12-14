@@ -19,4 +19,7 @@
 
 @interface DDTopMenuView : UIView
 @property (nonatomic, assign) id<DDTopMenuViewDelegate> delegate;
+
+- (void)setSelectedMenuTitle:(NSString *)title;
+- (void)cleanSelected;
 @end

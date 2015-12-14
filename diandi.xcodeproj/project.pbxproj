@@ -38,6 +38,7 @@
 		1B1C2D861BC3BE4A001496BC /* DDTopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C2D851BC3BE4A001496BC /* DDTopMenuView.m */; };
 		1B2CB78B1BD237CB005074EB /* DDSearchEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2CB78A1BD237CB005074EB /* DDSearchEmptyView.m */; };
 		1B3714DC1B8C46F200A49CC3 /* DDMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3714DB1B8C46F200A49CC3 /* DDMenuButton.m */; };
+		1B39533D1C1E9E08002CF6FA /* DDLinkageCountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B39533C1C1E9E08002CF6FA /* DDLinkageCountryCell.m */; };
 		1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B39992D1B1C687500FEA549 /* NSDate+Addition.m */; };
 		1B3999391B1D9D9700FEA549 /* CLLocation+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3999381B1D9D9700FEA549 /* CLLocation+Addtion.m */; };
 		1B3A65A21BE9B50800BB0429 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3A659F1BE9B50800BB0429 /* libMobClickLibrary.a */; };
@@ -158,6 +159,8 @@
 		1B2CB78A1BD237CB005074EB /* DDSearchEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSearchEmptyView.m; sourceTree = "<group>"; };
 		1B3714DA1B8C46F200A49CC3 /* DDMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuButton.h; sourceTree = "<group>"; };
 		1B3714DB1B8C46F200A49CC3 /* DDMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuButton.m; sourceTree = "<group>"; };
+		1B39533B1C1E9E08002CF6FA /* DDLinkageCountryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLinkageCountryCell.h; sourceTree = "<group>"; };
+		1B39533C1C1E9E08002CF6FA /* DDLinkageCountryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLinkageCountryCell.m; sourceTree = "<group>"; };
 		1B39992C1B1C687500FEA549 /* NSDate+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Addition.h"; sourceTree = "<group>"; };
 		1B39992D1B1C687500FEA549 /* NSDate+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Addition.m"; sourceTree = "<group>"; };
 		1B3999371B1D9D9700FEA549 /* CLLocation+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+Addtion.h"; sourceTree = "<group>"; };
@@ -543,6 +546,8 @@
 			children = (
 				1BADA3C21B8B1F5D0071240C /* DDLinkageCell.h */,
 				1BADA3C31B8B1F5D0071240C /* DDLinkageCell.m */,
+				1B39533B1C1E9E08002CF6FA /* DDLinkageCountryCell.h */,
+				1B39533C1C1E9E08002CF6FA /* DDLinkageCountryCell.m */,
 				1B06BE061BB63674009B587B /* DDNoteTableViewCell.h */,
 				1B06BE071BB63674009B587B /* DDNoteTableViewCell.m */,
 				1BF6B0A01BFC5F1700DA5878 /* DDSpotShareTableViewCell.h */,
@@ -793,6 +798,7 @@
 				1BF6B0A51BFC60E000DA5878 /* DDShareHeaderView.m in Sources */,
 				1BC461EF1BCA3B0D003550FC /* SSKeychain.m in Sources */,
 				1B39992E1B1C687500FEA549 /* NSDate+Addition.m in Sources */,
+				1B39533D1C1E9E08002CF6FA /* DDLinkageCountryCell.m in Sources */,
 				1BF278A71AE8EE5600022ACF /* UIImage+Scale.m in Sources */,
 				1B0D55111C117ADE00850F46 /* DDUserCenterViewController.m in Sources */,
 				1BBFFDC91BFEF3EE005833EE /* DDShareInfoModel.m in Sources */,

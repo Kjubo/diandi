@@ -195,6 +195,8 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 #pragma mark - DDPopAreaViewDelegate
 - (void)ddPopAreaViewDidSelected:(DDArea *)data{
     self.areaUuid = [data.uuid copy];
+    [self.menuView setSelectedMenuTitle:[data.name copy]];
+    [self.menuView cleanSelected];
     self.pageIndex = 0;
     [self loadingShow];
     [self loadMore];

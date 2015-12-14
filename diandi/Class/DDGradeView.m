@@ -50,7 +50,6 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
         self.tbList.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tbList.delegate = self;
         self.tbList.dataSource = self;
-        self.tbList.rowHeight = 50.0;
         self.tbList.tableFooterView = [UIView new];
         [self.tbList registerClass:[DDLinkageCell class] forCellReuseIdentifier:kTableCellIdentifier];
         [self addSubview:self.tbList];
