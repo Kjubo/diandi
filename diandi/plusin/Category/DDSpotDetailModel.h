@@ -7,8 +7,9 @@
 //
 
 #import "JSONModel.h"
+#import "DDSpotModel.h"
 
-@interface DDSpotDetailModel : JSONModel
+@interface DDSpotDetailModel : JSONModel<DDSpotModel>
 @property (nonatomic, strong) NSString<Optional> *uuid;
 @property (nonatomic, strong) NSString<Optional> *img;
 @property (nonatomic) CGFloat lat;

@@ -9,6 +9,10 @@
 #import "DDRankView.h"
 
 static CGFloat kViewHeight = 16.0;
+@interface DDRankView ()
+@property (nonatomic, strong) UIView *maskView;
+@end
+
 @implementation DDRankView
 
 - (instancetype)init{
@@ -16,7 +20,7 @@ static CGFloat kViewHeight = 16.0;
         self.clipsToBounds = YES;
         self.backgroundColor = [UIColor clearColor];
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(@(kViewHeight));
+            make.size.mas_equalTo(CGSizeMake(kViewHeight * 5, kViewHeight));
         }];
         for(int i = 0; i < 5; i++){
             UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_rank"]];
@@ -28,6 +32,14 @@ static CGFloat kViewHeight = 16.0;
                 make.left.equalTo(self).offset(i * kViewHeight);
             }];
         }
+        
+        self.maskView = [UIView new];
+        self.maskView.backgroundColor = GS_COLOR_WHITE;
+        [self addSubview:self.maskView];
+        [self.maskView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self);
+        }];
+        
         self.rank = 5;
     }
     return self;
@@ -35,11 +47,9 @@ static CGFloat kViewHeight = 16.0;
 
 - (void)setRank:(CGFloat)rank{
     _rank = rank;
-    [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(_rank * kViewHeight);
+    [self.maskView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_rank * kViewHeight);
     }];
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
 }
 
 @end

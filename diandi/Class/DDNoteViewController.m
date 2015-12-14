@@ -316,9 +316,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
         }else{
             DDSpotModel *item = self.data[indexPath.row];
-            DDSpotDetailViewController *vc = [DDSpotDetailViewController new];
-            vc.title = [item.title copy];
-            vc.uuid = [item.uuid copy];
+            DDSpotDetailViewController *vc = [DDSpotDetailViewController newSpotDetailViewController:item];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }

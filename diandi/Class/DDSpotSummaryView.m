@@ -37,7 +37,7 @@
             make.right.equalTo(self).offset(-15);
             make.top.equalTo(self.ivSpotImage);
         }];
-        
+
         UIImageView *iv_star = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_star"]];
         [keepView addSubview:iv_star];
         [iv_star mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -46,7 +46,7 @@
             make.top.equalTo(keepView).offset(5);
             make.bottom.equalTo(keepView).offset(-5);
         }];
-        
+
         self.lbKeepCount = [UILabel new];
         self.lbKeepCount.textAlignment = NSTextAlignmentRight;
         self.lbKeepCount.backgroundColor = [UIColor clearColor];
@@ -70,7 +70,7 @@
             make.right.lessThanOrEqualTo(keepView.mas_left).offset(-10);
             make.top.equalTo(self.ivSpotImage).offset(4);
         }];
-        
+
         self.rankView = [DDRankView new];
         [self addSubview:self.rankView];
         [self.rankView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -87,7 +87,7 @@
             make.left.equalTo(self.lbName);
             make.bottom.equalTo(self.ivSpotImage.mas_bottom).offset(-4);
         }];
-        
+
         self.lbShareInfo = [UILabel new];
         self.lbShareInfo.backgroundColor = [UIColor clearColor];
         self.lbShareInfo.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -95,7 +95,7 @@
         self.lbShareInfo.font = [UIFont gs_font:NSAppFontXS];
         [self addSubview:self.lbShareInfo];
         [self.lbShareInfo mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.rankView);
+            make.centerY.equalTo(self.ivSpotImage);
             make.right.equalTo(keepView);
         }];
         
@@ -114,7 +114,7 @@
     return self;
 }
 
-- (void)setDataModel:(DDSpotModel *)data{
+- (void)setDataModel:(id<DDSpotModel>)data{
     [self.ivSpotImage sd_setImageWithURL:[NSURL URLWithString:data.img] placeholderImage:nil];
     self.lbName.text = [data.title copy];
     self.lbSubTitle.text = [data.subtitle copy];

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DDSpotModel.h"
 @interface DDUserSpotShareHeaderView : UITableViewHeaderFooterView
-- (void)setDataModel:(DDSpotModel *)data;
+- (void)setDataModel:(DDSpotModel *)data showArrowLine:(BOOL)showTag;
+@property (nonatomic, readonly) DDSpotModel *spotModel;
 @end

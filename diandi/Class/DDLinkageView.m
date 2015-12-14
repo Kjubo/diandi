@@ -47,8 +47,8 @@ static NSString *kCountryCellIdentifier = @"kCountryCellIdentifier";
         self.tbStage2nd = [UITableView new];
         self.tbStage2nd.delegate = self;
         self.tbStage2nd.dataSource = self;
-        self.tbStage2nd.emptyDataSetDelegate = self;
-        self.tbStage2nd.emptyDataSetSource = self;
+//        self.tbStage2nd.emptyDataSetDelegate = self;
+//        self.tbStage2nd.emptyDataSetSource = self;
         self.tbStage2nd.backgroundColor = GS_COLOR_WHITE;
         self.tbStage2nd.separatorColor = [UIColor clearColor];
         self.tbStage2nd.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -67,7 +67,7 @@ static NSString *kCountryCellIdentifier = @"kCountryCellIdentifier";
 }
 
 - (void)setData:(DDArea *)data{
-    _data = data;
+    _data = [data copy];
     [self.tbStage1st reloadData];
     [self.tbStage2nd reloadData];
 }

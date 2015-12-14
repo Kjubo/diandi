@@ -38,7 +38,7 @@
         [self.contentView addSubview:self.ivFaceView];
         [self.ivFaceView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView).offset(10);
-            make.size.mas_equalTo(CGSizeMake(24, 24));
+            make.size.mas_equalTo(CGSizeMake(22, 22));
             make.top.equalTo(self.contentView).offset(10);
         }];
         
@@ -58,7 +58,7 @@
         self.ivType.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.ivType];
         [self.ivType mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(36, 36));
+            make.size.mas_equalTo(CGSizeMake(30, 30));
             make.left.equalTo(self.ivFaceView);
             make.top.equalTo(self.ivFaceView.mas_bottom).offset(16);
         }];

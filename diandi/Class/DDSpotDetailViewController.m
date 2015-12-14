@@ -16,6 +16,7 @@
 #import "DDSpotMapViewController.h"
 #import "DDSpotDescViewController.h"
 #import "DDSpotUserShareViewController.h"
+#import "DDCacheHelper.h"
 
 @interface DDSpotDetailViewController ()<UITableViewDelegate, UITableViewDataSource, DDDetailHeaderViewDelegate, DDSpotShareTableViewCellDelegate>
 @property (nonatomic, strong) DDDetailHeaderView *headerView;
@@ -28,6 +29,14 @@
 
 static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 @implementation DDSpotDetailViewController
+
++ (instancetype)newSpotDetailViewController:(DDSpotModel *)spotInfo{
+    DDSpotDetailViewController *vc = [DDSpotDetailViewController new];
+    vc.title = [spotInfo.title copy];
+    vc.spotInfo = spotInfo;
+    [[DDCacheHelper shared] addViewHistory:spotInfo];
+    return vc;
+}
 
 - (void)viewDidLoad{
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+评论" style:UIBarButtonItemStylePlain target:self action:@selector(navToAddShare)];
@@ -73,7 +82,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 - (void)loadSpotData{
     [HttpUtil load:@"api/mdddetail.php"
-            params:@{@"uuid" : self.uuid}
+            params:@{@"uuid" : self.spotInfo.uuid}
         completion:^(BOOL succ, NSString *message, id json) {
             [self loadingHidden];
             if(succ){
@@ -89,7 +98,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 
 - (void)loadMoreShareInfo{
     [HttpUtil load:@"api/pllist.php"
-            params:@{@"uuid" : self.uuid,
+            params:@{@"uuid" : self.spotInfo.uuid,
                      @"offset" : @(self.pageno)}
         completion:^(BOOL succ, NSString *message, id json) {
             [self.tbList footerEndRefreshing];

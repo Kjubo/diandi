@@ -7,8 +7,8 @@
 //
 
 #import "RootViewController.h"
-#import "DDSpotDetailModel.h"
+#import "DDSpotModel.h"
 
 @interface DDSpotUserShareViewController : RootViewController
-@property (nonatomic, strong) DDSpotDetailModel *spotModel;
+@property (nonatomic, strong) id<DDSpotModel> spotModel;
 @end

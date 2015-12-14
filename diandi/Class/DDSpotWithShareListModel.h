@@ -7,7 +7,7 @@
 //
 
 #import "DDSpotModel.h"
-#import "DDShareInfoModel.h"
-@interface DDSpotWithShareListModel : DDSpotModel
-@property (nonatomic, strong) NSArray<DDShareInfoModel, Optional> *list;
+#import "DDCustomShareInfoModel.h"
+@interface DDSpotWithShareListModel : DDSpotModel<DDSpotModel>
+@property (nonatomic, strong) NSArray<DDCustomShareInfoModel, Optional> *pllist;
 @end

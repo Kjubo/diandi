@@ -9,6 +9,9 @@
 #import "JSONModel.h"
 #import "DDShareInfoModel.h"
 
+@protocol DDCustomShareInfoModel <NSObject>
+@end
+
 typedef NS_ENUM(NSInteger, DDSpotShareWorth){
     DDSpotShareWorthNone = 0,
     DDSpotShareWorthGood = 1,

@@ -11,6 +11,8 @@
 #import "DDSpotShareTableViewCell.h"
 #import "DDSpotWithShareListModel.h"
 #import "MJRefresh.h"
+#import "DDCacheHelper.h"
+#import "DDSpotDetailViewController.h"
 
 @interface DDUserCenterViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (nonatomic, strong) UIImageView *ivFaceView;
@@ -138,9 +140,9 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
     [self.view addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.highlightLine.mas_bottom);
-        make.left.right.bottom.equalTo(self.view);
+        make.left.width.bottom.equalTo(self.view);
     }];
-    
+
     self.tbShareInfo = [UITableView new];
     self.tbShareInfo.delegate = self;
     self.tbShareInfo.dataSource = self;
@@ -150,8 +152,9 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
     [self.tbShareInfo registerClass:[DDSpotShareTableViewCell class] forCellReuseIdentifier:kShareCellReuseIdentifier];
     [self.tbShareInfo addFooterWithTarget:self action:@selector(loadMoreShare)];
     [self.contentView addSubview:self.tbShareInfo];
-    [self.tbShareInfo  mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(self.contentView);
+    [self.tbShareInfo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(self.contentView);
+        make.width.mas_equalTo(@(DF_WIDTH));
         make.top.equalTo(self.contentView);
         make.left.equalTo(self.contentView);
     }];
@@ -165,17 +168,18 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
     [self.tbFavor registerClass:[DDSpotShareTableViewCell class] forCellReuseIdentifier:kShareCellReuseIdentifier];
     [self.tbFavor addFooterWithTarget:self action:@selector(loadMoreFav)];
     [self.contentView addSubview:self.tbFavor];
-    [self.tbFavor  mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.tbFavor mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(self.contentView);
         make.top.equalTo(self.contentView);
         make.left.equalTo(self.contentView).offset(DF_WIDTH);
     }];
     
     self.tbHistory = [UITableView new];
-//    self.tbHistory.delegate = self;
-//    self.tbHistory.dataSource = self;
+    self.tbHistory.delegate = self;
+    self.tbHistory.dataSource = self;
     self.tbHistory.separatorColor = [UIColor clearColor];
     self.tbHistory.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tbHistory registerClass:[DDUserSpotShareHeaderView class] forHeaderFooterViewReuseIdentifier:kHeaderFooterViewReuseIdentifier];
     [self.contentView addSubview:self.tbHistory];
     [self.tbHistory  mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(self.contentView);
@@ -269,39 +273,36 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
     [self.highlightLine mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(kButtonWidth * typeIndex);
     }];
-    
     [UIView animateWithDuration:0.3 animations:^{
         [self.highlightLine setNeedsLayout];
         [self.highlightLine layoutIfNeeded];
     }];
     _typeIndex = typeIndex;
-    
+    [self.contentView setContentOffset:CGPointMake(DF_WIDTH * _typeIndex, 0) animated:YES];
     if(_typeIndex == 0 && [self.lstMyShare count] == 0){
         [self loadMoreShare];
     }else if(_typeIndex == 1 && [self.lstMyFav count] == 0){
         [self loadMoreFav];
+    }else if(_typeIndex == 2){
+        [self.tbHistory reloadData];
     }
 }
 
 #pragma mark - 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     self.typeIndex = scrollView.contentOffset.x/scrollView.width;
 }
 
 #pragma mark - UITableViewDelegate & Method
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(tableView == self.tbShareInfo
-       || tableView == self.tbFavor){
-        return 112;
-    }
-    return 0;
+    return 112;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == self.tbShareInfo
        || tableView == self.tbFavor){
         DDSpotWithShareListModel *spotItem = (tableView == self.tbShareInfo) ? self.lstMyShare[indexPath.section] : self.lstMyFav[indexPath.section];
-        id<DDShareInfoModel> item = spotItem.list[indexPath.row];
+        id<DDShareInfoModel> item = spotItem.pllist[indexPath.row];
         return [DDSpotShareTableViewCell heightForDetail:item.content];
     }
     return 0;
@@ -312,6 +313,8 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
         return [self.lstMyShare count];
     }else if(tableView == self.tbFavor){
         return [self.lstMyFav count];
+    }else if(tableView == self.tbHistory){
+        return [[DDCacheHelper shared].viewHistoryList count];
     }
     return 0;
 }
@@ -319,42 +322,60 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(tableView == self.tbShareInfo){
         DDSpotWithShareListModel *spotItem = self.lstMyShare[section];
-        return [spotItem.list count];
+        return [spotItem.pllist count];
     }else if(tableView == self.tbFavor){
         DDSpotWithShareListModel *spotItem = self.lstMyFav[section];
-        return [spotItem.list count];
-    }else if(tableView == self.tbHistory){
-        return 0;
+        return [spotItem.pllist count];
     }
     return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    DDUserSpotShareHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kHeaderFooterViewReuseIdentifier];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapHeaderSection:)];
+    [headerView addGestureRecognizer:tap];
     if(tableView == self.tbShareInfo){
-        DDUserSpotShareHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kHeaderFooterViewReuseIdentifier];
         DDSpotWithShareListModel *spotItem = self.lstMyShare[section];
-        [headerView setDataModel:spotItem];
-        return headerView;
+        [headerView setDataModel:spotItem showArrowLine:[spotItem.pllist count] > 0];
     }if(tableView == self.tbFavor){
-        DDUserSpotShareHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kHeaderFooterViewReuseIdentifier];
         DDSpotWithShareListModel *spotItem = self.lstMyFav[section];
-        [headerView setDataModel:spotItem];
-        return headerView;
+        [headerView setDataModel:spotItem showArrowLine:[spotItem.pllist count] > 0];
+    }else if(tableView == self.tbHistory){
+        DDSpotModel *spotItem = [DDCacheHelper shared].viewHistoryList[section];
+        [headerView setDataModel:spotItem showArrowLine:NO];
     }
-    return nil;
+    return headerView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == self.tbShareInfo){
         DDSpotShareTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kShareCellReuseIdentifier forIndexPath:indexPath];
         DDSpotWithShareListModel *spotItem = self.lstMyShare[indexPath.section];
-        DDShareInfoModel *shareItem = spotItem.list[indexPath.row];
+        DDCustomShareInfoModel *shareItem = spotItem.pllist[indexPath.row];
         [cell setModel:shareItem];
+        cell.worth = shareItem.worth;
+        cell.hasFavor = shareItem.favored;
         return cell;
     }else if(tableView == self.tbFavor){
-        
+        DDSpotShareTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kShareCellReuseIdentifier forIndexPath:indexPath];
+        DDSpotWithShareListModel *spotItem = self.lstMyFav[indexPath.section];
+        DDCustomShareInfoModel *shareItem = spotItem.pllist[indexPath.row];
+        [cell setModel:shareItem];
+        cell.worth = shareItem.worth;
+        cell.hasFavor = shareItem.favored;
+        return cell;
     }
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    
+}
+
+- (void)handleTapHeaderSection:(UITapGestureRecognizer *)sender{
+    DDUserSpotShareHeaderView *header = (DDUserSpotShareHeaderView *)sender.view;
+    DDSpotDetailViewController *vc = [DDSpotDetailViewController newSpotDetailViewController:header.spotModel];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UIButton Click

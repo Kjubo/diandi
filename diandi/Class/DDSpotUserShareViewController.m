@@ -115,7 +115,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
         }];
     }
     
-    
     _isEditing = NO;
     self.dataList = [NSMutableArray array];
     [self loadMore];

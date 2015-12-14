@@ -11,11 +11,14 @@
 #import "NSArray+JSONModelAddtion.h"
 @interface DDCacheHelper ()
 @property (nonatomic, strong) NSMutableArray *lstSearchHistory;
+@property (nonatomic, strong) NSMutableArray *lstSpotHistory;
 @end
 
 static NSString *kCacheDirForData               = @"kCacheDataDir";
 static NSString *kCacheKeyForMdd                = @"kCacheKeyForMdd";
 static NSString *kCacheKeyForSearchHistoryList  = @"kCacheKeyForSearchHistoryList";
+static NSString *kCacheKeyForSpotHistoryList    = @"kCacheKeyForSpotHistoryList";
+
 @implementation DDCacheHelper
 @synthesize mddList = _mddList;
 @synthesize searchHistoryList = _searchHistoryList;
@@ -34,8 +37,16 @@ static NSString *kCacheKeyForSearchHistoryList  = @"kCacheKeyForSearchHistoryLis
         ASCacheObject *co = [[ASCache shared] readDicFiledsWithDir:kCacheDirForData key:kCacheKeyForSearchHistoryList];
         if(co && co.isVaild){
             id obj = [NSJSONSerialization JSONObjectWithData:[co.value dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-            if([obj isKindOfClass:[NSArray class]]){
+            if(obj != nil && [obj isKindOfClass:[NSArray class]]){
                 [self.lstSearchHistory addObjectsFromArray:obj];
+            }
+        }
+        self.lstSpotHistory = [NSMutableArray array];
+        co = [[ASCache shared] readDicFiledsWithDir:kCacheDirForData key:kCacheKeyForSpotHistoryList];
+        if(co && co.isVaild){
+            id obj = [DDSpotModel arrayOfModelsFromData:[co.value dataUsingEncoding:NSUTF8StringEncoding] error:nil];
+            if(obj != nil && [obj isKindOfClass:[NSArray class]]){
+                [self.lstSpotHistory addObjectsFromArray:obj];
             }
         }
     }
@@ -44,6 +55,10 @@ static NSString *kCacheKeyForSearchHistoryList  = @"kCacheKeyForSearchHistoryLis
 
 - (NSArray *)searchHistoryList{
     return self.lstSearchHistory;
+}
+
+- (NSArray<DDSpotModel> *)viewHistoryList{
+    return (NSArray<DDSpotModel> *)self.lstSpotHistory;
 }
 
 - (DDMddListModel *)mddList{
@@ -71,6 +86,24 @@ static NSString *kCacheKeyForSearchHistoryList  = @"kCacheKeyForSearchHistoryLis
         [[ASCache shared] storeValue:[self.lstSearchHistory toJSONString] dir:kCacheDirForData key:kCacheKeyForSearchHistoryList];
     }
     
+}
+
+- (void)addViewHistory:(id<DDSpotModel>)spot{
+    if(!spot) return;
+    
+    __block BOOL hasContain = NO;
+    [self.lstSpotHistory enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        id<DDSpotModel> item = obj;
+        if([item.uuid isEqualToString:spot.uuid]){
+            hasContain = YES;
+            *stop = YES;
+        }
+    }];
+    if(!hasContain){
+        [self.lstSpotHistory insertObject:spot atIndex:0];
+        [[ASCache shared] storeValue:[self.lstSpotHistory toJSONString] dir:kCacheDirForData key:kCacheKeyForSpotHistoryList];
+    }
+
 }
 
 - (void)setMddList:(DDMddListModel *)mddList{

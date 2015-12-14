@@ -8,7 +8,20 @@
 
 #import "JSONModel.h"
 
-@interface DDSpotModel : JSONModel
+@protocol DDSpotModel <NSObject>
+@property (nonatomic, strong) NSString<Optional> *uuid;
+@property (nonatomic, strong) NSString<Optional> *img;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString<Optional> *subtitle;
+@property (nonatomic) NSInteger favor;
+@property (nonatomic) NSInteger hot;
+
+@optional
+@property (nonatomic) NSInteger plnum;
+@property (nonatomic, strong) NSString<Optional> *poiType;
+@end
+
+@interface DDSpotModel : JSONModel<DDSpotModel>
 @property (nonatomic, strong) NSString<Optional> *uuid;
 @property (nonatomic, strong) NSString<Optional> *img;
 @property (nonatomic, strong) NSString *title;
