@@ -133,6 +133,8 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
     self.contentView.backgroundColor = GS_COLOR_WHITE;
     self.contentView.delegate = self;
     self.contentView.pagingEnabled = YES;
+    self.contentView.showsHorizontalScrollIndicator = NO;
+    self.contentView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.highlightLine.mas_bottom);
@@ -191,6 +193,9 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.contentView.contentSize = CGSizeMake(DF_WIDTH * 3, self.contentView.height);
+    if(self.typeIndex == -1){
+        self.typeIndex = 0;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -208,7 +213,7 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
             [self.tbShareInfo footerEndRefreshing];
             if(succ){
                 NSError *error;
-                NSArray *lst = [DDSpotWithShareListModel arrayOfModelsFromDictionaries:json error:&error];
+                NSArray *lst = [DDSpotWithShareListModel arrayOfModelsFromDictionaries:json[@"list"] error:&error];
                 NSAssert(!error, @"%@", error);
                 if([lst count] > 0){
                     [self.lstMyShare addObjectsFromArray:lst];
@@ -234,7 +239,7 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
             [self.tbFavor footerEndRefreshing];
             if(succ){
                 NSError *error;
-                NSArray *lst = [DDSpotWithShareListModel arrayOfModelsFromDictionaries:json error:&error];
+                NSArray *lst = [DDSpotWithShareListModel arrayOfModelsFromDictionaries:json[@"list"] error:&error];
                 NSAssert(!error, @"%@", error);
                 if([lst count] > 0){
                     [self.lstMyFav addObjectsFromArray:lst];
@@ -276,6 +281,11 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
     }else if(_typeIndex == 1 && [self.lstMyFav count] == 0){
         [self loadMoreFav];
     }
+}
+
+#pragma mark - 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    self.typeIndex = scrollView.contentOffset.x/scrollView.width;
 }
 
 #pragma mark - UITableViewDelegate & Method

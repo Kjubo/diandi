@@ -18,9 +18,9 @@
     if(self = [super initWithFrame:frame]){
         self.lbTitle = [UILabel new];
         self.lbTitle.textAlignment = NSTextAlignmentCenter;
-        self.lbTitle.textColor = GS_COLOR_WHITE;
+        self.lbTitle.textColor = GS_COLOR_BLACK;
         self.lbTitle.font = [UIFont gs_font:NSAppFontM];
-        self.lbTitle.layer.cornerRadius = 6.0;
+        self.lbTitle.layer.cornerRadius = 2.0;
         self.lbTitle.clipsToBounds = YES;
         [self.contentView addSubview:self.lbTitle];
         [self.lbTitle mas_makeConstraints:^(MASConstraintMaker *make) {

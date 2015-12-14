@@ -14,7 +14,7 @@ NSString *const kAppToken= @"ytoken";
 NSString *const kAppDeviceSize = @"app-device-size";
 
 
-static NSString *kUSER_UUID = @"123456789";
+static NSString *kUSER_UUID = @"test3";
 @implementation HttpUtil
 
 + (void)load:(NSString *)url params:(NSDictionary *)params completion:(HttpUtilBlock)completeBlock{

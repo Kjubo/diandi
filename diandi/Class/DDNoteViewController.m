@@ -92,6 +92,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     self.tbList.dataSource = self;
     self.tbList.separatorColor = [UIColor clearColor];
     self.tbList.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tbList addHeaderWithTarget:self action:@selector(refreshData)];
     [self.tbList addFooterWithTarget:self action:@selector(loadMore)];
     [self.containerView addSubview:self.tbList];
     [self.tbList mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -143,6 +144,11 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [self.navigationController setNavigationBarHidden:NO];
 }
 
+- (void)refreshData{
+    self.pageIndex = 0;
+    [self loadMore];
+}
+
 - (void)loadMore{
     NSString *uri = @"ddy/poisearch.php";
     if(_type == DDNoteView_Spot){
@@ -156,6 +162,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     [HttpUtil load:uri params:params
         completion:^(BOOL succ, NSString *message, id json) {
             if(succ){
+                [self.tbList headerEndRefreshing];
                 [self.tbList footerEndRefreshing];
                 NSError *error;
                 NSArray *items;

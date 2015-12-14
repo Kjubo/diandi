@@ -9,6 +9,7 @@
 #import "DDGradeView.h"
 #import "DDTagCollectionViewCell.h"
 #import "DDCacheHelper.h"
+#import "DDLinkageCell.h"
 
 @interface DDGradeView ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UICollectionView *tagCollectionView;
@@ -16,7 +17,6 @@
 @property (nonatomic, copy) DDMddListModel *mddList;
 @end
 
-#define kPopTagColor    @[HEXRGBCOLOR(0xC2185B), HEXRGBCOLOR(0x4CAF50), HEXRGBCOLOR(0xE91E63), HEXRGBCOLOR(0x2196F3), HEXRGBCOLOR(0x4CAF50), HEXRGBCOLOR(0x009688), HEXRGBCOLOR(0x7B1FA2)]
 static NSString *kTableCellIdentifier   = @"kTableCellIdentifier";
 static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
 @implementation DDGradeView
@@ -28,8 +28,13 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
         fl.minimumLineSpacing = 5.0;
         fl.minimumInteritemSpacing = 5.0;
         fl.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        //计算item的大小
+        CGSize itemSize = CGSizeMake(100, 30);
+        itemSize.width = (DF_WIDTH * (2.0/3.0) - 30.0)/2.0;
+        fl.itemSize = itemSize;
+        
         self.tagCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:fl];
-        self.tagCollectionView.backgroundColor = [UIColor clearColor];
+        self.tagCollectionView.backgroundColor = GS_COLOR_LIGHT;
         self.tagCollectionView.delegate = self;
         self.tagCollectionView.dataSource = self;
         [self.tagCollectionView registerClass:[DDTagCollectionViewCell class] forCellWithReuseIdentifier:kTagCellIdentifier];
@@ -40,28 +45,30 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
         }];
         
         self.tbList = [UITableView new];
-        self.tbList.backgroundColor = [UIColor clearColor];
+        self.tbList.backgroundColor = GS_COLOR_WHITE;
         self.tbList.separatorColor = [UIColor clearColor];
         self.tbList.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tbList.delegate = self;
         self.tbList.dataSource = self;
         self.tbList.rowHeight = 50.0;
-        [self.tbList registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableCellIdentifier];
+        self.tbList.tableFooterView = [UIView new];
+        [self.tbList registerClass:[DDLinkageCell class] forCellReuseIdentifier:kTableCellIdentifier];
         [self addSubview:self.tbList];
         [self.tbList mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.top.height.equalTo(self);
             make.width.equalTo(self).dividedBy(3.0);
         }];
         
-        UIView *line = [UIView new];
-        line.backgroundColor = GS_COLOR_LIGHT;
-        [self addSubview:line];
-        [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.tbList).offset(10);
-            make.bottom.equalTo(self.tbList).offset(-10);
-            make.left.equalTo(self.tbList);
-            make.width.mas_equalTo(@1);
-        }];
+        //中间的垂直分割线
+//        UIView *line = [UIView new];
+//        line.backgroundColor = GS_COLOR_LIGHT;
+//        [self addSubview:line];
+//        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(self.tbList).offset(10);
+//            make.bottom.equalTo(self.tbList).offset(-10);
+//            make.left.equalTo(self.tbList);
+//            make.width.mas_equalTo(@1);
+//        }];
         
         [self reloadData];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kNotificationName_MddList_Update object:nil];
@@ -85,12 +92,7 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor clearColor];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.font = [UIFont gs_font:NSAppFontL];
-    cell.textLabel.textColor = GS_COLOR_WHITE;
+    DDLinkageCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
     DDArea *item = self.mddList.mddlist[indexPath.row];
     cell.textLabel.text = [item.name copy];
     return cell;
@@ -108,18 +110,18 @@ static NSString *kTagCellIdentifier     = @"kTagCellIdentifier";
     return [self.mddList.hotplace count];
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    DDArea *item = self.mddList.hotplace[indexPath.row];
-    NSString *name = [item.name copy];
-    CGSize size = [name boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM]} context:nil].size;
-    return CGSizeMake(size.width + 16, 36);
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    DDArea *item = self.mddList.hotplace[indexPath.row];
+//    NSString *name = [item.name copy];
+//    CGSize size = [name boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM]} context:nil].size;
+//    return CGSizeMake(150, 36);
+//}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DDTagCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTagCellIdentifier forIndexPath:indexPath];
     DDArea *item = self.mddList.hotplace[indexPath.row];
     cell.text = [item.name copy];
-    cell.backgroundColor = kPopTagColor[indexPath.row % [kPopTagColor count]];
+    cell.backgroundColor = GS_COLOR_WHITE;
     return cell;
 }
 

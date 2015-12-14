@@ -110,7 +110,7 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     self.actShareType.selectedBackgroundColor = GS_COLOR_MAIN;
     for(int i = 0; i < [kShareTypeTitles count]; i++){
         __block __typeof(self) sl = self;
-        [self.actShareType addButtonWithTitle:kShareTypeTitles[i] image:[UIImage imageNamed:[NSString stringWithFormat:@"ic_share_%@_wl", kShareTypeIconNames[i]]] type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
+        [self.actShareType addButtonWithTitle:kShareTypeTitles[i] image:[UIImage imageNamed:[NSString stringWithFormat:@"ic_share_%@", kShareTypeIconNames[i]]] type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
             [sl setShareType:i + 1];
         }];
     }
@@ -248,7 +248,12 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
                      @"type" : @(self.shareType),
                      @"content" : content}
         completion:^(BOOL succ, NSString *message, id json) {
-            
+            if(succ){
+                
+            }else{
+                [RootViewController showAlert:message];
+            }
+            [self loadingHidden];
         }];
 }
 

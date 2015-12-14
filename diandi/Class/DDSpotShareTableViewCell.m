@@ -32,12 +32,35 @@
             make.height.mas_equalTo(@1);
         }];
         
+        self.ivFaceView = [UIImageView new];
+        self.ivFaceView.clipsToBounds = YES;
+        self.ivFaceView.layer.cornerRadius = 10.0;
+        [self.contentView addSubview:self.ivFaceView];
+        [self.ivFaceView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).offset(10);
+            make.size.mas_equalTo(CGSizeMake(24, 24));
+            make.top.equalTo(self.contentView).offset(10);
+        }];
+        
+        self.lbPoster = [UILabel new];
+        self.lbPoster.backgroundColor = [UIColor clearColor];
+        self.lbPoster.textColor = GS_COLOR_GRAY;
+        self.lbPoster.numberOfLines = 2;
+        self.lbPoster.lineBreakMode = NSLineBreakByTruncatingTail;
+        self.lbPoster.font = [UIFont gs_font:NSAppFontXS];
+        [self.contentView addSubview:self.lbPoster];
+        [self.lbPoster mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.ivFaceView.mas_right).offset(6);
+            make.centerY.equalTo(self.ivFaceView);
+        }];
+        
         self.ivType = [UIImageView new];
         self.ivType.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.ivType];
         [self.ivType mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(30, 30));
-            make.left.top.equalTo(self.contentView).offset(15);
+            make.size.mas_equalTo(CGSizeMake(36, 36));
+            make.left.equalTo(self.ivFaceView);
+            make.top.equalTo(self.ivFaceView.mas_bottom).offset(16);
         }];
         
         self.lbDetail = [UILabel new];
@@ -54,54 +77,20 @@
             make.right.equalTo(self.contentView).offset(-10);
         }];
         
-        self.ivFaceView = [UIImageView new];
-        self.ivFaceView.clipsToBounds = YES;
-        self.ivFaceView.layer.cornerRadius = 10.0;
-        [self.contentView addSubview:self.ivFaceView];
-        [self.ivFaceView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.lbDetail).priority(250);
-            make.size.mas_equalTo(CGSizeMake(20, 20));
-            make.top.equalTo(self.lbDetail.mas_bottom).offset(4);
-        }];
-        
-        self.lbPoster = [UILabel new];
-        self.lbPoster.backgroundColor = [UIColor clearColor];
-        self.lbPoster.textColor = GS_COLOR_GRAY;
-        self.lbPoster.font = [UIFont gs_font:NSAppFontXS];
-        [self.contentView addSubview:self.lbPoster];
-        [self.lbPoster mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.lbDetail).priority(500);
-            make.centerY.equalTo(self.ivFaceView);
-            make.left.equalTo(self.ivFaceView.mas_right).offset(4);
-        }];
-        
         self.buttons = [NSMutableArray array];
-        CGFloat buttonWidth = DF_WIDTH/3.0;
         for(int i = 0; i < 3; i++){
             UIButton *btn = [UIButton new];
             btn.tag = i;
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0);
             btn.titleLabel.font = [UIFont gs_font:NSAppFontM];
             [self.contentView addSubview:btn];
             [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.size.mas_equalTo(CGSizeMake(buttonWidth, 30));
-                make.left.mas_equalTo(@(buttonWidth * i));
-                make.bottom.equalTo(self.contentView).offset(-6);
+                make.size.mas_equalTo(CGSizeMake(54, 20));
+                make.right.equalTo(self.contentView).offset(-10 - (2 - i) * 54);
+                make.centerY.equalTo(self.ivFaceView);
             }];
             [self.buttons addObject:btn];
-            
-            if(i <= 1){
-                UIView *line = [UIView new];
-                line.backgroundColor = GS_COLOR_LIGHTGRAY;
-                [self.contentView addSubview:line];
-                [line mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.equalTo(btn.mas_right);
-                    make.height.equalTo(btn.mas_height).offset(-4);
-                    make.centerY.equalTo(btn);
-                    make.width.mas_equalTo(@1);
-                }];
-            }
         }
     }
     return self;
@@ -114,31 +103,31 @@
     self.favorCount = model.favorCount;
     self.ivType.image = [UIImage imageNamed:[NSString stringWithFormat:@"ic_share_%@", kShareTypeIconNames[_model.shareType]]];
     [self.ivFaceView sd_setImageWithURL:[NSURL URLWithString:_model.avaterImage] placeholderImage:nil];
-    self.lbPoster.text = [NSString stringWithFormat:@"%@  %@", _model.userName, _model.postDate];
+    self.lbPoster.text = [NSString stringWithFormat:@"%@\n%@", _model.userName, _model.postDate];
     self.lbDetail.text = [_model.content copy];
 }
 
 - (void)setGoodCount:(NSInteger)goodCount{
     _goodCount = goodCount;
     UIButton *btn = self.buttons[0];
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"有用" attributes:@{NSForegroundColorAttributeName : GS_COLOR_BLACK}];
-    [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"(%@)", @(_goodCount)] attributes:@{NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}]];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] init];
+    [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", @(_goodCount)] attributes:@{NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}]];
     [btn setAttributedTitle:str forState:UIControlStateNormal];
 }
 
 - (void)setBadCount:(NSInteger)badCount{
     _badCount = badCount;
     UIButton *btn = self.buttons[1];
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"没用" attributes:@{NSForegroundColorAttributeName : GS_COLOR_BLACK}];
-    [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"(%@)", @(_badCount)] attributes:@{NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}]];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] init];
+    [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", @(_badCount)] attributes:@{NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}]];
     [btn setAttributedTitle:str forState:UIControlStateNormal];
 }
 
 - (void)setFavorCount:(NSInteger)favorCount{
     _favorCount = favorCount;
     UIButton *btn = self.buttons[2];
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"收藏" attributes:@{NSForegroundColorAttributeName : GS_COLOR_BLACK}];
-    [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"(%@)", @(_favorCount)] attributes:@{NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}]];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] init];
+    [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", @(_favorCount)] attributes:@{NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}]];
     [btn setAttributedTitle:str forState:UIControlStateNormal];
 }
 
@@ -186,7 +175,8 @@
 }
 
 + (CGFloat)heightForDetail:(NSString *)detail{
-    return 100 + [detail boundingRectWithSize:CGSizeMake(kPreferredMaxLayoutWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM]} context:nil].size.height;
+    CGFloat detailHeight = [detail boundingRectWithSize:CGSizeMake(kPreferredMaxLayoutWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont gs_font:NSAppFontM]} context:nil].size.height;
+    return 44 + MAX(detailHeight, 64);
 }
 
 @end
