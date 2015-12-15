@@ -120,7 +120,7 @@
     self.lbSubTitle.text = [data.subtitle copy];
     self.lbKeepCount.text = Int2String(data.favor);
     self.rankView.rank = data.hot;
-    self.lbShareInfo.text = [NSString stringWithFormat:@"%@条分享", @(data.plnum)];
+    self.lbShareInfo.text = [NSString stringWithFormat:@"%@条分享", @([[data plnum] intValue])];
 }
 
 

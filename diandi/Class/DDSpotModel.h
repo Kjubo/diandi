@@ -17,7 +17,7 @@
 @property (nonatomic) NSInteger hot;
 
 @optional
-@property (nonatomic) NSInteger plnum;
+@property (nonatomic) NSNumber<Optional> *plnum;
 @property (nonatomic, strong) NSString<Optional> *poiType;
 @end
 
@@ -28,6 +28,6 @@
 @property (nonatomic, strong) NSString<Optional> *subtitle;
 @property (nonatomic) NSInteger favor;
 @property (nonatomic) NSInteger hot;
-@property (nonatomic) NSInteger plnum;
+@property (nonatomic) NSNumber<Optional> *plnum;
 @property (nonatomic, strong) NSString<Optional> *poiType;
 @end

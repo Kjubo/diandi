@@ -368,8 +368,15 @@ static NSString *kShareCellReuseIdentifier = @"kShareCellReuseIdentifier";
     return nil;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    id<DDSpotModel> spotItem = nil;
+    if(tableView == self.tbShareInfo){
+        spotItem = self.lstMyShare[indexPath.section];
+    }if(tableView == self.tbFavor){
+        spotItem = self.lstMyFav[indexPath.section];
+    }else if(tableView == self.tbHistory){
+        spotItem = [DDCacheHelper shared].viewHistoryList[indexPath.section];
+    }
 }
 
 - (void)handleTapHeaderSection:(UITapGestureRecognizer *)sender{

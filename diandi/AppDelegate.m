@@ -39,7 +39,7 @@
                                                         NSForegroundColorAttributeName : GS_COLOR_GRAY}
                                              forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont gs_boldfont:NSAppFontXS],
-                                                        NSForegroundColorAttributeName : HEXRGBCOLOR(0x00A6FF)}
+                                                        NSForegroundColorAttributeName : GS_COLOR_MAIN}
                                              forState:UIControlStateSelected];
     
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName : GS_COLOR_WHITE, NSFontAttributeName : [UIFont gs_font:NSAppFontL]} forState:UIControlStateNormal];

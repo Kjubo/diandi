@@ -63,6 +63,8 @@
 		1B58DB101BB2478B00F8FDE7 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DB041BB2478B00F8FDE7 /* UIScrollView+MJExtension.m */; };
 		1B58DB111BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DB061BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m */; };
 		1B58DB121BB2478B00F8FDE7 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DB081BB2478B00F8FDE7 /* UIView+MJExtension.m */; };
+		1B6565621C1FA79600BE26F1 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B6565611C1FA79600BE26F1 /* TencentOpenAPI.framework */; };
+		1B6565651C1FA7AD00BE26F1 /* DDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6565641C1FA7AD00BE26F1 /* DDLoginViewController.m */; };
 		1B7D9EFE1C191866002BDB69 /* DDUserSpotShareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D9EFD1C191866002BDB69 /* DDUserSpotShareHeaderView.m */; };
 		1B7D9F011C191CDC002BDB69 /* DDSpotWithShareListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D9F001C191CDC002BDB69 /* DDSpotWithShareListModel.m */; };
 		1B84A0721BEC3B28009F04EF /* DDSpotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B84A0711BEC3B28009F04EF /* DDSpotTableViewCell.m */; };
@@ -201,6 +203,9 @@
 		1B58DB061BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		1B58DB071BB2478B00F8FDE7 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		1B58DB081BB2478B00F8FDE7 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		1B6565611C1FA79600BE26F1 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		1B6565631C1FA7AD00BE26F1 /* DDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLoginViewController.h; sourceTree = "<group>"; };
+		1B6565641C1FA7AD00BE26F1 /* DDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLoginViewController.m; sourceTree = "<group>"; };
 		1B7D9EFC1C191866002BDB69 /* DDUserSpotShareHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserSpotShareHeaderView.h; sourceTree = "<group>"; };
 		1B7D9EFD1C191866002BDB69 /* DDUserSpotShareHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserSpotShareHeaderView.m; sourceTree = "<group>"; };
 		1B7D9EFF1C191CDC002BDB69 /* DDSpotWithShareListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSpotWithShareListModel.h; path = diandi/Class/DDSpotWithShareListModel.h; sourceTree = SOURCE_ROOT; };
@@ -287,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B090D241C0C037C002301BA /* Accelerate.framework in Frameworks */,
+				1B6565621C1FA79600BE26F1 /* TencentOpenAPI.framework in Frameworks */,
 				1B090D221C0C032A002301BA /* CoreData.framework in Frameworks */,
 				1B010FFD1ADF9F3F00F37746 /* ImageIO.framework in Frameworks */,
 				1B090D211C0C0307002301BA /* libicucore.tbd in Frameworks */,
@@ -383,6 +389,8 @@
 		1B010FC71ADF9B4400F37746 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				1B6565631C1FA7AD00BE26F1 /* DDLoginViewController.h */,
+				1B6565641C1FA7AD00BE26F1 /* DDLoginViewController.m */,
 				1BADA3BC1B8B13460071240C /* DDNoteViewController.h */,
 				1BADA3BD1B8B13460071240C /* DDNoteViewController.m */,
 				1B090D251C0C0491002301BA /* DDSpotDescViewController.h */,
@@ -435,6 +443,7 @@
 		1B010FC91ADF9B4400F37746 /* plusin */ = {
 			isa = PBXGroup;
 			children = (
+				1B6565611C1FA79600BE26F1 /* TencentOpenAPI.framework */,
 				1B090D1A1C0BFF74002301BA /* GoogleMaps.framework */,
 				1B3A659E1BE9B50800BB0429 /* UMAnalytics */,
 				1B3A659D1BE9B4E700BB0429 /* util */,
@@ -779,6 +788,7 @@
 				1BADA3C41B8B1F5D0071240C /* DDLinkageCell.m in Sources */,
 				1B1545641B5A3FCD007B41D5 /* DGroup.m in Sources */,
 				1B010FCC1ADF9BC000F37746 /* RootViewController.m in Sources */,
+				1B6565651C1FA7AD00BE26F1 /* DDLoginViewController.m in Sources */,
 				1BADA3C11B8B1E980071240C /* DDLinkageView.m in Sources */,
 				1B090D271C0C0491002301BA /* DDSpotDescViewController.m in Sources */,
 				1BB97BF81C0BED6900E02CE8 /* DDSpotMapViewController.m in Sources */,

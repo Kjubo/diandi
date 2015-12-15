@@ -34,7 +34,7 @@
         self.tbList = [UITableView new];
         self.tbList.separatorColor = [UIColor clearColor];
         self.tbList.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.tbList.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
+        self.tbList.backgroundColor = GS_COLOR_WHITE;
         [self addSubview:self.tbList];
         [self.tbList mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.width.top.equalTo(self);

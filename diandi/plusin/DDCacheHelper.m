@@ -101,6 +101,9 @@ static NSString *kCacheKeyForSpotHistoryList    = @"kCacheKeyForSpotHistoryList"
     }];
     if(!hasContain){
         [self.lstSpotHistory insertObject:spot atIndex:0];
+        if([self.lstSpotHistory count] > 30){
+            [self.lstSpotHistory removeLastObject];
+        }
         [[ASCache shared] storeValue:[self.lstSpotHistory toJSONString] dir:kCacheDirForData key:kCacheKeyForSpotHistoryList];
     }
 

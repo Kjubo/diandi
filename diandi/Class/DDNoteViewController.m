@@ -18,7 +18,7 @@
 #import "DDNoteModel.h"
 #import "DDSpotModel.h"
 #import "DDSpotDetailViewController.h"
-
+#import "DDLinkageCell.h"
 #import "MJRefresh.h"
 #import "DDCacheHelper.h"
 
@@ -297,13 +297,9 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
             return cell;
         }
     }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier];
+        DDLinkageCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier];
         if(!cell){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellReuseIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.backgroundColor = [UIColor clearColor];
-            cell.textLabel.textColor = GS_COLOR_WHITE;
-            cell.textLabel.font = [UIFont gs_font:NSAppFontL];
+            cell = [[DDLinkageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellReuseIdentifier];
         }
         cell.textLabel.text = @"分类内容";
         return cell;
