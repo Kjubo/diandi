@@ -6,7 +6,6 @@ target 'diandi' do
   pod 'Masonry', '~> 0.6.1'
   pod 'SDWebImage', '~>3.7'
   pod 'DZNEmptyDataSet', '~> 1.6.1'
-  pod 'UIAlertView+Blocks', '~> 0.9'
   pod 'FMDB', '~> 2.5'
   pod 'AHKActionSheet', '~> 0.5.3'
   pod 'ReactiveCocoa', '~> 2.5'

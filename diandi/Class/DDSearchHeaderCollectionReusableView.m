@@ -18,12 +18,12 @@
     if(self = [super initWithFrame:frame]){
         self.lbTitle = [UILabel new];
         self.lbTitle.backgroundColor = [UIColor clearColor];
-        self.lbTitle.textColor = GS_COLOR_WHITE;
+        self.lbTitle.textColor = GS_COLOR_DARKGRAY;
         self.lbTitle.font = [UIFont gs_font:NSAppFontM];
         self.lbTitle.textAlignment = NSTextAlignmentLeft;
         [self addSubview:self.lbTitle];
         [self.lbTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self);
+            make.edges.equalTo(self).insets(UIEdgeInsetsMake(10, 20, 0, 0));
         }];
     }
     return self;

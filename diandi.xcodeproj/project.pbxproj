@@ -20,14 +20,12 @@
 		1B060DCE1BE76DAF00D098B2 /* DDArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B060DCD1BE76DAF00D098B2 /* DDArea.m */; };
 		1B06BE081BB63674009B587B /* DDNoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B06BE071BB63674009B587B /* DDNoteTableViewCell.m */; };
 		1B06BE0B1BB63C19009B587B /* DDSpotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B06BE0A1BB63C19009B587B /* DDSpotModel.m */; };
-		1B090D1B1C0BFF74002301BA /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B090D1A1C0BFF74002301BA /* GoogleMaps.framework */; };
 		1B090D1D1C0C02CB002301BA /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B090D1C1C0C02CB002301BA /* CoreBluetooth.framework */; };
 		1B090D1F1C0C02FC002301BA /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B090D1E1C0C02FC002301BA /* GLKit.framework */; };
 		1B090D211C0C0307002301BA /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B090D201C0C0307002301BA /* libicucore.tbd */; };
 		1B090D221C0C032A002301BA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0110001ADF9F6900F37746 /* CoreData.framework */; };
 		1B090D241C0C037C002301BA /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B090D231C0C037C002301BA /* Accelerate.framework */; };
 		1B090D271C0C0491002301BA /* DDSpotDescViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B090D261C0C0491002301BA /* DDSpotDescViewController.m */; };
-		1B090D2A1C0C06BA002301BA /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B090D291C0C06BA002301BA /* GoogleMaps.bundle */; };
 		1B0D550E1C116C4000850F46 /* DDSpotUserShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D550D1C116C4000850F46 /* DDSpotUserShareViewController.m */; };
 		1B0D55111C117ADE00850F46 /* DDUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D55101C117ADE00850F46 /* DDUserCenterViewController.m */; };
 		1B0D55141C11A13700850F46 /* DDSpotSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D55131C11A13700850F46 /* DDSpotSummaryView.m */; };
@@ -133,7 +131,6 @@
 		1B06BE071BB63674009B587B /* DDNoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNoteTableViewCell.m; sourceTree = "<group>"; };
 		1B06BE091BB63C19009B587B /* DDSpotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSpotModel.h; path = diandi/Class/DDSpotModel.h; sourceTree = SOURCE_ROOT; };
 		1B06BE0A1BB63C19009B587B /* DDSpotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDSpotModel.m; path = diandi/Class/DDSpotModel.m; sourceTree = SOURCE_ROOT; };
-		1B090D1A1C0BFF74002301BA /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		1B090D1C1C0C02CB002301BA /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		1B090D1E1C0C02FC002301BA /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		1B090D201C0C0307002301BA /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
@@ -298,7 +295,6 @@
 				1B090D211C0C0307002301BA /* libicucore.tbd in Frameworks */,
 				1B090D1F1C0C02FC002301BA /* GLKit.framework in Frameworks */,
 				1B090D1D1C0C02CB002301BA /* CoreBluetooth.framework in Frameworks */,
-				1B090D1B1C0BFF74002301BA /* GoogleMaps.framework in Frameworks */,
 				1B3A65B61BE9B6CE00BB0429 /* libz.tbd in Frameworks */,
 				1B3A65B41BE9B68400BB0429 /* libc++.tbd in Frameworks */,
 				1B3A65B21BE9B66800BB0429 /* QuartzCore.framework in Frameworks */,
@@ -444,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				1B6565611C1FA79600BE26F1 /* TencentOpenAPI.framework */,
-				1B090D1A1C0BFF74002301BA /* GoogleMaps.framework */,
 				1B3A659E1BE9B50800BB0429 /* UMAnalytics */,
 				1B3A659D1BE9B4E700BB0429 /* util */,
 				1BF278A41AE8EE4500022ACF /* Category */,
@@ -701,7 +696,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B090D2A1C0C06BA002301BA /* GoogleMaps.bundle in Resources */,
 				1B010FB21ADF9B2600F37746 /* LaunchScreen.xib in Resources */,
 				1B010FAF1ADF9B2600F37746 /* Images.xcassets in Resources */,
 			);

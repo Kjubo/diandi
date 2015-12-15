@@ -39,11 +39,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-diandi-UIAlertView+Blocks.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-diandi.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0658BE9A1FF7B7A4DCD4089E</key>
+		<key>04AF0577622712673F25BA97</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0C864901C41915E5D8588B20</key>
+		<key>1B451B924029CD9923275E3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2071A8526B43407F2B47CE97</key>
+		<key>1BEEF6B4D2B0C293409DD0C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>346176A81E0E71EFCA7A7B2A</key>
+		<key>45D9C60DF7454D86198DA7B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>505C9D3D74F5BA08BEB4284F</key>
+		<key>46E850E54FDDCF7BC8DB5151</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D6991AEBE6D93723F0CD236</key>
+		<key>496558041650D8FD9D851F88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D5674E28B5BF7162E396B84</key>
+		<key>601A6B1A5599D88CFF1E4811</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E306A6750145AFDC4C4359B8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FF31639165E84CF1673D38CA</key>
+		<key>B9EBDBF7D6BBFCAC87240335</key>
 		<dict>
 			<key>primary</key>
 			<true/>

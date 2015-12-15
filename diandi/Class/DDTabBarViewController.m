@@ -10,8 +10,9 @@
 #import "DDNoteViewController.h"
 #import "DDUserCenterViewController.h"
 #import "UITabBarItem+Universal.h"
+#import "DDLoginViewController.h"
 
-@interface DDTabBarViewController ()<UITabBarControllerDelegate>
+@interface DDTabBarViewController ()<UITabBarControllerDelegate, DDLoginViewControllerDelegate>
 @property (nonatomic, strong)UINavigationController *ncMain;
 @property (nonatomic, strong)UINavigationController *ncSpot;
 @property (nonatomic, strong)UINavigationController *ncNote;
@@ -33,7 +34,7 @@
         self.ncNote = [[UINavigationController alloc] initWithRootViewController:noteViewController];
         self.ncNote.tabBarItem = [UITabBarItem itemWithTitle:@"游记" image:[UIImage imageNamed:@"ic_tab0"] selectedImage:[UIImage imageNamed:@"ic_tab0_hl"]];
         
-        [self setViewControllers:@[self.ncNote, self.ncMain]];
+        [self setViewControllers:@[self.ncNote, self.ncSpot, self.ncMain]];
     }
     return self;
 }
@@ -43,19 +44,34 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)openLoginViewController{
+    UIViewController *rootVc = self.selectedViewController;
+    DDLoginViewController *loginVc = [DDLoginViewController new];
+    loginVc.delegate = self;
+    [rootVc presentViewController:[[UINavigationController alloc] initWithRootViewController:loginVc] animated:YES completion:nil];
+}
+
+#pragma mark - UITabBarControllerDelegate
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    if(viewController == self.ncSpot){
+        [self openLoginViewController];
+        return NO;
+    }
+    return YES;
+}
+
+#pragma mark - DDLoginViewControllerDelegate
+- (void)ddLoginViewControllerCancel{
+    [self.selectedViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)ddLoginViewControllerVerify{
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

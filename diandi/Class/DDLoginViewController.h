@@ -8,6 +8,15 @@
 
 #import "RootViewController.h"
 
+@protocol DDLoginViewControllerDelegate <NSObject>
+
+- (void)ddLoginViewControllerCancel;
+- (void)ddLoginViewControllerVerify;
+
+@end
+
 @interface DDLoginViewController : RootViewController
+
+@property (nonatomic, weak) id<DDLoginViewControllerDelegate> delegate;
 
 @end

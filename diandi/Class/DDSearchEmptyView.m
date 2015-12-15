@@ -11,7 +11,7 @@
 #import "DDSearchHeaderCollectionReusableView.h"
 #import "DDCacheHelper.h"
 
-@interface DDSearchEmptyView ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface DDSearchEmptyView ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 @property (nonatomic, strong) UIView *maskerView;
 @property (nonatomic, strong) UICollectionView *contentView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *fl;
@@ -29,8 +29,7 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
         
         //透明遮罩层
         self.maskerView = [UIView new];
-        self.maskerView.backgroundColor = GS_COLOR_BLACK;
-        self.maskerView.alpha = 0.4;
+        self.maskerView.backgroundColor = GS_COLOR_LIGHT;
         UITapGestureRecognizer *tapMaskerView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapMaskerView)];
         [self.maskerView addGestureRecognizer:tapMaskerView];
         [self addSubview:self.maskerView];
@@ -42,6 +41,7 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
         self.fl.minimumLineSpacing = 5.0;
         self.fl.minimumInteritemSpacing = 5.0;
         self.fl.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        self.fl.headerReferenceSize = CGSizeMake(DF_WIDTH, 20);
         self.contentView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.fl];
         self.contentView.backgroundColor = [UIColor clearColor];
         self.contentView.delegate = self;
@@ -104,15 +104,15 @@ static NSString *kTagCellIdentifier = @"kTagCellIdentifier";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
-        return CGSizeMake(DF_WIDTH - 20.0, 36);
-    }else{
         return CGSizeMake((DF_WIDTH - 40)/3.0, 36);
+    }else{
+        return CGSizeMake(DF_WIDTH - 20.0, 36);
     }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DDTagCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTagCellIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = GS_COLOR_BLACK;
+    cell.backgroundColor = GS_COLOR_WHITE;
     if(indexPath.section == 0){
         if([DDCacheHelper shared].mddList
            && [[DDCacheHelper shared].mddList.hotsearch count] > 0){

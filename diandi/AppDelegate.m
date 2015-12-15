@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "DDTabBarViewController.h"
 #import "MobClick.h"
-#import <GoogleMaps/GoogleMaps.h>
 #import "DDCacheHelper.h"
 
 @interface AppDelegate ()
@@ -23,8 +22,6 @@
     //友盟
     [MobClick startWithAppkey:UMENG_KEY reportPolicy:BATCH channelId:nil];
     [MobClick setEncryptEnabled:YES];
-    //谷歌地图
-    [GMSServices provideAPIKey:GMAP_KEY];
     
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setTitleTextAttributes: @{NSForegroundColorAttributeName : GS_COLOR_WHITE,

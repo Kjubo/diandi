@@ -248,6 +248,14 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     }];
 }
 
+#pragma mark - DDSearchEmptyViewDelegate
+- (void)ddSearchEmptyViewDidSelect:(NSString *)searchKey{
+    if([searchKey length] == 0){
+        return;
+    }
+    self.searchBar.text = [searchKey copy];
+}
+
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if([searchBar.text length] == 0){

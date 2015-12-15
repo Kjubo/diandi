@@ -10,6 +10,13 @@
 
 @interface DAnnotation : NSObject <MKAnnotation>
 
-@property(nonatomic) CLLocationCoordinate2D coordinate;
+//显示标注的经纬度
+@property (nonatomic,readonly) CLLocationCoordinate2D coordinate;
+//标注的标题
+@property (nonatomic,copy,readonly) NSString * title;
+//标注的子标题
+@property (nonatomic,copy,readonly) NSString * subtitle;
+
+- (instancetype)initWithCoordinates:(CLLocationCoordinate2D)paramCoordinates title:(NSString *)title subTitle:(NSString *)subTitle;
 
 @end
