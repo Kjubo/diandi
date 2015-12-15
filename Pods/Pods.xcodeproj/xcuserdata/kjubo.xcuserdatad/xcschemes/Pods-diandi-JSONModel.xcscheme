@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6010C2B3E4C9FA7A738FBA6F"
+               BlueprintIdentifier = "346176A81E0E71EFCA7A7B2A"
                BuildableName = "libPods-diandi-JSONModel.a"
                BlueprintName = "Pods-diandi-JSONModel"
                ReferencedContainer = "container:Pods.xcodeproj">
