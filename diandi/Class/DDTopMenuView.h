@@ -8,18 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, DDTopMenuType){
+    DDTopMenuTypeNone = 0,
+    DDTopMenuTypeArea,
+    DDTopMenuTypeCategory,
+    DDTopMenuTypeSort,
+    DDTopMenuTypeSearch,
+};
+
 @protocol DDTopMenuViewDelegate <NSObject>
 
 @optional
-- (void)ddTopMenuViewDidSelected:(NSInteger)tag;
-- (void)ddTopMenuViewDidCancelSelected;
-- (void)ddTopMenuViewDidSearch;
-
+- (void)ddTopMenuViewDidSelected:(DDTopMenuType)type;
+- (void)ddTopMenuViewDidCancel:(DDTopMenuType)type;
 @end
 
 @interface DDTopMenuView : UIView
+@property (nonatomic) DDTopMenuType menuType;
 @property (nonatomic, assign) id<DDTopMenuViewDelegate> delegate;
-
-- (void)setSelectedMenuTitle:(NSString *)title;
-- (void)cleanSelected;
 @end

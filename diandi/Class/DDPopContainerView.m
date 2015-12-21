@@ -40,6 +40,19 @@
             make.left.width.top.equalTo(self);
             make.height.mas_equalTo(@220);
         }];
+        
+        [RACObserve(self, hidden) subscribeNext:^(id x) {
+            if([x boolValue]){
+                [UIView animateWithDuration:0.2 animations:^{
+                    self.tbList.top = -self.tbList.height;
+                }completion:nil];
+            }else{
+                [self.superview bringSubviewToFront:self];
+                [UIView animateWithDuration:0.2 animations:^{
+                    self.tbList.top = 0;
+                } completion:nil];
+            }
+        }];
     }
     return self;
 }
@@ -62,24 +75,6 @@
 
 - (void)handleTapMaskerView{
     self.hidden = YES;
-}
-
-- (void)setHidden:(BOOL)hidden{
-    if(self.hidden == hidden) return;
-    if(hidden){
-        [UIView animateWithDuration:0.2 animations:^{
-            self.tbList.top = -self.tbList.height;
-        }completion:^(BOOL finished) {
-            [super setHidden:YES];
-        }];
-    }else{
-        [self.superview bringSubviewToFront:self];
-        [super setHidden:NO];
-        [self.tbList reloadData];
-        [UIView animateWithDuration:0.2 animations:^{
-            self.tbList.top = 0;
-        } completion:nil];
-    }
 }
 
 @end

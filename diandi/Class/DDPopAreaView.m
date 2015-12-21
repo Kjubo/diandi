@@ -61,6 +61,19 @@
             make.top.height.equalTo(self.contentView);
             make.width.mas_equalTo(DF_WIDTH);
         }];
+        
+        [RACObserve(self, hidden) subscribeNext:^(id x) {
+            if([x boolValue]){
+                [UIView animateWithDuration:0.2 animations:^{
+                    self.contentView.top = -self.contentView.height;
+                }completion:nil];
+            }else{
+                [self.superview bringSubviewToFront:self];
+                [UIView animateWithDuration:0.2 animations:^{
+                    self.contentView.top = 0;
+                } completion:nil];
+            }
+        }];
     }
     return self;
 }
@@ -72,26 +85,6 @@
 
 - (void)handleTapMaskerView{
     self.hidden = YES;
-}
-
-- (void)setHidden:(BOOL)hidden{
-    if(self.hidden == hidden) return;
-    if(hidden){
-        [UIView animateWithDuration:0.2 animations:^{
-            self.contentView.top = -self.contentView.height;
-        }completion:^(BOOL finished) {
-            [super setHidden:YES];
-        }];
-    }else{
-//        [self.contentView setContentOffset:CGPointZero];
-//        [self.contentView setScrollEnabled:NO];
-        [self.superview bringSubviewToFront:self];
-        [super setHidden:NO];
-        
-        [UIView animateWithDuration:0.2 animations:^{
-            self.contentView.top = 0;
-        } completion:nil];
-    }
 }
 
 #pragma mark - UIScrollView Delegate

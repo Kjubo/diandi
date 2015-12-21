@@ -130,8 +130,22 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
     self.pageIndex = 0;
     self.data = [NSMutableArray array];
     
+    [self initRAC];
     [self loadingShow];
     [self loadMore];
+   
+}
+
+- (void)initRAC{
+    //取消TopMenu的选中状态
+    [[RACSignal combineLatest:@[RACObserve(self.popAreaView, hidden), RACObserve(self.popContainerView, hidden)]
+                      reduce:^id(NSNumber *hidden1, NSNumber *hidden2){
+                          return @([hidden1 boolValue] && [hidden2 boolValue]);
+                      }] subscribeNext:^(id x) {
+                          if([x boolValue]){
+                              self.menuView.menuType = DDTopMenuTypeNone;
+                          }
+                      }];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -195,47 +209,35 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 #pragma mark - DDPopAreaViewDelegate
 - (void)ddPopAreaViewDidSelected:(DDArea *)data{
     self.areaUuid = [data.uuid copy];
-    [self.menuView setSelectedMenuTitle:[data.name copy]];
-    [self.menuView cleanSelected];
     self.pageIndex = 0;
     [self loadingShow];
     [self loadMore];
 }
 
 #pragma mark - DDTopMenuView Delegate
-- (void)ddTopMenuViewDidSelected:(NSInteger)tag{
-    if(tag == 0){
-        self.popAreaView.hidden = !self.popAreaView.hidden;
-        if(![self.popAreaView isHidden]){
-            self.popContainerView.hidden = YES;
-        }
+- (void)ddTopMenuViewDidSelected:(DDTopMenuType)type{
+    if(type == DDTopMenuTypeArea){
+        self.popAreaView.hidden = NO;
+    }else if(type == DDTopMenuTypeSearch){
+        self.isSearching = YES;
     }else{
-        self.popContainerView.hidden = !self.popContainerView.hidden;
-        if(![self.popContainerView isHidden]){
-            self.popAreaView.hidden = YES;
-        }
+        self.popContainerView.hidden = NO;
     }
 }
 
-- (void)ddTopMenuViewDidCancelSelected{
-    self.popContainerView.hidden = YES;
-    self.popAreaView.hidden = YES;
-}
-
-- (void)ddTopMenuViewDidSearch{
-    self.isSearching = !self.isSearching;
+- (void)ddTopMenuViewDidCancel:(DDTopMenuType)type{
+    if(type == DDTopMenuTypeArea){
+        self.popAreaView.hidden = YES;
+    }else if(type == DDTopMenuTypeSearch){
+        self.isSearching = NO;
+    }else{
+        self.popContainerView.hidden = YES;
+    }
 }
 
 - (void)setIsSearching:(BOOL)isSearching{
     if(_isSearching == isSearching) return;
     _isSearching = isSearching;
-    self.popAreaView.hidden = YES;
-    self.popContainerView.hidden = YES;
-    if(_isSearching){
-        self.searchEmptyView.hidden = NO;
-    }else{
-        self.searchEmptyView.hidden = YES;
-    }
     [UIView transitionWithView:self.topView duration:0.3 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionTransitionFlipFromBottom animations:^{
         self.menuView.hidden = _isSearching;
         self.searchBar.hidden = !_isSearching;
@@ -257,14 +259,6 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 #pragma mark - UISearchBarDelegate
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    if([searchBar.text length] == 0){
-        self.searchEmptyView.hidden = NO;
-    }else{
-        self.searchEmptyView.hidden = YES;
-    }
-}
-
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     self.searchBar.text = nil;
     self.isSearching = NO;

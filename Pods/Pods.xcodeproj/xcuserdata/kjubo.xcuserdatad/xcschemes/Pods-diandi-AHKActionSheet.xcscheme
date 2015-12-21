@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "04AF0577622712673F25BA97"
+               BlueprintIdentifier = "0F9BAA0B6137D320FC10D1EE"
                BuildableName = "libPods-diandi-AHKActionSheet.a"
                BlueprintName = "Pods-diandi-AHKActionSheet"
                ReferencedContainer = "container:Pods.xcodeproj">

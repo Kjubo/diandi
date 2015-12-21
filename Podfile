@@ -9,4 +9,7 @@ target 'diandi' do
   pod 'FMDB', '~> 2.5'
   pod 'AHKActionSheet', '~> 0.5.3'
   pod 'ReactiveCocoa', '~> 2.5'
+  
+  pod 'WeiboSDK', '~> 3.1.3'
 end
+    

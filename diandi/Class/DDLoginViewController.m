@@ -32,6 +32,18 @@
         make.centerX.equalTo(self.view);
     }];
     
+    UIView *userNameline = [UIView new];
+    userNameline.backgroundColor = GS_COLOR_LIGHT;
+    [self.view addSubview:userNameline];
+    [userNameline mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.width.equalTo(self.tfUserName);
+        make.height.mas_equalTo(@1);
+        make.top.equalTo(self.tfUserName.mas_bottom);
+    }];
+    RAC(userNameline, backgroundColor) =
+        [RACSignal merge:@[[[self.tfUserName rac_signalForControlEvents:UIControlEventEditingDidBegin] mapReplace:GS_COLOR_MAIN],
+                        [[self.tfUserName rac_signalForControlEvents:UIControlEventEditingDidEnd] mapReplace:GS_COLOR_LIGHT]]];
+    
     self.tfPassword = [self newTextField:@"密码"];
     self.tfPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"登录密码" attributes:@{NSFontAttributeName:[UIFont gs_font:NSAppFontM], NSForegroundColorAttributeName : GS_COLOR_LIGHTGRAY}];
     self.tfPassword.secureTextEntry = YES;
@@ -41,6 +53,18 @@
         make.left.equalTo(self.tfUserName);
         make.top.equalTo(self.tfUserName.mas_bottom).offset(20);
     }];
+    
+    UIView *passwordline = [UIView new];
+    passwordline.backgroundColor = GS_COLOR_LIGHT;
+    [self.view addSubview:passwordline];
+    [passwordline mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.width.equalTo(self.tfPassword);
+        make.height.mas_equalTo(@1);
+        make.top.equalTo(self.tfPassword.mas_bottom);
+    }];
+    RAC(passwordline, backgroundColor) =
+    [RACSignal merge:@[[[self.tfPassword rac_signalForControlEvents:UIControlEventEditingDidBegin] mapReplace:GS_COLOR_MAIN],
+                       [[self.tfPassword rac_signalForControlEvents:UIControlEventEditingDidEnd] mapReplace:GS_COLOR_LIGHT]]];
     
     UIButton *btn = [UIButton new];
     btn.backgroundColor = GS_COLOR_MAIN;
@@ -65,10 +89,6 @@
     lbPrefix.font = [UIFont gs_font:NSAppFontM];
     lbPrefix.text = [prefixTitle copy];
     lbPrefix.textAlignment = NSTextAlignmentCenter;
-    tf.layer.cornerRadius = 4.0;
-    tf.layer.borderColor = GS_COLOR_LIGHTGRAY.CGColor;
-    tf.layer.borderWidth = 1;
-    tf.backgroundColor = GS_COLOR_WHITE;
     tf.font = [UIFont gs_font:NSAppFontM];
     tf.leftView = lbPrefix;
     tf.leftViewMode = UITextFieldViewModeAlways;

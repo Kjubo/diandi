@@ -10,7 +10,6 @@
 
 static CGFloat kViewHeight = 16.0;
 @interface DDRankView ()
-@property (nonatomic, strong) UIView *maskView;
 @end
 
 @implementation DDRankView
@@ -33,14 +32,7 @@ static CGFloat kViewHeight = 16.0;
             }];
         }
         
-        self.maskView = [UIView new];
-        self.maskView.backgroundColor = GS_COLOR_WHITE;
-        [self addSubview:self.maskView];
-        [self.maskView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self);
-        }];
-        
-        self.rank = 5;
+        self.rank = 1;
     }
     return self;
 }
@@ -48,7 +40,7 @@ static CGFloat kViewHeight = 16.0;
 - (void)setRank:(CGFloat)rank{
     _rank = rank;
     [self.maskView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_rank * kViewHeight);
+        make.width.mas_equalTo(_rank * kViewHeight);
     }];
 }
 

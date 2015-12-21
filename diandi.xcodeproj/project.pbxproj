@@ -17,7 +17,6 @@
 		1B010FFF1ADF9F4600F37746 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B010FFE1ADF9F4600F37746 /* CoreGraphics.framework */; };
 		1B0110031ADFA86C00F37746 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0110021ADFA86C00F37746 /* MobileCoreServices.framework */; };
 		1B0110051ADFA92C00F37746 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0110041ADFA92C00F37746 /* AssetsLibrary.framework */; };
-		1B060DCE1BE76DAF00D098B2 /* DDArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B060DCD1BE76DAF00D098B2 /* DDArea.m */; };
 		1B06BE081BB63674009B587B /* DDNoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B06BE071BB63674009B587B /* DDNoteTableViewCell.m */; };
 		1B06BE0B1BB63C19009B587B /* DDSpotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B06BE0A1BB63C19009B587B /* DDSpotModel.m */; };
 		1B090D1D1C0C02CB002301BA /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B090D1C1C0C02CB002301BA /* CoreBluetooth.framework */; };
@@ -61,8 +60,9 @@
 		1B58DB101BB2478B00F8FDE7 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DB041BB2478B00F8FDE7 /* UIScrollView+MJExtension.m */; };
 		1B58DB111BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DB061BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m */; };
 		1B58DB121BB2478B00F8FDE7 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58DB081BB2478B00F8FDE7 /* UIView+MJExtension.m */; };
-		1B6565621C1FA79600BE26F1 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B6565611C1FA79600BE26F1 /* TencentOpenAPI.framework */; };
 		1B6565651C1FA7AD00BE26F1 /* DDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6565641C1FA7AD00BE26F1 /* DDLoginViewController.m */; };
+		1B6E36CF1C27CE65000804FC /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B6E36CD1C27CE65000804FC /* TencentOpenApi_IOS_Bundle.bundle */; };
+		1B6E36D01C27CE65000804FC /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B6E36CE1C27CE65000804FC /* TencentOpenAPI.framework */; };
 		1B7D9EFE1C191866002BDB69 /* DDUserSpotShareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D9EFD1C191866002BDB69 /* DDUserSpotShareHeaderView.m */; };
 		1B7D9F011C191CDC002BDB69 /* DDSpotWithShareListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D9F001C191CDC002BDB69 /* DDSpotWithShareListModel.m */; };
 		1B84A0721BEC3B28009F04EF /* DDSpotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B84A0711BEC3B28009F04EF /* DDSpotTableViewCell.m */; };
@@ -125,8 +125,6 @@
 		1B0110021ADFA86C00F37746 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1B0110041ADFA92C00F37746 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		1B0110091ADFB3C000F37746 /* libc++abi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++abi.dylib"; path = "usr/lib/libc++abi.dylib"; sourceTree = SDKROOT; };
-		1B060DCC1BE76DAF00D098B2 /* DDArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDArea.h; path = diandi/DDArea.h; sourceTree = SOURCE_ROOT; };
-		1B060DCD1BE76DAF00D098B2 /* DDArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDArea.m; path = diandi/DDArea.m; sourceTree = SOURCE_ROOT; };
 		1B06BE061BB63674009B587B /* DDNoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNoteTableViewCell.h; sourceTree = "<group>"; };
 		1B06BE071BB63674009B587B /* DDNoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNoteTableViewCell.m; sourceTree = "<group>"; };
 		1B06BE091BB63C19009B587B /* DDSpotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSpotModel.h; path = diandi/Class/DDSpotModel.h; sourceTree = SOURCE_ROOT; };
@@ -200,9 +198,10 @@
 		1B58DB061BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		1B58DB071BB2478B00F8FDE7 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		1B58DB081BB2478B00F8FDE7 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		1B6565611C1FA79600BE26F1 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		1B6565631C1FA7AD00BE26F1 /* DDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLoginViewController.h; sourceTree = "<group>"; };
 		1B6565641C1FA7AD00BE26F1 /* DDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLoginViewController.m; sourceTree = "<group>"; };
+		1B6E36CD1C27CE65000804FC /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		1B6E36CE1C27CE65000804FC /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		1B7D9EFC1C191866002BDB69 /* DDUserSpotShareHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserSpotShareHeaderView.h; sourceTree = "<group>"; };
 		1B7D9EFD1C191866002BDB69 /* DDUserSpotShareHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserSpotShareHeaderView.m; sourceTree = "<group>"; };
 		1B7D9EFF1C191CDC002BDB69 /* DDSpotWithShareListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSpotWithShareListModel.h; path = diandi/Class/DDSpotWithShareListModel.h; sourceTree = SOURCE_ROOT; };
@@ -289,7 +288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B090D241C0C037C002301BA /* Accelerate.framework in Frameworks */,
-				1B6565621C1FA79600BE26F1 /* TencentOpenAPI.framework in Frameworks */,
 				1B090D221C0C032A002301BA /* CoreData.framework in Frameworks */,
 				1B010FFD1ADF9F3F00F37746 /* ImageIO.framework in Frameworks */,
 				1B090D211C0C0307002301BA /* libicucore.tbd in Frameworks */,
@@ -298,6 +296,7 @@
 				1B3A65B61BE9B6CE00BB0429 /* libz.tbd in Frameworks */,
 				1B3A65B41BE9B68400BB0429 /* libc++.tbd in Frameworks */,
 				1B3A65B21BE9B66800BB0429 /* QuartzCore.framework in Frameworks */,
+				1B6E36D01C27CE65000804FC /* TencentOpenAPI.framework in Frameworks */,
 				1B3A65B01BE9B65F00BB0429 /* OpenGLES.framework in Frameworks */,
 				1B3A65AE1BE9B63C00BB0429 /* SystemConfiguration.framework in Frameworks */,
 				1B3A65AC1BE9B62600BB0429 /* CoreLocation.framework in Frameworks */,
@@ -412,8 +411,6 @@
 			children = (
 				1B1A37CA1B0AD0AC0075B9DE /* DAnnotation.h */,
 				1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */,
-				1B060DCC1BE76DAF00D098B2 /* DDArea.h */,
-				1B060DCD1BE76DAF00D098B2 /* DDArea.m */,
 				1BBFFDCA1BFEF76F005833EE /* DDCustomShareInfoModel.h */,
 				1BBFFDCB1BFEF76F005833EE /* DDCustomShareInfoModel.m */,
 				1B9F758A1BEB29FD00640547 /* DDMddListModel.h */,
@@ -439,7 +436,8 @@
 		1B010FC91ADF9B4400F37746 /* plusin */ = {
 			isa = PBXGroup;
 			children = (
-				1B6565611C1FA79600BE26F1 /* TencentOpenAPI.framework */,
+				1B6E36CD1C27CE65000804FC /* TencentOpenApi_IOS_Bundle.bundle */,
+				1B6E36CE1C27CE65000804FC /* TencentOpenAPI.framework */,
 				1B3A659E1BE9B50800BB0429 /* UMAnalytics */,
 				1B3A659D1BE9B4E700BB0429 /* util */,
 				1BF278A41AE8EE4500022ACF /* Category */,
@@ -696,6 +694,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B6E36CF1C27CE65000804FC /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				1B010FB21ADF9B2600F37746 /* LaunchScreen.xib in Resources */,
 				1B010FAF1ADF9B2600F37746 /* Images.xcassets in Resources */,
 			);
@@ -791,7 +790,6 @@
 				1BB2EBC91BD241CB005A453F /* DDSearchHeaderCollectionReusableView.m in Sources */,
 				1BADA3C71B8B211B0071240C /* DDPopAreaView.m in Sources */,
 				1B1A37CC1B0AD0AC0075B9DE /* DAnnotation.m in Sources */,
-				1B060DCE1BE76DAF00D098B2 /* DDArea.m in Sources */,
 				1B84A0781BEC7660009F04EF /* DDSpotDetailViewController.m in Sources */,
 				1B1C2D831BC3A662001496BC /* DDPopContainerView.m in Sources */,
 				1B58DB0A1BB2478B00F8FDE7 /* ASPickerView.m in Sources */,
