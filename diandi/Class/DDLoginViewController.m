@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIButton *btnSubmit;
 @end
 
-#define kOauthIconNames [@"ic_oauth_weixin", @"ic_oauth_weibo", @"ic_oauth_qq"]
+#define kOauthIconNames @[@"ic_oauth_weixin", @"ic_oauth_weibo", @"ic_oauth_qq"]
 
 @implementation DDLoginViewController
 
@@ -96,7 +96,9 @@
         make.height.mas_equalTo(@50);
     }];
     
-    for(int i = 0; i < kOauthIconNames)
+    for(int i = 0; i < [kOauthIconNames count]; i++){
+        
+    }
     
     UIButton *btn = [UIButton new];
     btn.backgroundColor = GS_COLOR_MAIN;
