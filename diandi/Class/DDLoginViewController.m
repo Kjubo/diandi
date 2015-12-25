@@ -14,6 +14,8 @@
 @property (nonatomic, strong) UIButton *btnSubmit;
 @end
 
+#define kOauthIconNames [@"ic_oauth_weixin", @"ic_oauth_weibo", @"ic_oauth_qq"]
+
 @implementation DDLoginViewController
 
 - (void)viewDidLoad {
@@ -65,6 +67,36 @@
     RAC(passwordline, backgroundColor) =
     [RACSignal merge:@[[[self.tfPassword rac_signalForControlEvents:UIControlEventEditingDidBegin] mapReplace:GS_COLOR_MAIN],
                        [[self.tfPassword rac_signalForControlEvents:UIControlEventEditingDidEnd] mapReplace:GS_COLOR_LIGHT]]];
+    
+    UIView *oauthLine = [UIView new];
+    oauthLine.backgroundColor = GS_COLOR_LIGHT;
+    [self.view addSubview:oauthLine];
+    [oauthLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.tfPassword.mas_bottom).offset(25);
+        make.left.width.equalTo(self.tfPassword);
+        make.height.mas_equalTo(@1);
+    }];
+    
+    UILabel *lbOauthTitle = [UILabel new];
+    lbOauthTitle.backgroundColor = GS_COLOR_WHITE;
+    lbOauthTitle.textAlignment = NSTextAlignmentCenter;
+    lbOauthTitle.textColor = GS_COLOR_BLACK;
+    lbOauthTitle.font = [UIFont gs_font:NSAppFontM];
+    lbOauthTitle.text = @"  第三方账号登陆  ";
+    [self.view addSubview:lbOauthTitle];
+    [lbOauthTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(oauthLine);
+    }];
+    
+    UIView *oauthView = [UIView new];
+    oauthView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:oauthView];
+    [oauthView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.height.mas_equalTo(@50);
+    }];
+    
+    for(int i = 0; i < kOauthIconNames)
     
     UIButton *btn = [UIButton new];
     btn.backgroundColor = GS_COLOR_MAIN;

@@ -82,6 +82,9 @@
 		1BADA3CA1B8C0F000071240C /* DDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3C91B8C0F000071240C /* DDTabBarViewController.m */; };
 		1BADA3CD1B8C0F7C0071240C /* UITabBarItem+Universal.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BADA3CC1B8C0F7C0071240C /* UITabBarItem+Universal.m */; };
 		1BB2EBC91BD241CB005A453F /* DDSearchHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB2EBC81BD241CB005A453F /* DDSearchHeaderCollectionReusableView.m */; };
+		1BB68BDE1C27D21700AE495D /* DDArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB68BDD1C27D21700AE495D /* DDArea.m */; };
+		1BB68BE41C27D2BA00AE495D /* DDUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB68BE31C27D2BA00AE495D /* DDUserModel.m */; };
+		1BB68BE71C27D32C00AE495D /* DDUserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB68BE61C27D32C00AE495D /* DDUserUtil.m */; };
 		1BB97BF81C0BED6900E02CE8 /* DDSpotMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB97BF71C0BED6900E02CE8 /* DDSpotMapViewController.m */; };
 		1BBC3D811BFF254500BCCCAB /* NSArray+JSONModelAddtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBC3D801BFF254500BCCCAB /* NSArray+JSONModelAddtion.m */; };
 		1BBFFDC91BFEF3EE005833EE /* DDShareInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBFFDC81BFEF3EE005833EE /* DDShareInfoModel.m */; };
@@ -135,7 +138,6 @@
 		1B090D231C0C037C002301BA /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		1B090D251C0C0491002301BA /* DDSpotDescViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotDescViewController.h; sourceTree = "<group>"; };
 		1B090D261C0C0491002301BA /* DDSpotDescViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotDescViewController.m; sourceTree = "<group>"; };
-		1B090D291C0C06BA002301BA /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = plusin/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		1B0D550C1C116C4000850F46 /* DDSpotUserShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotUserShareViewController.h; sourceTree = "<group>"; };
 		1B0D550D1C116C4000850F46 /* DDSpotUserShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotUserShareViewController.m; sourceTree = "<group>"; };
 		1B0D550F1C117ADE00850F46 /* DDUserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserCenterViewController.h; sourceTree = "<group>"; };
@@ -240,6 +242,12 @@
 		1BADA3CC1B8C0F7C0071240C /* UITabBarItem+Universal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+Universal.m"; sourceTree = "<group>"; };
 		1BB2EBC71BD241CB005A453F /* DDSearchHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSearchHeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		1BB2EBC81BD241CB005A453F /* DDSearchHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSearchHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		1BB68BDC1C27D21700AE495D /* DDArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDArea.h; path = diandi/Class/DDArea.h; sourceTree = SOURCE_ROOT; };
+		1BB68BDD1C27D21700AE495D /* DDArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDArea.m; path = diandi/Class/DDArea.m; sourceTree = SOURCE_ROOT; };
+		1BB68BE21C27D2BA00AE495D /* DDUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDUserModel.h; path = diandi/Class/DDUserModel.h; sourceTree = SOURCE_ROOT; };
+		1BB68BE31C27D2BA00AE495D /* DDUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDUserModel.m; path = diandi/Class/DDUserModel.m; sourceTree = SOURCE_ROOT; };
+		1BB68BE51C27D32C00AE495D /* DDUserUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserUtil.h; sourceTree = "<group>"; };
+		1BB68BE61C27D32C00AE495D /* DDUserUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserUtil.m; sourceTree = "<group>"; };
 		1BB97BF61C0BED6900E02CE8 /* DDSpotMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpotMapViewController.h; sourceTree = "<group>"; };
 		1BB97BF71C0BED6900E02CE8 /* DDSpotMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpotMapViewController.m; sourceTree = "<group>"; };
 		1BBC3D7F1BFF254500BCCCAB /* NSArray+JSONModelAddtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModelAddtion.h"; sourceTree = "<group>"; };
@@ -356,7 +364,6 @@
 		1B010F9E1ADF9B2600F37746 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1B090D291C0C06BA002301BA /* GoogleMaps.bundle */,
 				1B010F9F1ADF9B2600F37746 /* Info.plist */,
 				1B010FA01ADF9B2600F37746 /* main.m */,
 				1B010FF61ADF9EB000F37746 /* diandi-Prefix.pch */,
@@ -411,6 +418,8 @@
 			children = (
 				1B1A37CA1B0AD0AC0075B9DE /* DAnnotation.h */,
 				1B1A37CB1B0AD0AC0075B9DE /* DAnnotation.m */,
+				1BB68BDC1C27D21700AE495D /* DDArea.h */,
+				1BB68BDD1C27D21700AE495D /* DDArea.m */,
 				1BBFFDCA1BFEF76F005833EE /* DDCustomShareInfoModel.h */,
 				1BBFFDCB1BFEF76F005833EE /* DDCustomShareInfoModel.m */,
 				1B9F758A1BEB29FD00640547 /* DDMddListModel.h */,
@@ -425,6 +434,8 @@
 				1B06BE0A1BB63C19009B587B /* DDSpotModel.m */,
 				1B7D9EFF1C191CDC002BDB69 /* DDSpotWithShareListModel.h */,
 				1B7D9F001C191CDC002BDB69 /* DDSpotWithShareListModel.m */,
+				1BB68BE21C27D2BA00AE495D /* DDUserModel.h */,
+				1BB68BE31C27D2BA00AE495D /* DDUserModel.m */,
 				1B1545611B5A3FCD007B41D5 /* DGroup.h */,
 				1B1545621B5A3FCD007B41D5 /* DGroup.m */,
 				1B15455F1B5A3FCD007B41D5 /* DPhoto.h */,
@@ -485,14 +496,16 @@
 				1BC461E21BCA3923003550FC /* Cipher.m */,
 				1BE309761B4FC4120008EF74 /* DBSCAN.h */,
 				1BE309771B4FC4120008EF74 /* DBSCAN.m */,
+				1B9F758D1BEB2C1300640547 /* DDCacheHelper.h */,
+				1B9F758E1BEB2C1300640547 /* DDCacheHelper.m */,
+				1BB68BE51C27D32C00AE495D /* DDUserUtil.h */,
+				1BB68BE61C27D32C00AE495D /* DDUserUtil.m */,
 				1BC461DE1BCA38FE003550FC /* HttpUtil.h */,
 				1BC461DF1BCA38FE003550FC /* HttpUtil.m */,
 				1BC461ED1BCA3B0D003550FC /* SSKeychain.h */,
 				1BC461EE1BCA3B0D003550FC /* SSKeychain.m */,
 				1BC461F01BCA3B26003550FC /* SSKeychainQuery.h */,
 				1BC461F11BCA3B26003550FC /* SSKeychainQuery.m */,
-				1B9F758D1BEB2C1300640547 /* DDCacheHelper.h */,
-				1B9F758E1BEB2C1300640547 /* DDCacheHelper.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -753,6 +766,7 @@
 				1BC461E31BCA3923003550FC /* Cipher.m in Sources */,
 				1B58DB0E1BB2478B00F8FDE7 /* MJRefreshFooterView.m in Sources */,
 				1B58DB0D1BB2478B00F8FDE7 /* MJRefreshConst.m in Sources */,
+				1BB68BE71C27D32C00AE495D /* DDUserUtil.m in Sources */,
 				1BADA3CA1B8C0F000071240C /* DDTabBarViewController.m in Sources */,
 				1BBC3D811BFF254500BCCCAB /* NSArray+JSONModelAddtion.m in Sources */,
 				1B58DB0C1BB2478B00F8FDE7 /* MJRefreshBaseView.m in Sources */,
@@ -770,6 +784,7 @@
 				1B1545631B5A3FCD007B41D5 /* DPhoto.m in Sources */,
 				1BC461F21BCA3B26003550FC /* SSKeychainQuery.m in Sources */,
 				1B58DB0F1BB2478B00F8FDE7 /* MJRefreshHeaderView.m in Sources */,
+				1BB68BDE1C27D21700AE495D /* DDArea.m in Sources */,
 				1B58DB111BB2478B00F8FDE7 /* UIScrollView+MJRefresh.m in Sources */,
 				1B010FA41ADF9B2600F37746 /* AppDelegate.m in Sources */,
 				1B7D9F011C191CDC002BDB69 /* DDSpotWithShareListModel.m in Sources */,
@@ -791,6 +806,7 @@
 				1BADA3C71B8B211B0071240C /* DDPopAreaView.m in Sources */,
 				1B1A37CC1B0AD0AC0075B9DE /* DAnnotation.m in Sources */,
 				1B84A0781BEC7660009F04EF /* DDSpotDetailViewController.m in Sources */,
+				1BB68BE41C27D2BA00AE495D /* DDUserModel.m in Sources */,
 				1B1C2D831BC3A662001496BC /* DDPopContainerView.m in Sources */,
 				1B58DB0A1BB2478B00F8FDE7 /* ASPickerView.m in Sources */,
 				1B9F758F1BEB2C1300640547 /* DDCacheHelper.m in Sources */,
